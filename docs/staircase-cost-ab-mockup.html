@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Staircase Cost Section — A/B Mockup | Sue Wheeler</title>
+<style>
+  :root {
+    --sue-blue: #11b2e8;
+    --sue-blue-light: #8abcf7;
+    --sue-cyan: #00aee6;
+    --deep-blue: #0033CC;
+    --charcoal: #42413C;
+    --off-white: #f8f7f4;
+    --warm-gray: #e8e6e1;
+    --text: #2a2926;
+    --text-muted: #6b6860;
+    --font-serif: Georgia, 'Times New Roman', serif;
+    --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: var(--font-sans);
+    background: #f0eeea;
+    color: var(--text);
+    padding: 0;
+  }
+
+  /* ── HEADER ── */
+  .page-header {
+    background: var(--charcoal);
+    color: #fff;
+    padding: 20px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+  }
+  .page-header .brand {
+    font-family: var(--font-serif);
+    font-size: 18px;
+    font-weight: normal;
+    letter-spacing: 0.01em;
+    color: #fff;
+    line-height: 1.3;
+  }
+  .page-header .brand span { color: var(--sue-blue); }
+  .page-header .label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: rgba(255,255,255,0.5);
+    text-align: right;
+  }
+
+  /* ── INTRO ── */
+  .intro {
+    background: #fff;
+    border-bottom: 1px solid var(--warm-gray);
+    padding: 32px 40px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .intro h1 {
+    font-family: var(--font-serif);
+    font-size: 22px;
+    font-weight: normal;
+    color: var(--charcoal);
+    margin-bottom: 10px;
+  }
+  .intro p {
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.65;
+    max-width: 640px;
+  }
+  .intro .decision {
+    margin-top: 14px;
+    display: inline-block;
+    background: #eef9fe;
+    border: 1px solid var(--sue-blue-light);
+    border-radius: 4px;
+    padding: 10px 16px;
+    font-size: 13px;
+    color: #0a6f9a;
+    font-weight: 500;
+  }
+  .intro .decision strong { color: var(--deep-blue); }
+
+  /* ── LAYOUT ── */
+  .ab-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+
+  /* ── COLUMN HEADERS ── */
+  .col-header {
+    padding: 20px 40px 16px;
+    border-bottom: 3px solid;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+  .col-header.a {
+    background: #fff8ee;
+    border-color: #e0a030;
+    border-right: 1px solid var(--warm-gray);
+  }
+  .col-header.b {
+    background: #eef9fe;
+    border-color: var(--sue-blue);
+  }
+  .col-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .col-header.a .col-label { color: #b37800; }
+  .col-header.b .col-label { color: #0a6f9a; }
+  .col-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--charcoal);
+    margin-bottom: 4px;
+  }
+  .col-desc {
+    font-size: 12px;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+  .badge {
+    display: inline-block;
+    margin-top: 8px;
+    font-size: 11px;
+    border-radius: 3px;
+    padding: 3px 8px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  .badge-warning { background: #fff0cc; color: #8a5c00; border: 1px solid #e0c060; }
+  .badge-go { background: #d4f5e9; color: #1a7a50; border: 1px solid #7ad4b0; }
+
+  /* ── PAGE COLUMNS ── */
+  .col {
+    background: #fff;
+    padding: 0;
+  }
+  .col.a { border-right: 1px solid var(--warm-gray); }
+
+  /* ── PAGE CHROME (simulated site context) ── */
+  .page-chrome {
+    padding: 40px;
+  }
+
+  /* ── CONTEXT SECTION (before/after the A/B section) ── */
+  .context-block {
+    margin-bottom: 32px;
+    opacity: 0.45;
+    pointer-events: none;
+    user-select: none;
+  }
+  .context-block .context-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+    padding-bottom: 6px;
+    border-bottom: 1px dashed var(--warm-gray);
+  }
+  .ghost-text {
+    font-family: var(--font-serif);
+    font-size: 22px;
+    color: #ccc;
+    margin-bottom: 8px;
+  }
+  .ghost-para {
+    height: 11px;
+    background: #e8e6e0;
+    border-radius: 2px;
+    margin-bottom: 7px;
+  }
+  .ghost-para.short { width: 60%; }
+  .ghost-para.med { width: 80%; }
+
+  /* ── A/B SECTION ITSELF ── */
+  .ab-section {
+    border: 2px solid;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 32px;
+  }
+  .col.a .ab-section { border-color: #e0a030; }
+  .col.b .ab-section { border-color: var(--sue-blue); }
+
+  .ab-section-flag {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-weight: 700;
+    padding: 6px 14px;
+    display: block;
+  }
+  .col.a .ab-section-flag { background: #fff0cc; color: #8a5c00; }
+  .col.b .ab-section-flag { background: #d4f0fc; color: #0a6f9a; }
+
+  .ab-section-inner {
+    padding: 28px 32px;
+  }
+
+  /* ── TYPOGRAPHY WITHIN SECTION ── */
+  .section-h2 {
+    font-family: var(--font-serif);
+    font-size: 24px;
+    font-weight: normal;
+    color: var(--charcoal);
+    line-height: 1.3;
+    margin-bottom: 14px;
+  }
+  .section-h2 em {
+    font-style: italic;
+    color: var(--sue-blue);
+  }
+  .section-body {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--text);
+    margin-bottom: 16px;
+  }
+  .section-body strong { font-weight: 600; }
+
+  .range-badge {
+    display: inline-block;
+    background: var(--off-white);
+    border: 1px solid var(--warm-gray);
+    border-radius: 4px;
+    padding: 10px 16px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--charcoal);
+    margin-bottom: 16px;
+  }
+  .range-badge .range-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 600;
+    color: var(--text-muted);
+    display: block;
+    margin-bottom: 2px;
+  }
+
+  .variable-list {
+    list-style: none;
+    margin-bottom: 18px;
+  }
+  .variable-list li {
+    font-size: 14px;
+    line-height: 1.6;
+    padding: 9px 0 9px 22px;
+    border-bottom: 1px solid var(--warm-gray);
+    position: relative;
+    color: var(--text);
+  }
+  .variable-list li:last-child { border-bottom: none; }
+  .variable-list li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--sue-blue);
+    font-size: 13px;
+  }
+  .variable-list li strong { color: var(--charcoal); font-weight: 600; }
+
+  .cta-line {
+    background: var(--off-white);
+    border-top: 1px solid var(--warm-gray);
+    padding: 16px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .cta-text {
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+  .cta-text strong { color: var(--charcoal); font-weight: 600; }
+  .cta-btn {
+    display: inline-block;
+    background: var(--sue-blue);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 10px 20px;
+    border-radius: 3px;
+    text-decoration: none;
+    white-space: nowrap;
+    letter-spacing: 0.01em;
+  }
+  .blog-link {
+    font-size: 13px;
+    color: var(--sue-blue);
+    text-decoration: none;
+    display: block;
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid var(--warm-gray);
+  }
+  .blog-link::before { content: '→ '; }
+
+  /* ── AFTER SECTION CONTEXT ── */
+  .after-context { opacity: 0.4; pointer-events: none; }
+  .after-context .ghost-h2 {
+    font-family: var(--font-serif);
+    font-size: 20px;
+    color: #ccc;
+    margin-bottom: 10px;
+  }
+
+  /* ── FOOTER NOTES ── */
+  .notes-bar {
+    background: var(--charcoal);
+    color: rgba(255,255,255,0.75);
+    padding: 20px 40px;
+    font-size: 12px;
+    line-height: 1.7;
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+  .notes-bar strong { color: #fff; }
+  .notes-bar ul { padding-left: 18px; margin-top: 8px; }
+  .notes-bar ul li { margin-bottom: 4px; }
+
+  /* ── DIVIDER ── */
+  .col-divider {
+    width: 1px;
+    background: var(--warm-gray);
+  }
+
+  @media (max-width: 900px) {
+    .ab-grid { grid-template-columns: 1fr; }
+    .col.a { border-right: none; border-bottom: 3px solid var(--warm-gray); }
+    .page-header { padding: 16px 20px; }
+    .intro, .page-chrome { padding: 24px 20px; }
+    .cta-line { flex-direction: column; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <div class="brand">Wood Refinishing by <span>Sue Wheeler</span></div>
+  <div class="label">Client Review Mockup<br>Staircase Hub — Cost Section A/B</div>
+</div>
+
+<div class="intro">
+  <h1>Cost Section — A/B Comparison</h1>
+  <p>Two versions of the "What does staircase refinishing cost?" section on <code>/staircase-refinishing/</code>. Everything else on the page is identical. This is the only section that differs.</p>
+  <div class="decision"><strong>Recommended:</strong> Version B — no dollar figures, scopes variables, drives to free estimate call.</div>
+</div>
+
+<div class="ab-grid">
+
+  <!-- VERSION A -->
+  <div class="col a">
+    <div class="col-header a">
+      <div class="col-label">Version A</div>
+      <div class="col-title">With National Price Range</div>
+      <div class="col-desc">Shows $300–$1,500+ national range. Links to cost blog post. Puts a number in front of the visitor before they call.</div>
+      <span class="badge badge-warning">⚠ Needs Sue's STL numbers before publish</span>
+    </div>
+    <div class="page-chrome">
+
+      <!-- ghosted context above -->
+      <div class="context-block">
+        <div class="context-label">↑ Page content above (Visual Return section)</div>
+        <div class="ghost-text">No single project <em>transforms</em> a home more.</div>
+        <div class="ghost-para"></div>
+        <div class="ghost-para med"></div>
+        <div class="ghost-para short"></div>
+      </div>
+
+      <!-- THE A/B SECTION -->
+      <div class="ab-section">
+        <span class="ab-section-flag">Version A — with price range</span>
+        <div class="ab-section-inner">
+          <h2 class="section-h2">What does staircase refinishing <em>cost</em> in St. Louis?</h2>
+          <div class="range-badge">
+            <span class="range-label">National range (scope-dependent)</span>
+            $300 – $1,500+
+          </div>
+          <p class="section-body">
+            Nationally, staircase refinishing ranges from approximately <strong>$300 to $1,500+</strong> depending on scope, spindle count, and condition. Full staircases with high spindle counts and extensive repairs run higher. Simple tread-and-riser projects with no spindle work run lower.
+          </p>
+          <p class="section-body">
+            We give free estimates. Call (314) 367-6054 and describe your staircase — number of treads, spindle count if you know it, condition of the existing finish, and whether the staircase has been refinished before. We'll give you a realistic range before you commit to anything.
+          </p>
+        </div>
+        <div class="cta-line">
+          <div class="cta-text"><strong>Free estimate.</strong> Sue answers every call personally.</div>
+          <a href="#" class="cta-btn">Get a Free Staircase Estimate →</a>
+        </div>
+        <div class="ab-section-inner" style="padding-top:0;">
+          <a href="#" class="blog-link">Full cost guide: staircase refinishing in St. Louis</a>
+        </div>
+      </div>
+
+      <!-- ghosted context below -->
+      <div class="after-context">
+        <div class="context-label" style="font-size:10px;text-transform:uppercase;letter-spacing:.12em;color:#aaa;margin-bottom:8px;padding-bottom:6px;border-bottom:1px dashed #ddd;">↓ Page content below (Lead Paint section)</div>
+        <div class="ghost-h2">Pre-1978 staircase? <em>EPA certification matters.</em></div>
+        <div class="ghost-para"></div>
+        <div class="ghost-para med"></div>
+        <div class="ghost-para short"></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- VERSION B -->
+  <div class="col b">
+    <div class="col-header b">
+      <div class="col-label">Version B</div>
+      <div class="col-title">Variables Only — No Dollar Figures</div>
+      <div class="col-desc">Explains what drives cost without quoting numbers. Creates pull toward the free estimate call. No pricing commitment on the site.</div>
+      <span class="badge badge-go">✓ Recommended — ready to publish</span>
+    </div>
+    <div class="page-chrome">
+
+      <!-- ghosted context above -->
+      <div class="context-block">
+        <div class="context-label">↑ Page content above (Visual Return section)</div>
+        <div class="ghost-text">No single project <em>transforms</em> a home more.</div>
+        <div class="ghost-para"></div>
+        <div class="ghost-para med"></div>
+        <div class="ghost-para short"></div>
+      </div>
+
+      <!-- THE A/B SECTION -->
+      <div class="ab-section">
+        <span class="ab-section-flag">Version B — variables, no numbers</span>
+        <div class="ab-section-inner">
+          <h2 class="section-h2">What does staircase refinishing <em>cost</em> in St. Louis?</h2>
+          <p class="section-body">
+            Staircase refinishing isn't a flat-rate service — what you pay depends on what's actually in scope. A few things we look at before quoting:
+          </p>
+          <ul class="variable-list">
+            <li><strong>How many treads</strong> — the primary count variable on any staircase job</li>
+            <li><strong>What components are in scope</strong> — treads only, or treads plus risers, stringers, railings, spindles, and newel post</li>
+            <li><strong>Condition of the existing finish</strong> — light wear is different from decades of paint build-up or a prior DIY attempt</li>
+            <li><strong>Whether repairs are needed</strong> — damaged treads, loose spindles, and split newel posts are scoped separately</li>
+            <li><strong>Lead paint</strong> — pre-1978 homes require EPA-certified lead-safe protocol, which is part of every job we do on older woodwork</li>
+          </ul>
+          <p class="section-body">
+            There's no number we can give you before seeing the staircase. But a free estimate takes about 15 minutes and there's no commitment.
+          </p>
+        </div>
+        <div class="cta-line">
+          <div class="cta-text">Call <strong>(314) 367-6054</strong> — describe what you have, and Sue will tell you what's realistic.</div>
+          <a href="#" class="cta-btn">Get a Free Staircase Estimate →</a>
+        </div>
+      </div>
+
+      <!-- ghosted context below -->
+      <div class="after-context">
+        <div class="context-label" style="font-size:10px;text-transform:uppercase;letter-spacing:.12em;color:#aaa;margin-bottom:8px;padding-bottom:6px;border-bottom:1px dashed #ddd;">↓ Page content below (Lead Paint section)</div>
+        <div class="ghost-h2">Pre-1978 staircase? <em>EPA certification matters.</em></div>
+        <div class="ghost-para"></div>
+        <div class="ghost-para med"></div>
+        <div class="ghost-para short"></div>
+      </div>
+
+    </div>
+  </div>
+
+</div><!-- end ab-grid -->
+
+<div class="notes-bar">
+  <strong>Notes for review:</strong>
+  <ul>
+    <li><strong>Version A</strong> — uses a national range ($300–$1,500+). ⚠ These are not Sue's actual STL prices. Numbers must be confirmed with Sue before this version could go live. Also links to a cost-focused blog post (f2) which is written but similarly flagged.</li>
+    <li><strong>Version B</strong> — no dollar figures anywhere. Explains the five variables that affect scope and drives to the free estimate call. Ready to publish as-is.</li>
+    <li>Both versions share identical page chrome above and below this section (hero, scope, visual return, lead paint, FAQ, CTA).</li>
+    <li>The blog post <code>f2-staircase-refinishing-cost.md</code> (outline complete) supports Version A if that direction is chosen later. It is not linked in Version B.</li>
+  </ul>
+</div>
+
+</body>
+</html>

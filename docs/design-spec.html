@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Design Spec & Style Guide — Sue Wheeler Wood Refinishing</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-base: #EBE6DE; --bg-card: #F8F6F1; --text-main: #2A2421;
+    --text-muted: #6B5E55; --accent-blue: #11B2E8; --accent-blue-light: #8ABCF7;
+    --accent-cyan: #00AEE6; --accent-wood: #A65D37; --charcoal: #42413C;
+    --font-serif: 'Playfair Display', Georgia, serif;
+    --font-sans: 'Inter', system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+    --shadow-card: 0 10px 30px -10px rgba(42,36,33,0.08), 0 4px 6px -2px rgba(42,36,33,0.04);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--bg-base); color: var(--text-main); font-family: var(--font-sans); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+  a { color: inherit; text-decoration: none; }
+
+  /* Layout */
+  .page { display: grid; grid-template-columns: 240px 1fr; min-height: 100vh; }
+  .sidebar { position: sticky; top: 0; height: 100vh; overflow-y: auto; background: var(--charcoal); color: white; padding: 2rem 1.5rem; }
+  .sidebar-logo { font-family: var(--font-serif); font-size: 1.1rem; font-style: italic; margin-bottom: 0.25rem; }
+  .sidebar-sub { font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.2em; color: rgba(255,255,255,0.4); margin-bottom: 2rem; display: block; }
+  .sidebar nav ul { list-style: none; }
+  .sidebar nav ul li { margin-bottom: 0.15rem; }
+  .sidebar nav ul li a { display: block; font-size: 0.75rem; padding: 0.4rem 0.75rem; border-radius: 4px; color: rgba(255,255,255,0.65); transition: all 0.2s; }
+  .sidebar nav ul li a:hover { background: rgba(255,255,255,0.08); color: white; }
+  .sidebar nav ul li.section-label { font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.15em; color: rgba(255,255,255,0.3); padding: 1.25rem 0.75rem 0.4rem; font-weight: 600; }
+  .main { padding: 3rem 4rem; max-width: 1000px; }
+
+  /* Sections */
+  .spec-section { margin-bottom: 5rem; }
+  .spec-section h2 { font-family: var(--font-serif); font-size: 2rem; font-weight: 400; margin-bottom: 0.5rem; padding-bottom: 0.75rem; border-bottom: 1px solid rgba(0,0,0,0.08); }
+  .spec-section h3 { font-family: var(--font-sans); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.12em; font-weight: 600; color: var(--accent-blue); margin: 2rem 0 1rem; }
+  .spec-section h4 { font-family: var(--font-sans); font-size: 0.8rem; font-weight: 600; color: var(--text-main); margin: 1.5rem 0 0.5rem; }
+  p { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem; line-height: 1.7; }
+
+  /* Tables */
+  table { width: 100%; border-collapse: collapse; font-size: 0.82rem; margin-bottom: 1.5rem; }
+  th { background: var(--bg-card); text-align: left; padding: 0.6rem 1rem; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); font-weight: 600; border-bottom: 2px solid rgba(0,0,0,0.06); }
+  td { padding: 0.6rem 1rem; border-bottom: 1px solid rgba(0,0,0,0.04); color: var(--text-main); vertical-align: middle; }
+  tr:hover td { background: rgba(17,178,232,0.03); }
+
+  /* Code */
+  pre { background: var(--charcoal); color: #e8e4de; padding: 1.25rem 1.5rem; border-radius: 4px; overflow-x: auto; margin-bottom: 1.5rem; font-family: var(--font-mono); font-size: 0.78rem; line-height: 1.7; }
+  code { font-family: var(--font-mono); font-size: 0.8rem; background: rgba(0,0,0,0.06); padding: 0.1em 0.4em; border-radius: 3px; }
+  pre code { background: none; padding: 0; font-size: inherit; }
+
+  /* Swatches */
+  .swatch-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 1rem; margin-bottom: 1.5rem; }
+  .swatch { background: var(--bg-card); border-radius: 6px; overflow: hidden; box-shadow: var(--shadow-card); }
+  .swatch-color { height: 72px; }
+  .swatch-info { padding: 0.6rem 0.75rem; }
+  .swatch-name { font-size: 0.75rem; font-weight: 600; display: block; }
+  .swatch-hex { font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-muted); }
+  .swatch-token { font-family: var(--font-mono); font-size: 0.62rem; color: var(--accent-blue); display: block; margin-top: 0.2rem; }
+
+  /* Type specimens */
+  .type-specimen { background: var(--bg-card); padding: 1.5rem; border-radius: 4px; margin-bottom: 0.75rem; display: flex; align-items: flex-start; justify-content: space-between; gap: 2rem; box-shadow: var(--shadow-card); }
+  .type-specimen-label { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-muted); font-weight: 600; white-space: nowrap; min-width: 100px; margin-top: 0.25rem; }
+  .type-specimen-meta { font-family: var(--font-mono); font-size: 0.65rem; color: var(--text-muted); white-space: nowrap; text-align: right; margin-top: 0.25rem; }
+
+  /* Component demos */
+  .demo-box { background: var(--bg-card); padding: 2rem; border-radius: 4px; margin-bottom: 1rem; box-shadow: var(--shadow-card); }
+  .demo-label { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-muted); font-weight: 600; margin-bottom: 1rem; display: block; }
+
+  /* Buttons demo */
+  .btn { display: inline-flex; align-items: center; justify-content: center; padding: 1rem 2rem; font-family: var(--font-sans); font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; font-size: 0.875rem; transition: all 0.3s ease; cursor: pointer; border: none; margin-right: 0.75rem; }
+  .btn-primary { background: var(--accent-blue); color: white; }
+  .btn-primary:hover { background: #0e96c4; transform: translateY(-2px); }
+  .btn-outline { background: transparent; border: 1px solid var(--text-main); color: var(--text-main); }
+  .btn-outline:hover { background: var(--text-main); color: var(--bg-card); }
+  .btn-dark { background: var(--text-main); color: var(--bg-card); }
+
+  /* Pill badges */
+  .pill { display: inline-flex; align-items: center; padding: 0.25rem 0.75rem; border-radius: 50px; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600; margin-right: 0.5rem; }
+  .pill-wood { border: 1px solid var(--accent-wood); color: var(--accent-wood); }
+  .pill-blue { border: 1px solid var(--accent-blue); color: var(--accent-blue); }
+
+  /* Nav demo */
+  .nav-demo { background: var(--bg-base); padding: 1.25rem 2rem; display: flex; justify-content: space-between; align-items: center; border-radius: 4px; box-shadow: var(--shadow-card); }
+  .nav-logo { font-family: var(--font-serif); font-size: 1.4rem; font-style: italic; display: flex; flex-direction: column; line-height: 1.1; }
+  .nav-logo span { font-family: var(--font-sans); font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.2em; font-style: normal; color: var(--text-muted); margin-top: 0.2rem; }
+  .nav-links-demo { display: flex; gap: 1.5rem; align-items: center; list-style: none; }
+  .nav-links-demo li a { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 500; color: var(--text-main); }
+  .nav-links-demo li a.active { color: var(--accent-wood); font-weight: 600; }
+  .nav-links-demo li a.phone { font-weight: 600; border-bottom: 1px solid var(--accent-blue); }
+  .nav-cta { padding: 0.75rem 1.5rem; background: var(--accent-blue); color: white; font-family: var(--font-sans); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 500; }
+
+  /* Footer demo */
+  .footer-demo { background: var(--bg-card); padding: 3rem 2rem; text-align: center; border-top: 4px solid var(--accent-blue); border-radius: 0 0 4px 4px; }
+
+  /* Motion table */
+  .motion-row td:first-child { font-family: var(--font-mono); font-size: 0.75rem; }
+
+  /* Page inventory */
+  .page-tag { display: inline-block; padding: 0.2rem 0.5rem; background: rgba(17,178,232,0.1); color: var(--accent-blue); border-radius: 3px; font-size: 0.65rem; font-family: var(--font-mono); }
+  .page-tag.needed { background: rgba(166,93,55,0.1); color: var(--accent-wood); }
+
+  /* Callout */
+  .callout { background: rgba(17,178,232,0.07); border-left: 3px solid var(--accent-blue); padding: 1rem 1.25rem; border-radius: 0 4px 4px 0; margin-bottom: 1.25rem; font-size: 0.85rem; color: var(--text-main); }
+  .callout strong { color: var(--accent-blue); }
+</style>
+</head>
+<body>
+<div class="page">
+
+<!-- Sidebar -->
+<aside class="sidebar">
+  <div class="sidebar-logo">Sue Wheeler</div>
+  <span class="sidebar-sub">Design Spec · 2026</span>
+  <nav>
+    <ul>
+      <li class="section-label">Tokens</li>
+      <li><a href="#colors">Colors</a></li>
+      <li><a href="#typography">Typography</a></li>
+      <li><a href="#spacing">Spacing & Layout</a></li>
+      <li><a href="#elevation">Elevation & Borders</a></li>
+      <li class="section-label">Components</li>
+      <li><a href="#nav">Navigation</a></li>
+      <li><a href="#buttons">Buttons</a></li>
+      <li><a href="#badges">Pill Badges</a></li>
+      <li><a href="#cards">Service Cards</a></li>
+      <li><a href="#footer">Footer</a></li>
+      <li class="section-label">Patterns</li>
+      <li><a href="#pages">Page Inventory</a></li>
+      <li><a href="#sections">Section Patterns</a></li>
+      <li><a href="#motion">Motion</a></li>
+      <li><a href="#seo">SEO & Meta</a></li>
+      <li><a href="#nextjs">Next.js Notes</a></li>
+    </ul>
+  </nav>
+</aside>
+
+<!-- Main content -->
+<main class="main">
+
+  <div style="margin-bottom: 3rem;">
+    <span style="font-size:0.7rem;text-transform:uppercase;letter-spacing:0.15em;color:var(--accent-blue);font-weight:600;">Wood Refinishing by Sue Wheeler</span>
+    <h1 style="font-family:var(--font-serif);font-size:3rem;font-weight:400;margin-top:0.5rem;line-height:1.1;">Design Spec &<br><em style="color:var(--accent-wood);">Style Guide</em></h1>
+    <p style="margin-top:1rem;">Extracted from Variant.com Option 2 mockups. Target stack: Next.js + Tailwind CSS v4 + Shadcn/Radix.</p>
+  </div>
+
+
+  <!-- 1. Colors -->
+  <section class="spec-section" id="colors">
+    <h2>1. Colors</h2>
+    <div class="swatch-grid">
+      <div class="swatch"><div class="swatch-color" style="background:#EBE6DE;border:1px solid rgba(0,0,0,0.06);"></div><div class="swatch-info"><span class="swatch-name">Base</span><span class="swatch-hex">#EBE6DE</span><span class="swatch-token">--bg-base / sue-base</span></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:#F8F6F1;border:1px solid rgba(0,0,0,0.06);"></div><div class="swatch-info"><span class="swatch-name">Card</span><span class="swatch-hex">#F8F6F1</span><span class="swatch-token">--bg-card / sue-card</span></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:#2A2421;"></div><div class="swatch-info"><span class="swatch-name">Text Main</span><span class="swatch-hex">#2A2421</span><span class="swatch-token">--text-main / sue-text</span></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:#6B5E55;"></div><div class="swatch-info"><span class="swatch-name">Text Muted</span><span class="swatch-hex">#6B5E55</span><span class="swatch-token">--text-muted / sue-muted</span></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:#11B2E8;"></div><div class="swatch-info"><span class="swatch-name">Primary Blue</span><span class="swatch-hex">#11B2E8</span><span class="swatch-token">--accent-blue / sue-blue</span></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:#8ABCF7;"></div><div class="swatch-info"><span class="swatch-name">Light Blue</span><span class="swatch-hex">#8ABCF7</span><span class="swatch-token">sue-blue-light</span></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:#00AEE6;"></div><div class="swatch-info"><span class="swatch-name">Accent Cyan</span><span class="swatch-hex">#00AEE6</span><span class="swatch-token">sue-cyan</span></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:#0033CC;"></div><div class="swatch-info"><span class="swatch-name">Deep Blue</span><span class="swatch-hex">#0033CC</span><span class="swatch-token">sue-deep</span></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:#A65D37;"></div><div class="swatch-info"><span class="swatch-name">Accent Wood</span><span class="swatch-hex">#A65D37</span><span class="swatch-token">--accent-wood / sue-wood</span></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:#42413C;"></div><div class="swatch-info"><span class="swatch-name">Charcoal</span><span class="swatch-hex">#42413C</span><span class="swatch-token">sue-charcoal</span></div></div>
+    </div>
+    <h3>Tailwind Config</h3>
+<pre><code>// tailwind.config.ts — extend colors
+colors: {
+  'sue-blue':       '#11B2E8',
+  'sue-blue-light': '#8ABCF7',
+  'sue-cyan':       '#00AEE6',
+  'sue-deep':       '#0033CC',
+  'sue-charcoal':   '#42413C',
+  'sue-base':       '#EBE6DE',
+  'sue-card':       '#F8F6F1',
+  'sue-text':       '#2A2421',
+  'sue-muted':      '#6B5E55',
+  'sue-wood':       '#A65D37',
+}</code></pre>
+  </section>
+
+  <!-- 2. Typography -->
+  <section class="spec-section" id="typography">
+    <h2>2. Typography</h2>
+    <h3>Typefaces</h3>
+    <table>
+      <tr><th>Role</th><th>Family</th><th>Weights</th></tr>
+      <tr><td>Serif / Display</td><td>Playfair Display</td><td>400, 600, 400i, 600i</td></tr>
+      <tr><td>Sans / UI</td><td>Inter</td><td>400, 500, 600</td></tr>
+    </table>
+    <h3>Type Specimens</h3>
+    <div class="type-specimen">
+      <div><div class="type-specimen-label">Hero H1</div><div style="font-family:var(--font-serif);font-size:clamp(2rem,4vw,3.5rem);font-weight:400;line-height:1.05;">St. Louis's Wood Refinishing<br>Expert <em style="color:var(--accent-wood);">Since 1989</em>.</div></div>
+      <div class="type-specimen-meta">Playfair Display 400<br>clamp(3rem, 5vw, 5.5rem)<br>Italic <em>i</em> → sue-wood</div>
+    </div>
+    <div class="type-specimen">
+      <div><div class="type-specimen-label">Section H2</div><div style="font-family:var(--font-serif);font-size:2.5rem;font-weight:400;">Our Services</div></div>
+      <div class="type-specimen-meta">Playfair Display 400<br>3rem</div>
+    </div>
+    <div class="type-specimen">
+      <div><div class="type-specimen-label">Card H3</div><div style="font-family:var(--font-serif);font-size:1.6rem;font-weight:400;font-style:italic;">Kitchen Cabinets</div></div>
+      <div class="type-specimen-meta">Playfair Display 400i<br>1.75rem</div>
+    </div>
+    <div class="type-specimen">
+      <div><div class="type-specimen-label">Logo</div><div style="font-family:var(--font-serif);font-size:1.4rem;font-style:italic;line-height:1.1;">Sue Wheeler<span style="display:block;font-family:var(--font-sans);font-size:0.6rem;text-transform:uppercase;letter-spacing:0.2em;font-style:normal;color:var(--text-muted);margin-top:0.2rem;">Wood Refinishing</span></div></div>
+      <div class="type-specimen-meta">Serif 1.4rem italic<br>+ Sans 0.6rem uppercase</div>
+    </div>
+    <div class="type-specimen">
+      <div><div class="type-specimen-label">Nav Link</div><div style="font-family:var(--font-sans);font-size:0.8rem;text-transform:uppercase;letter-spacing:0.05em;font-weight:500;">About</div></div>
+      <div class="type-specimen-meta">Inter 500<br>0.8rem uppercase</div>
+    </div>
+    <div class="type-specimen">
+      <div><div class="type-specimen-label">Body Lead</div><div style="font-family:var(--font-sans);font-size:1.1rem;color:var(--text-muted);">Thirty-six years of restoring the wood that matters.</div></div>
+      <div class="type-specimen-meta">Inter 400<br>1.25rem, sue-muted</div>
+    </div>
+    <div class="type-specimen">
+      <div><div class="type-specimen-label">Micro Label</div><div style="font-family:var(--font-sans);font-size:0.75rem;text-transform:uppercase;letter-spacing:0.1em;font-weight:600;color:var(--accent-wood);">St. Louis, MO</div></div>
+      <div class="type-specimen-meta">Inter 600<br>0.75rem uppercase<br>letter-spacing: 0.1em</div>
+    </div>
+    <div class="type-specimen">
+      <div><div class="type-specimen-label">Footer Phone</div><div style="font-family:var(--font-serif);font-size:2.5rem;font-weight:400;">(314) 367-6054</div></div>
+      <div class="type-specimen-meta">Playfair Display 400<br>clamp(3rem, 6vw, 6rem)<br>hover → sue-blue</div>
+    </div>
+    <div class="callout"><strong>Rule:</strong> No bold headings — Playfair at weight 400 is intentional. Italic <code>&lt;em&gt;</code> + <code>color: sue-wood</code> is the emphasis pattern.</div>
+  </section>
+
+
+  <!-- 3. Spacing -->
+  <section class="spec-section" id="spacing">
+    <h2>3. Spacing & Layout</h2>
+    <h3>Scale</h3>
+    <table>
+      <tr><th>Token</th><th>Value</th><th>px</th><th>Usage</th></tr>
+      <tr><td><code>--space-xs</code></td><td>0.5rem</td><td>8px</td><td>Tight gaps</td></tr>
+      <tr><td><code>--space-sm</code></td><td>1rem</td><td>16px</td><td>Inner padding</td></tr>
+      <tr><td><code>--space-md</code></td><td>2rem</td><td>32px</td><td>Card padding, grid gaps</td></tr>
+      <tr><td><code>--space-lg</code></td><td>4rem</td><td>64px</td><td>Section padding</td></tr>
+      <tr><td><code>--space-xl</code></td><td>8rem</td><td>128px</td><td>Major section padding</td></tr>
+    </table>
+    <h3>Container</h3>
+    <p>Max width <code>1400px</code>, centered, padding <code>0 2rem</code> desktop / <code>0 1rem</code> mobile. All page sections wrap in <code>.container</code>.</p>
+    <h3>Grid Patterns</h3>
+    <table>
+      <tr><th>Pattern</th><th>Desktop</th><th>Mobile</th><th>Used on</th></tr>
+      <tr><td>Hero</td><td><code>1fr 1fr</code></td><td><code>1fr</code></td><td>Homepage, service pages</td></tr>
+      <tr><td>Services</td><td><code>repeat(auto-fit, minmax(300px, 1fr))</code></td><td>1 col</td><td>Service cards</td></tr>
+      <tr><td>Process</td><td><code>repeat(4, 1fr)</code></td><td>2→1 col</td><td>Process steps</td></tr>
+      <tr><td>Portfolio</td><td><code>repeat(2, 1fr)</code></td><td>1 col</td><td>Before/after pairs</td></tr>
+      <tr><td>Testimonials</td><td><code>repeat(3, 1fr)</code></td><td>1 col</td><td>Review cards</td></tr>
+    </table>
+    <h3>Breakpoints</h3>
+    <table>
+      <tr><th>Name</th><th>Value</th><th>Notes</th></tr>
+      <tr><td>Mobile</td><td><code>max-width: 500px</code></td><td>Single column, reduced type sizes</td></tr>
+      <tr><td>Tablet</td><td><code>max-width: 768px</code></td><td>2-col grids collapse to 1</td></tr>
+      <tr><td>Nav mobile</td><td><code>max-width: 900px</code></td><td>Hamburger triggers</td></tr>
+    </table>
+  </section>
+
+  <!-- 4. Elevation -->
+  <section class="spec-section" id="elevation">
+    <h2>4. Elevation & Borders</h2>
+    <h3>Shadows</h3>
+<pre><code>--shadow-card: 0 10px 30px -10px rgba(42,36,33,0.08),
+               0 4px 6px -2px rgba(42,36,33,0.04);
+--shadow-nav:  0 4px 20px rgba(42,36,33,0.1);</code></pre>
+    <h3>Border Radius</h3>
+    <table>
+      <tr><th>Element</th><th>Radius</th><th>Rationale</th></tr>
+      <tr><td>Cards</td><td><code>2px</code></td><td>Intentionally minimal — architectural feel</td></tr>
+      <tr><td>Pills / badges</td><td><code>50px</code></td><td>Full round</td></tr>
+      <tr><td>Buttons</td><td><code>0</code></td><td>Sharp corners only — no softening</td></tr>
+      <tr><td>Dropdown menus</td><td><code>0</code></td><td>Sharp, consistent with buttons</td></tr>
+    </table>
+    <h3>Key Border Details</h3>
+    <table>
+      <tr><th>Element</th><th>Border</th></tr>
+      <tr><td>Section dividers</td><td><code>1px solid rgba(0,0,0,0.05)</code></td></tr>
+      <tr><td><strong>Footer top accent</strong></td><td><code>4px solid var(--accent-blue)</code> — signature brand element</td></tr>
+      <tr><td>Phone number (nav)</td><td><code>border-bottom: 1px solid sue-blue</code></td></tr>
+      <tr><td>Card hover left bar</td><td><code>4px wide, sue-blue, height 0→100% animated</code></td></tr>
+      <tr><td>Dropdown</td><td><code>1px solid rgba(0,0,0,0.05)</code></td></tr>
+    </table>
+  </section>
+
+  <!-- 5. Nav -->
+  <section class="spec-section" id="nav">
+    <h2>5. Navigation</h2>
+    <h3>Live Demo</h3>
+    <div class="demo-box" style="padding: 0; overflow:hidden;">
+      <nav class="nav-demo">
+        <a class="nav-logo" href="#">Sue Wheeler<span>Wood Refinishing</span></a>
+        <ul class="nav-links-demo">
+          <li><a href="#" class="active">Home</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Services</a></li>
+          <li><a href="#">Portfolio</a></li>
+          <li><a href="#" class="phone">(314) 367-6054</a></li>
+        </ul>
+        <a class="nav-cta" href="#">Free Estimate</a>
+      </nav>
+    </div>
+    <h3>Specs</h3>
+    <table>
+      <tr><th>Element</th><th>Style</th></tr>
+      <tr><td>Container</td><td>Sticky top, <code>z-index: 100</code>, <code>background: sue-base</code></td></tr>
+      <tr><td>Logo</td><td>Playfair 1.4rem italic + Inter 0.6rem uppercase tagline</td></tr>
+      <tr><td>Links</td><td>Inter 0.8rem, uppercase, <code>letter-spacing: 0.05em</code>, weight 500</td></tr>
+      <tr><td>Active link</td><td><code>color: sue-wood</code>, <code>font-weight: 600</code></td></tr>
+      <tr><td>Hover link</td><td><code>color: sue-blue</code> + animated underline <code>width: 0→100%</code></td></tr>
+      <tr><td>Phone</td><td><code>font-weight: 600</code>, <code>border-bottom: 1px solid sue-blue</code></td></tr>
+      <tr><td>CTA button</td><td><code>background: sue-blue</code>, white text, <code>0.75rem 1.5rem</code> padding, sharp corners</td></tr>
+      <tr><td>Mobile (≤900px)</td><td>Hamburger → slide-in panel, <code>background: sue-card</code>, full height</td></tr>
+    </table>
+    <h3>Full Link Order</h3>
+    <p>Home · About · Hand-Strip · Cabinets · Doors · Portfolio · FAQ · CWE · Care Guide · Contact · (314) 367-6054 · <strong>[Free Estimate]</strong></p>
+    <div class="callout"><strong>Next.js:</strong> Use <code>usePathname()</code> to determine active link. Nav + Footer are Server Components in <code>(website-layout)</code> route group layout file.</div>
+  </section>
+
+  <!-- 6. Buttons -->
+  <section class="spec-section" id="buttons">
+    <h2>6. Buttons</h2>
+    <div class="demo-box">
+      <span class="demo-label">Live demos</span>
+      <a class="btn btn-primary" href="#">Free Estimate</a>
+      <a class="btn btn-outline" href="#">See Our Work</a>
+      <a class="btn btn-dark" href="#">Learn More</a>
+    </div>
+    <table>
+      <tr><th>Variant</th><th>Background</th><th>Text</th><th>Hover</th></tr>
+      <tr><td>Primary</td><td><code>sue-blue</code></td><td>white</td><td>Darken to <code>#0e96c4</code> + <code>translateY(-2px)</code></td></tr>
+      <tr><td>Outline</td><td>transparent</td><td><code>sue-text</code></td><td>Fill <code>sue-text</code>, text becomes <code>sue-card</code></td></tr>
+      <tr><td>Dark</td><td><code>sue-text</code></td><td><code>sue-card</code></td><td>—</td></tr>
+    </table>
+    <p>All buttons: Inter, weight 500, uppercase, <code>letter-spacing: 0.05em</code>, <code>0.875rem</code>, padding <code>1rem 2rem</code>, <strong>no border-radius</strong>, <code>transition: all 0.3s ease</code>.</p>
+  </section>
+
+  <!-- 7. Badges -->
+  <section class="spec-section" id="badges">
+    <h2>7. Pill Badges</h2>
+    <div class="demo-box">
+      <span class="demo-label">Variants</span>
+      <span class="pill pill-wood">St. Louis, MO</span>
+      <span class="pill pill-blue">EPA Certified</span>
+      <span class="pill pill-blue">Start Your Project</span>
+    </div>
+    <table>
+      <tr><th>Variant</th><th>Border</th><th>Text</th></tr>
+      <tr><td>Wood (default)</td><td><code>1px solid sue-wood</code></td><td><code>sue-wood</code></td></tr>
+      <tr><td>Blue</td><td><code>1px solid sue-blue</code></td><td><code>sue-blue</code></td></tr>
+    </table>
+    <p>All pills: <code>padding: 0.25rem 0.75rem</code>, <code>border-radius: 50px</code>, <code>0.75rem</code>, uppercase, <code>letter-spacing: 0.1em</code>, <code>font-weight: 600</code>.</p>
+  </section>
+
+
+  <!-- 8. Cards -->
+  <section class="spec-section" id="cards">
+    <h2>8. Service Cards</h2>
+    <div class="demo-box" style="display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;">
+      <div style="background:var(--bg-base);padding:2rem;box-shadow:var(--shadow-card);position:relative;overflow:hidden;min-height:200px;display:flex;flex-direction:column;justify-content:space-between;">
+        <div style="position:absolute;top:0;left:0;width:4px;height:40%;background:var(--accent-blue);"></div>
+        <div><span style="font-size:0.75rem;color:var(--text-muted);display:block;margin-bottom:0.5rem;">01</span><h3 style="font-family:var(--font-serif);font-size:1.5rem;font-style:italic;">Doors & Frames</h3></div>
+        <p style="font-size:0.85rem;color:var(--text-muted);margin-top:0.75rem;margin-bottom:0;">Board-up method. Removed, restored, returned.</p>
+      </div>
+      <div style="background:var(--bg-base);padding:2rem;box-shadow:var(--shadow-card);position:relative;overflow:hidden;min-height:200px;display:flex;flex-direction:column;justify-content:space-between;">
+        <div style="position:absolute;top:0;left:0;width:4px;height:0%;background:var(--accent-blue);"></div>
+        <div><span style="font-size:0.75rem;color:var(--text-muted);display:block;margin-bottom:0.5rem;">02</span><h3 style="font-family:var(--font-serif);font-size:1.5rem;font-style:italic;">Staircases</h3></div>
+        <p style="font-size:0.85rem;color:var(--text-muted);margin-top:0.75rem;margin-bottom:0;">Complete strip & refinish. Handrails and balusters.</p>
+      </div>
+    </div>
+    <h3>Specs</h3>
+    <table>
+      <tr><th>Property</th><th>Value</th></tr>
+      <tr><td>Background</td><td><code>sue-card</code></td></tr>
+      <tr><td>Padding</td><td><code>2rem</code></td></tr>
+      <tr><td>Min height</td><td><code>250px</code></td></tr>
+      <tr><td>Border radius</td><td><code>2px</code></td></tr>
+      <tr><td>Hover lift</td><td><code>translateY(-5px)</code>, <code>0.3s ease</code></td></tr>
+      <tr><td>Left accent bar</td><td><code>4px wide, sue-blue</code>, height animates <code>0→100%</code> on hover</td></tr>
+      <tr><td>H3</td><td>Playfair, <code>1.75rem</code>, italic</td></tr>
+      <tr><td>Card number</td><td>Inter, <code>0.75rem</code>, <code>sue-muted</code></td></tr>
+    </table>
+  </section>
+
+  <!-- 9. Footer -->
+  <section class="spec-section" id="footer">
+    <h2>9. Footer</h2>
+    <div class="footer-demo">
+      <span class="pill pill-blue" style="margin-bottom:1.5rem;display:inline-flex;">Start Your Project</span>
+      <h2 style="font-family:var(--font-serif);font-size:2rem;font-weight:400;margin-bottom:0.5rem;">Ready to restore your woodwork?</h2>
+      <p style="color:var(--text-muted);margin-bottom:0.25rem;">Contact Sue for a free in-home consultation and detailed estimate.</p>
+      <a href="tel:3143676054" style="display:block;font-family:var(--font-serif);font-size:3rem;color:var(--text-main);margin:1rem 0;">( 314 ) 367-6054</a>
+      <a href="mailto:estimate@suewheelerwood.com" style="color:var(--text-muted);font-size:0.9rem;border-bottom:1px solid var(--accent-wood);padding-bottom:2px;">estimate@suewheelerwood.com</a>
+      <div style="margin-top:2rem;padding-top:1rem;border-top:1px solid rgba(0,0,0,0.08);display:flex;justify-content:space-between;font-size:0.75rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.05em;">
+        <span style="font-family:var(--font-serif);font-style:italic;font-size:1rem;color:var(--text-main);">Sue Wheeler <span style="font-family:var(--font-sans);font-style:normal;font-size:0.75rem;color:var(--text-muted);">&middot; Wood Refinishing &middot; St. Louis, MO</span></span>
+        <span>EPA Certified &nbsp;&middot;&nbsp; BBB Accredited &nbsp;&middot;&nbsp; Since 1989</span>
+      </div>
+    </div>
+    <h3>Rules</h3>
+    <table>
+      <tr><th>Property</th><th>Value</th></tr>
+      <tr><td>Background</td><td><code>sue-card</code></td></tr>
+      <tr><td><strong>Top border</strong></td><td><code>4px solid sue-blue</code> — non-negotiable signature element</td></tr>
+      <tr><td>Padding</td><td><code>5rem 0</code></td></tr>
+      <tr><td>Phone size</td><td><code>clamp(3rem, 6vw, 6rem)</code>, Playfair, hover → <code>sue-blue</code></td></tr>
+      <tr><td>Email underline</td><td><code>border-bottom: 1px solid sue-wood</code></td></tr>
+      <tr><td>Footer bar</td><td>Flex row: logo name (left) + credentials (right)</td></tr>
+      <tr><td>Credentials</td><td>EPA Certified · BBB Accredited · Since 1989</td></tr>
+    </table>
+    <div class="callout"><strong>Identical across all pages.</strong> This is a shared layout component — no per-page variations.</div>
+  </section>
+
+  <!-- 10. Pages -->
+  <section class="spec-section" id="pages">
+    <h2>10. Page Inventory</h2>
+    <table>
+      <tr><th>File</th><th>Title</th><th>Status</th></tr>
+      <tr><td><code>homepage</code></td><td>Wood Refinishing by Sue Wheeler | St. Louis</td><td><span class="page-tag">✓ mockup</span></td></tr>
+      <tr><td><code>about</code></td><td>About Sue Wheeler | 36 Years of Wood Restoration</td><td><span class="page-tag">✓ mockup</span></td></tr>
+      <tr><td><code>why-we-hand-strip</code></td><td>Why We Hand-Strip</td><td><span class="page-tag">✓ mockup</span></td></tr>
+      <tr><td><code>service-cabinets</code></td><td>Kitchen Cabinet Refinishing</td><td><span class="page-tag">✓ mockup</span></td></tr>
+      <tr><td><code>service-doors</code></td><td>Door Refinishing</td><td><span class="page-tag">✓ mockup</span></td></tr>
+      <tr><td><code>portfolio</code></td><td>Portfolio</td><td><span class="page-tag">✓ mockup</span></td></tr>
+      <tr><td><code>faq</code></td><td>FAQ</td><td><span class="page-tag">✓ mockup</span></td></tr>
+      <tr><td><code>contact</code></td><td>Contact / Get an Estimate</td><td><span class="page-tag">✓ mockup</span></td></tr>
+      <tr><td><code>neighborhood-cwe</code></td><td>Wood Refinishing in Central West End</td><td><span class="page-tag">✓ mockup</span></td></tr>
+      <tr><td><code>care-guide</code></td><td>Wood Care Guide</td><td><span class="page-tag">✓ mockup</span></td></tr>
+      <tr><td><code>service-staircases</code></td><td>Staircase & Railing Refinishing</td><td><span class="page-tag needed">needed</span></td></tr>
+      <tr><td><code>service-rooms</code></td><td>Rooms & Built-ins Refinishing</td><td><span class="page-tag needed">needed</span></td></tr>
+      <tr><td><code>neighborhood-*</code></td><td>Additional neighborhoods</td><td><span class="page-tag needed">needed</span></td></tr>
+      <tr><td><code>blog / content hub</code></td><td>SEO hub-and-spoke</td><td><span class="page-tag needed">needed</span></td></tr>
+    </table>
+  </section>
+
+  <!-- 11. Section patterns -->
+  <section class="spec-section" id="sections">
+    <h2>11. Homepage Section Order</h2>
+    <table>
+      <tr><th>#</th><th>Section</th><th>Key Notes</th></tr>
+      <tr><td>1</td><td>Nav (sticky)</td><td>See component spec above</td></tr>
+      <tr><td>2</td><td>Hero</td><td>H1 + subtext + 2 CTAs + rotated image frame + Est. 1989 badge</td></tr>
+      <tr><td>3</td><td>Trust Bar</td><td><code>sue-card</code> bg, 5 items with SVG icons</td></tr>
+      <tr><td>4</td><td>Empathy</td><td>Centered italic H2, signature phrase with animated blue underline</td></tr>
+      <tr><td>5</td><td>Services Grid</td><td>4 service cards, auto-fit minmax 300px</td></tr>
+      <tr><td>6</td><td>Process Steps</td><td>4-col, numbered circles, horizontal rule connector</td></tr>
+      <tr><td>7</td><td>Portfolio</td><td>2 before/after sliders</td></tr>
+      <tr><td>8</td><td>Testimonials</td><td><code>sue-charcoal</code> bg, 3 staggered/rotated cards</td></tr>
+      <tr><td>9</td><td>Press Quote</td><td>STL Magazine feature, large italic blockquote</td></tr>
+      <tr><td>10</td><td>Service Areas</td><td>Serif italic neighborhood list</td></tr>
+      <tr><td>11</td><td>Footer</td><td>Identical across all pages</td></tr>
+    </table>
+    <h3>Interior Page Pattern</h3>
+    <p>Nav (sticky) → Page hero (pill badge + H1 + content) → Body sections (page-specific) → Footer</p>
+  </section>
+
+  <!-- 12. Motion -->
+  <section class="spec-section" id="motion">
+    <h2>12. Motion & Interaction</h2>
+    <table class="motion-row">
+      <tr><th>Element</th><th>Trigger</th><th>Animation</th></tr>
+      <tr><td>Nav links</td><td>Hover</td><td>Blue underline: <code>width 0→100%</code>, <code>0.3s ease</code></td></tr>
+      <tr><td>Hero image</td><td>Hover</td><td><code>rotate(2deg)→rotate(0deg)</code>, <code>0.5s ease</code></td></tr>
+      <tr><td>Service cards</td><td>Hover</td><td><code>translateY(-5px)</code> + left bar <code>height 0→100%</code></td></tr>
+      <tr><td>Before/After</td><td>Hover</td><td><code>clip-path</code> reveal, <code>0.5s cubic-bezier(0.25,1,0.5,1)</code></td></tr>
+      <tr><td>Btn Primary</td><td>Hover</td><td>Darken + <code>translateY(-2px)</code></td></tr>
+      <tr><td>Signature phrase</td><td>Parent hover</td><td>Underline <code>scaleX(0.3→1)</code></td></tr>
+      <tr><td>Phone (footer)</td><td>Hover</td><td><code>color→sue-blue</code></td></tr>
+      <tr><td>Dropdown</td><td>Hover on parent</td><td><code>opacity + visibility + translateY(10px→0)</code>, <code>0.3s ease</code></td></tr>
+    </table>
+    <p>Default for all transitions: <code>0.3s ease</code> unless noted above.</p>
+  </section>
+
+  <!-- 13. SEO -->
+  <section class="spec-section" id="seo">
+    <h2>13. SEO & Meta</h2>
+    <h3>Title Patterns</h3>
+    <table>
+      <tr><th>Page</th><th>Title format</th></tr>
+      <tr><td>Homepage</td><td><code>Wood Refinishing by Sue Wheeler | St. Louis</code></td></tr>
+      <tr><td>Service</td><td><code>[Service] Refinishing | Sue Wheeler Wood Refinishing</code></td></tr>
+      <tr><td>About</td><td><code>About Sue Wheeler | 36 Years of Wood Restoration</code></td></tr>
+      <tr><td>Neighborhood</td><td><code>Wood Refinishing in [Neighborhood] | Sue Wheeler</code></td></tr>
+      <tr><td>FAQ</td><td><code>FAQ | Sue Wheeler Wood Refinishing</code></td></tr>
+    </table>
+    <h3>Verbatim Content Strings</h3>
+    <table>
+      <tr><th>Field</th><th>Value</th></tr>
+      <tr><td>Phone</td><td><code>(314) 367-6054</code> / <code>tel:3143676054</code></td></tr>
+      <tr><td>Email</td><td><code>estimate@suewheelerwood.com</code></td></tr>
+      <tr><td>Logo tagline</td><td><code>Wood Refinishing</code></td></tr>
+      <tr><td>Est. year</td><td><code>1989</code></td></tr>
+      <tr><td>Experience</td><td><code>36 years</code> / <code>Since 1989</code></td></tr>
+      <tr><td>Hero line</td><td><em>"When you call Sue Wheeler, Sue Wheeler answers."</em></td></tr>
+      <tr><td>STL Magazine</td><td><em>"Sue Wheeler is the secret weapon of St. Louis interior designers, quietly restoring the city's woodwork one piece at a time."</em></td></tr>
+    </table>
+  </section>
+
+  <!-- 14. Next.js -->
+  <section class="spec-section" id="nextjs">
+    <h2>14. Next.js Implementation Notes</h2>
+    <table>
+      <tr><th>Item</th><th>Approach</th></tr>
+      <tr><td>Nav + Footer</td><td>RSC in <code>(website-layout)</code> route group <code>layout.tsx</code></td></tr>
+      <tr><td>Active nav state</td><td><code>usePathname()</code> → compare path → apply <code>sue-wood</code> + <code>font-weight: 600</code></td></tr>
+      <tr><td>Google Fonts</td><td><code>next/font/google</code> — not a <code>&lt;link&gt;</code> tag</td></tr>
+      <tr><td>Images</td><td><code>next/image</code> with <code>objectFit: cover</code></td></tr>
+      <tr><td>Before/After slider</td><td>Client component — uses hover state for clip-path animation</td></tr>
+      <tr><td>Tailwind v4 tokens</td><td>Define in <code>@theme</code> block in global CSS, not <code>tailwind.config.ts</code></td></tr>
+      <tr><td>Est. 1989 badge</td><td>Decorative absolute-positioned div, not an image</td></tr>
+      <tr><td>Testimonial stagger</td><td>Static CSS rotation classes — no JS needed</td></tr>
+      <tr><td>FAQ accordion</td><td>Radix <code>Accordion</code> component</td></tr>
+      <tr><td>Mobile hamburger</td><td>Radix <code>Sheet</code> component</td></tr>
+      <tr><td>Design reference</td><td><code>../designs/active/</code> — archive after build</td></tr>
+    </table>
+  </section>
+
+</main>
+</div>
+</body>
+</html>
