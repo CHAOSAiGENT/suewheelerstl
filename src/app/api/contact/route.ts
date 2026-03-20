@@ -26,8 +26,6 @@ export async function POST(req: Request) {
   `;
 
   if (!RESEND_API_KEY) {
-    // Dev mode — log and succeed
-    console.log("[Contact Form]", { name, phone, email, address, project, referral });
     return NextResponse.json({ ok: true });
   }
 

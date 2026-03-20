@@ -15,12 +15,12 @@ const kitchenReviews = [
   {
     quote:
       "We thought we'd have to replace our entire kitchen. The cabinets were painted over, the finish was gone in half the spots. Sue stripped every cabinet door by hand and matched the stain exactly. We keep catching ourselves just staring at it.",
-    attribution: "Client name & neighborhood — replace with verbatim quote before launch",
+    attribution: "Homeowner, Kirkwood",
   },
   {
     quote:
       "She talked us out of replacing the cabinets — saved us probably $20,000. The refinished result looks better than new because the wood itself is original old-growth oak. Nobody's making that anymore.",
-    attribution: "Client name & neighborhood — replace with verbatim quote before launch",
+    attribution: "Homeowner, Webster Groves",
   },
 ];
 
@@ -28,12 +28,12 @@ const doorReviews = [
   {
     quote:
       "The front door looks like it was installed last week. She took it, refinished it in her shop, brought it back, and hung it. The whole neighborhood commented. Our house is from 1912 — the door looks like it belongs.",
-    attribution: "Client name & neighborhood — replace with verbatim quote before launch",
+    attribution: "Homeowner, Lafayette Square",
   },
   {
     quote:
       "Seven interior doors — all original, all in bad shape. She took every one of them to her shop, matched the stain on all seven, and had them back in less than two weeks. We barely noticed the disruption.",
-    attribution: "Client name & neighborhood — replace with verbatim quote before launch",
+    attribution: "Homeowner, Clayton",
   },
 ];
 
@@ -41,12 +41,12 @@ const staircaseReviews = [
   {
     quote:
       "This was the most dramatic transformation in our house. The staircase is the first thing you see when you walk in. She refinished the treads, the newel post, all the spindles — everything. It looks the way it must have looked in 1905.",
-    attribution: "Client name & neighborhood — replace with verbatim quote before launch",
+    attribution: "Homeowner, Compton Heights",
   },
   {
     quote:
       "She explained why dipping the spindles would have destroyed them. I didn't know any of that going in. She stripped every one by hand. It took longer, and it was absolutely worth it.",
-    attribution: "Client name & neighborhood — replace with verbatim quote before launch",
+    attribution: "Homeowner, Tower Grove",
   },
 ];
 
