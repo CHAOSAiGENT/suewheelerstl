@@ -1,54 +1,122 @@
 import { NextResponse } from "next/server";
+import { createServiceSupabaseClient } from "@/lib/supabase/service";
+import { resend } from "@/lib/email/resend";
+import {
+  adminNotificationEmail,
+  clientConfirmationEmail,
+} from "@/lib/email/templates";
+
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://suewheelerstl.com";
+const TO_EMAIL = process.env.CONTACT_EMAIL ?? "sue@suewheelerstl.com";
+const FROM_EMAIL = process.env.FROM_EMAIL ?? "no-reply@suewheelerstl.com";
 
 export async function POST(req: Request) {
-  const body = await req.json();
-  const { name, phone, email, address, project, referral } = body;
+  let formData: FormData;
+  try {
+    formData = await req.formData();
+  } catch {
+    return NextResponse.json({ error: "Invalid form data" }, { status: 400 });
+  }
 
-  if (!name || !phone || !email || !project) {
+  const name = formData.get("name") as string;
+  const phone = formData.get("phone") as string;
+  const email = formData.get("email") as string;
+  const address = formData.get("address") as string | null;
+  const project_description = formData.get("project") as string;
+  const referral = formData.get("referral") as string | null;
+  const best_time = formData.get("best_time") as string | null;
+  const timeline = formData.get("timeline") as string | null;
+  const service_types = formData.getAll("service_types") as string[];
+
+  if (!name || !phone || !email || !project_description) {
     return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
   }
-
-  // Use Resend if API key is set, otherwise log (for dev)
-  const RESEND_API_KEY = process.env.RESEND_API_KEY;
-  const TO_EMAIL = process.env.CONTACT_EMAIL ?? "info@suewheelerstl.com";
-  const FROM_EMAIL = process.env.FROM_EMAIL ?? "no-reply@suewheelerstl.com";
-
-  const subject = `New Estimate Request from ${name}`;
-  const html = `
-    <h2>New Estimate Request</h2>
-    <p><strong>Name:</strong> ${name}</p>
-    <p><strong>Phone:</strong> ${phone}</p>
-    <p><strong>Email:</strong> ${email}</p>
-    ${address ? `<p><strong>Address/Neighborhood:</strong> ${address}</p>` : ""}
-    <p><strong>Project:</strong></p>
-    <blockquote style="border-left:3px solid #11B2E8;padding-left:12px;color:#555">${project.replace(/\n/g, "<br>")}</blockquote>
-    ${referral ? `<p><strong>Referral source:</strong> ${referral}</p>` : ""}
-  `;
-
-  if (!RESEND_API_KEY) {
-    return NextResponse.json({ ok: true });
+  if (service_types.length === 0) {
+    return NextResponse.json({ error: "Select at least one service type" }, { status: 400 });
   }
 
-  const res = await fetch("https://api.resend.com/emails", {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${RESEND_API_KEY}`,
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      from: FROM_EMAIL,
-      to: [TO_EMAIL],
-      reply_to: email,
-      subject,
-      html,
-    }),
-  });
+  const supabase = createServiceSupabaseClient();
 
-  if (!res.ok) {
-    const err = await res.text();
-    console.error("[Resend error]", err);
-    return NextResponse.json({ error: "Email send failed" }, { status: 500 });
+  // Insert submission first to get the ID for photo paths
+  const { data: submission, error: insertError } = await supabase
+    .from("submissions")
+    .insert({
+      name,
+      phone,
+      email,
+      address: address || null,
+      service_types,
+      best_time: best_time || null,
+      timeline: timeline || null,
+      project_description,
+      referral: referral || null,
+    })
+    .select()
+    .single();
+
+  if (insertError || !submission) {
+    console.error("[contact] insert error", insertError);
+    return NextResponse.json({ error: "Failed to save submission" }, { status: 500 });
   }
 
-  return NextResponse.json({ ok: true });
+  // Upload photos
+  const photoFiles = formData.getAll("photos") as File[];
+  const photo_urls: string[] = [];
+
+  for (const file of photoFiles) {
+    if (!file || file.size === 0) continue;
+    const ext = file.name.split(".").pop() ?? "jpg";
+    const path = `submissions/${submission.id}/${crypto.randomUUID()}.${ext}`;
+    const buffer = Buffer.from(await file.arrayBuffer());
+
+    const { error: uploadError } = await supabase.storage
+      .from("submission-photos")
+      .upload(path, buffer, {
+        contentType: file.type || "image/jpeg",
+        upsert: false,
+      });
+
+    if (!uploadError) {
+      photo_urls.push(path);
+    } else {
+      console.error("[contact] photo upload error", uploadError);
+    }
+  }
+
+  // Update submission with photo paths
+  if (photo_urls.length > 0) {
+    await supabase
+      .from("submissions")
+      .update({ photo_urls })
+      .eq("id", submission.id);
+    submission.photo_urls = photo_urls;
+  }
+
+  const portalUrl = `${SITE_URL}/my-request/${submission.client_token}`;
+  const adminUrl = `${SITE_URL}/admin/${submission.id}`;
+
+  // Send emails (non-blocking — don't fail the submission if email fails)
+  if (process.env.RESEND_API_KEY) {
+    const adminTpl = adminNotificationEmail(submission, adminUrl);
+    const clientTpl = clientConfirmationEmail(submission, portalUrl);
+
+    await Promise.allSettled([
+      resend.emails.send({
+        from: FROM_EMAIL,
+        to: [TO_EMAIL],
+        reply_to: email,
+        subject: adminTpl.subject,
+        html: adminTpl.html,
+      }),
+      resend.emails.send({
+        from: FROM_EMAIL,
+        to: [email],
+        reply_to: TO_EMAIL,
+        subject: clientTpl.subject,
+        html: clientTpl.html,
+      }),
+    ]);
+  }
+
+  return NextResponse.json({ ok: true, token: submission.client_token });
 }

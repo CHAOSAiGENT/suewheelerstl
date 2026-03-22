@@ -1,9 +1,19 @@
 "use client";
 
 import { useState } from "react";
-import { Send } from "lucide-react";
+import { Send, Paperclip, X } from "lucide-react";
 
-const referralOptions = [
+const SERVICE_TYPES = [
+  "Kitchen Cabinets",
+  "Interior Doors",
+  "Exterior Doors",
+  "Staircases",
+  "Built-ins",
+  "Commercial",
+  "Other",
+];
+
+const REFERRAL_OPTIONS = [
   "Google",
   "Neighbor referral",
   "Nextdoor",
@@ -12,32 +22,68 @@ const referralOptions = [
   "Other",
 ];
 
+const BEST_TIME_OPTIONS = [
+  { value: "morning", label: "Morning (8–11am)" },
+  { value: "afternoon", label: "Afternoon (11am–3pm)" },
+  { value: "evening", label: "Evening (3–6pm)" },
+  { value: "anytime", label: "Anytime" },
+];
+
+const TIMELINE_OPTIONS = [
+  "ASAP",
+  "Within 1 month",
+  "1–3 months",
+  "Just exploring",
+];
+
 export function ContactForm() {
-  const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">(
-    "idle"
-  );
+  const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+  const [token, setToken] = useState<string | null>(null);
+  const [selectedServices, setSelectedServices] = useState<string[]>([]);
+  const [serviceError, setServiceError] = useState(false);
+  const [photos, setPhotos] = useState<File[]>([]);
+
+  function toggleService(service: string) {
+    setServiceError(false);
+    setSelectedServices((prev) =>
+      prev.includes(service) ? prev.filter((s) => s !== service) : [...prev, service]
+    );
+  }
+
+  function handlePhotos(e: React.ChangeEvent<HTMLInputElement>) {
+    const files = Array.from(e.target.files ?? []);
+    const next = [...photos, ...files].slice(0, 3);
+    setPhotos(next);
+    e.target.value = "";
+  }
+
+  function removePhoto(idx: number) {
+    setPhotos((prev) => prev.filter((_, i) => i !== idx));
+  }
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+
+    if (selectedServices.length === 0) {
+      setServiceError(true);
+      return;
+    }
+
     setStatus("submitting");
 
     const form = e.currentTarget;
-    const data = {
-      name: (form.elements.namedItem("name") as HTMLInputElement).value,
-      phone: (form.elements.namedItem("phone") as HTMLInputElement).value,
-      email: (form.elements.namedItem("email") as HTMLInputElement).value,
-      address: (form.elements.namedItem("address") as HTMLInputElement).value,
-      project: (form.elements.namedItem("project") as HTMLTextAreaElement).value,
-      referral: (form.elements.namedItem("referral") as HTMLSelectElement).value,
-    };
+    const fd = new FormData(form);
+
+    // Remove auto-appended service_types from FormData (checkboxes aren't named properly in state)
+    // and re-append from state
+    selectedServices.forEach((s) => fd.append("service_types", s));
+    photos.forEach((f) => fd.append("photos", f));
 
     try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      });
+      const res = await fetch("/api/contact", { method: "POST", body: fd });
+      const json = await res.json();
       if (res.ok) {
+        setToken(json.token ?? null);
         setStatus("success");
       } else {
         setStatus("error");
@@ -56,7 +102,7 @@ export function ContactForm() {
         >
           We&rsquo;ve got your message.
         </p>
-        <p className="text-sm font-sans text-[#6B5E55]">
+        <p className="text-sm font-sans text-[#6B5E55] mb-6">
           Sue will be in touch within one business day. If you need to reach her
           sooner, call{" "}
           <a href="tel:3143676054" className="text-[#11B2E8]">
@@ -64,18 +110,27 @@ export function ContactForm() {
           </a>
           .
         </p>
+        {token && (
+          <a
+            href={`/my-request/${token}`}
+            className="inline-flex items-center gap-2 px-5 py-2.5 border border-[#11B2E8] text-[#11B2E8] text-xs font-sans font-semibold uppercase tracking-widest hover:bg-[#11B2E8] hover:text-white transition-colors"
+            style={{ borderRadius: "2px" }}
+          >
+            Track My Request
+          </a>
+        )}
       </div>
     );
   }
 
   const inputClass =
     "w-full px-4 py-3 bg-[#F8F6F1] border border-[rgba(42,36,33,0.15)] text-[#2A2421] text-sm font-sans placeholder-[#9e9087] focus:outline-none focus:border-[#11B2E8] transition-colors";
-
   const labelClass =
     "block text-xs font-sans font-semibold uppercase tracking-widest text-[#6B5E55] mb-1.5";
 
   return (
     <form onSubmit={handleSubmit} className="space-y-5">
+      {/* Name */}
       <div>
         <label htmlFor="name" className={labelClass}>
           Name <span className="text-[#A65D37]">*</span>
@@ -91,6 +146,7 @@ export function ContactForm() {
         />
       </div>
 
+      {/* Phone + Email */}
       <div className="grid grid-cols-2 gap-4">
         <div>
           <label htmlFor="phone" className={labelClass}>
@@ -122,6 +178,7 @@ export function ContactForm() {
         </div>
       </div>
 
+      {/* Address */}
       <div>
         <label htmlFor="address" className={labelClass}>
           Address / Neighborhood
@@ -136,21 +193,135 @@ export function ContactForm() {
         />
       </div>
 
+      {/* Service types */}
+      <div>
+        <p className={labelClass}>
+          What needs work? <span className="text-[#A65D37]">*</span>
+        </p>
+        <div className="grid grid-cols-2 gap-2">
+          {SERVICE_TYPES.map((s) => {
+            const checked = selectedServices.includes(s);
+            return (
+              <button
+                key={s}
+                type="button"
+                onClick={() => toggleService(s)}
+                className={[
+                  "px-3 py-2.5 text-xs font-sans font-semibold uppercase tracking-widest border transition-colors text-left",
+                  checked
+                    ? "bg-[#11B2E8] border-[#11B2E8] text-white"
+                    : "bg-[#F8F6F1] border-[rgba(42,36,33,0.15)] text-[#6B5E55] hover:border-[#11B2E8] hover:text-[#11B2E8]",
+                ].join(" ")}
+                style={{ borderRadius: "2px" }}
+              >
+                {s}
+              </button>
+            );
+          })}
+        </div>
+        {serviceError && (
+          <p className="mt-1.5 text-xs font-sans text-[#A65D37]">
+            Please select at least one service.
+          </p>
+        )}
+      </div>
+
+      {/* Best time + Timeline */}
+      <div className="grid grid-cols-2 gap-4">
+        <div>
+          <label htmlFor="best_time" className={labelClass}>
+            Best time to call
+          </label>
+          <select
+            id="best_time"
+            name="best_time"
+            className={inputClass}
+            style={{ borderRadius: "2px" }}
+          >
+            <option value="">Any time</option>
+            {BEST_TIME_OPTIONS.map((o) => (
+              <option key={o.value} value={o.value}>
+                {o.label}
+              </option>
+            ))}
+          </select>
+        </div>
+        <div>
+          <label htmlFor="timeline" className={labelClass}>
+            Timeline
+          </label>
+          <select
+            id="timeline"
+            name="timeline"
+            className={inputClass}
+            style={{ borderRadius: "2px" }}
+          >
+            <option value="">Not sure yet</option>
+            {TIMELINE_OPTIONS.map((o) => (
+              <option key={o} value={o}>
+                {o}
+              </option>
+            ))}
+          </select>
+        </div>
+      </div>
+
+      {/* Project description */}
       <div>
         <label htmlFor="project" className={labelClass}>
-          What would you like refinished? <span className="text-[#A65D37]">*</span>
+          Tell us about the project <span className="text-[#A65D37]">*</span>
         </label>
         <textarea
           id="project"
           name="project"
           required
           rows={4}
-          placeholder="Describe your project — doors, cabinets, staircase, etc. Include what you know about the current condition."
+          placeholder="Describe what you have and its current condition — finish type, colour, any damage or repairs needed."
           className={inputClass}
           style={{ borderRadius: "2px", resize: "vertical" }}
         />
       </div>
 
+      {/* Photos */}
+      <div>
+        <p className={labelClass}>
+          Photos <span className="text-[#9e9087] normal-case font-normal tracking-normal">(optional — up to 3)</span>
+        </p>
+        <label
+          className="flex items-center gap-2 px-4 py-3 bg-[#F8F6F1] border border-dashed border-[rgba(42,36,33,0.2)] text-[#6B5E55] text-sm font-sans cursor-pointer hover:border-[#11B2E8] hover:text-[#11B2E8] transition-colors"
+          style={{ borderRadius: "2px" }}
+        >
+          <Paperclip size={14} />
+          <span>{photos.length === 0 ? "Attach photos" : `${photos.length}/3 attached`}</span>
+          <input
+            type="file"
+            accept="image/*"
+            multiple
+            className="sr-only"
+            onChange={handlePhotos}
+            disabled={photos.length >= 3}
+          />
+        </label>
+        {photos.length > 0 && (
+          <ul className="mt-2 space-y-1">
+            {photos.map((f, i) => (
+              <li key={i} className="flex items-center justify-between px-3 py-1.5 bg-[#F8F6F1] border border-[rgba(42,36,33,0.1)]" style={{ borderRadius: "2px" }}>
+                <span className="text-xs font-sans text-[#6B5E55] truncate max-w-[80%]">{f.name}</span>
+                <button
+                  type="button"
+                  onClick={() => removePhoto(i)}
+                  className="text-[#9e9087] hover:text-[#A65D37] transition-colors"
+                  aria-label="Remove photo"
+                >
+                  <X size={12} />
+                </button>
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
+
+      {/* Referral */}
       <div>
         <label htmlFor="referral" className={labelClass}>
           How did you hear about us?
@@ -162,7 +333,7 @@ export function ContactForm() {
           style={{ borderRadius: "2px" }}
         >
           <option value="">Select one (optional)</option>
-          {referralOptions.map((o) => (
+          {REFERRAL_OPTIONS.map((o) => (
             <option key={o} value={o}>
               {o}
             </option>
@@ -170,6 +341,7 @@ export function ContactForm() {
         </select>
       </div>
 
+      {/* Submit */}
       <button
         type="submit"
         disabled={status === "submitting"}
