@@ -54,7 +54,7 @@ export async function POST(req: Request) {
     await resend.emails.send({
       from: FROM_EMAIL,
       to: [ADMIN_EMAIL],
-      reply_to: submission.email,
+      replyTo: submission.email,
       subject: tpl.subject,
       html: tpl.html,
     }).catch((e) => console.error("[client/reply] email error", e));

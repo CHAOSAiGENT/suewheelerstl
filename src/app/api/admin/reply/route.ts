@@ -55,7 +55,7 @@ export async function POST(req: Request) {
     await resend.emails.send({
       from: FROM_EMAIL,
       to: [submission.email],
-      reply_to: process.env.CONTACT_EMAIL ?? "sue@suewheelerstl.com",
+      replyTo: process.env.CONTACT_EMAIL ?? "sue@suewheelerstl.com",
       subject: tpl.subject,
       html: tpl.html,
     }).catch((e) => console.error("[admin/reply] email error", e));

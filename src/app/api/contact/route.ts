@@ -104,14 +104,14 @@ export async function POST(req: Request) {
       resend.emails.send({
         from: FROM_EMAIL,
         to: [TO_EMAIL],
-        reply_to: email,
+        replyTo: email,
         subject: adminTpl.subject,
         html: adminTpl.html,
       }),
       resend.emails.send({
         from: FROM_EMAIL,
         to: [email],
-        reply_to: TO_EMAIL,
+        replyTo: TO_EMAIL,
         subject: clientTpl.subject,
         html: clientTpl.html,
       }),
