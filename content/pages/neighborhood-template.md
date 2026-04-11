@@ -1,4 +1,5 @@
 # NEIGHBORHOOD PAGE TEMPLATE
+
 ## Wood Refinishing by Sue Wheeler — suewheeler-web
 
 **Purpose:** Template for all 15 neighborhood pages. Each page follows the same 5-section structure.
@@ -51,9 +52,11 @@ meta_description: {{META_DESCRIPTION}}
 ## FULL TEMPLATE
 
 ---
+
 url: /neighborhoods/{{NEIGHBORHOOD_SLUG}}/
 seo_title: {{SEO_TITLE}}
 meta_description: {{META_DESCRIPTION}}
+
 ---
 
 # Wood Refinishing in {{NEIGHBORHOOD_NAME}}
@@ -93,7 +96,7 @@ Every project starts with a free estimate. Sue assesses the wood, the current fi
 >
 > — {{TESTIMONIAL_ATTRIBUTION}}
 
-*Replace with verbatim client quote before launch. Match to a project in this neighborhood.*
+_Replace with verbatim client quote before launch. Match to a project in this neighborhood._
 
 ---
 
@@ -104,4 +107,4 @@ Sue Wheeler answers every call personally. She's refinished woodwork in {{NEIGHB
 **Call: [(314) 367-6054](tel:3143676054)**
 [Request a Free Estimate →](/contact/)
 
-EPA Certified Lead Renovator. BBB A+ Accredited. St. Louis's most experienced architectural wood refinisher since 1989.
+EPA Certified Lead Renovator. Est. 1989. St. Louis's most experienced architectural wood refinisher.

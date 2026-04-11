@@ -2,39 +2,39 @@
 
 **URL:** `/`
 **File:** `content/pages/homepage.md`
-**Phase C page:** Yes — full dev-ready copy
-**Last updated:** 2026-03-16
+**Last updated:** 2026-04-10
 
 ---
 
 ## SEO
 
-**SEO Title:** `Wood Refinishing St. Louis | Sue Wheeler — Since 1989`
-**Meta Description:** `St. Louis's most trusted architectural wood refinisher. Hand-stripped, never dipped. EPA Certified. BBB A+. 36 years. Sue answers every call personally. (314) 367-6054.`
+**SEO Title:** `Wood Refinishing St. Louis | Sue Wheeler`
+**Meta Description:** `Sue Wheeler refinishes the doors, staircases, kitchens, and built-ins of St. Louis's historic homes. EPA Certified. 36 years. Sue answers every call. (314) 367-6054.`
 
 ---
 
 ## CREDENTIAL BAR
-*Rendered as a horizontal trust strip directly below the nav. 5 items. Icons + short labels.*
 
-- **36 Years in Business** — Since 1989
+_Rendered as a horizontal trust strip directly below the nav. 5 items. Icons + short labels._
+
 - **EPA Certified** Lead Renovator
-- **BBB A+** Accredited
-- **St. Louis Magazine** — "Perfect Finish"
-- **The Sheldon** Concert Hall
+- **STL Magazine** — "Perfect Finish"
+- **Sue Answers** Every Call Personally
+- **Historic Home** Specialist
+- **Est. 1989** — St. Louis
 
 ---
 
 ## HERO SECTION
 
 **H1:**
-St. Louis's architectural wood specialist — *hand-stripped, never dipped.*
+Your woodwork shouldn't look its age.
 
 **Subhead:**
-Sue Wheeler has been refinishing the doors, staircases, cabinets, and built-ins of St. Louis's finest homes and landmark buildings since 1989. When you call, Sue answers.
+Sue Wheeler refinishes the doors, staircases, kitchen cabinets, and architectural woodwork of St. Louis's historic homes. Hand-stripped. Never dipped. When you call, Sue answers.
 
-**Primary CTA button:** Get a Free Estimate → `/contact/`
-**Secondary CTA:** Call Sue directly: (314) 367-6054
+**Primary CTA button:** Call Sue for a Free Estimate → `/contact/`
+**Secondary CTA:** (314) 367-6054
 
 **Hero image guidance:** Full-width before/after staircase or kitchen cabinet — dramatic transformation. Warm tones, natural light.
 
@@ -42,78 +42,60 @@ Sue Wheeler has been refinishing the doors, staircases, cabinets, and built-ins 
 
 ## INTRO / POSITIONING SECTION
 
-**H2:** *The right way* to refinish architectural wood.
+**H2:** The result your woodwork deserves.
 
-There's a shortcut in this industry — a chemical dip tank that strips a door or cabinet in minutes. It raises the wood grain, softens the profiles, loosens the glue joints, and washes out the stain. The result looks flat. It doesn't last.
+Your front door is peeling. Your staircase doesn't match your refinished floors. Your kitchen cabinets look tired compared to everything else you've done to the house.
 
-We don't dip.
+These aren't cosmetic annoyances. Original woodwork in a St. Louis historic home is irreplaceable. The old-growth wood in your 1905 newel post doesn't exist in lumber yards anymore. The profiles in your pocket doors were hand-milled for your house specifically.
 
-Wood Refinishing by Sue Wheeler hand-strips every piece — by hand, with the right chemistry, the right tools, and 36 years of knowing the difference. It takes longer. It costs more to do it this way. The wood lasts decades instead of years.
+Sue Wheeler has been restoring this wood for 36 years. She strips every piece by hand — never dips. The results hold for decades.
 
-That's the choice you're making when you call us.
-
-**CTA link:** Why hand-stripping matters → `/faq/` (anchor: hand-strip)
-
+**CTA link:** Why hand-stripping matters → `/faq/`
 
 ---
 
 ## SERVICES SECTION
 
-**H2:** What we *refinish.*
+**H2:** What we restore.
 
 **Section intro:**
-We work on architectural woodwork — the pieces built into a home or building that define its character. Not furniture. Not floors. The elements that came with the structure and can't be replaced without losing something real.
+Doors, staircases, kitchens, and the woodwork built into your home. Not furniture. Not floors. The architectural pieces that came with the structure — and can't be replaced without losing something real.
 
-**Service cards (6 cards, each links to hub page):**
+**Service cards (5 cards, each links to hub page):**
 
-**Card 1 — Kitchen Cabinets**
-Painted, stained, or color-change. Hand-stripped back to bare wood and finished right.
-→ `/kitchen-cabinet-refinishing/`
-
-**Card 2 — Doors & Frames**
-Front doors, interior doors, French doors, pocket doors. In shop or on-prem.
+**Card 1 — Doors**
+Your front door is the first impression. Interior and pocket doors define the flow of a historic home. We refinish every type — board-up to shop, not done in place.
 → `/door-refinishing/`
 
-**Card 3 — Staircases & Railings**
-Treads, risers, spindles, newel posts, railings — the full scope, done properly.
+**Card 2 — Staircases**
+Treads, risers, spindles, newel posts, railings — the full scope. The most visible architectural element in a home, done correctly.
 → `/staircase-refinishing/`
 
-**Card 4 — Built-Ins & Millwork**
-Hutches, buffets, bookcases, wainscoting, crown molding, mantels, chair rail.
+**Card 3 — Kitchen Cabinets**
+Painted, stained, or color-change. Hand-stripped back to bare wood. Original solid-wood cabinets refinished for a fraction of the cost of replacement.
+→ `/kitchen-cabinet-refinishing/`
+
+**Card 4 — Architectural Woodwork**
+Wainscoting, crown molding, mantels, built-in hutches, chair rail, window trim. The millwork that makes a room a room.
 → `/built-ins-and-millwork-refinishing/`
 
-**Card 5 — Commercial & Hospitality**
-Bar tops, tabletops, wainscoting, booths. Off-hours scheduling. Maintenance contracts.
-→ `/commercial-and-hospitality-refinishing/`
-
-**Card 6 — Institutional & Historic Venues**
-Concert halls, churches, universities, landmark buildings. EPA certified. Standards compliant.
-→ `/institutional-refinishing/`
-
----
-
-## PROJECT SPOTLIGHT — THE SHELDON CONCERT HALL
-
-**H2:** *The Sheldon Concert Hall.* St. Louis landmark. Our work.
-
-During the Sheldon's $11 million renovation, Wood Refinishing by Sue Wheeler refinished the doors of one of St. Louis's most important concert halls. The same hands. The same standard. The same method we bring to your home.
-
-**Image guidance:** Sheldon exterior or interior architectural photo (public domain / licensed)
-**Link:** Learn about our institutional work → `/institutional-refinishing/historic-venue-restoration/`
-
+**Card 5 — Perk Up & Protect**
+Not every surface needs a full strip. For woodwork in sound condition but looking dull, PUP is a maintenance coat that restores the finish without the full project timeline.
+→ `/perk-up-and-protect/`
 
 ---
 
 ## EPA CERTIFICATION SECTION
-*Full-width callout band — charcoal background, Sue Blue accent*
 
-**H2:** EPA Certified Lead Renovator.
+_Full-width callout band — charcoal background, Sue Blue accent_
 
-89.8% of homes in St. Louis City were built before 1978. That means lead paint — in the doors, the trim, the cabinets, the staircase railings. Work done without EPA certification on those surfaces isn't just sloppy. It's a legal and health risk.
+**H2:** EPA Certified. Every pre-1978 project.
 
-Sue Wheeler is an EPA Certified Lead Renovator. Every project on a pre-1978 home is handled with full lead-safe protocols, documented and compliant. You don't have to ask whether it's being done right.
+89.8% of homes in St. Louis City were built before 1978. That means lead paint — in the doors, the trim, the cabinets, the staircase railings. Refinishing those surfaces without EPA certification creates lead dust in the spaces your family lives in.
 
-**Link:** What EPA certification means for your home → `/faq/` (anchor: epa-cert)
+Sue Wheeler is an EPA Certified Lead Renovator. Every project on a pre-1978 home is handled with full lead-safe protocols, documented and compliant. You receive a completion record for your property file.
+
+**Link:** What EPA certification means for your project → `/faq/`
 
 ---
 
@@ -121,34 +103,35 @@ Sue Wheeler is an EPA Certified Lead Renovator. Every project on a pre-1978 home
 
 **H2:** What St. Louis homeowners say.
 
-*3 featured testimonials. Each matched to a service type. Pulled from actual reviews — placeholders shown below. Replace with verbatim quotes before launch.*
+_3 featured testimonials. Each matched to a service type. Replace with verbatim quotes before launch._
 
 **Testimonial 1 — Staircase**
-"We were terrified someone would ruin the original staircase. Sue walked us through every step. The result is better than we could have imagined — and it looks exactly like it did in 1912."
-— *Homeowner, Central West End*
+"We were terrified someone would ruin the original staircase. Sue walked us through every step. The result is better than we could have imagined — it looks exactly like it did in 1912."
+— _Homeowner, Central West End_
 
 **Testimonial 2 — Kitchen Cabinets**
 "We were quoted $40,000 for new cabinets. Sue refinished the originals for a fraction of that and they look brand new. I wish we'd called her five years ago."
-— *Homeowner, Webster Groves*
+— _Homeowner, Benton Park_
 
 **Testimonial 3 — Front Door**
-"Sue answered the phone herself, came out within two days, and the door was back on its hinges looking incredible inside of a week. That's just not how contractors work — except her."
-— *Homeowner, Lafayette Square*
+"Sue answered the phone herself, came out within two days, and the door was back on its hinges looking incredible inside of a week. That's not how contractors work — except her."
+— _Homeowner, Lafayette Square_
 
 **CTA below testimonials:** Read all reviews → `/reviews/`
-
 
 ---
 
 ## ABOUT SUE / PERSONAL TRUST SECTION
 
-**H2:** *36 years.* One city. One owner.
+**H2:** One person. One standard. Every job.
 
-Sue Wheeler started refinishing wood in St. Louis in 1989. Since then, she has worked on homes in the Central West End, Lafayette Square, Webster Groves, Kirkwood, Ladue, and dozens of neighborhoods in between. She has refinished the doors of The Sheldon Concert Hall and the kitchen cabinets of first-time homeowners in Maplewood.
+Sue Wheeler answers every call herself. She does every estimate in person. She has worked on homes in Central West End, Lafayette Square, Compton Heights, Shaw, and dozens of other neighborhoods across St. Louis city and county.
 
 She has never dipped a door.
 
-When you call Wood Refinishing by Sue Wheeler, Sue Wheeler answers. She will ask you the right questions, tell you what the work actually involves, and give you an honest estimate. No call centers. No project managers. No surprises.
+When you reach out, you're talking to the person who will actually do the work. No project managers. No subcontractors on the other end of the estimate. Just Sue, who will ask the right questions and tell you honestly what your woodwork needs.
+
+St. Louis Magazine called her work "A Perfect Finish." We'll let that speak for itself.
 
 **Photo guidance:** Natural photo of Sue at work or in the shop — not posed corporate.
 **Link:** More about Sue → `/about/`
@@ -157,36 +140,26 @@ When you call Wood Refinishing by Sue Wheeler, Sue Wheeler answers. She will ask
 
 ## NEIGHBORHOODS / SERVICE AREA SECTION
 
-**H2:** Serving *metropolitan St. Louis* — city and county.
+**H2:** Serving _historic St. Louis_ — and the neighborhoods around it.
 
-We work throughout the greater St. Louis area — historic city neighborhoods and inner-ring suburbs where the architectural woodwork is original, and West County communities where the homes are newer and the cabinets and doors still deserve the best finish available.
+Most of our work is in the city neighborhoods and inner-ring suburbs where the homes are older and the original woodwork is worth preserving.
 
 **Neighborhood quick-links (shown as a visual tag cloud or grid):**
-Central West End · Lafayette Square · Compton Heights · Tower Grove · Shaw · Webster Groves · Kirkwood · Clayton · University City · Maplewood · Ladue · Frontenac · Town & Country · Chesterfield · Ballwin
+Central West End · Benton Park · Compton Heights · Shaw · Lafayette Square · Clayton · University City · Maplewood · Brentwood
 
-**Link:** See all neighborhoods → `/neighborhoods/central-west-end/` (or a neighborhoods index if built)
-
----
-
-## HISTORIC PRESERVATION CALLOUT
-
-**H2:** Historic home? *Tax credits may apply.*
-
-If your home is in a certified or local historic district, the federal and Missouri historic tax credit programs may return up to 45–55 cents on every dollar you spend on qualifying woodwork restoration. No other wood refinisher in St. Louis explains this. We do.
-
-**Link:** Historic tax credit guide for St. Louis homeowners → `/historic-preservation/historic-tax-credits/`
-
+**Link:** See neighborhood guides → `/neighborhoods/central-west-end/`
 
 ---
 
 ## BOTTOM CTA SECTION
-*Full-width band — charcoal or Sue Blue background*
 
-**H2:** Ready to talk about your wood?
+_Full-width band — charcoal or Sue Blue background_
 
-Free estimates. No obligation. Sue answers every call personally.
+**H2:** Your woodwork won't restore itself.
 
-**Primary CTA button:** Get a Free Estimate → `/contact/`
+Every season you wait, the finish degrades a little more and the wood underneath becomes harder to bring back. Free estimate. No obligation. Sue answers every call personally.
+
+**Primary CTA button:** Call Sue for a Free Estimate → `/contact/`
 **Phone (large display):** (314) 367-6054
 
 ---
@@ -201,25 +174,21 @@ St. Louis, MO 63108
 suewheelerstl.com
 
 **Column 2 — Services:**
-Kitchen Cabinet Refinishing
 Door Refinishing
 Staircase Refinishing
-Built-Ins & Millwork
-Commercial & Hospitality
-Institutional Refinishing
+Kitchen Cabinet Refinishing
+Architectural Woodwork
+Perk Up & Protect
 
 **Column 3 — Resources:**
-Historic Preservation
 Portfolio
 Reviews
 FAQ
-Blog
 Contact
 
 **Column 4 — Trust signals:**
-BBB A+ Accredited (badge)
 EPA Certified Lead Renovator
-In Business Since 1989
+Est. 1989
 Featured in St. Louis Magazine
 
 **Footer bottom bar:**
@@ -229,45 +198,29 @@ Featured in St. Louis Magazine
 
 ## INTERNAL LINKS ON THIS PAGE (complete map)
 
-| Destination | Location on page |
-|-------------|-----------------|
-| `/contact/` | Hero CTA, bottom CTA, footer |
-| `/kitchen-cabinet-refinishing/` | Services section card 1 |
-| `/door-refinishing/` | Services section card 2 |
-| `/staircase-refinishing/` | Services section card 3 |
-| `/built-ins-and-millwork-refinishing/` | Services section card 4 |
-| `/commercial-and-hospitality-refinishing/` | Services section card 5 |
-| `/institutional-refinishing/` | Services section card 6 |
-| `/institutional-refinishing/historic-venue-restoration/` | Sheldon spotlight |
-| `/faq/` | Intro section (hand-strip link), EPA section |
-| `/reviews/` | Testimonials section CTA |
-| `/about/` | About section link |
-| `/historic-preservation/historic-tax-credits/` | Preservation callout |
-| All 15 neighborhood pages | Neighborhood section quick-links |
+| Destination                            | Location on page             |
+| -------------------------------------- | ---------------------------- |
+| `/contact/`                            | Hero CTA, bottom CTA, footer |
+| `/door-refinishing/`                   | Services section card 1      |
+| `/staircase-refinishing/`              | Services section card 2      |
+| `/kitchen-cabinet-refinishing/`        | Services section card 3      |
+| `/built-ins-and-millwork-refinishing/` | Services section card 4      |
+| `/perk-up-and-protect/`                | Services section card 5      |
+| `/faq/`                                | Intro section + EPA section  |
+| `/reviews/`                            | Testimonials section CTA     |
+| `/about/`                              | About section link           |
+| `/neighborhoods/central-west-end/`     | Neighborhood section link    |
 
 ---
 
 ## DEV NOTES
 
 - Phone number must be `<a href="tel:3143676054">` on mobile — tap-to-call
-- Hero H1: italic emphasis on "hand-stripped, never dipped" uses `<em>` with `color: var(--accent-wood)` per design-spec
 - Credential bar: sticky on scroll or pinned just below nav
-- Service cards: 3-column grid on desktop, 2-col on tablet, 1-col on mobile
+- Service cards: 3-column grid on desktop, 2-col on tablet, 1-col mobile (5 cards — 3+2 layout on desktop)
 - Testimonials: dark charcoal background band (`--charcoal: #42413C`) per design-spec
 - Neighborhood quick-links: pill/tag style using `sue-blue-light` background
-- The Sheldon section: consider a subtle full-width image behind with overlay
-
-## MESSAGING NOTES (Asset-4 §2 compliance)
-
-- ✅ Phone (314) 367-6054 — every page, tap-to-call mobile (header + hero + footer)
-- ✅ "Hand-stripped, never dipped" — hero H1 + intro section
-- ✅ 36 years / one owner — credential bar + about section
-- ✅ "Sue answers every call personally" — hero subhead + bottom CTA
-- ✅ EPA Certified Lead Renovator — credential bar + dedicated section
-- ✅ The Sheldon Concert Hall — dedicated project spotlight section
-- ✅ Free estimate CTA — hero + bottom band + footer
-- ✅ Testimonials — 3 featured, service-matched (staircase, cabinets, door)
-- ✅ BBB A+ — credential bar + footer trust column
-- ✅ STL Magazine "Perfect Finish" — credential bar + footer trust column
-- ✅ Tax credit messaging — historic preservation callout section
-- ✅ Service area — neighborhoods section
+- No BBB badge anywhere on this page
+- No historic tax credit section
+- No Sheldon Concert Hall spotlight
+- No commercial/institutional service cards

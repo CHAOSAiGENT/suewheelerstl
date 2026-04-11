@@ -2,20 +2,20 @@
 
 **URL:** `/staircase-refinishing/newel-posts/`
 **File:** `content/pages/stair-newel.md`
-**Last updated:** 2026-03-17
+**Last updated:** 2026-04-10
 
 ---
 
 ## SEO
 
-**SEO Title:** `Newel Post Refinishing St. Louis | Sue Wheeler`
-**Meta Description:** `Newel post refinishing in St. Louis's historic homes. Architectural statement piece, preservation-minded approach. Sue Wheeler, EPA Certified. Free estimate.`
+**SEO Title:** `Newel Post Refinishing St. Louis | Wood Refinishing by Sue Wheeler`
+**Meta Description:** `Newel post refinishing in St. Louis historic homes. The architectural anchor of your staircase, restored by hand. EPA Certified. Free estimate: (314) 367-6054.`
 
 ---
 
-## H1: Newel post refinishing in *St. Louis.*
+## H1: Your staircase starts with the newel post. Make it right.
 
-**Subhead:** The newel post is the architectural anchor of a historic staircase. When it's right, the whole stair is right.
+**Subhead:** The most architecturally significant piece on the stair — and the one that shows its age first.
 
 **CTA button:** Get a Free Estimate → `/contact/`
 **Phone:** (314) 367-6054
@@ -24,47 +24,64 @@
 
 ## BODY
 
-### H2: The statement piece of the staircase.
+### H2: The newel post anchors everything else.
 
-The newel post is the largest, most visible element of most historic staircases — and in St. Louis's late-Victorian and Edwardian homes, it's often the most architecturally significant. Carved box newels, turned column newels, paneled newels with cap details: these were built from old-growth lumber, by craftsmen, to last.
+The newel post is the first thing you see when you enter a historic St. Louis home. In late-Victorian and Edwardian construction — the Central West End, Benton Park, Compton Heights, Lafayette Square — it's often an elaborate piece: four or five feet tall, with turned or carved column work, paneled sides, a substantial cap, and proportions scaled to a formal entrance hall. It was designed to make an impression.
 
-You can't replace them with new wood and get the same result. Modern newel post replacements are pine or poplar, machine-routed, with profiles that read as copies rather than originals. The density is different. The grain is different. The character is different.
+These were built from old-growth lumber — dense, stable, with grain you can't get from modern mill stock. They were crafted to last well beyond a single generation. Most have.
 
-Refinishing is the right choice for any original newel post that's structurally sound.
+The problem is the finish. After 100 years and multiple rounds of painting or staining by different owners, newel posts in historic St. Louis homes often look their age: dull, discolored, painted over at some point, or finish-failed at the base where foot traffic and cleaning take their toll. The wood underneath is almost always sound. The finish needs to come off and be done properly.
 
-### H2: What newel post refinishing involves.
+### H2: Types of newel posts — and why the approach differs.
 
-Newel posts are worked on in place — they're structural to the staircase and can't be transported to the shop. We use appropriate hand tools and solvents to strip the existing finish, assess and address any surface damage (checks, minor cracks, worn areas), stain to match or update the existing tone, and apply polyurethane.
+**Starting newel** — The post at the bottom of the main flight. Usually the largest and most decorated. Most visible. Gets refinished as the visual anchor of the whole staircase.
 
-For carved or paneled newels with complex profile work, the detail stripping requires patience and specific tools. This is not a job that benefits from being rushed.
+**Landing newel** — At the turn of the stair or at the top of the flight. Often a slightly simpler version of the starting newel, but still architecturally present. Needs to match the starting newel in finish tone and sheen.
 
-### H2: Matching the newel to the rest of the staircase.
+**Half-newel** — Where the stair meets a wall. A slab mounted against the wall with finished faces on the exposed sides only. Common in more modest staircases and in some upper-floor landings.
 
-When a newel post is being refinished as part of a full staircase project, we coordinate the stain and finish to match the handrail, treads, and risers. When the newel is being addressed alone — because it's in worse condition than the rest of the stair — we work to match the existing finish as closely as possible.
+Each type is worked on in place. Newel posts are structural to the staircase — they're not removed for refinishing. We use hand tools and appropriate solvents to strip the existing finish, working through the carved and turned profiles with detail tools that reach the tight areas.
 
-### H2: Historic homes — preservation considerations.
+### H2: What we repair as part of a newel refinish.
 
-For homes in certified historic districts, or homes undergoing qualifying rehabilitation, the Secretary of Interior's Standards favor the gentlest effective treatment for historic wood. Hand stripping of original newel posts is compliant; replacement with new materials raises standards questions. We're familiar with these requirements.
+Before any new finish goes on, we assess the condition of the wood itself. Minor surface damage — small cracks, worn edges, checks in the wood at the base — is often addressable as part of the Strip & Refinish scope. We fill, sand, and prep the surface so the new finish goes on cleanly.
 
-→ [Historic tax credits and wood refinishing](/historic-preservation/historic-tax-credits/)
+The base of the newel post takes the most abuse: cleaning products, foot traffic, the vacuum cleaner. If the finish has failed most severely at the base, that's where we pay the most attention to prep. The result is durable at exactly the point where durability matters most.
+
+### H2: Matching the newel to the staircase — and to the room.
+
+When a newel post is refinished as part of a full staircase project, stain and finish are coordinated across the handrail, spindles, treads, and newel. The whole stair reads as a unit.
+
+When the newel is being addressed alone — because it's in worse condition than the rest of the stair, or was painted at some point while the rest wasn't — we work to match the existing finish as closely as possible. Aged finishes have shifted in color over decades, so a precise technical match isn't always achievable, but a result that reads as intentional is.
 
 ### H2: EPA Certified for pre-1978 newel posts.
 
-Sue Wheeler is an EPA Certified Lead Renovator. Pre-1978 newel posts include lead paint — every project includes proper containment and documented cleanup.
+Painted newel posts in homes built before 1978 contain lead paint. Sue Wheeler is an EPA Certified Lead Renovator — every pre-1978 project is handled with proper containment, HEPA filtration, and documented cleanup.
+
+---
+
+## TESTIMONIAL PLACEHOLDER
+
+> "[Testimonial about newel post or full staircase refinishing — transformation, process, or historic home context.]"
+> — [Name], [Neighborhood], St. Louis
 
 ---
 
 ## FAQ BLOCK
-*Accordion — FAQ schema markup*
 
-**Q: My newel post has some carved detail that's been damaged. Can you repair it?**
-A: Minor surface damage — small cracks, worn edges, superficial checks — can often be addressed as part of a Strip & Refinish. Significant structural damage or missing carved sections is beyond refinishing scope. We assess and advise honestly.
+_Accordion — FAQ schema markup_
 
-**Q: Can you match the refinished newel to my existing stair treads?**
-A: Yes — for full staircase projects this is standard. For newel-only projects where the rest of the stair hasn't been refinished recently, we work to match as closely as possible, accounting for the fact that aged finishes have shifted from their original color.
+**Q: Can you repair a damaged newel post as part of the refinishing project?**
+A: Minor surface damage — small cracks, worn edges, checks in the wood — can usually be addressed as part of a Strip & Refinish. We fill, sand, and prep before the new finish goes on. Significant structural damage or missing carved sections is beyond refinishing scope; we assess honestly and tell you what's addressable and what isn't before we start.
 
-**Q: My newel post was painted and I want to return it to stained wood. Is that possible?**
-A: Depends on the wood condition underneath. Many painted newels in historic homes have perfectly intact original stain finish under the paint — they were painted over in a later renovation. We strip and assess before committing to a result.
+**Q: Do you need to disassemble the staircase to refinish the newel post?**
+A: No. Newel posts are worked on in place — removing them would require taking apart the staircase structure and risks damage to joints and surrounding wood. We strip and refinish entirely in place using hand tools and solvents appropriate for the wood species and existing finish.
+
+**Q: My newel post was painted 50 years ago. Can you bring it back to stained wood?**
+A: Usually yes. Many painted newels in St. Louis's historic homes have intact original stained wood under the paint — they were painted over in a mid-century renovation and never stripped back. We strip the paint layers carefully and assess what the wood looks like underneath before committing to a result. In most cases it's fully refinishable.
+
+**Q: My newel post is a box newel with paneled sides. Is that more difficult to refinish?**
+A: It requires more time and detail work — panel moldings and recessed sections need hand tools that reach into the profile without damaging the edges. We do this regularly on elaborate Victorian and Edwardian newels in St. Louis. The process is the same; it just takes longer.
 
 ---
 
@@ -79,17 +96,18 @@ Free estimate. No obligation. Sue answers every call personally.
 
 ## INTERNAL LINKS
 
-| Destination | Location |
-|-------------|----------|
-| `/staircase-refinishing/` | Body (parent hub) |
-| `/neighborhoods/central-west-end/` | Historic homes section |
-| `/neighborhoods/lafayette-square/` | Historic homes section |
-| `/historic-preservation/historic-tax-credits/` | Preservation section |
-| `/contact/` | Hero CTA + bottom CTA |
+| Destination                                       | Anchor text           | Location                      |
+| ------------------------------------------------- | --------------------- | ----------------------------- |
+| `/staircase-refinishing/`                         | staircase refinishing | Body intro (parent hub)       |
+| `/staircase-refinishing/spindles-and-balusters/`  | spindles              | Body — related surface        |
+| `/staircase-refinishing/stair-treads-and-risers/` | treads and risers     | Body — full staircase context |
+| `/neighborhoods/central-west-end/`                | Central West End      | Historic homes section        |
+| `/neighborhoods/lafayette-square/`                | Lafayette Square      | Historic homes section        |
+| `/contact/`                                       | Get a Free Estimate   | Hero CTA + bottom CTA         |
 
-## MESSAGING NOTES
-- ✅ Irreplaceability — core argument (old-growth, machine replacement is inferior)
-- ✅ Hand work required — in-place context
-- ✅ Historic preservation / tax credit angle — specific to this spoke (strongest among stair spokes)
-- ✅ EPA Certified — callout
-- ✅ Neighborhood anchors — CWE, Lafayette Square
+## DEV NOTES
+
+- Spoke page — no sub-navigation needed
+- Parent hub link in breadcrumb and body copy
+- FAQ schema JSON-LD required
+- Testimonial placeholder: pull from reviews when available

@@ -1,663 +1,2365 @@
 <!doctype html>
-
-<html class="scroll-smooth" lang="en">
+<html lang="en" class="scroll-smooth">
   <head>
-    <meta charset="utf-8" />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wood Refinishing St. Louis | Sue Wheeler</title>
+    <meta
+      name="description"
+      content="Sue Wheeler refinishes the doors, staircases, kitchens, and built-ins of St. Louis's historic homes. EPA Certified. 36 years. Sue answers every call. (314) 367-6054."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&family=Inter:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
-      rel="stylesheet"
-    />
-    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <script id="tailwind-config">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
       tailwind.config = {
-        darkMode: "class",
         theme: {
           extend: {
             colors: {
-              "on-primary": "#ffffff",
-              tertiary: "#695c53",
-              "on-tertiary": "#ffffff",
-              "error-container": "#ffdad6",
-              "surface-variant": "#e7e2da",
-              "primary-fixed": "#c1e8ff",
-              outline: "#6d7980",
-              "on-error-container": "#93000a",
-              "surface-bright": "#fef9f0",
-              "on-secondary-container": "#783916",
-              "outline-variant": "#bdc8d0",
-              "on-tertiary-fixed-variant": "#50443c",
-              "secondary-fixed": "#ffdbcb",
-              "surface-container-high": "#ede7df",
-              "on-secondary": "#ffffff",
-              "on-error": "#ffffff",
-              "on-tertiary-container": "#443931",
-              "tertiary-container": "#b2a298",
-              secondary: "#904c27",
-              "inverse-surface": "#32302b",
-              "secondary-fixed-dim": "#ffb693",
-              "on-secondary-fixed-variant": "#733512",
-              "on-primary-fixed-variant": "#004d66",
-              "surface-dim": "#ded9d2",
-              "inverse-primary": "#73d2ff",
-              background: "#fef9f0",
-              "surface-tint": "#006687",
-              "on-secondary-fixed": "#341000",
-              "primary-fixed-dim": "#73d2ff",
-              "surface-container-low": "#f8f3eb",
-              "secondary-container": "#ffa67a",
-              primary: "#006687",
-              error: "#ba1a1a",
-              "on-primary-fixed": "#001e2b",
-              "inverse-on-surface": "#f5f0e8",
-              "surface-container": "#f2ede5",
-              "tertiary-fixed-dim": "#d4c3b8",
-              "primary-container": "#11b2e8",
-              "surface-container-highest": "#e7e2da",
-              "on-background": "#1d1c17",
-              "on-primary-container": "#004057",
-              "tertiary-fixed": "#f1dfd4",
-              "on-surface-variant": "#3d484f",
-              "on-tertiary-fixed": "#231a13",
-              "on-surface": "#1d1c17",
-              "surface-container-lowest": "#ffffff",
-              surface: "#fef9f0",
-            },
-            borderRadius: {
-              DEFAULT: "0.25rem",
-              lg: "0.5rem",
-              xl: "0.75rem",
-              full: "9999px",
+              "sue-blue": "#11B2E8",
+              "sue-blue-dark": "#0e96c4",
+              "sue-charcoal": "#42413C",
+              "sue-base": "#EBE6DE",
+              "sue-card": "#F8F6F1",
+              "sue-text": "#2A2421",
+              "sue-muted": "#6B5E55",
+              "sue-wood": "#A65D37",
             },
             fontFamily: {
-              headline: ["Playfair Display"],
-              body: ["Inter"],
-              label: ["Inter"],
+              serif: ["Playfair Display", "Georgia", "serif"],
+              sans: ["Inter", "system-ui", "sans-serif"],
             },
           },
         },
       };
     </script>
     <style>
-      .material-symbols-outlined {
-        font-variation-settings:
-          "FILL" 0,
-          "wght" 400,
-          "GRAD" 0,
-          "opsz" 48;
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
       }
+      body {
+        background-color: #ebe6de;
+        color: #2a2421;
+        font-family: "Inter", system-ui, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        margin: 0;
+      }
+
+      /* ---- Typography helpers ---- */
+      .font-display {
+        font-family: "Playfair Display", Georgia, serif;
+      }
+
+      /* ---- Service card animated left bar ---- */
+      .service-card {
+        position: relative;
+        overflow: hidden;
+        transition:
+          transform 0.3s ease,
+          box-shadow 0.3s ease;
+      }
+      .service-card::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 4px;
+        height: 0;
+        background: #11b2e8;
+        transition: height 0.35s ease;
+      }
+      .service-card:hover::before {
+        height: 100%;
+      }
+      .service-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 40px -15px rgba(42, 36, 33, 0.16);
+      }
+
+      /* ---- Nav underline animation ---- */
+      .nav-link {
+        position: relative;
+      }
+      .nav-link::after {
+        content: "";
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 0;
+        height: 1px;
+        background: #11b2e8;
+        transition: width 0.3s ease;
+      }
+      .nav-link:hover::after {
+        width: 100%;
+      }
+
+      /* ---- Smooth transitions on interactive elements ---- */
+      a,
+      button {
+        transition:
+          color 0.3s ease,
+          background-color 0.3s ease,
+          transform 0.3s ease,
+          box-shadow 0.3s ease,
+          opacity 0.3s ease;
+      }
+
+      /* ---- Primary button ---- */
+      .btn-primary {
+        display: inline-block;
+        background: #11b2e8;
+        color: #ffffff;
+        font-family: "Inter", system-ui, sans-serif;
+        font-size: 0.875rem;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        padding: 0.875rem 2rem;
+        border-radius: 0;
+        border: none;
+        cursor: pointer;
+        text-decoration: none;
+      }
+      .btn-primary:hover {
+        background: #0e96c4;
+        transform: translateY(-2px);
+      }
+
+      /* ---- Secondary button ---- */
+      .btn-secondary {
+        display: inline-block;
+        background: transparent;
+        color: #ffffff;
+        font-family: "Inter", system-ui, sans-serif;
+        font-size: 0.875rem;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        padding: 0.875rem 2rem;
+        border-radius: 0;
+        border: 2px solid #ffffff;
+        cursor: pointer;
+        text-decoration: none;
+      }
+      .btn-secondary:hover {
+        background: rgba(255, 255, 255, 0.1);
+        transform: translateY(-2px);
+      }
+
+      /* ---- Pill badge ---- */
+      .pill-badge {
+        display: inline-block;
+        font-family: "Inter", system-ui, sans-serif;
+        font-size: 0.7rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: #a65d37;
+        border: 1px solid #a65d37;
+        border-radius: 9999px;
+        padding: 0.25rem 0.875rem;
+      }
+      .pill-badge-blue {
+        color: #11b2e8;
+        border-color: #11b2e8;
+      }
+
+      /* ---- Neighborhood pills ---- */
+      .hood-pill {
+        display: inline-block;
+        font-family: "Inter", system-ui, sans-serif;
+        font-size: 0.8rem;
+        font-weight: 500;
+        color: #11b2e8;
+        border: 1.5px solid #11b2e8;
+        border-radius: 9999px;
+        padding: 0.4rem 1rem;
+        cursor: default;
+        transition:
+          background-color 0.25s ease,
+          color 0.25s ease;
+      }
+      .hood-pill:hover {
+        background: #11b2e8;
+        color: #ffffff;
+      }
+
+      /* ---- Process connector line ---- */
+      .process-line {
+        position: absolute;
+        top: 20px;
+        left: calc(50% + 20px);
+        width: calc(100% - 40px);
+        height: 2px;
+        background: rgba(17, 178, 232, 0.25);
+      }
+
+      /* ---- Mobile menu panel ---- */
+      #mobile-menu {
+        transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      /* ---- Testimonial stagger ---- */
+      @media (min-width: 900px) {
+        .testimonial-left {
+          transform: rotate(-1deg);
+        }
+        .testimonial-mid {
+          transform: translateY(-16px) rotate(0.5deg);
+        }
+        .testimonial-right {
+          transform: rotate(1deg);
+        }
+      }
+
+      /* ---- Hide scrollbar on trust bar ---- */
       .no-scrollbar::-webkit-scrollbar {
         display: none;
       }
+      .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+
+      /* ---- Dropdown menu ---- */
+      #services-dropdown {
+        transition:
+          opacity 0.2s ease,
+          transform 0.2s ease;
+      }
+
+      /* ---- Hero H1 ---- */
+      .hero-h1 {
+        font-family: "Playfair Display", Georgia, serif;
+        font-size: clamp(2.5rem, 5vw, 5rem);
+        font-weight: 400;
+        line-height: 1.1;
+        color: #2a2421;
+      }
+
+      /* ---- Section H2 ---- */
+      .section-h2 {
+        font-family: "Playfair Display", Georgia, serif;
+        font-weight: 400;
+        font-size: clamp(2rem, 3vw, 2.5rem);
+        line-height: 1.2;
+      }
+
+      /* ---- EPA badge ---- */
+      .epa-badge {
+        font-family: "Playfair Display", Georgia, serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 220px;
+        height: 220px;
+        background: #11b2e8;
+        border-radius: 4px;
+        color: #ffffff;
+        text-align: center;
+      }
     </style>
   </head>
-  <body
-    class="bg-[#EBE6DE] text-on-surface font-body selection:bg-primary-container selection:text-on-primary-container"
-  >
-    <!-- TopNavBar -->
+  <body>
+    <!-- ============================================================
+       1. UTILITY BAR
+  ============================================================ -->
+    <div class="bg-[#2A2421] text-[#F8F6F1]" style="min-height: 36px">
+      <div class="max-w-7xl mx-auto px-6 flex items-center justify-between h-9">
+        <span
+          class="hidden md:block text-[10px] font-sans uppercase tracking-[0.12em] text-[#6B5E55]"
+        >
+          St. Louis architectural wood refinishing
+        </span>
+        <a
+          href="tel:3143676054"
+          class="text-[11px] font-sans font-semibold uppercase tracking-[0.1em] text-[#F8F6F1] hover:text-[#11B2E8] mx-auto md:mx-0"
+        >
+          (314) 367-6054 &mdash; Sue answers personally
+        </a>
+      </div>
+    </div>
+
+    <!-- ============================================================
+       2. STICKY NAVIGATION
+  ============================================================ -->
     <nav
-      class="fixed top-0 w-full bg-[#F8F6F1] dark:bg-stone-900 shadow-[0_4px_20px_rgba(42,36,33,0.1)] z-50"
+      id="main-nav"
+      class="bg-[#F8F6F1] sticky top-0 z-40"
+      style="transition: box-shadow 0.3s ease"
     >
       <div
-        class="flex justify-between items-center px-8 py-4 w-full max-w-full"
+        class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between"
       >
-        <div class="flex flex-col">
+        <!-- Logo -->
+        <a href="/" class="flex flex-col leading-none flex-shrink-0">
           <span
-            class="text-2xl font-headline italic text-[#2A2421] dark:text-stone-100 leading-none"
+            class="font-display italic text-[#2A2421] leading-none"
+            style="font-size: 1.4rem"
             >Sue Wheeler</span
           >
           <span
-            class="text-[10px] tracking-[0.2em] font-bold text-tertiary uppercase mt-1"
-            >WOOD REFINISHING</span
+            class="font-sans text-[#6B5E55] uppercase mt-0.5"
+            style="font-size: 0.6rem; letter-spacing: 0.22em; font-weight: 600"
+            >Wood Refinishing</span
           >
-        </div>
-        <div class="hidden lg:flex items-center space-x-5">
+        </a>
+
+        <!-- Desktop nav (center) -->
+        <div class="hidden lg:flex items-center gap-8">
+          <!-- Services with dropdown -->
+          <div id="services-parent" class="relative">
+            <button
+              id="services-btn"
+              class="nav-link flex items-center gap-1 font-sans text-[#2A2421] hover:text-[#11B2E8] cursor-pointer"
+              style="
+                font-size: 0.8rem;
+                text-transform: uppercase;
+                letter-spacing: 0.05em;
+                background: none;
+                border: none;
+                padding: 0;
+              "
+            >
+              Services
+              <svg
+                width="12"
+                height="12"
+                viewBox="0 0 12 12"
+                fill="none"
+                style="margin-top: 1px"
+              >
+                <path
+                  d="M2 4l4 4 4-4"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </button>
+
+            <!-- Dropdown -->
+            <div
+              id="services-dropdown"
+              class="absolute top-full left-1/2 -translate-x-1/2 w-56 bg-[#F8F6F1] opacity-0 pointer-events-none translate-y-2"
+              style="
+                box-shadow: 0 8px 30px rgba(42, 36, 33, 0.14);
+                border-top: 3px solid #11b2e8;
+                margin-top: 8px;
+              "
+            >
+              <a
+                href="/door-refinishing/"
+                class="block px-5 py-3 font-sans text-xs text-[#2A2421] hover:text-[#11B2E8] hover:bg-[#EBE6DE] border-b border-[#2A2421]/05"
+                style="font-weight: 500"
+                >Doors</a
+              >
+              <a
+                href="/staircase-refinishing/"
+                class="block px-5 py-3 font-sans text-xs text-[#2A2421] hover:text-[#11B2E8] hover:bg-[#EBE6DE] border-b border-[#2A2421]/05"
+                style="font-weight: 500"
+                >Staircases</a
+              >
+              <a
+                href="/kitchen-cabinet-refinishing/"
+                class="block px-5 py-3 font-sans text-xs text-[#2A2421] hover:text-[#11B2E8] hover:bg-[#EBE6DE] border-b border-[#2A2421]/05"
+                style="font-weight: 500"
+                >Kitchen Cabinets</a
+              >
+              <a
+                href="/built-ins-and-millwork-refinishing/"
+                class="block px-5 py-3 font-sans text-xs text-[#2A2421] hover:text-[#11B2E8] hover:bg-[#EBE6DE] border-b border-[#2A2421]/05"
+                style="font-weight: 500"
+                >Architectural Woodwork</a
+              >
+              <a
+                href="/perk-up-and-protect/"
+                class="block px-5 py-3 font-sans text-xs text-[#11B2E8] hover:bg-[#EBE6DE]"
+                style="font-weight: 500"
+                >Perk Up &amp; Protect</a
+              >
+            </div>
+          </div>
+
           <a
-            class="text-[#2A2421] hover:text-[#11B2E8] text-xs font-medium uppercase tracking-wider transition-colors duration-300"
-            href="#"
-            >About</a
-          >
-          <a
-            class="text-[#2A2421] hover:text-[#11B2E8] text-xs font-medium uppercase tracking-wider transition-colors duration-300"
-            href="#"
-            >Doors</a
-          >
-          <a
-            class="text-[#2A2421] hover:text-[#11B2E8] text-xs font-medium uppercase tracking-wider transition-colors duration-300"
-            href="#"
-            >Staircases</a
-          >
-          <a
-            class="text-[#2A2421] hover:text-[#11B2E8] text-xs font-medium uppercase tracking-wider transition-colors duration-300"
-            href="#"
-            >Kitchens</a
-          >
-          <a
-            class="text-[#2A2421] hover:text-[#11B2E8] text-xs font-medium uppercase tracking-wider transition-colors duration-300"
-            href="#"
-            >Woodwork</a
-          >
-          <a
-            class="text-[#2A2421] hover:text-[#11B2E8] text-xs font-medium uppercase tracking-wider transition-colors duration-300"
-            href="#"
-            >Perk Up &amp; Protect</a
-          >
-          <a
-            class="text-[#2A2421] hover:text-[#11B2E8] text-xs font-medium uppercase tracking-wider transition-colors duration-300"
-            href="#"
+            href="/portfolio/"
+            class="nav-link font-sans text-[#2A2421] hover:text-[#11B2E8]"
+            style="
+              font-size: 0.8rem;
+              text-transform: uppercase;
+              letter-spacing: 0.05em;
+            "
             >Portfolio</a
           >
           <a
-            class="text-[#2A2421] hover:text-[#11B2E8] text-xs font-medium uppercase tracking-wider transition-colors duration-300"
-            href="#"
-            >Contact</a
+            href="/about/"
+            class="nav-link font-sans text-[#2A2421] hover:text-[#11B2E8]"
+            style="
+              font-size: 0.8rem;
+              text-transform: uppercase;
+              letter-spacing: 0.05em;
+            "
+            >About</a
           >
-        </div>
-        <div class="flex items-center gap-6">
           <a
-            class="hidden md:block text-sm font-bold underline decoration-[#11B2E8] decoration-2 underline-offset-4"
-            href="tel:3143676054"
-            >(314) 367-6054</a
+            href="/faq/"
+            class="nav-link font-sans text-[#2A2421] hover:text-[#11B2E8]"
+            style="
+              font-size: 0.8rem;
+              text-transform: uppercase;
+              letter-spacing: 0.05em;
+            "
+            >FAQ</a
           >
-          <button
-            class="bg-[#11B2E8] text-white px-6 py-2.5 rounded-none font-bold text-sm hover:brightness-105 transition-all scale-95 duration-200"
-          >
-            Free Estimate
-          </button>
         </div>
+
+        <!-- Desktop right: phone + CTA -->
+        <div class="hidden lg:flex items-center gap-5">
+          <a
+            href="tel:3143676054"
+            class="font-sans text-[#2A2421] hover:text-[#11B2E8]"
+            style="
+              font-size: 0.875rem;
+              font-weight: 500;
+              text-decoration: underline;
+              text-decoration-color: #11b2e8;
+              text-underline-offset: 3px;
+            "
+          >
+            (314) 367-6054
+          </a>
+          <a
+            href="/contact/"
+            class="btn-primary"
+            style="padding: 0.625rem 1.25rem; font-size: 0.75rem"
+            >Free Estimate</a
+          >
+        </div>
+
+        <!-- Mobile hamburger -->
+        <button
+          id="hamburger"
+          class="lg:hidden flex flex-col gap-1.5 p-2"
+          aria-label="Open menu"
+        >
+          <span class="block w-6 h-0.5 bg-[#2A2421]"></span>
+          <span class="block w-6 h-0.5 bg-[#2A2421]"></span>
+          <span class="block w-6 h-0.5 bg-[#2A2421]"></span>
+        </button>
       </div>
     </nav>
-    <!-- Hero Section -->
-    <section class="pt-32 pb-20 px-8 max-w-7xl mx-auto overflow-hidden">
-      <div class="grid lg:grid-cols-2 gap-16 items-center">
-        <div>
-          <span
-            class="inline-block py-1 px-3 bg-surface-container-highest text-tertiary text-xs font-bold tracking-widest uppercase mb-6"
-            >St. Louis · Since 1989</span
+
+    <!-- Mobile menu backdrop -->
+    <div
+      id="menu-overlay"
+      class="fixed inset-0 z-50 bg-[#2A2421]/60 opacity-0 pointer-events-none"
+      style="transition: opacity 0.3s ease"
+    ></div>
+
+    <!-- Mobile menu panel -->
+    <div
+      id="mobile-menu"
+      class="fixed top-0 right-0 h-full bg-[#F8F6F1] z-50 translate-x-full flex flex-col"
+      style="
+        width: min(80vw, 320px);
+        box-shadow: -4px 0 30px rgba(42, 36, 33, 0.15);
+      "
+    >
+      <div
+        class="flex items-center justify-between px-6 h-16 border-b border-[#2A2421]/08"
+      >
+        <span
+          class="font-display italic text-[#2A2421]"
+          style="font-size: 1.2rem"
+          >Menu</span
+        >
+        <button
+          id="close-menu"
+          class="text-[#2A2421] hover:text-[#11B2E8] p-1"
+          aria-label="Close menu"
+        >
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+            <path
+              d="M2 2l18 18M20 2L2 20"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+            />
+          </svg>
+        </button>
+      </div>
+      <nav class="flex-1 overflow-y-auto py-4">
+        <a
+          href="/door-refinishing/"
+          class="block px-6 py-3.5 font-sans text-sm text-[#2A2421] hover:text-[#11B2E8] hover:bg-[#EBE6DE] border-b border-[#2A2421]/05"
+          style="font-weight: 500"
+          >Doors</a
+        >
+        <a
+          href="/staircase-refinishing/"
+          class="block px-6 py-3.5 font-sans text-sm text-[#2A2421] hover:text-[#11B2E8] hover:bg-[#EBE6DE] border-b border-[#2A2421]/05"
+          style="font-weight: 500"
+          >Staircases</a
+        >
+        <a
+          href="/kitchen-cabinet-refinishing/"
+          class="block px-6 py-3.5 font-sans text-sm text-[#2A2421] hover:text-[#11B2E8] hover:bg-[#EBE6DE] border-b border-[#2A2421]/05"
+          style="font-weight: 500"
+          >Kitchen Cabinets</a
+        >
+        <a
+          href="/built-ins-and-millwork-refinishing/"
+          class="block px-6 py-3.5 font-sans text-sm text-[#2A2421] hover:text-[#11B2E8] hover:bg-[#EBE6DE] border-b border-[#2A2421]/05"
+          style="font-weight: 500"
+          >Architectural Woodwork</a
+        >
+        <a
+          href="/perk-up-and-protect/"
+          class="block px-6 py-3.5 font-sans text-sm text-[#11B2E8] hover:bg-[#EBE6DE] border-b border-[#2A2421]/05"
+          style="font-weight: 500"
+          >Perk Up &amp; Protect</a
+        >
+        <a
+          href="/portfolio/"
+          class="block px-6 py-3.5 font-sans text-sm text-[#2A2421] hover:text-[#11B2E8] hover:bg-[#EBE6DE] border-b border-[#2A2421]/05"
+          style="font-weight: 500"
+          >Portfolio</a
+        >
+        <a
+          href="/about/"
+          class="block px-6 py-3.5 font-sans text-sm text-[#2A2421] hover:text-[#11B2E8] hover:bg-[#EBE6DE] border-b border-[#2A2421]/05"
+          style="font-weight: 500"
+          >About</a
+        >
+        <a
+          href="/faq/"
+          class="block px-6 py-3.5 font-sans text-sm text-[#2A2421] hover:text-[#11B2E8] hover:bg-[#EBE6DE] border-b border-[#2A2421]/05"
+          style="font-weight: 500"
+          >FAQ</a
+        >
+        <a
+          href="/contact/"
+          class="block px-6 py-3.5 font-sans text-sm text-[#2A2421] hover:text-[#11B2E8] hover:bg-[#EBE6DE] border-b border-[#2A2421]/05"
+          style="font-weight: 500"
+          >Contact</a
+        >
+        <div class="px-6 py-5">
+          <a
+            href="tel:3143676054"
+            class="font-sans text-[#11B2E8]"
+            style="font-size: 1.1rem; font-weight: 600"
+            >(314) 367-6054</a
           >
-          <h1
-            class="text-5xl lg:text-7xl font-headline leading-tight text-on-surface mb-8"
-          >
-            Your front door
-            <span class="italic text-[#A65D37]">deserves</span> to look
-            <span class="italic text-[#A65D37]">extraordinary</span>
-          </h1>
-          <p
-            class="text-lg text-on-surface-variant max-w-lg mb-10 leading-relaxed"
-          >
-            Preserving the architectural heritage of St. Louis through master
-            wood restoration. We don't just finish wood; we revive the history
-            and soul of your home's most vital features.
+          <p class="font-sans text-[#6B5E55] text-xs mt-1">
+            Sue answers personally
           </p>
-          <div class="flex flex-wrap gap-4 mb-12">
-            <button
-              class="bg-[#11B2E8] text-white px-8 py-4 rounded-none font-bold hover:brightness-105 transition-all"
+        </div>
+      </nav>
+      <div class="px-6 pb-6">
+        <a href="/contact/" class="btn-primary w-full text-center block"
+          >Free Estimate</a
+        >
+      </div>
+    </div>
+
+    <!-- ============================================================
+       3. HERO SECTION
+  ============================================================ -->
+    <section
+      class="bg-[#EBE6DE]"
+      style="
+        min-height: 90vh;
+        display: flex;
+        align-items: center;
+        padding: 4rem 0;
+      "
+    >
+      <div class="max-w-7xl mx-auto px-6 w-full">
+        <div class="grid lg:grid-cols-5 gap-12 lg:gap-16 items-center">
+          <!-- Left col: 60% -->
+          <div class="lg:col-span-3">
+            <!-- Pill badge -->
+            <div class="mb-6">
+              <span class="pill-badge">Est. 1989 &middot; St. Louis</span>
+            </div>
+
+            <!-- H1 -->
+            <h1 class="hero-h1 mb-6">
+              Your woodwork<br />
+              shouldn&rsquo;t look<br />
+              <em style="color: #a65d37">its age.</em>
+            </h1>
+
+            <!-- Subhead -->
+            <p
+              class="font-sans text-[#6B5E55] mb-8 max-w-lg"
+              style="font-size: 1.2rem; line-height: 1.65"
             >
-              Get a Free Estimate
-            </button>
-            <button
-              class="border-2 border-on-surface text-on-surface px-8 py-4 rounded-none font-bold hover:bg-on-surface hover:text-white transition-all"
-            >
-              See Our Work
-            </button>
+              Sue Wheeler refinishes the doors, staircases, kitchen cabinets,
+              and architectural woodwork of St.&nbsp;Louis&rsquo;s historic
+              homes. Hand-stripped. Never dipped. When you call, Sue answers.
+            </p>
+
+            <!-- CTAs -->
+            <div class="flex flex-wrap gap-4 items-center">
+              <a href="/contact/" class="btn-primary"
+                >Call Sue for a Free Estimate</a
+              >
+              <a
+                href="tel:3143676054"
+                class="font-sans text-[#2A2421] hover:text-[#11B2E8]"
+                style="
+                  font-size: 1rem;
+                  font-weight: 500;
+                  text-decoration: underline;
+                  text-decoration-color: #11b2e8;
+                  text-underline-offset: 4px;
+                "
+              >
+                (314) 367-6054
+              </a>
+            </div>
           </div>
-          <div
-            class="grid grid-cols-2 md:grid-cols-3 gap-6 pt-8 border-t border-outline-variant/30"
-          >
-            <div class="flex items-center gap-2">
-              <span class="material-symbols-outlined text-[#11B2E8]"
-                >verified</span
+
+          <!-- Right col: 40% — image placeholder -->
+          <div class="lg:col-span-2 relative">
+            <div
+              class="relative"
+              style="
+                aspect-ratio: 4/3;
+                background: #d4c9b8;
+                border-radius: 2px;
+                overflow: hidden;
+              "
+            >
+              <!-- Decorative "Est. 1989" badge -->
+              <div
+                class="absolute top-4 right-4 z-10"
+                style="
+                  background: #a65d37;
+                  color: #f8f6f1;
+                  padding: 0.5rem 0.875rem;
+                  font-family: &quot;Playfair Display&quot;, serif;
+                  font-size: 0.75rem;
+                  font-style: italic;
+                  letter-spacing: 0.05em;
+                  transform: rotate(3deg);
+                "
               >
-              <span class="text-xs font-bold uppercase tracking-tighter"
-                >Licensed &amp; Insured</span
+                Est. 1989
+              </div>
+              <!-- Placeholder content -->
+              <div
+                class="absolute inset-0 flex flex-col items-center justify-center text-center px-6"
               >
+                <div
+                  class="w-16 h-16 rounded-full bg-[#A65D37]/20 flex items-center justify-center mb-4"
+                >
+                  <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                    <rect
+                      x="4"
+                      y="8"
+                      width="24"
+                      height="16"
+                      rx="1"
+                      stroke="#A65D37"
+                      stroke-width="1.5"
+                    />
+                    <path d="M4 12h24" stroke="#A65D37" stroke-width="1.5" />
+                    <path d="M16 8v16" stroke="#A65D37" stroke-width="1" />
+                  </svg>
+                </div>
+                <p
+                  class="font-sans text-[#6B5E55] text-sm"
+                  style="font-weight: 500"
+                >
+                  [Before / After photo]
+                </p>
+                <p class="font-sans text-[#A65D37] text-xs mt-1">
+                  Staircase or front door
+                </p>
+              </div>
+              <!-- Decorative corner accent -->
+              <div class="absolute bottom-0 left-0 w-12 h-1 bg-[#11B2E8]"></div>
             </div>
-            <div class="flex items-center gap-2">
-              <span class="material-symbols-outlined text-[#11B2E8]"
-                >history</span
-              >
-              <span class="text-xs font-bold uppercase tracking-tighter"
-                >35 Years Exp.</span
-              >
-            </div>
-            <div class="flex items-center gap-2">
-              <span class="material-symbols-outlined text-[#11B2E8]"
-                >workspace_premium</span
-              >
-              <span class="text-xs font-bold uppercase tracking-tighter"
-                >Master Craftsman</span
-              >
-            </div>
+            <!-- Offset shadow box -->
+            <div
+              class="absolute -bottom-3 -right-3 -z-10 rounded-sm bg-[#11B2E8]/15"
+              style="top: 12px; left: 12px; right: -12px; bottom: -12px"
+            ></div>
           </div>
         </div>
-        <div class="relative">
-          <div
-            class="relative z-10 rotate-2 transition-transform hover:rotate-0 duration-700"
-          >
-            <img
-              class="w-full aspect-[4/5] object-cover shadow-2xl grayscale-[20%] hover:grayscale-0 transition-all duration-500"
-              data-alt="close-up of a masterfully restored historic dark oak front door with ornate brass hardware and clear glass panels in a St. Louis home"
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuALLNHav-m_KKnxA0mDTts-yfSMhd-dSFA0xYH9x71Nis17AMLKk-tKK3l1-EB8NU40sSDINWKbcmtjSbYkyRwmvun5tLi7a4neeSLg_iWExH2HOvvfnV4Ez98JSCWKWz0ajNOCvltTSVvGQYucbUI0WA_fIJ5-_jbI3apxBoqMvTEGISZtJ4qM3VMniX4KVYt3B4-IQ6JiR2HipagOXtLPrIlwgX14zG0wkAyIyzFg9lmyQLr1WmGBBFHfwRjAaL4jw-yAYKmCgCY"
-            />
+      </div>
+    </section>
+
+    <!-- ============================================================
+       4. TRUST / CREDENTIAL BAR
+  ============================================================ -->
+    <div
+      class="bg-[#F8F6F1]"
+      style="
+        border-top: 1px solid rgba(0, 0, 0, 0.06);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+      "
+    >
+      <div class="max-w-7xl mx-auto px-6 py-5">
+        <!-- Desktop: row -->
+        <div class="hidden md:flex items-center justify-center gap-8 lg:gap-12">
+          <!-- Item 1 -->
+          <div class="flex items-center gap-2.5">
             <div
-              class="absolute -bottom-6 -left-6 bg-secondary p-6 text-white rotate-[-4deg] shadow-lg"
+              class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0"
             >
-              <p class="text-xs font-bold tracking-widest uppercase">
-                Est. 1989
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                <path
+                  d="M2 6l3 3 5-5"
+                  stroke="#15803d"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </div>
+            <div>
+              <p
+                class="font-sans text-[#2A2421]"
+                style="
+                  font-size: 0.7rem;
+                  font-weight: 600;
+                  text-transform: uppercase;
+                  letter-spacing: 0.1em;
+                  line-height: 1.2;
+                "
+              >
+                EPA Certified
+              </p>
+              <p
+                class="font-sans text-[#6B5E55]"
+                style="
+                  font-size: 0.65rem;
+                  text-transform: uppercase;
+                  letter-spacing: 0.08em;
+                "
+              >
+                Lead Renovator
               </p>
             </div>
           </div>
-          <div
-            class="absolute inset-0 bg-[#11B2E8]/10 -translate-x-4 translate-y-4 -z-10"
-          ></div>
-        </div>
-      </div>
-    </section>
-    <!-- Empathy Section -->
-    <section class="py-24 bg-surface-container-low px-8 text-center">
-      <div class="max-w-3xl mx-auto">
-        <h2
-          class="text-3xl md:text-4xl font-headline italic leading-relaxed text-on-surface"
-        >
-          "You're not calling about
-          <span class="not-italic font-bold">stripping and refinishing</span>.
-          You're calling because something beautiful is broken and you want a
-          <span class="relative inline-block"
-            >perfect result.<span
-              class="absolute bottom-1 left-0 w-full h-1 bg-[#11B2E8] -z-10 opacity-60"
-            ></span></span
-          >"
-        </h2>
-      </div>
-    </section>
-    <!-- Services Section -->
-    <section class="py-32 px-8 max-w-7xl mx-auto">
-      <div class="mb-16">
-        <h2
-          class="text-sm font-bold tracking-[0.3em] text-[#11B2E8] uppercase mb-4"
-        >
-          Our Specialities
-        </h2>
-        <p class="text-4xl font-headline">
-          Dedicated to <span class="italic">Architectural Integrity</span>
-        </p>
-      </div>
-      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-        <!-- Card 1 -->
-        <div
-          class="group bg-[#F8F6F1] p-8 border-l-0 hover:border-l-[6px] hover:border-[#11B2E8] transition-all duration-300 flex flex-col h-full min-h-[320px]"
-        >
-          <span
-            class="material-symbols-outlined text-4xl text-tertiary mb-6"
-            data-icon="door_front"
-            >door_front</span
-          >
-          <h3 class="text-2xl font-headline italic mb-4">Front Doors</h3>
-          <p class="text-sm text-on-surface-variant leading-relaxed mb-8">
-            Complete restoration of entryways, from structural repairs to
-            hand-applied weather-resistant finishes.
-          </p>
-          <div class="mt-auto">
-            <a
-              class="text-xs font-bold uppercase tracking-wider flex items-center gap-2 group-hover:text-[#11B2E8]"
-              href="#"
-              >Learn More
-              <span class="material-symbols-outlined text-sm"
-                >arrow_forward</span
-              ></a
-            >
-          </div>
-        </div>
-        <!-- Card 2 -->
-        <div
-          class="group bg-[#F8F6F1] p-8 border-l-0 hover:border-l-[6px] hover:border-[#11B2E8] transition-all duration-300 flex flex-col h-full min-h-[320px]"
-        >
-          <span
-            class="material-symbols-outlined text-4xl text-tertiary mb-6"
-            data-icon="stairs"
-            >stairs</span
-          >
-          <h3 class="text-2xl font-headline italic mb-4">Staircases</h3>
-          <p class="text-sm text-on-surface-variant leading-relaxed mb-8">
-            Restoring banisters, balusters, and treads to their original glory
-            without losing the character of age.
-          </p>
-          <div class="mt-auto">
-            <a
-              class="text-xs font-bold uppercase tracking-wider flex items-center gap-2 group-hover:text-[#11B2E8]"
-              href="#"
-              >Learn More
-              <span class="material-symbols-outlined text-sm"
-                >arrow_forward</span
-              ></a
-            >
-          </div>
-        </div>
-        <!-- Card 3 -->
-        <div
-          class="group bg-[#F8F6F1] p-8 border-l-0 hover:border-l-[6px] hover:border-[#11B2E8] transition-all duration-300 flex flex-col h-full min-h-[320px]"
-        >
-          <span
-            class="material-symbols-outlined text-4xl text-tertiary mb-6"
-            data-icon="countertops"
-            >countertops</span
-          >
-          <h3 class="text-2xl font-headline italic mb-4">Kitchens</h3>
-          <p class="text-sm text-on-surface-variant leading-relaxed mb-8">
-            Refinishing cabinetry and built-ins using food-safe, durable
-            finishes that rival high-end furniture.
-          </p>
-          <div class="mt-auto">
-            <a
-              class="text-xs font-bold uppercase tracking-wider flex items-center gap-2 group-hover:text-[#11B2E8]"
-              href="#"
-              >Learn More
-              <span class="material-symbols-outlined text-sm"
-                >arrow_forward</span
-              ></a
-            >
-          </div>
-        </div>
-        <!-- Card 4 -->
-        <div
-          class="group bg-[#F8F6F1] p-8 border-l-0 hover:border-l-[6px] hover:border-[#11B2E8] transition-all duration-300 flex flex-col h-full min-h-[320px]"
-        >
-          <span
-            class="material-symbols-outlined text-4xl text-tertiary mb-6"
-            data-icon="architecture"
-            >architecture</span
-          >
-          <h3 class="text-2xl font-headline italic mb-4">
-            Architectural Woodwork
-          </h3>
-          <p class="text-sm text-on-surface-variant leading-relaxed mb-8">
-            Mantels, wainscoting, and crown molding preserved with surgical
-            precision and artistic care.
-          </p>
-          <div class="mt-auto">
-            <a
-              class="text-xs font-bold uppercase tracking-wider flex items-center gap-2 group-hover:text-[#11B2E8]"
-              href="#"
-              >Learn More
-              <span class="material-symbols-outlined text-sm"
-                >arrow_forward</span
-              ></a
-            >
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- Perk Up & Protect Section -->
-    <section class="bg-surface-container py-24 px-8">
-      <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
-        <div class="order-2 lg:order-1">
-          <img
-            class="w-full aspect-square object-cover shadow-xl border-4 border-white"
-            data-alt="ultra close-up of polished cherry wood grain with warm golden highlights and deep amber shadows, smooth reflective surface"
-            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBOhsIoRYel0hTV-oO2xixiPEObADuJ3CB7YO1QjbqC7sm5f6XSVd1EWCbmH3fHqv6MWBccvtV4vyMIjwJsV2grJci6yrss4vihrwykobYkb2Vzm1iwWQwQiKlI9xDccKYNDb3Rzqbm1b-5Yiwk4TIi4t-9wWa6h3R8mFx3ymq7A5aoknX6HRg2SDTToJefVeOIfiUR5y7HDDrUSiYOCuyoDqcHxoOohwis_2NgyCMeeRkBSJwtrVke4gxoB6qSFx21IEEZTqXJbAk"
-          />
-        </div>
-        <div class="order-1 lg:order-2">
-          <div
-            class="inline-flex items-center gap-2 px-3 py-1 bg-[#11B2E8] text-white text-[10px] font-bold tracking-widest uppercase mb-6"
-          >
-            <span
-              class="material-symbols-outlined text-sm"
-              style="font-variation-settings: &quot;FILL&quot; 1"
-              >bolt</span
-            >
-            NEW
-          </div>
-          <h2 class="text-5xl font-headline mb-8">
-            A faster, gentler way to
-            <span class="italic text-[#A65D37]">restore</span>
-          </h2>
-          <p class="text-lg leading-relaxed text-on-surface mb-8">
-            Our proprietary "Perk Up &amp; Protect" method is designed for
-            woodwork that doesn't need a total strip-down. We deep clean, touch
-            up color loss, and apply a fresh structural protective layer. It’s
-            less mess, less time, and stunning results.
-          </p>
-          <ul class="space-y-4 mb-10">
-            <li class="flex items-start gap-3">
-              <span class="material-symbols-outlined text-[#11B2E8]"
-                >check_circle</span
+
+          <div class="w-px h-8 bg-[#2A2421]/08"></div>
+
+          <!-- Item 2 -->
+          <div class="flex items-center gap-2.5">
+            <div class="w-6 h-6 flex items-center justify-center flex-shrink-0">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path
+                  d="M8 1l1.854 4.146L14 5.618l-3 2.764.708 4.118L8 10.25 4.292 12.5 5 8.382 2 5.618l4.146-.472L8 1z"
+                  stroke="#11B2E8"
+                  stroke-width="1.2"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </div>
+            <div>
+              <p
+                class="font-sans text-[#2A2421]"
+                style="
+                  font-size: 0.7rem;
+                  font-weight: 600;
+                  text-transform: uppercase;
+                  letter-spacing: 0.1em;
+                  line-height: 1.2;
+                "
               >
-              <span>Complete in 1-2 days instead of weeks</span>
-            </li>
-            <li class="flex items-start gap-3">
-              <span class="material-symbols-outlined text-[#11B2E8]"
-                >check_circle</span
+                STL Magazine
+              </p>
+              <p
+                class="font-sans text-[#6B5E55]"
+                style="
+                  font-size: 0.65rem;
+                  text-transform: uppercase;
+                  letter-spacing: 0.08em;
+                "
               >
-              <span>No heavy sanding or harsh chemical odors</span>
-            </li>
-            <li class="flex items-start gap-3">
-              <span class="material-symbols-outlined text-[#11B2E8]"
-                >check_circle</span
+                &ldquo;Perfect Finish&rdquo;
+              </p>
+            </div>
+          </div>
+
+          <div class="w-px h-8 bg-[#2A2421]/08"></div>
+
+          <!-- Item 3 -->
+          <div class="flex items-center gap-2.5">
+            <div class="w-6 h-6 flex items-center justify-center flex-shrink-0">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path
+                  d="M13 3a6 6 0 11-7.5 9.5M10 8a2 2 0 11-4 0 2 2 0 014 0z"
+                  stroke="#11B2E8"
+                  stroke-width="1.2"
+                  stroke-linecap="round"
+                />
+              </svg>
+            </div>
+            <div>
+              <p
+                class="font-sans text-[#2A2421]"
+                style="
+                  font-size: 0.7rem;
+                  font-weight: 600;
+                  text-transform: uppercase;
+                  letter-spacing: 0.1em;
+                  line-height: 1.2;
+                "
               >
-              <span>Professional-grade protection and shine</span>
-            </li>
-          </ul>
-          <button
-            class="bg-[#2A2421] text-white px-8 py-4 font-bold hover:bg-stone-800 transition-all"
-          >
-            Learn About Perk Up &amp; Protect
-          </button>
+                Sue Answers
+              </p>
+              <p
+                class="font-sans text-[#6B5E55]"
+                style="
+                  font-size: 0.65rem;
+                  text-transform: uppercase;
+                  letter-spacing: 0.08em;
+                "
+              >
+                Every Call Personally
+              </p>
+            </div>
+          </div>
+
+          <div class="w-px h-8 bg-[#2A2421]/08"></div>
+
+          <!-- Item 4 -->
+          <div class="flex items-center gap-2.5">
+            <div class="w-6 h-6 flex items-center justify-center flex-shrink-0">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path
+                  d="M8 2L2 6v8h12V6L8 2z"
+                  stroke="#11B2E8"
+                  stroke-width="1.2"
+                  stroke-linejoin="round"
+                />
+                <rect
+                  x="6"
+                  y="10"
+                  width="4"
+                  height="4"
+                  rx="0.5"
+                  stroke="#11B2E8"
+                  stroke-width="1"
+                />
+              </svg>
+            </div>
+            <div>
+              <p
+                class="font-sans text-[#2A2421]"
+                style="
+                  font-size: 0.7rem;
+                  font-weight: 600;
+                  text-transform: uppercase;
+                  letter-spacing: 0.1em;
+                  line-height: 1.2;
+                "
+              >
+                Historic Home
+              </p>
+              <p
+                class="font-sans text-[#6B5E55]"
+                style="
+                  font-size: 0.65rem;
+                  text-transform: uppercase;
+                  letter-spacing: 0.08em;
+                "
+              >
+                Specialist
+              </p>
+            </div>
+          </div>
+
+          <div class="w-px h-8 bg-[#2A2421]/08"></div>
+
+          <!-- Item 5 -->
+          <div class="flex items-center gap-2.5">
+            <div class="w-6 h-6 flex items-center justify-center flex-shrink-0">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <rect
+                  x="2"
+                  y="4"
+                  width="12"
+                  height="10"
+                  rx="1"
+                  stroke="#11B2E8"
+                  stroke-width="1.2"
+                />
+                <path
+                  d="M5 4V3M11 4V3"
+                  stroke="#11B2E8"
+                  stroke-width="1.2"
+                  stroke-linecap="round"
+                />
+                <path d="M2 8h12" stroke="#11B2E8" stroke-width="1" />
+              </svg>
+            </div>
+            <div>
+              <p
+                class="font-sans text-[#2A2421]"
+                style="
+                  font-size: 0.7rem;
+                  font-weight: 600;
+                  text-transform: uppercase;
+                  letter-spacing: 0.1em;
+                  line-height: 1.2;
+                "
+              >
+                Est. 1989
+              </p>
+              <p
+                class="font-sans text-[#6B5E55]"
+                style="
+                  font-size: 0.65rem;
+                  text-transform: uppercase;
+                  letter-spacing: 0.08em;
+                "
+              >
+                St. Louis
+              </p>
+            </div>
+          </div>
         </div>
-      </div>
-    </section>
-    <!-- Process Section -->
-    <section class="py-32 px-8 max-w-7xl mx-auto">
-      <div class="text-center mb-20">
-        <h2 class="text-4xl font-headline italic">How We Work</h2>
-      </div>
-      <div class="relative">
-        <div
-          class="hidden lg:block absolute top-10 left-0 w-full h-[2px] bg-outline-variant/30 -z-10"
-        ></div>
-        <div class="grid lg:grid-cols-4 gap-12">
-          <div class="text-center flex flex-col items-center">
+
+        <!-- Mobile: horizontal scroll -->
+        <div class="md:hidden flex gap-6 overflow-x-auto no-scrollbar pb-1">
+          <div class="flex items-center gap-2 flex-shrink-0">
             <div
-              class="w-20 h-20 bg-surface-container-highest rounded-full flex items-center justify-center text-2xl font-headline mb-6 border-2 border-white shadow-sm"
+              class="w-5 h-5 rounded-full bg-green-100 flex items-center justify-center"
+            >
+              <svg width="10" height="10" viewBox="0 0 12 12" fill="none">
+                <path
+                  d="M2 6l3 3 5-5"
+                  stroke="#15803d"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </div>
+            <span
+              class="font-sans text-[#2A2421] whitespace-nowrap"
+              style="
+                font-size: 0.7rem;
+                font-weight: 600;
+                text-transform: uppercase;
+                letter-spacing: 0.08em;
+              "
+              >EPA Certified</span
+            >
+          </div>
+          <div class="flex items-center gap-2 flex-shrink-0">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+              <path
+                d="M8 1l1.854 4.146L14 5.618l-3 2.764.708 4.118L8 10.25 4.292 12.5 5 8.382 2 5.618l4.146-.472L8 1z"
+                stroke="#11B2E8"
+                stroke-width="1.2"
+                stroke-linejoin="round"
+              />
+            </svg>
+            <span
+              class="font-sans text-[#2A2421] whitespace-nowrap"
+              style="
+                font-size: 0.7rem;
+                font-weight: 600;
+                text-transform: uppercase;
+                letter-spacing: 0.08em;
+              "
+              >STL Magazine</span
+            >
+          </div>
+          <div class="flex items-center gap-2 flex-shrink-0">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+              <path
+                d="M13 3a6 6 0 11-7.5 9.5M10 8a2 2 0 11-4 0 2 2 0 014 0z"
+                stroke="#11B2E8"
+                stroke-width="1.2"
+                stroke-linecap="round"
+              />
+            </svg>
+            <span
+              class="font-sans text-[#2A2421] whitespace-nowrap"
+              style="
+                font-size: 0.7rem;
+                font-weight: 600;
+                text-transform: uppercase;
+                letter-spacing: 0.08em;
+              "
+              >Sue Answers</span
+            >
+          </div>
+          <div class="flex items-center gap-2 flex-shrink-0">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+              <path
+                d="M8 2L2 6v8h12V6L8 2z"
+                stroke="#11B2E8"
+                stroke-width="1.2"
+                stroke-linejoin="round"
+              />
+            </svg>
+            <span
+              class="font-sans text-[#2A2421] whitespace-nowrap"
+              style="
+                font-size: 0.7rem;
+                font-weight: 600;
+                text-transform: uppercase;
+                letter-spacing: 0.08em;
+              "
+              >Historic Home Specialist</span
+            >
+          </div>
+          <div class="flex items-center gap-2 flex-shrink-0">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+              <rect
+                x="2"
+                y="4"
+                width="12"
+                height="10"
+                rx="1"
+                stroke="#11B2E8"
+                stroke-width="1.2"
+              />
+              <path
+                d="M5 4V3M11 4V3"
+                stroke="#11B2E8"
+                stroke-width="1.2"
+                stroke-linecap="round"
+              />
+            </svg>
+            <span
+              class="font-sans text-[#2A2421] whitespace-nowrap"
+              style="
+                font-size: 0.7rem;
+                font-weight: 600;
+                text-transform: uppercase;
+                letter-spacing: 0.08em;
+              "
+              >Est. 1989</span
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================================================
+       5. POSITIONING / EMPATHY SECTION
+  ============================================================ -->
+    <section class="bg-[#EBE6DE] py-20 lg:py-28">
+      <div class="max-w-3xl mx-auto px-6 text-center">
+        <h2 class="section-h2 font-display mb-8 text-[#2A2421]">
+          The result your woodwork <em style="color: #a65d37">deserves.</em>
+        </h2>
+        <div class="space-y-5 text-left">
+          <p
+            class="font-sans text-[#6B5E55]"
+            style="font-size: 1rem; line-height: 1.7"
+          >
+            Your front door is peeling. Your staircase doesn&rsquo;t match your
+            refinished floors. Your kitchen cabinets look tired compared to
+            everything else you&rsquo;ve done to the house.
+          </p>
+          <p
+            class="font-sans text-[#6B5E55]"
+            style="font-size: 1rem; line-height: 1.7"
+          >
+            These aren&rsquo;t cosmetic annoyances. Original woodwork in a
+            St.&nbsp;Louis historic home is irreplaceable. The old-growth wood
+            in your 1905 newel post doesn&rsquo;t exist in lumber yards anymore.
+            The profiles in your pocket doors were hand-milled for your house
+            specifically.
+          </p>
+          <p
+            class="font-sans text-[#6B5E55]"
+            style="font-size: 1rem; line-height: 1.7"
+          >
+            Sue Wheeler has been restoring this wood for 36 years. She strips
+            every piece by hand &mdash; never dips. The results hold for
+            decades.
+          </p>
+        </div>
+        <div class="mt-8">
+          <a
+            href="/faq/"
+            class="font-sans font-medium"
+            style="
+              font-size: 0.9rem;
+              color: #a65d37;
+              text-decoration: underline;
+              text-underline-offset: 3px;
+            "
+          >
+            Why hand-stripping matters &rarr;
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+       6. SERVICES GRID
+  ============================================================ -->
+    <section class="bg-[#E6E0D8] py-20 lg:py-28">
+      <div class="max-w-7xl mx-auto px-6">
+        <!-- Section header -->
+        <div class="mb-12 text-center">
+          <span class="pill-badge pill-badge-blue mb-4 inline-block"
+            >What We Restore</span
+          >
+          <h2 class="section-h2 font-display text-[#2A2421] max-w-2xl mx-auto">
+            Doors, staircases, kitchens, and the woodwork that defines your
+            home.
+          </h2>
+        </div>
+
+        <!-- 5 cards: 3-col + 2-col row -->
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Card 1: Doors -->
+          <div
+            class="service-card bg-[#F8F6F1] p-8"
+            style="
+              box-shadow: 0 10px 30px -10px rgba(42, 36, 33, 0.08);
+              border-radius: 2px;
+            "
+          >
+            <div class="flex items-start justify-between mb-4">
+              <h3
+                class="font-display italic text-[#2A2421]"
+                style="font-size: 1.5rem; font-weight: 400"
+              >
+                Doors
+              </h3>
+              <span
+                class="font-sans text-[#6B5E55]"
+                style="font-size: 0.75rem; font-weight: 600"
+                >01</span
+              >
+            </div>
+            <p
+              class="font-sans text-[#6B5E55] mb-6"
+              style="font-size: 0.95rem; line-height: 1.65"
+            >
+              Your front door is the first impression. Interior and pocket doors
+              define the flow of a historic home. We refinish every type &mdash;
+              board-up to shop, not done in place.
+            </p>
+            <a
+              href="/door-refinishing/"
+              class="font-sans text-[#11B2E8] hover:text-[#0e96c4]"
+              style="font-size: 0.85rem; font-weight: 500"
+              >Learn more &rarr;</a
+            >
+          </div>
+
+          <!-- Card 2: Staircases -->
+          <div
+            class="service-card bg-[#F8F6F1] p-8"
+            style="
+              box-shadow: 0 10px 30px -10px rgba(42, 36, 33, 0.08);
+              border-radius: 2px;
+            "
+          >
+            <div class="flex items-start justify-between mb-4">
+              <h3
+                class="font-display italic text-[#2A2421]"
+                style="font-size: 1.5rem; font-weight: 400"
+              >
+                Staircases
+              </h3>
+              <span
+                class="font-sans text-[#6B5E55]"
+                style="font-size: 0.75rem; font-weight: 600"
+                >02</span
+              >
+            </div>
+            <p
+              class="font-sans text-[#6B5E55] mb-6"
+              style="font-size: 0.95rem; line-height: 1.65"
+            >
+              Treads, risers, spindles, newel posts, railings &mdash; the full
+              scope. The most visible architectural element in a home, done
+              correctly.
+            </p>
+            <a
+              href="/staircase-refinishing/"
+              class="font-sans text-[#11B2E8] hover:text-[#0e96c4]"
+              style="font-size: 0.85rem; font-weight: 500"
+              >Learn more &rarr;</a
+            >
+          </div>
+
+          <!-- Card 3: Kitchen Cabinets -->
+          <div
+            class="service-card bg-[#F8F6F1] p-8"
+            style="
+              box-shadow: 0 10px 30px -10px rgba(42, 36, 33, 0.08);
+              border-radius: 2px;
+            "
+          >
+            <div class="flex items-start justify-between mb-4">
+              <h3
+                class="font-display italic text-[#2A2421]"
+                style="font-size: 1.5rem; font-weight: 400"
+              >
+                Kitchen Cabinets
+              </h3>
+              <span
+                class="font-sans text-[#6B5E55]"
+                style="font-size: 0.75rem; font-weight: 600"
+                >03</span
+              >
+            </div>
+            <p
+              class="font-sans text-[#6B5E55] mb-6"
+              style="font-size: 0.95rem; line-height: 1.65"
+            >
+              Painted, stained, or color-change. Hand-stripped back to bare
+              wood. Original solid-wood cabinets refinished for a fraction of
+              the cost of replacement.
+            </p>
+            <a
+              href="/kitchen-cabinet-refinishing/"
+              class="font-sans text-[#11B2E8] hover:text-[#0e96c4]"
+              style="font-size: 0.85rem; font-weight: 500"
+              >Learn more &rarr;</a
+            >
+          </div>
+
+          <!-- Row 2: centered 2 cards -->
+          <div
+            class="md:col-span-2 lg:col-span-3 grid md:grid-cols-2 gap-6 lg:px-[calc(50%_-_50%)] lg:mx-auto"
+            style="max-width: calc(66.666% + 1.5rem)"
+          >
+            <!-- Card 4: Architectural Woodwork -->
+            <div
+              class="service-card bg-[#F8F6F1] p-8"
+              style="
+                box-shadow: 0 10px 30px -10px rgba(42, 36, 33, 0.08);
+                border-radius: 2px;
+              "
+            >
+              <div class="flex items-start justify-between mb-4">
+                <h3
+                  class="font-display italic text-[#2A2421]"
+                  style="font-size: 1.5rem; font-weight: 400"
+                >
+                  Architectural Woodwork
+                </h3>
+                <span
+                  class="font-sans text-[#6B5E55]"
+                  style="font-size: 0.75rem; font-weight: 600"
+                  >04</span
+                >
+              </div>
+              <p
+                class="font-sans text-[#6B5E55] mb-6"
+                style="font-size: 0.95rem; line-height: 1.65"
+              >
+                Wainscoting, crown molding, mantels, built-in hutches, chair
+                rail, window trim. The millwork that makes a room a room.
+              </p>
+              <a
+                href="/built-ins-and-millwork-refinishing/"
+                class="font-sans text-[#11B2E8] hover:text-[#0e96c4]"
+                style="font-size: 0.85rem; font-weight: 500"
+                >Learn more &rarr;</a
+              >
+            </div>
+
+            <!-- Card 5: Perk Up & Protect -->
+            <div
+              class="service-card bg-[#F8F6F1] p-8"
+              style="
+                box-shadow: 0 10px 30px -10px rgba(42, 36, 33, 0.08);
+                border-radius: 2px;
+              "
+            >
+              <div class="flex items-start justify-between mb-4">
+                <div>
+                  <h3
+                    class="font-display italic text-[#2A2421]"
+                    style="font-size: 1.5rem; font-weight: 400"
+                  >
+                    Perk Up &amp; Protect
+                  </h3>
+                  <span
+                    class="font-sans text-[#11B2E8] bg-[#11B2E8]/10 px-2 py-0.5 mt-1 inline-block"
+                    style="
+                      font-size: 0.65rem;
+                      font-weight: 600;
+                      text-transform: uppercase;
+                      letter-spacing: 0.1em;
+                    "
+                    >Maintenance service</span
+                  >
+                </div>
+                <span
+                  class="font-sans text-[#6B5E55]"
+                  style="font-size: 0.75rem; font-weight: 600"
+                  >05</span
+                >
+              </div>
+              <p
+                class="font-sans text-[#6B5E55] mb-6"
+                style="font-size: 0.95rem; line-height: 1.65"
+              >
+                Not every surface needs a full strip. For woodwork in sound
+                condition but looking dull, PUP is a maintenance coat that
+                restores the finish without the full project timeline.
+              </p>
+              <a
+                href="/perk-up-and-protect/"
+                class="font-sans text-[#11B2E8] hover:text-[#0e96c4]"
+                style="font-size: 0.85rem; font-weight: 500"
+                >Learn more &rarr;</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+       7. PROCESS STEPS
+  ============================================================ -->
+    <section class="bg-[#F8F6F1] py-20 lg:py-28">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-14">
+          <h2 class="section-h2 font-display text-[#2A2421]">How it works.</h2>
+        </div>
+
+        <!-- Desktop: 4 columns with connector line -->
+        <div class="hidden lg:grid lg:grid-cols-4 gap-8 relative">
+          <!-- Connector line -->
+          <div
+            class="absolute"
+            style="
+              top: 20px;
+              left: calc(12.5% + 20px);
+              right: calc(12.5% + 20px);
+              height: 2px;
+              background: rgba(17, 178, 232, 0.2);
+              z-index: 0;
+            "
+          ></div>
+
+          <!-- Step 1 -->
+          <div class="flex flex-col items-center text-center relative z-10">
+            <div
+              class="w-10 h-10 rounded-full bg-[#11B2E8] flex items-center justify-center text-white font-sans font-bold mb-5 flex-shrink-0"
+              style="font-size: 1rem"
             >
               1
             </div>
-            <h3 class="text-xl font-headline mb-3 italic">
-              You call, Sue answers
+            <h3
+              class="font-display italic text-[#2A2421] mb-3"
+              style="font-size: 1.15rem"
+            >
+              You call, Sue answers.
             </h3>
-            <p class="text-sm text-on-surface-variant leading-relaxed">
-              A detailed assessment of your wood's condition and history.
+            <p
+              class="font-sans text-[#6B5E55]"
+              style="font-size: 0.9rem; line-height: 1.6"
+            >
+              No scheduling system. No call center. Sue asks the right questions
+              and schedules an in-person estimate.
             </p>
           </div>
-          <div class="text-center flex flex-col items-center">
+
+          <!-- Step 2 -->
+          <div class="flex flex-col items-center text-center relative z-10">
             <div
-              class="w-20 h-20 bg-surface-container-highest rounded-full flex items-center justify-center text-2xl font-headline mb-6 border-2 border-white shadow-sm"
+              class="w-10 h-10 rounded-full bg-[#11B2E8] flex items-center justify-center text-white font-sans font-bold mb-5 flex-shrink-0"
+              style="font-size: 1rem"
             >
               2
             </div>
-            <h3 class="text-xl font-headline mb-3 italic">
-              Free in-home estimate
+            <h3
+              class="font-display italic text-[#2A2421] mb-3"
+              style="font-size: 1.15rem"
+            >
+              Free in-home estimate.
             </h3>
-            <p class="text-sm text-on-surface-variant leading-relaxed">
-              Meticulous masking and protection of your home's surrounding area.
+            <p
+              class="font-sans text-[#6B5E55]"
+              style="font-size: 0.9rem; line-height: 1.6"
+            >
+              Sue assesses the wood, determines the right approach &mdash; Strip
+              &amp; Refinish or Perk Up &amp; Protect &mdash; and gives you a
+              number. No surprises.
             </p>
           </div>
-          <div class="text-center flex flex-col items-center">
+
+          <!-- Step 3 -->
+          <div class="flex flex-col items-center text-center relative z-10">
             <div
-              class="w-20 h-20 bg-surface-container-highest rounded-full flex items-center justify-center text-2xl font-headline mb-6 border-2 border-white shadow-sm"
+              class="w-10 h-10 rounded-full bg-[#11B2E8] flex items-center justify-center text-white font-sans font-bold mb-5 flex-shrink-0"
+              style="font-size: 1rem"
             >
               3
             </div>
-            <h3 class="text-xl font-headline mb-3 italic">
-              Sue determines the right solution
+            <h3
+              class="font-display italic text-[#2A2421] mb-3"
+              style="font-size: 1.15rem"
+            >
+              The work gets done.
             </h3>
-            <p class="text-sm text-on-surface-variant leading-relaxed">
-              Hand-stripping, repair, and staining by master finishers.
+            <p
+              class="font-sans text-[#6B5E55]"
+              style="font-size: 0.9rem; line-height: 1.6"
+            >
+              Sue&rsquo;s process is documented and predictable. You know the
+              timeline before work starts.
             </p>
           </div>
-          <div class="text-center flex flex-col items-center">
+
+          <!-- Step 4 -->
+          <div class="flex flex-col items-center text-center relative z-10">
             <div
-              class="w-20 h-20 bg-surface-container-highest rounded-full flex items-center justify-center text-2xl font-headline mb-6 border-2 border-white shadow-sm"
+              class="w-10 h-10 rounded-full bg-[#11B2E8] flex items-center justify-center text-white font-sans font-bold mb-5 flex-shrink-0"
+              style="font-size: 1rem"
             >
               4
             </div>
-            <h3 class="text-xl font-headline mb-3 italic">
-              You get the result
+            <h3
+              class="font-display italic text-[#2A2421] mb-3"
+              style="font-size: 1.15rem"
+            >
+              Your woodwork looks right again.
             </h3>
-            <p class="text-sm text-on-surface-variant leading-relaxed">
-              Application of premium sealants for long-lasting durability.
+            <p
+              class="font-sans text-[#6B5E55]"
+              style="font-size: 0.9rem; line-height: 1.6"
+            >
+              The result is what you called about. Finished work that holds for
+              decades.
             </p>
+          </div>
+        </div>
+
+        <!-- Mobile: vertical stack with left border line -->
+        <div class="lg:hidden space-y-0">
+          <!-- Step 1 -->
+          <div class="flex gap-5 pb-8 relative">
+            <div class="flex flex-col items-center flex-shrink-0">
+              <div
+                class="w-10 h-10 rounded-full bg-[#11B2E8] flex items-center justify-center text-white font-sans font-bold z-10"
+                style="font-size: 1rem"
+              >
+                1
+              </div>
+              <div class="w-0.5 flex-1 bg-[#11B2E8]/25 mt-1"></div>
+            </div>
+            <div class="pt-1.5">
+              <h3
+                class="font-display italic text-[#2A2421] mb-2"
+                style="font-size: 1.1rem"
+              >
+                You call, Sue answers.
+              </h3>
+              <p
+                class="font-sans text-[#6B5E55]"
+                style="font-size: 0.9rem; line-height: 1.6"
+              >
+                No scheduling system. No call center. Sue asks the right
+                questions and schedules an in-person estimate.
+              </p>
+            </div>
+          </div>
+          <!-- Step 2 -->
+          <div class="flex gap-5 pb-8 relative">
+            <div class="flex flex-col items-center flex-shrink-0">
+              <div
+                class="w-10 h-10 rounded-full bg-[#11B2E8] flex items-center justify-center text-white font-sans font-bold z-10"
+                style="font-size: 1rem"
+              >
+                2
+              </div>
+              <div class="w-0.5 flex-1 bg-[#11B2E8]/25 mt-1"></div>
+            </div>
+            <div class="pt-1.5">
+              <h3
+                class="font-display italic text-[#2A2421] mb-2"
+                style="font-size: 1.1rem"
+              >
+                Free in-home estimate.
+              </h3>
+              <p
+                class="font-sans text-[#6B5E55]"
+                style="font-size: 0.9rem; line-height: 1.6"
+              >
+                Sue assesses the wood, determines the right approach, and gives
+                you a number. No surprises.
+              </p>
+            </div>
+          </div>
+          <!-- Step 3 -->
+          <div class="flex gap-5 pb-8 relative">
+            <div class="flex flex-col items-center flex-shrink-0">
+              <div
+                class="w-10 h-10 rounded-full bg-[#11B2E8] flex items-center justify-center text-white font-sans font-bold z-10"
+                style="font-size: 1rem"
+              >
+                3
+              </div>
+              <div class="w-0.5 flex-1 bg-[#11B2E8]/25 mt-1"></div>
+            </div>
+            <div class="pt-1.5">
+              <h3
+                class="font-display italic text-[#2A2421] mb-2"
+                style="font-size: 1.1rem"
+              >
+                The work gets done.
+              </h3>
+              <p
+                class="font-sans text-[#6B5E55]"
+                style="font-size: 0.9rem; line-height: 1.6"
+              >
+                Sue&rsquo;s process is documented and predictable. You know the
+                timeline before work starts.
+              </p>
+            </div>
+          </div>
+          <!-- Step 4 -->
+          <div class="flex gap-5">
+            <div class="flex flex-col items-center flex-shrink-0">
+              <div
+                class="w-10 h-10 rounded-full bg-[#11B2E8] flex items-center justify-center text-white font-sans font-bold z-10"
+                style="font-size: 1rem"
+              >
+                4
+              </div>
+            </div>
+            <div class="pt-1.5">
+              <h3
+                class="font-display italic text-[#2A2421] mb-2"
+                style="font-size: 1.1rem"
+              >
+                Your woodwork looks right again.
+              </h3>
+              <p
+                class="font-sans text-[#6B5E55]"
+                style="font-size: 0.9rem; line-height: 1.6"
+              >
+                The result is what you called about. Finished work that holds
+                for decades.
+              </p>
+            </div>
           </div>
         </div>
       </div>
     </section>
-    <!-- Testimonials Section -->
-    <section class="py-32 bg-[#2A2421] text-white px-8 overflow-hidden">
-      <div class="max-w-7xl mx-auto">
-        <div class="mb-20 text-center">
-          <h2
-            class="text-sm font-bold tracking-[0.4em] text-[#11B2E8] uppercase mb-4"
-          >
-            Client Stories
-          </h2>
-          <p class="text-4xl font-headline italic">
-            Trusted by St. Louis Homeowners
-          </p>
-        </div>
-        <div class="grid lg:grid-cols-3 gap-8">
-          <div class="bg-[#F8F6F1] p-10 text-on-surface lg:mt-0">
-            <span class="material-symbols-outlined text-[#11B2E8] text-4xl mb-6"
-              >format_quote</span
-            >
-            <p class="text-lg font-headline italic leading-relaxed mb-8">
-              "Sue Wheeler is the only person I trust with our 19th-century
-              mahogany staircase. Her attention to historical detail is
-              unmatched in this region."
-            </p>
-            <div class="flex items-center gap-4">
-              <div class="w-12 h-12 bg-outline-variant/20 rounded-full"></div>
-              <div>
-                <p class="font-bold text-sm">STL Magazine</p>
-                <p class="text-xs uppercase tracking-widest text-tertiary">
-                  Editorial Review
-                </p>
-              </div>
+
+    <!-- ============================================================
+       8. EPA CERTIFICATION BAND
+  ============================================================ -->
+    <section class="bg-[#42413C] py-20 lg:py-28">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+          <!-- Left: copy -->
+          <div>
+            <h2 class="section-h2 font-display text-white mb-6">
+              EPA Certified.<br />Every pre-1978 project.
+            </h2>
+            <div class="space-y-4 mb-8">
+              <p
+                class="font-sans text-[#D4C9B8]"
+                style="font-size: 1rem; line-height: 1.7"
+              >
+                89.8% of homes in St.&nbsp;Louis City were built before 1978.
+                That means lead paint &mdash; in the doors, the trim, the
+                cabinets, the staircase railings. Refinishing those surfaces
+                without EPA certification creates lead dust in the spaces your
+                family lives in.
+              </p>
+              <p
+                class="font-sans text-[#D4C9B8]"
+                style="font-size: 1rem; line-height: 1.7"
+              >
+                Sue Wheeler is an EPA Certified Lead Renovator. Every project on
+                a pre-1978 home is handled with full lead-safe protocols,
+                documented and compliant. You receive a completion record for
+                your property file.
+              </p>
             </div>
-          </div>
-          <div class="bg-[#F8F6F1] p-10 text-on-surface lg:mt-12">
-            <span class="material-symbols-outlined text-[#11B2E8] text-4xl mb-6"
-              >format_quote</span
+            <a
+              href="/faq/"
+              class="font-sans font-medium"
+              style="
+                font-size: 0.9rem;
+                color: #11b2e8;
+                text-decoration: underline;
+                text-underline-offset: 3px;
+              "
             >
-            <p class="text-lg font-headline italic leading-relaxed mb-8">
-              "Our front door was neglected for decades. Sue didn't just fix
-              it—she brought it back to life. It's now the centerpiece of the
-              whole block."
-            </p>
-            <div class="flex items-center gap-4">
-              <div class="w-12 h-12 bg-outline-variant/20 rounded-full"></div>
-              <div>
-                <p class="font-bold text-sm">Dr. James Miller</p>
-                <p class="text-xs uppercase tracking-widest text-tertiary">
-                  Lafayette Square
-                </p>
+              What EPA certification means for your project &rarr;
+            </a>
+          </div>
+
+          <!-- Right: EPA badge -->
+          <div class="flex justify-center lg:justify-end">
+            <div class="epa-badge">
+              <div
+                class="font-display"
+                style="
+                  font-size: 0.75rem;
+                  font-weight: 600;
+                  letter-spacing: 0.2em;
+                  text-transform: uppercase;
+                  opacity: 0.8;
+                  margin-bottom: 0.5rem;
+                "
+              >
+                Certified
               </div>
-            </div>
-          </div>
-          <div class="bg-[#F8F6F1] p-10 text-on-surface lg:mt-6">
-            <span class="material-symbols-outlined text-[#11B2E8] text-4xl mb-6"
-              >format_quote</span
-            >
-            <p class="text-lg font-headline italic leading-relaxed mb-8">
-              "Professional, clean, and incredible results. The Perk Up &amp;
-              Protect service saved our kitchen cabinets and they look brand
-              new."
-            </p>
-            <div class="flex items-center gap-4">
-              <div class="w-12 h-12 bg-outline-variant/20 rounded-full"></div>
-              <div>
-                <p class="font-bold text-sm">Sarah Thompson</p>
-                <p class="text-xs uppercase tracking-widest text-tertiary">
-                  Central West End
-                </p>
+              <div
+                class="font-display font-bold"
+                style="font-size: 2.25rem; line-height: 1"
+              >
+                EPA
+              </div>
+              <div class="w-12 h-0.5 bg-white/40 my-3"></div>
+              <div
+                class="font-sans"
+                style="
+                  font-size: 0.65rem;
+                  font-weight: 600;
+                  text-transform: uppercase;
+                  letter-spacing: 0.18em;
+                  opacity: 0.85;
+                "
+              >
+                Lead Renovator
+              </div>
+              <div
+                class="font-sans mt-3"
+                style="
+                  font-size: 0.6rem;
+                  text-transform: uppercase;
+                  letter-spacing: 0.12em;
+                  opacity: 0.65;
+                "
+              >
+                RRP Rule Compliant
               </div>
             </div>
           </div>
         </div>
       </div>
     </section>
-    <!-- Neighbourhoods Section -->
-    <section class="py-32 px-8 max-w-7xl mx-auto">
-      <div class="grid lg:grid-cols-2 gap-16 items-end">
-        <div>
-          <h2 class="text-4xl font-headline mb-8">
-            We work where
-            <span class="italic text-[#11B2E8]">history lives</span>
-          </h2>
-          <p class="text-lg text-on-surface-variant max-w-md leading-relaxed">
-            Specializing in the restoration of historic St. Louis homes. We
-            understand the specific woods, architectural styles, and atmospheric
-            conditions of our city's finest neighborhoods.
-          </p>
-        </div>
-        <div
-          class="grid grid-cols-2 gap-y-4 text-2xl font-headline italic text-secondary"
-        >
-          <p>Central West End</p>
-          <p>Lafayette Square</p>
-          <p>Compton Heights</p>
-          <p>Benton Park</p>
-          <p>Clayton</p>
-          <p>University City</p>
-          <p>Maplewood</p>
-          <p>Shaw</p>
-        </div>
-      </div>
-    </section>
-    <!-- Footer -->
-    <footer
-      class="w-full border-t-[4px] border-[#11B2E8] bg-[#F8F6F1] flex flex-col items-center pt-20 pb-12 px-8 w-full text-center"
-    >
-      <div class="max-w-4xl w-full">
-        <span
-          class="inline-block py-1 px-4 border border-[#11B2E8] text-[#11B2E8] text-xs font-bold tracking-widest uppercase mb-6"
-          >Start Your Project</span
-        >
-        <h2 class="text-4xl font-headline text-[#2A2421] mb-4">
-          Ready to restore your woodwork?
+
+    <!-- ============================================================
+       9. TESTIMONIALS
+  ============================================================ -->
+    <section class="bg-[#2A2421] py-20 lg:py-28 overflow-hidden">
+      <div class="max-w-7xl mx-auto px-6">
+        <h2 class="section-h2 font-display text-[#F8F6F1] text-center mb-14">
+          What St.&nbsp;Louis homeowners say.
         </h2>
-        <p class="text-[#6B5E55] mb-10">
-          Contact Sue for a free in-home consultation and detailed estimate.
-        </p>
-        <div class="flex flex-col items-center gap-4 mb-16">
-          <a
-            class="text-5xl font-headline text-[#2A2421] hover:text-[#11B2E8] transition-colors"
-            href="tel:3143676054"
-            >(314) 367-6054</a
+
+        <!-- 3-column grid -->
+        <div class="grid md:grid-cols-3 gap-6 mb-12">
+          <!-- Testimonial 1 -->
+          <div
+            class="bg-[#F8F6F1] p-8 testimonial-left"
+            style="border-radius: 2px"
           >
+            <div
+              class="font-display text-[#11B2E8]"
+              style="
+                font-size: 4rem;
+                line-height: 1;
+                opacity: 0.3;
+                margin-bottom: 0.5rem;
+              "
+            >
+              &ldquo;
+            </div>
+            <p
+              class="font-display italic text-[#2A2421] mb-6"
+              style="font-size: 1.05rem; line-height: 1.65"
+            >
+              We were terrified someone would ruin the original staircase. Sue
+              walked us through every step. The result is better than we could
+              have imagined &mdash; it looks exactly like it did in 1912.
+            </p>
+            <p
+              class="font-sans text-[#6B5E55]"
+              style="
+                font-size: 0.8rem;
+                font-weight: 600;
+                text-transform: uppercase;
+                letter-spacing: 0.08em;
+              "
+            >
+              &mdash; Homeowner, Central West End
+            </p>
+          </div>
+
+          <!-- Testimonial 2 -->
+          <div
+            class="bg-[#F8F6F1] p-8 testimonial-mid"
+            style="border-radius: 2px"
+          >
+            <div
+              class="font-display text-[#11B2E8]"
+              style="
+                font-size: 4rem;
+                line-height: 1;
+                opacity: 0.3;
+                margin-bottom: 0.5rem;
+              "
+            >
+              &ldquo;
+            </div>
+            <p
+              class="font-display italic text-[#2A2421] mb-6"
+              style="font-size: 1.05rem; line-height: 1.65"
+            >
+              We were quoted $40,000 for new cabinets. Sue refinished the
+              originals for a fraction of that and they look brand new. I wish
+              we&rsquo;d called her five years ago.
+            </p>
+            <p
+              class="font-sans text-[#6B5E55]"
+              style="
+                font-size: 0.8rem;
+                font-weight: 600;
+                text-transform: uppercase;
+                letter-spacing: 0.08em;
+              "
+            >
+              &mdash; Homeowner, Benton Park
+            </p>
+          </div>
+
+          <!-- Testimonial 3 -->
+          <div
+            class="bg-[#F8F6F1] p-8 testimonial-right"
+            style="border-radius: 2px"
+          >
+            <div
+              class="font-display text-[#11B2E8]"
+              style="
+                font-size: 4rem;
+                line-height: 1;
+                opacity: 0.3;
+                margin-bottom: 0.5rem;
+              "
+            >
+              &ldquo;
+            </div>
+            <p
+              class="font-display italic text-[#2A2421] mb-6"
+              style="font-size: 1.05rem; line-height: 1.65"
+            >
+              Sue answered the phone herself, came out within two days, and the
+              door was back on its hinges looking incredible inside of a week.
+              That&rsquo;s not how contractors work &mdash; except her.
+            </p>
+            <p
+              class="font-sans text-[#6B5E55]"
+              style="
+                font-size: 0.8rem;
+                font-weight: 600;
+                text-transform: uppercase;
+                letter-spacing: 0.08em;
+              "
+            >
+              &mdash; Homeowner, Lafayette Square
+            </p>
+          </div>
+        </div>
+
+        <div class="text-center">
           <a
-            class="text-base text-[#2A2421] border-b border-[#A65D37] hover:text-[#A65D37] transition-colors"
-            href="mailto:estimate@suewheelerwood.com"
-            >estimate@suewheelerwood.com</a
+            href="/reviews/"
+            class="font-sans font-medium"
+            style="
+              font-size: 0.9rem;
+              color: #11b2e8;
+              text-decoration: underline;
+              text-underline-offset: 3px;
+            "
+          >
+            Read all reviews &rarr;
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+       10. ABOUT SUE
+  ============================================================ -->
+    <section class="bg-[#EBE6DE] py-20 lg:py-28">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="grid lg:grid-cols-5 gap-12 lg:gap-16 items-start">
+          <!-- Left: portrait placeholder -->
+          <div class="lg:col-span-2">
+            <div
+              class="relative"
+              style="
+                aspect-ratio: 3/4;
+                background: #d4c9b8;
+                border-radius: 2px;
+                overflow: hidden;
+              "
+            >
+              <div
+                class="absolute inset-0 flex flex-col items-center justify-center text-center px-6"
+              >
+                <div
+                  class="w-20 h-20 rounded-full bg-[#A65D37]/20 flex items-center justify-center mb-4"
+                >
+                  <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                    <circle
+                      cx="20"
+                      cy="14"
+                      r="7"
+                      stroke="#A65D37"
+                      stroke-width="1.5"
+                    />
+                    <path
+                      d="M6 36c0-7.732 6.268-14 14-14s14 6.268 14 14"
+                      stroke="#A65D37"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                    />
+                  </svg>
+                </div>
+                <p
+                  class="font-sans text-[#6B5E55] text-sm"
+                  style="font-weight: 500"
+                >
+                  Sue Wheeler
+                </p>
+                <p class="font-sans text-[#A65D37] text-xs mt-1">
+                  Portrait photo
+                </p>
+              </div>
+              <div
+                class="absolute bottom-0 left-0 right-0 h-1 bg-[#11B2E8]"
+              ></div>
+            </div>
+          </div>
+
+          <!-- Right: copy -->
+          <div class="lg:col-span-3">
+            <span class="pill-badge mb-5 inline-block"
+              >One Person. One Standard.</span
+            >
+            <h2 class="section-h2 font-display text-[#2A2421] mb-6">
+              One person. One standard.<br /><em style="color: #a65d37"
+                >Every job.</em
+              >
+            </h2>
+            <div class="space-y-4 mb-7">
+              <p
+                class="font-sans text-[#6B5E55]"
+                style="font-size: 1rem; line-height: 1.7"
+              >
+                Sue Wheeler answers every call herself. She does every estimate
+                in person. She has worked on homes in Central West End,
+                Lafayette Square, Compton Heights, Shaw, and dozens of other
+                neighborhoods across St.&nbsp;Louis city and county.
+              </p>
+              <p
+                class="font-sans text-[#2A2421] font-medium"
+                style="font-size: 1rem; line-height: 1.7"
+              >
+                She has never dipped a door.
+              </p>
+              <p
+                class="font-sans text-[#6B5E55]"
+                style="font-size: 1rem; line-height: 1.7"
+              >
+                When you reach out, you&rsquo;re talking to the person who will
+                actually do the work. No project managers. No subcontractors on
+                the other end of the estimate. Just Sue, who will ask the right
+                questions and tell you honestly what your woodwork needs.
+              </p>
+              <p
+                class="font-sans text-[#6B5E55]"
+                style="font-size: 1rem; line-height: 1.7"
+              >
+                St.&nbsp;Louis Magazine called her work &ldquo;A Perfect
+                Finish.&rdquo; We&rsquo;ll let that speak for itself.
+              </p>
+            </div>
+            <a
+              href="/about/"
+              class="font-sans font-medium"
+              style="
+                font-size: 0.9rem;
+                color: #11b2e8;
+                text-decoration: underline;
+                text-underline-offset: 3px;
+              "
+            >
+              More about Sue &rarr;
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+       11. PRESS QUOTE
+  ============================================================ -->
+    <section class="bg-[#F8F6F1] py-16 lg:py-20">
+      <div class="max-w-2xl mx-auto px-6 text-center">
+        <div
+          class="font-display text-[#11B2E8]"
+          style="
+            font-size: 5rem;
+            line-height: 0.6;
+            opacity: 0.25;
+            margin-bottom: 1rem;
+          "
+        >
+          &ldquo;
+        </div>
+        <blockquote
+          class="font-display italic text-[#2A2421] mb-5"
+          style="font-size: 1.35rem; line-height: 1.6"
+        >
+          Sue Wheeler is the secret weapon of St.&nbsp;Louis interior designers,
+          quietly restoring the city&rsquo;s woodwork one piece at a time.
+        </blockquote>
+        <cite
+          class="font-sans text-[#6B5E55] not-italic"
+          style="
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+          "
+        >
+          &mdash; St.&nbsp;Louis Magazine
+        </cite>
+      </div>
+    </section>
+
+    <!-- ============================================================
+       12. SERVICE AREA / NEIGHBORHOODS
+  ============================================================ -->
+    <section class="bg-[#EBE6DE] py-20 lg:py-28">
+      <div class="max-w-4xl mx-auto px-6 text-center">
+        <h2 class="section-h2 font-display text-[#2A2421] mb-4">
+          Serving
+          <em style="color: #a65d37">historic St.&nbsp;Louis</em> &mdash; and
+          the neighborhoods around it.
+        </h2>
+        <p
+          class="font-sans text-[#6B5E55] mb-10 max-w-xl mx-auto"
+          style="font-size: 1rem; line-height: 1.65"
+        >
+          Most of our work is in the city neighborhoods and inner-ring suburbs
+          where the homes are older and the original woodwork is worth
+          preserving.
+        </p>
+
+        <!-- Neighborhood pills -->
+        <div class="flex flex-wrap gap-3 justify-center mb-8">
+          <span class="hood-pill">Central West End</span>
+          <span class="hood-pill">Benton Park</span>
+          <span class="hood-pill">Compton Heights</span>
+          <span class="hood-pill">Shaw</span>
+          <span class="hood-pill">Lafayette Square</span>
+          <span class="hood-pill">Clayton</span>
+          <span class="hood-pill">University City</span>
+          <span class="hood-pill">Maplewood</span>
+          <span class="hood-pill">Brentwood</span>
+        </div>
+
+        <a
+          href="/neighborhoods/central-west-end/"
+          class="font-sans font-medium"
+          style="
+            font-size: 0.9rem;
+            color: #a65d37;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+          "
+        >
+          See neighborhood guides &rarr;
+        </a>
+      </div>
+    </section>
+
+    <!-- ============================================================
+       13. BOTTOM CTA BAND
+  ============================================================ -->
+    <section class="bg-[#11B2E8] py-20 lg:py-24">
+      <div class="max-w-3xl mx-auto px-6 text-center">
+        <h2
+          class="font-display text-white mb-5"
+          style="
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 400;
+            line-height: 1.15;
+          "
+        >
+          Your woodwork won&rsquo;t restore itself.
+        </h2>
+        <p
+          class="font-sans text-white/85 mb-10 max-w-xl mx-auto"
+          style="font-size: 1.05rem; line-height: 1.65"
+        >
+          Every season you wait, the finish degrades a little more and the wood
+          underneath becomes harder to bring back. Free estimate. No obligation.
+          Sue answers every call personally.
+        </p>
+        <div
+          class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8"
+        >
+          <a href="/contact/" class="btn-secondary"
+            >Call Sue for a Free Estimate</a
           >
         </div>
-        <div
-          class="border-t border-[#2A2421]/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4"
+        <a
+          href="tel:3143676054"
+          class="font-display text-white hover:text-white/85"
+          style="
+            font-size: clamp(2rem, 5vw, 3.25rem);
+            font-weight: 400;
+            line-height: 1;
+            display: block;
+            text-decoration: none;
+          "
         >
-          <span class="font-headline italic text-[#2A2421] text-lg"
-            >Sue Wheeler</span
+          (314) 367-6054
+        </a>
+      </div>
+    </section>
+
+    <!-- ============================================================
+       14. FOOTER
+  ============================================================ -->
+    <footer class="bg-[#F8F6F1]" style="border-top: 4px solid #11b2e8">
+      <div class="max-w-7xl mx-auto px-6 pt-16 pb-8">
+        <!-- 4-column grid -->
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+          <!-- Col 1: Business info -->
+          <div>
+            <div class="mb-3">
+              <span
+                class="font-display italic text-[#2A2421]"
+                style="font-size: 1.3rem; display: block; line-height: 1.2"
+                >Sue Wheeler</span
+              >
+              <span
+                class="font-sans text-[#6B5E55] uppercase"
+                style="
+                  font-size: 0.6rem;
+                  letter-spacing: 0.22em;
+                  font-weight: 600;
+                "
+                >Wood Refinishing</span
+              >
+            </div>
+            <address
+              class="font-sans text-[#6B5E55] not-italic space-y-1"
+              style="font-size: 0.875rem; line-height: 1.7"
+            >
+              <p>5260 Washington Place</p>
+              <p>St. Louis, MO 63108</p>
+              <p>
+                <a href="tel:3143676054" class="hover:text-[#11B2E8]"
+                  >(314) 367-6054</a
+                >
+              </p>
+              <p>
+                <a href="https://suewheelerstl.com" class="hover:text-[#11B2E8]"
+                  >suewheelerstl.com</a
+                >
+              </p>
+            </address>
+          </div>
+
+          <!-- Col 2: Services -->
+          <div>
+            <h4
+              class="font-sans text-[#2A2421] uppercase mb-4"
+              style="
+                font-size: 0.7rem;
+                font-weight: 600;
+                letter-spacing: 0.14em;
+              "
+            >
+              Services
+            </h4>
+            <ul class="space-y-2">
+              <li>
+                <a
+                  href="/door-refinishing/"
+                  class="font-sans text-[#6B5E55] hover:text-[#11B2E8]"
+                  style="font-size: 0.875rem"
+                  >Door Refinishing</a
+                >
+              </li>
+              <li>
+                <a
+                  href="/staircase-refinishing/"
+                  class="font-sans text-[#6B5E55] hover:text-[#11B2E8]"
+                  style="font-size: 0.875rem"
+                  >Staircase Refinishing</a
+                >
+              </li>
+              <li>
+                <a
+                  href="/kitchen-cabinet-refinishing/"
+                  class="font-sans text-[#6B5E55] hover:text-[#11B2E8]"
+                  style="font-size: 0.875rem"
+                  >Kitchen Cabinet Refinishing</a
+                >
+              </li>
+              <li>
+                <a
+                  href="/built-ins-and-millwork-refinishing/"
+                  class="font-sans text-[#6B5E55] hover:text-[#11B2E8]"
+                  style="font-size: 0.875rem"
+                  >Architectural Woodwork</a
+                >
+              </li>
+              <li>
+                <a
+                  href="/perk-up-and-protect/"
+                  class="font-sans text-[#6B5E55] hover:text-[#11B2E8]"
+                  style="font-size: 0.875rem"
+                  >Perk Up &amp; Protect</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- Col 3: Resources -->
+          <div>
+            <h4
+              class="font-sans text-[#2A2421] uppercase mb-4"
+              style="
+                font-size: 0.7rem;
+                font-weight: 600;
+                letter-spacing: 0.14em;
+              "
+            >
+              Resources
+            </h4>
+            <ul class="space-y-2">
+              <li>
+                <a
+                  href="/portfolio/"
+                  class="font-sans text-[#6B5E55] hover:text-[#11B2E8]"
+                  style="font-size: 0.875rem"
+                  >Portfolio</a
+                >
+              </li>
+              <li>
+                <a
+                  href="/reviews/"
+                  class="font-sans text-[#6B5E55] hover:text-[#11B2E8]"
+                  style="font-size: 0.875rem"
+                  >Reviews</a
+                >
+              </li>
+              <li>
+                <a
+                  href="/faq/"
+                  class="font-sans text-[#6B5E55] hover:text-[#11B2E8]"
+                  style="font-size: 0.875rem"
+                  >FAQ</a
+                >
+              </li>
+              <li>
+                <a
+                  href="/contact/"
+                  class="font-sans text-[#6B5E55] hover:text-[#11B2E8]"
+                  style="font-size: 0.875rem"
+                  >Contact</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- Col 4: Trust signals -->
+          <div>
+            <h4
+              class="font-sans text-[#2A2421] uppercase mb-4"
+              style="
+                font-size: 0.7rem;
+                font-weight: 600;
+                letter-spacing: 0.14em;
+              "
+            >
+              Trust
+            </h4>
+            <ul class="space-y-3">
+              <li class="flex items-start gap-2">
+                <div
+                  class="w-4 h-4 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 mt-0.5"
+                >
+                  <svg width="8" height="8" viewBox="0 0 12 12" fill="none">
+                    <path
+                      d="M2 6l3 3 5-5"
+                      stroke="#15803d"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </div>
+                <span
+                  class="font-sans text-[#6B5E55]"
+                  style="font-size: 0.85rem"
+                  >EPA Certified Lead Renovator</span
+                >
+              </li>
+              <li class="flex items-start gap-2">
+                <div
+                  class="w-4 h-4 flex items-center justify-center flex-shrink-0 mt-0.5"
+                >
+                  <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
+                    <path
+                      d="M8 1l1.854 4.146L14 5.618l-3 2.764.708 4.118L8 10.25 4.292 12.5 5 8.382 2 5.618l4.146-.472L8 1z"
+                      stroke="#11B2E8"
+                      stroke-width="1.2"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </div>
+                <span
+                  class="font-sans text-[#6B5E55]"
+                  style="font-size: 0.85rem"
+                  >Est. 1989</span
+                >
+              </li>
+              <li class="flex items-start gap-2">
+                <div
+                  class="w-4 h-4 flex items-center justify-center flex-shrink-0 mt-0.5"
+                >
+                  <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
+                    <path
+                      d="M8 1l1.854 4.146L14 5.618l-3 2.764.708 4.118L8 10.25 4.292 12.5 5 8.382 2 5.618l4.146-.472L8 1z"
+                      stroke="#A65D37"
+                      stroke-width="1.2"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </div>
+                <span
+                  class="font-sans text-[#6B5E55]"
+                  style="font-size: 0.85rem"
+                  >St.&nbsp;Louis Magazine &mdash; &ldquo;Perfect
+                  Finish&rdquo;</span
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Footer bar -->
+        <div
+          class="pt-6 flex flex-col sm:flex-row items-center justify-between gap-3"
+          style="border-top: 1px solid rgba(0, 0, 0, 0.08)"
+        >
+          <p
+            class="font-sans text-[#6B5E55] text-center sm:text-left"
+            style="font-size: 0.8rem"
           >
-          <p class="text-[#6B5E55] text-xs uppercase tracking-widest">
-            EPA Certified · BBB Accredited · Since 1989
+            &copy; 2026 Wood Refinishing by Sue Wheeler, LLC
           </p>
-          <p class="text-[#6B5E55] text-[10px] uppercase tracking-tighter">
-            © 2025 Wood Refinishing by Sue Wheeler, LLC.
-          </p>
+          <div class="flex gap-4">
+            <a
+              href="/privacy/"
+              class="font-sans text-[#6B5E55] hover:text-[#11B2E8]"
+              style="font-size: 0.8rem"
+              >Privacy Policy</a
+            >
+            <a
+              href="/sitemap/"
+              class="font-sans text-[#6B5E55] hover:text-[#11B2E8]"
+              style="font-size: 0.8rem"
+              >Sitemap</a
+            >
+          </div>
         </div>
       </div>
     </footer>
+
+    <!-- ============================================================
+       JAVASCRIPT
+  ============================================================ -->
+    <script>
+      // Mobile nav toggle
+      const hamburger = document.getElementById("hamburger");
+      const mobileMenu = document.getElementById("mobile-menu");
+      const overlay = document.getElementById("menu-overlay");
+      const closeBtn = document.getElementById("close-menu");
+
+      function openMenu() {
+        mobileMenu.classList.remove("translate-x-full");
+        overlay.classList.remove("opacity-0", "pointer-events-none");
+      }
+      function closeMenu() {
+        mobileMenu.classList.add("translate-x-full");
+        overlay.classList.add("opacity-0", "pointer-events-none");
+      }
+
+      hamburger?.addEventListener("click", openMenu);
+      closeBtn?.addEventListener("click", closeMenu);
+      overlay?.addEventListener("click", closeMenu);
+
+      // Close on Escape key
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") closeMenu();
+      });
+
+      // Services dropdown (desktop)
+      const servicesBtn = document.getElementById("services-btn");
+      const servicesParent = document.getElementById("services-parent");
+      const dropdown = document.getElementById("services-dropdown");
+
+      servicesParent?.addEventListener("mouseenter", () => {
+        dropdown.classList.remove(
+          "opacity-0",
+          "pointer-events-none",
+          "translate-y-2",
+        );
+      });
+      servicesParent?.addEventListener("mouseleave", () => {
+        dropdown.classList.add(
+          "opacity-0",
+          "pointer-events-none",
+          "translate-y-2",
+        );
+      });
+
+      // Nav shadow on scroll
+      const mainNav = document.getElementById("main-nav");
+      window.addEventListener(
+        "scroll",
+        () => {
+          if (window.scrollY > 60) {
+            mainNav?.style &&
+              (mainNav.style.boxShadow = "0 4px 20px rgba(42,36,33,0.10)");
+          } else {
+            mainNav?.style && (mainNav.style.boxShadow = "none");
+          }
+        },
+        { passive: true },
+      );
+    </script>
   </body>
 </html>

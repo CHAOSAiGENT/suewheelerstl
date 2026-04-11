@@ -2,147 +2,180 @@
 
 **URL:** `/faq/`
 **File:** `content/pages/faq.md`
-**Last updated:** 2026-03-16
+**Last updated:** 2026-04-10
 
 ---
 
 ## SEO
 
 **SEO Title:** `Wood Refinishing FAQ | Sue Wheeler St. Louis`
-**Meta Description:** `Answers to the most common questions about wood refinishing in St. Louis — dipping, lead paint, cost, timing, and more. From Sue Wheeler, 36 years experience.`
+**Meta Description:** `Answers to the most common questions about wood refinishing in St. Louis — dipping vs. hand-stripping, lead paint, cost, timing, and Perk Up & Protect. (314) 367-6054.`
 
 ---
 
-## H1: *Frequently asked questions* about wood refinishing.
+## H1: Your wood refinishing questions, answered.
 
 **Subhead:**
-Thirty-six years of answering the same good questions. Here are the ones we hear most.
+36 years of answering the same good questions. Here are the ones we hear most.
 
 ---
 
 ## FAQ CATEGORIES
 
-Questions are organized into 5 groups:
-1. The Method
-2. Lead Paint & EPA
-3. Cost & Scope
-4. Process & Timing
-5. Historic Preservation & Tax Credits
+Questions organized into 7 groups:
 
-*Dev note: Render as accordion (expandable) per Asset-5 AI search guidance. Short answer first, detail below. Each Q&A should be structured data (FAQ schema) for search snippet eligibility.*
+1. About Sue & The Process
+2. Doors
+3. Staircases
+4. Kitchens
+5. Perk Up & Protect
+6. EPA & Lead Paint
+7. Getting Started
+
+_Dev note: Render as accordion (expandable) per AI search guidance. Short answer first, detail below. Each Q&A should be structured data (FAQ schema) for search snippet eligibility._
 
 ---
 
-## CATEGORY 1: THE METHOD
+## CATEGORY 1: ABOUT SUE & THE PROCESS
 
-**Q: What is wood refinishing?**
-A: Refinishing is the process of stripping an existing finish off a wood surface, repairing any damage, applying stain if needed, and sealing with a fresh topcoat. It restores the original wood to like-new or better condition — without replacing it. It is not the same as repainting, which covers the wood with a solid color and hides rather than restores the grain.
-→ More: [What Is Wood Refinishing?](/blog/what-is-wood-refinishing)
+**Q: What exactly is wood refinishing?**
+A: Refinishing means stripping the old finish off a wood surface, repairing any damage, applying stain if the color needs to change or be restored, and sealing with a new topcoat. The result is wood that looks new again — not painted over, not replaced. The original wood, restored.
+
+**Q: What's the difference between refinishing and repainting?**
+A: Repainting covers wood with a solid color — it hides the grain, hides flaws, and hides the character of the wood underneath. Refinishing removes the old finish and preserves or restores the wood grain, color, and texture. For original architectural woodwork, refinishing is almost always the right choice. Repainting is sometimes what a client wants for kitchens — we can do that too.
 
 **Q: What is dip-stripping, and why don't you do it?**
-A: Dip-stripping means submerging a door, cabinet, or other wood piece in a caustic chemical tank to remove the finish quickly. The problem: the process raises the wood grain, softens the carved profiles, dissolves the hide glue used in most pre-1960s joinery, and washes out the natural tonal variation in old-growth wood. Pieces come out looking flat and rough, and they hold new finish poorly.
+A: Dip-stripping means submerging a door, cabinet, or other piece into a caustic chemical tank to strip the finish quickly. The problem: the process raises the wood grain, softens carved profiles, dissolves the hide glue in most pre-1960s joinery, and washes out the natural tonal variation in old-growth wood. Pieces come out looking flat, holding finish poorly, and sometimes structurally damaged.
 
-We hand-strip every piece. It takes longer. The wood lasts decades instead of a few years — and it stays true to what the original woodworker made.
-→ More: [Hand-Strip vs. Dip: Why the Method Matters](/blog/hand-strip-vs-dip)
+Sue Wheeler hand-strips every piece — by hand, with the right chemistry and the right tools. It takes longer. The wood comes back right and lasts for decades.
 
 **Q: What finishes do you use?**
-A: Polyurethane — oil-based or water-based, depending on the application. Oil-based polyurethane builds more depth and amber warmth; water-based dries faster and stays clearer. We recommend the right one for each project.
-
-We do not use marine varnish, lacquer, shellac, or tung oil. These finishes are not appropriate for architectural woodwork in interior residential or commercial settings.
+A: Polyurethane — oil-based or water-based depending on the application. Oil-based builds more depth and amber warmth; water-based dries faster and stays clearer. We recommend the right one for each project. We do not use lacquer, shellac, tung oil, or marine varnish — these are not the right finishes for architectural woodwork in residential settings.
 
 **Q: Do you refinish furniture?**
-A: No. We work exclusively on architectural woodwork — the pieces built into a home or building: doors, cabinets, staircases, built-ins, and millwork. We don't work on freestanding furniture, dining tables, or antiques.
-→ [About our scope](/about/)
+A: No. We work exclusively on architectural woodwork — the pieces built into a home. Doors, cabinets, staircases, built-ins, and millwork. Not freestanding furniture, dining tables, or antiques.
 
-**Q: What is the "board-up" method?**
-A: For most door and cabinet projects, we remove the pieces from the home, transport them to our shop, refinish them in a controlled environment, then return and reinstall them. This keeps dust, fumes, and disruption out of your living space and lets us control conditions for a better finish. On-premise work is available when removal isn't practical.
+**Q: What is the board-up method?**
+A: For most door and cabinet projects, we remove the pieces from your home, transport them to our shop, refinish them in a controlled environment, and return them for reinstallation. This keeps dust and fumes out of your living space and gives us control over conditions for a better finish. We call it the board-up method. It's how most of our door work is done.
 
+On-premise work is available when removal isn't practical — very large pieces, built-in applications, or situations where removal would cause damage.
 
 ---
 
-## CATEGORY 2: LEAD PAINT & EPA
+## CATEGORY 2: DOORS
+
+**Q: How long does door refinishing take?**
+A: A single door typically takes 2–4 days from pickup to reinstallation. Front doors with frames, or multi-door projects, run longer. We'll give you a realistic timeline with your estimate.
+
+**Q: Can you match the stain on my other woodwork?**
+A: Usually, yes. Stain matching across existing millwork is standard for interior door projects. We assess the existing tones and work to match as closely as possible. If an exact match isn't achievable — original finishes can change color over decades — we'll tell you before we start.
+
+**Q: Will my front door hold up after refinishing?**
+A: Yes, if finished correctly. Exterior doors need UV-resistant polyurethane and proper prep. We finish front doors for the exposure they'll face. How long it lasts also depends on the door's orientation and overhang — a south-facing door in full sun needs more frequent attention than a covered north-facing one. We'll tell you what to expect.
+
+**Q: Do you refinish just the door slab, or the frame too?**
+A: Both, when possible. A refinished slab next to an untouched frame looks wrong. We'll scope accordingly for whatever you're working with.
+
+**Q: Do you work on pocket doors?**
+A: Yes. Pocket doors are one of the signature features of Central West End, Lafayette Square, and other historic St. Louis neighborhoods. We've refinished plenty of them.
+
+**Q: Can you refinish my front door without removing it?**
+A: In most cases, we prefer to take the door to the shop — it produces better results and less disruption. But for certain situations, on-premise work is possible. Call and describe what you have.
+
+---
+
+## CATEGORY 3: STAIRCASES
+
+**Q: How long does staircase refinishing take?**
+A: A full staircase with treads, risers, spindles, newel post, and railings typically takes 2–4 weeks. Tread-and-riser-only projects without spindle work are faster. We'll give you a specific timeline with your estimate.
+
+**Q: Can you refinish just the treads and leave the spindles?**
+A: Yes. We work on whatever components need attention. If the treads are worn but the spindles are fine, we can address just the treads. We'll tell you honestly whether selective refinishing makes visual sense for your specific staircase.
+
+**Q: Can spindles be dipped?**
+A: No. Dipping dissolves the glue at the base of turned spindles, loosens them from the tread and rail, and ruins the original profile. There is no shortcut for spindle stripping. We do them by hand — every one.
+
+**Q: My staircase has ornate carved newel posts. Can you preserve the detail?**
+A: Yes. Preserving carved profiles is exactly what hand-stripping is for. We don't use methods that soften or blur carved details. Everything in the original wood stays sharp.
+
+**Q: Do I need to avoid using the staircase during refinishing?**
+A: For part of the project, yes — particularly during finish application and cure time. We plan the work to minimize disruption. For homes with a single staircase, we stage the work so you can use it within a day or two after the final coat, even if full cure takes longer.
+
+**Q: My staircase doesn't match my new hardwood floors. Can you fix that?**
+A: Yes — this is one of the most common reasons people call. We stain and finish to match new flooring or refinished floors. We'll assess both surfaces and match as closely as possible.
+
+---
+
+## CATEGORY 4: KITCHENS
+
+**Q: What's the difference between painted cabinets and stained cabinets?**
+A: Stained cabinets have a transparent or semi-transparent finish that shows the wood grain. Painted cabinets have a solid-color topcoat that covers the grain. We refinish both — strip back to bare wood, prime and paint for painted, or stain and polyurethane for stained.
+
+**Q: Can you change the color of my cabinets?**
+A: Yes. Color change is one of the most common kitchen cabinet requests. We strip back to bare wood, which lets us apply a completely different stain color or paint color. If you're going from stained to painted, or from dark stain to light stain, this is the right process.
+
+**Q: Is refinishing really cheaper than replacing cabinets?**
+A: Significantly, in most cases. New kitchen cabinets typically cost far more than refinishing solid original wood. Beyond cost, original solid-wood cabinets from a 1920s St. Louis home are often better quality than anything available today. Refinishing preserves that.
+
+**Q: How long does kitchen cabinet refinishing take?**
+A: It varies by door count and finish type. Most kitchen cabinet projects run 1–3 weeks. We'll give you a realistic timeline with your estimate.
+
+**Q: Will there be fumes or disruption in my kitchen?**
+A: Cabinet doors are typically removed and taken to the shop (board-up method), which eliminates most of the fumes and mess. Frames and boxes are worked on in place with appropriate containment. We'll walk you through what to expect before we start.
+
+---
+
+## CATEGORY 5: PERK UP & PROTECT
+
+**Q: What is Perk Up & Protect?**
+A: Perk Up & Protect (PUP) is a maintenance service for architectural woodwork that's in sound structural condition but starting to look dull, lightly scratched, or worn. It involves a careful light scuff-sand to prepare the surface and a fresh finish coat applied over the existing base. It refreshes the look without a full strip-and-refinish.
+
+**Q: How is PUP different from a full Strip & Refinish?**
+A: Strip & Refinish removes all existing finish down to bare wood — it's the right choice for woodwork with failing finish, significant wear, deep scratches, water damage, or major color change. Perk Up & Protect works over an existing sound finish — it's faster, less disruptive, and less expensive. The key is whether the existing finish has enough integrity to build on. We'll assess and tell you which is right for your surfaces.
+
+**Q: Is PUP right for my project?**
+A: It depends on the condition of the existing finish. If the finish is peeling, cracking, bubbling, or failing in sections — it needs a full strip. If it's just looking dull or lightly worn but structurally intact — PUP may be the right call. Call and describe what you're seeing. Sue will help you figure it out.
+
+**Q: What surfaces is PUP appropriate for?**
+A: Architectural woodwork only — doors, staircases, cabinets, millwork. The same scope as our full refinishing work. PUP is not a furniture service.
+
+**Q: How long does Perk Up & Protect last?**
+A: That depends on traffic, sun exposure, and how the surfaces are maintained. On architectural surfaces like door frames, wainscoting, and built-ins that don't see heavy wear, it can extend the look for several years. On high-traffic surfaces like stair treads, a full refinish may be the better investment. We'll give you an honest read.
+
+---
+
+## CATEGORY 6: EPA & LEAD PAINT
 
 **Q: Does my home have lead paint?**
-A: If your home was built before 1978, it almost certainly has lead paint somewhere — in the trim, doors, windows, or cabinets. In St. Louis City, 89.8% of homes were built before 1978. In St. Louis County the number is similarly high. Assume it's there until a certified test says otherwise.
+A: If your home was built before 1978, almost certainly yes — in some surfaces. In St. Louis City, 89.8% of homes were built before 1978. Assume lead paint is present until a certified test says otherwise.
 
-**Q: Is lead paint dangerous to disturb during refinishing?**
-A: Yes, if handled improperly. Sanding, scraping, or stripping surfaces with lead paint creates lead dust, which is hazardous — especially for children and pregnant women. The EPA's Renovation, Repair, and Painting (RRP) Rule requires that any contractor disturbing paint on pre-1978 homes where children or pregnant women live must be certified and follow lead-safe practices.
+**Q: Is lead paint dangerous during refinishing?**
+A: Yes, if handled improperly. Sanding, scraping, or stripping surfaces with lead paint generates lead dust, which is hazardous — especially for children and pregnant women. The EPA's Renovation, Repair, and Painting Rule requires certified contractors to follow lead-safe protocols on pre-1978 homes where children or pregnant women live.
 
 **Q: What does EPA Certified Lead Renovator mean?**
-A: Sue Wheeler holds EPA Certified Lead Renovator certification. This means she is trained and authorized to perform work on pre-1978 surfaces using the required lead-safe protocols: containment, HEPA vacuuming, wet-sanding methods, proper disposal, and documentation. Every project on a pre-1978 home is fully compliant. You receive a completion record.
-→ [Why EPA certification matters for your home](/blog/epa-certified-lead-renovator)
+A: Sue Wheeler holds EPA Certified Lead Renovator certification. This means she is trained and authorized to perform work on pre-1978 surfaces using required lead-safe protocols: containment, HEPA vacuuming, wet-sanding methods, documented disposal, and completion records. Every project on a pre-1978 home is fully compliant. You receive documentation.
 
-**Q: What happens if I hire someone without EPA certification for a pre-1978 home?**
-A: Beyond the legal risk to the contractor, the homeowner may bear liability for improper lead work. More practically: lead dust left in your home is a health hazard that doesn't go away on its own. EPA certification isn't a technicality — it's the difference between work that's done safely and work that isn't.
+**Q: What happens if I hire someone without EPA certification?**
+A: Beyond legal risk to the contractor, homeowners may bear liability for improper lead work. More practically: lead dust in your home is a health hazard that doesn't go away on its own. EPA certification is the difference between work that's done safely and work that isn't.
 
----
-
-## CATEGORY 3: COST & SCOPE
-
-**Q: How much does wood refinishing cost?**
-A: It depends significantly on the scope, condition, and type of wood. Staircase refinishing in St. Louis typically ranges from $300 to $1,500+ depending on number of treads, spindle count, and condition. Cabinet refinishing varies by door count and finish type. Door refinishing runs differently for a single front door versus a whole-house door project.
-
-We give free estimates. Call (314) 367-6054 and describe what you have — we'll give you a real range before you commit to anything.
-→ [How much does staircase refinishing cost in St. Louis?](/blog/staircase-refinishing-cost-st-louis)
-
-**Q: Is refinishing cheaper than replacing?**
-A: Almost always, yes — significantly. New kitchen cabinets can run $15,000–$50,000 or more. Refinishing existing solid-wood originals is typically a fraction of that. Staircase replacement runs into the tens of thousands; refinishing runs into the hundreds to low thousands. Beyond cost, replacement loses original wood — old-growth lumber that can't be replicated.
-
-**Q: Do you offer maintenance contracts for commercial spaces?**
-A: Yes. For restaurants, bars, hotels, and other commercial spaces, we offer annual and multi-year maintenance agreements that keep woodwork in condition and spread the cost predictably. Ask about our commercial maintenance program.
-→ [Commercial maintenance contracts](/commercial-and-hospitality-refinishing/commercial-maintenance-contracts/)
-
-**Q: What types of projects do you take on?**
-A: Doors and door frames · Staircases (treads, risers, spindles, newel posts, railings) · Kitchen cabinets (painted, stained, color-change) · Built-in hutches, buffets, and bookcases · All room millwork (wainscoting, crown molding, baseboards, mantels, chair rail, window trim) · Commercial bar tops, tabletops, and wainscoting · Institutional woodwork (concert halls, churches, universities).
-
-We do not do floors, decks, furniture, or exterior siding.
-
+**Q: Do I need a lead test before you start?**
+A: We can discuss this during your estimate. In St. Louis, if your home predates 1978, we proceed under the assumption that lead is present and apply lead-safe protocols accordingly. A certified lead test can confirm specific surfaces, which can sometimes be useful for scope decisions.
 
 ---
 
-## CATEGORY 4: PROCESS & TIMING
+## CATEGORY 7: GETTING STARTED
 
-**Q: How long does wood refinishing take?**
-A: It varies by project. A single door can be turned around in 2–4 days. A full kitchen cabinet set typically runs 1–3 weeks. A full staircase, depending on scope and number of spindles, can take 2–4 weeks. We'll give you a realistic timeline with your estimate — we don't make promises we can't keep.
-→ [What to expect: staircase refinishing start to finish](/blog/staircase-refinishing-what-to-expect)
+**Q: How do I get an estimate?**
+A: Call (314) 367-6054. Sue answers personally. She'll ask about your project, give you a sense of scope and cost, and schedule a time to see the work in person if needed. The estimate is free. No obligation.
+
+**Q: Do you give estimates over the phone or by photos?**
+A: For a general sense of scope and cost, yes — Sue can give you a rough range based on what you describe. For a firm estimate, she'll typically want to see the work in person, particularly for staircases and kitchens. A door project is often straightforward enough to scope remotely.
+
+**Q: How far in advance should I schedule?**
+A: Sue is one person and her schedule fills. Call as soon as you have a project in mind — lead times vary by season and scope. If your project is time-sensitive (selling a home, renovation underway), say so when you call.
 
 **Q: Do I need to be home during the work?**
-A: For board-up projects (doors and cabinets taken to our shop), we typically need access to pick up and drop off. For on-premise work, Sue or a crew member will be on-site and will let you know what access is needed. We're flexible — let us know what works.
-
-**Q: Will there be dust and fumes in my home?**
-A: Board-up projects (pieces removed to the shop) generate no dust or fumes in your home. On-premise projects involve stripping and finishing chemicals and some sanding — we contain the work area as tightly as possible and use appropriate ventilation. If you have sensitivities or young children, board-up is almost always the better choice and we'll recommend it accordingly.
-
-**Q: Do you work on commercial properties outside of business hours?**
-A: Yes. For restaurants, bars, hotels, and venues, we schedule around your operating hours. If you need bar top work done overnight or on your dark day, we can accommodate that. Reach out and we'll discuss what's possible.
-→ [Commercial refinishing scheduling](/commercial-and-hospitality-refinishing/)
-
-**Q: How do I get started?**
-A: Call (314) 367-6054. Sue will ask about your project, give you a sense of the scope and cost, and schedule a time to see the work in person if needed. The estimate is free and there's no obligation.
-→ [Contact / Free Estimate](/contact/)
-
----
-
-## CATEGORY 5: HISTORIC PRESERVATION & TAX CREDITS
-
-**Q: Can wood refinishing qualify for historic tax credits?**
-A: Yes, in many cases. The federal Historic Tax Credit program offers a 20% credit on Qualified Rehabilitation Expenditures (QREs) for income-producing historic properties. Missouri's program adds 25–35% on top for qualifying projects. Combined, that can return 45–55 cents on every dollar of qualifying work.
-
-For owner-occupied residential properties, the Missouri Historic Homeowner Credit offers separate eligibility. Whether your specific project qualifies depends on your property's historic status and the nature of the work.
-→ [Historic tax credit guide for St. Louis homeowners](/historic-preservation/historic-tax-credits/)
-
-**Q: Does my home need to be in a historic district to qualify?**
-A: For most federal and state credit programs, yes — the property typically must be a certified historic structure or contributing structure within a registered historic district. Many St. Louis neighborhoods qualify: the Central West End, Lafayette Square, Compton Heights, Tower Grove, Shaw, and others.
-→ [St. Louis historic districts guide](/historic-preservation/st-louis-historic-districts/)
-
-**Q: What does the National Park Service say about refinishing historic wood?**
-A: The Secretary of the Interior's Standards for Rehabilitation — the guidelines governing certified historic rehabilitations — specifically recommend the "gentlest method" for removing paint from historic wood: hand-scraping and hand-sanding. Chemical dipping is not recommended and may disqualify a project from tax credit eligibility.
-
-Sue Wheeler's hand-strip method is compliant with these standards. A dip-tank contractor's work is not.
-→ [The NPS standards and wood refinishing](/historic-preservation/secretary-of-interior-standards/)
-
-**Q: How do I know if my neighborhood is a historic district?**
-A: Missouri has both certified historic districts (listed on the National Register of Historic Places) and locally designated historic districts. We've put together a guide to every major St. Louis district and what historic status means for tax credit eligibility.
-→ [St. Louis historic districts guide](/historic-preservation/st-louis-historic-districts/)
+A: For board-up projects, you need to be available for pickup and reinstallation — not necessarily the full project duration. For on-premise work, Sue or a crew member will be on-site. She'll walk you through access logistics when scheduling.
 
 ---
 
@@ -150,7 +183,7 @@ A: Missouri has both certified historic districts (listed on the National Regist
 
 **H2:** Still have questions?
 
-Call Sue directly — she'll give you a straight answer.
+Call Sue — she'll give you a straight answer.
 
 **(314) 367-6054**
 
@@ -160,37 +193,22 @@ Call Sue directly — she'll give you a straight answer.
 
 ## INTERNAL LINKS ON THIS PAGE
 
-| Destination | Location |
-|-------------|----------|
-| `/blog/what-is-wood-refinishing` | Q: What is wood refinishing |
-| `/blog/hand-strip-vs-dip` | Q: What is dip-stripping |
-| `/about/` | Q: Do you refinish furniture |
-| `/blog/epa-certified-lead-renovator` | Q: What does EPA Certified mean |
-| `/blog/staircase-refinishing-cost-st-louis` | Q: How much does it cost |
-| `/commercial-and-hospitality-refinishing/commercial-maintenance-contracts/` | Q: Maintenance contracts |
-| `/blog/staircase-refinishing-what-to-expect` | Q: How long does it take |
-| `/commercial-and-hospitality-refinishing/` | Q: Commercial scheduling |
-| `/contact/` | Q: How do I get started + bottom CTA |
-| `/historic-preservation/historic-tax-credits/` | Q: Tax credits |
-| `/historic-preservation/st-louis-historic-districts/` | Q: Districts + Q: How do I know |
-| `/historic-preservation/secretary-of-interior-standards/` | Q: NPS standards |
+| Destination                                  | Location                               |
+| -------------------------------------------- | -------------------------------------- |
+| `/about/`                                    | Furniture scope question               |
+| `/door-refinishing/pocket-door-refinishing/` | Pocket door FAQ                        |
+| `/contact/`                                  | Getting started questions + bottom CTA |
+| `/faq/`                                      | Internal anchor links per category     |
 
 ---
 
 ## DEV NOTES
 
 - Render all Q&A as accordion (expandable) component
-- Add FAQ schema (JSON-LD) for all 20 questions — AI search and featured snippet optimization
+- Add FAQ schema (JSON-LD) for all questions — AI search and featured snippet optimization
 - Category headers render as non-collapsible section labels within the accordion list
 - Short answer visible before expand; full answer on expand
 - Phone number in bottom CTA: tap-to-call `<a href="tel:3143676054">`
-
-## MESSAGING NOTES (Asset-4 §2 compliance)
-
-- ✅ Hand-stripped, never dipped — full educational answer in Category 1
-- ✅ EPA Certified — full category (Category 2)
-- ✅ Free estimate CTA — throughout + bottom
-- ✅ Phone (314) 367-6054 — bottom CTA + cost question
-- ✅ Tax credit messaging — full category (Category 5)
-- ✅ "Architectural woodwork, not furniture" — scope question in Category 3
-- ✅ Commercial maintenance contracts — linked from Category 3
+- No commercial maintenance Q
+- No historic tax credit category
+- PUP category is new — added per GTM strategy

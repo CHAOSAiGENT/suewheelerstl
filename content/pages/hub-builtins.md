@@ -1,137 +1,142 @@
-# Built-Ins & Millwork Refinishing Hub
+# Architectural Built-Ins & Millwork Refinishing
 
 **URL:** `/built-ins-and-millwork-refinishing/`
 **File:** `content/pages/hub-builtins.md`
-**Phase C page:** No — standard quality (hub-level, fully written)
-**Last updated:** 2026-03-17
+**Last updated:** 2026-04-10
 
 ---
 
 ## SEO
 
 **SEO Title:** `Built-In & Millwork Refinishing St. Louis | Sue Wheeler`
-**Meta Description:** `Refinishing for built-in hutches, bookcases, buffets, wainscoting, mantels, crown molding and more. Hand-stripped, EPA Certified. St. Louis. Free estimate: (314) 367-6054.`
+**Meta Description:** `Refinishing for built-in hutches, bookcases, mantels, wainscoting, crown molding, and original millwork. Hand-stripped, EPA Certified. St. Louis. Free estimate: (314) 367-6054.`
 
 ---
 
-## H1: Built-in refinishing in *St. Louis.*
+## H1: The woodwork that came with the house deserves better than paint.
 
-**Subhead:**
-The millwork in your home wasn't put there to be replaced. We make sure it never has to be.
+**Subhead:** Built-in hutches, bookcases, mantels, wainscoting — the architectural pieces that define a home's character. We restore them without removing them.
 
 **CTA button:** Get a Free Estimate → `/contact/`
 **Phone:** (314) 367-6054
 
-
 ---
 
-## SECTION: What We Refinish
+## SECTION: This is the woodwork that makes a St. Louis home.
 
-**H2:** Hutches. Bookcases. Buffets. Wainscoting. Mantels. *All of it.*
+**H2:** Hutches. Bookcases. Mantels. Wainscoting. Crown molding. _Built in, not bolt-on._
 
-When a St. Louis home was built in 1905 or 1925, the millwork wasn't an afterthought. It was part of the architecture. The dining room hutch was built into the wall. The living room bookcase flanked the fireplace. The wainscoting ran the full length of the hallway. None of it was ever meant to come out.
+When a St. Louis home was built in 1905 or 1925, the millwork wasn't decoration added after the fact. It was part of the architecture. The dining room hutch was framed into the wall. The living room bookcase flanked the fireplace. The wainscoting ran the full length of the hallway. The crown molding was a profile that didn't come from a box store.
+
+None of it was ever meant to come out.
 
 That's the work we do.
 
-→ [Built-in hutches, buffets & bookcases](/built-ins-and-millwork-refinishing/built-in-hutches-buffets-bookcases/) — Dining room built-ins, china cabinets, library bookcases. Original woodwork that has no modern replacement.
-→ [Room millwork](/built-ins-and-millwork-refinishing/room-millwork/) — Baseboards, crown molding, wainscoting, chair rail, picture rail, window trim, door casings, mantels. The finish that ties a room together.
+**We refinish:**
 
-We also refinish:
+- Built-in hutches, buffets, and china cabinets
+- Built-in bookcases and library walls
 - Fireplace surrounds and overmantels
-- Window seats and built-in benches
+- Wainscoting and paneling
+- Chair rail, picture rail, and crown molding
+- Baseboards and door casings
 - Butler's pantry cabinetry
-- Built-in desk and office units
-- Staircase newel surrounds and wainscot paneling
+- Window seats and built-in benches
+- Built-in desks and office units
 
-If it's wood and it's part of the building, we can refinish it.
+We work on pieces that are built into the home's architecture. For freestanding furniture, we're not the right call — but if it's attached to the wall or part of the room's structure, we can almost certainly refinish it.
 
+→ [Built-in hutches, buffets, and bookcases](/built-ins-and-millwork-refinishing/built-in-hutches-buffets-bookcases/)
+→ [Room millwork — wainscoting, crown, baseboards, trim](/built-ins-and-millwork-refinishing/room-millwork/)
+→ [What is architectural woodwork?](/architectural-woodwork-refinishing/)
 
 ---
 
-## SECTION: Why Original Millwork Can't Be Matched
+## SECTION: You can't buy what's already in your walls.
 
-**H2:** You can't buy what's already *in your walls.*
+**H2:** Original millwork in pre-WWII homes is old-growth wood. There's no modern substitute.
 
-Here's something most homeowners don't realize until it's too late: the millwork in a pre-WWII St. Louis home is old-growth wood. White oak, American chestnut, heart pine, old-growth fir. Tight grain, dense fibers, extraordinary durability. The wood that built these houses came from trees that took 150–200 years to grow. That stock doesn't exist anymore.
+Here's something most homeowners don't realize until they're standing in a contractor's showroom looking at replacements: the millwork in a pre-WWII St. Louis home is old-growth wood. White oak, American chestnut, heart pine, old-growth fir. Tight grain, dense fibers, extraordinary durability. The wood that built these houses came from trees that took 150 to 200 years to grow. That stock doesn't exist anymore.
 
-New wood isn't the same. Modern construction lumber is fast-grown — softer, more porous, with wider, looser grain. It doesn't accept stain the same way. It doesn't hold up the same way. And it won't look like what was there before.
+New wood isn't the same. Modern construction lumber is fast-grown: softer, more porous, wider looser grain. It doesn't accept stain the same way. It doesn't hold up the same way. Reproduction profiles look slightly wrong because the material behaves differently under a plane and a saw.
 
 When a homeowner replaces a dining room hutch or tears out original wainscoting, they're not upgrading. They're trading something irreplaceable for something inferior.
 
-Refinishing is the only option that preserves what you have. We strip the old finish, repair what needs repairing, restain to original or updated color, and seal it with polyurethane — oil or water-based, depending on the application. The wood stays. The character stays. The value stays.
-
-
----
-
-## SECTION: Hand-Stripped, Never Dipped
-
-**H2:** These pieces can't go in a tank. *And they shouldn't.*
-
-Built-in woodwork can't be dip-stripped. It's attached to the building. Even when individual components can be removed — a cabinet door, a section of wainscoting — dipping is the wrong method. Chemical tank stripping raises the wood grain, swells profiles, attacks glue joints, and leaves residue in pores that interferes with the new finish.
-
-We strip by hand. Every piece of millwork, every panel section, every carved profile, every linear foot of crown molding — stripped with appropriate solvents, scrapers, and detail tools. It takes longer. It's worth it. The grain stays closed. The profiles stay sharp. The character of the wood is preserved, not dissolved.
-
-This is especially important for carved or profiled millwork. A shallow ogee molding or a beaded cabinet door frame has geometry that's irreplaceable if damaged. Hand-stripping is the only safe method for that kind of work.
+Refinishing is the only option that keeps what you have. We strip the old finish, repair what needs repairing, restain to original color or something updated, and finish with polyurethane. The wood stays. The character stays. The value stays.
 
 ---
 
-## SECTION: Lead Paint & Pre-1978 Homes
+## SECTION: These pieces can't go in a tank. And they shouldn't.
 
-**H2:** Most St. Louis millwork has *lead paint.* We handle it correctly.
+**H2:** We strip by hand. Every piece, every profile, every linear foot.
 
-Pre-1978 homes — and in St. Louis's historic neighborhoods, that means almost everything — have lead paint on their woodwork. Sometimes it's visible. Often it's buried under layers of subsequent paint. Either way, stripping it incorrectly creates lead dust, which is a serious health hazard, especially in homes with children.
+Built-in woodwork can't be dip-stripped. It's attached to the building. Even for components that can come down — a cabinet door, a section of wainscoting — dipping is the wrong method. Chemical tank stripping raises the grain, swells profiles, attacks glue joints, and leaves residue in the pores that interferes with the new finish.
 
-Sue Wheeler is an EPA Certified Lead Renovator. Millwork refinishing on pre-1978 surfaces is handled with proper containment, HEPA filtration, wet methods, and documented cleanup. You receive a completion record.
+We strip by hand. Every panel section, every carved profile, every foot of crown molding — stripped with appropriate solvents, scrapers, and detail tools. It takes longer. It's worth it. The grain stays closed. The profiles stay sharp. The character of the wood is preserved, not dissolved.
 
-This matters especially for built-ins and millwork because these surfaces are in living spaces — dining rooms, living rooms, hallways, bedrooms. Where your family actually spends time.
-
-→ [Lead paint and wood refinishing: what you need to know](/blog/lead-paint-pre-1978-homes)
-
+This matters especially for built-in millwork with carved or profiled surfaces. A shallow ogee molding or a beaded cabinet door frame has geometry that's damaged if you're not careful. Hand-stripping is the only safe method for that kind of work.
 
 ---
 
-## SECTION: Service Options
+## SECTION: Historic homes, historic neighborhoods.
 
-**H2:** Strip & Refinish or *Perk Up & Protect?*
+**H2:** In Central West End, Benton Park, and Compton Heights, original built-ins are irreplaceable originals.
 
-**Strip & Refinish (S&R)**
-Complete restoration. Strip to bare wood, address any damage (gouges, cracks, loose veneer, minor repairs), stain if needed, finish with polyurethane. For millwork that has failing finish, significant discoloration, paint buildup, or hasn't been properly finished in decades. Most historic built-ins need this.
+The built-in woodwork in CWE, Benton Park, Compton Heights, and Lafayette Square homes isn't just old — it's architecturally significant. Dining room hutches in these homes were often custom-designed for the house. Wainscoting profiles were selected to match a specific style. Mantels were made to stand against a specific fireplace opening.
 
-**Perk Up & Protect (PUP)**
-Maintenance coat. Light sand and fresh finish over a solid existing base. For millwork that is structurally sound, holding its finish, but looking dull, slightly worn, or faded. Faster and less expensive than a full S&R. Not right for every situation — we'll tell you honestly which applies.
+These pieces have no replacement. The profiles don't exist in modern millwork. The wood species aren't available. Even a skilled carpenter working from photographs can't reproduce what's already there.
 
-Some rooms need a mix: wainscoting that's in decent shape gets PUP while a hutch with peeling finish gets S&R. We scope it piece by piece.
+That's exactly why refinishing matters in these neighborhoods. The original material is worth saving not because it's sentimental, but because it's structurally superior and visually irreplaceable. Every season those surfaces go untreated, the finish degrades further and restoration becomes harder.
 
 ---
 
-## SECTION: FAQ BLOCK
-*Accordion format — FAQ schema markup*
+## SECTION: Lead paint in pre-1978 homes.
 
-**Q: Can you refinish built-ins without removing them from the wall?**
-A: Yes — and usually that's the only option. Most built-in millwork is structural to the home or too large to remove safely. We work in place, with proper containment and HEPA filtration. For some components — cabinet doors, drawer fronts, removable panels — we'll bring those to the shop for better conditions, then reinstall.
+**H2:** Most St. Louis millwork has lead paint. We handle it correctly.
 
-**Q: Can you match the stain color to my existing woodwork?**
-A: Usually. Stain matching across existing millwork is one of the more common requests — a dining room hutch that needs to match the door trim, or wainscoting that needs to match the floor. We assess the existing tones and work to get as close as possible. If there's a significant color shift in the original finish due to aging, we'll discuss options with you before we start.
+Pre-1978 homes — and in St. Louis's historic neighborhoods, that means nearly everything — have lead paint on their woodwork. Sometimes visible. Often buried under layers of subsequent paint. Either way, stripping it incorrectly creates lead dust in living spaces where your family spends time.
 
-**Q: How long does built-in refinishing take?**
-A: It depends on scope. A single hutch or bookcase unit typically runs 3–5 days. A full dining room with wainscoting, hutch, and crown molding might take 1–2 weeks. We'll give you a specific timeline with your estimate.
-
-**Q: My built-in has some damage — gouges, loose veneer, a cracked panel. Can you fix that too?**
-A: Often, yes. Minor repairs — filling gouges, stabilizing loose veneer, addressing small cracks — are part of a standard Strip & Refinish. For more significant structural damage, we'll assess and let you know what's realistic before we quote.
-
-**Q: Does refinishing built-ins qualify for historic tax credits?**
-A: Possibly. If your home is in a certified historic district and you're doing a qualifying rehabilitation, wood refinishing can be a Qualified Rehabilitation Expenditure. The work needs to align with the Secretary of Interior's Standards — hand-stripping is compliant; dipping typically isn't. We can help you understand whether your project qualifies.
-→ [Historic tax credits guide](/historic-preservation/historic-tax-credits/)
-
+Sue Wheeler is an EPA Certified Lead Renovator. All millwork refinishing on pre-1978 surfaces is handled with proper containment, HEPA filtration, wet methods, and documented cleanup. You receive a completion record.
 
 ---
 
-## SECTION: Testimonial
+## SECTION: Full refinish or Perk Up & Protect?
 
-*Millwork/built-in-specific testimonial. Replace with verbatim client quote before launch.*
+**H2:** Some millwork needs a full strip. Some just needs a refresh.
+
+**Strip & Refinish** is a complete restoration. Strip to bare wood, address any damage, stain if needed, finish with polyurethane. For millwork with failing finish, significant paint buildup, or surfaces that haven't been properly finished in decades. Most historic built-ins need this.
+
+**Perk Up & Protect (PUP)** is a maintenance coat. Wet sand to level light surface damage, color refresh if needed, new topcoat over a solid existing base. For millwork that's holding its finish but looking dull or lightly worn. Faster, less expensive, no chemical stripping required.
+
+Some rooms need both. Wainscoting in decent shape gets PUP while a hutch with peeling finish gets a full Strip & Refinish. We scope it piece by piece.
+
+→ [What is Perk Up & Protect?](/perk-up-and-protect/)
+
+---
+
+## SECTION: What clients say
 
 "Our dining room hutch was original to the house — 1912, solid white oak. It had been painted over at some point in the 1970s and we thought it was ruined. Sue stripped every inch of it by hand, brought the grain back, and matched the stain to our hardwood floors. We had no idea what was under there. Now it's the best thing in the room."
-— *Homeowner, Compton Heights*
+— _Homeowner, Compton Heights_
+
+---
+
+## SECTION: FAQ
+
+**Q: What counts as a built-in vs. furniture?**
+A: If it's attached to the wall or floor, or was built as part of the room's structure, it's a built-in. A dining room hutch framed into the wall is a built-in. A freestanding china cabinet that happens to sit against a wall is furniture. We work on the former. If you're not sure, describe it when you call — we'll tell you whether it's in our wheelhouse.
+
+**Q: Do you do mantels?**
+A: Yes. Fireplace surrounds and overmantels are among the most striking pieces in a historic home, and among the most neglected. We refinish them in place, which means no removal and no risk of damaging the surround or the wall during a teardown.
+
+**Q: What about wainscoting?**
+A: Wainscoting is one of the more common projects we do in historic St. Louis homes. We work in place, panel by panel, with appropriate containment. We also refinish chair rail, picture rail, and the door casings in the same room so everything finishes to the same tone.
+
+**Q: Can you refinish a built-in without removing it from the wall?**
+A: Yes — and usually that's the only option. Most built-in millwork can't be safely removed without damaging the wall or the piece itself. We work in place with proper containment and HEPA filtration. For some components — cabinet doors, removable panels — we'll bring those to the shop and reinstall them.
+
+**Q: Can you match stain to my existing woodwork?**
+A: Usually. Stain matching across a room's millwork is one of the more common requests we get. We assess the existing tones and get as close as possible. If there's significant color variation in the original finish due to aging or uneven fading, we'll discuss options before we start.
 
 ---
 
@@ -144,40 +149,27 @@ Free estimate. No obligation. Sue answers every call personally.
 **Primary CTA button:** Get a Free Estimate → `/contact/`
 **Phone:** (314) 367-6054
 
+_EPA Certified Lead Renovator. Serving Central West End, Benton Park, Compton Heights, Lafayette Square, and surrounding St. Louis neighborhoods._
+
 ---
 
 ## INTERNAL LINKS ON THIS PAGE
 
-| Destination | Location |
-|-------------|----------|
-| `/built-ins-and-millwork-refinishing/built-in-hutches-buffets-bookcases/` | What We Refinish section (spoke nav) |
-| `/built-ins-and-millwork-refinishing/room-millwork/` | What We Refinish section (spoke nav) |
-| `/historic-preservation/` | Lead paint section |
-| `/historic-preservation/historic-tax-credits/` | FAQ block |
-| `/blog/lead-paint-pre-1978-homes` | Lead paint section |
-| `/portfolio/residential/` | (optional — add link if portfolio exists at launch) |
-| `/neighborhoods/central-west-end/` | (optional — in body copy or neighborhood callout) |
-| `/neighborhoods/compton-heights/` | (optional — testimonial or neighborhood callout) |
-| `/neighborhoods/shaw/` | (optional — neighborhood callout) |
-| `/contact/` | Hero CTA + bottom CTA |
+| Destination                                                               | Location                 |
+| ------------------------------------------------------------------------- | ------------------------ |
+| `/built-ins-and-millwork-refinishing/built-in-hutches-buffets-bookcases/` | What We Refinish section |
+| `/built-ins-and-millwork-refinishing/room-millwork/`                      | What We Refinish section |
+| `/architectural-woodwork-refinishing/`                                    | What We Refinish section |
+| `/perk-up-and-protect/`                                                   | Service options section  |
+| `/historic-homes/`                                                        | Historic homes section   |
+| `/contact/`                                                               | Hero CTA + bottom CTA    |
 
 ---
 
 ## DEV NOTES
 
-- Spoke navigation: 2 cards below H1 (Built-In Hutches/Buffets/Bookcases + Room Millwork)
-- "Can't be dipped" section: consider a brief visual/icon showing in-place work vs. tank — reinforces hand-strip differentiator
+- Spoke navigation: 3 cards below H1 (Built-In Hutches/Bookcases + Room Millwork + Architectural Woodwork hub)
 - FAQ block: accordion with FAQ schema JSON-LD
-- Lead paint section: matter-of-fact callout band, consistent with door/staircase hubs
-- Historic tax credit FAQ answer: link is a strong internal link to a high-value page — do not remove
-
-## MESSAGING NOTES (Asset-4 §2 compliance)
-
-- ✅ Hand-stripped, never dipped — dedicated section; also woven into "why originals can't be matched"
-- ✅ EPA Certified — full section
-- ✅ "Built to stay" / irreplaceable originals — core message in §2 section
-- ✅ Free estimate CTA — hero + bottom
-- ✅ Phone (314) 367-6054 — hero + bottom
-- ✅ FAQ block (AI search per Asset-5)
-- ✅ S&R vs PUP distinction
-- ✅ Historic tax credit mention — FAQ + internal link to preservation hub
+- Lead paint section: matter-of-fact callout band, consistent with other hub pages
+- "Can't be dipped" section: brief visual reinforcing in-place vs. tank work
+- Trust signals near bottom CTA: EPA cert, service area neighborhoods
