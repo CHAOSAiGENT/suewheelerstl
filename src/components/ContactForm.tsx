@@ -9,7 +9,7 @@ const SERVICE_TYPES = [
   "Exterior Doors",
   "Staircases",
   "Built-ins",
-  "Commercial",
+  "Perk Up & Protect",
   "Other",
 ];
 
@@ -37,7 +37,9 @@ const TIMELINE_OPTIONS = [
 ];
 
 export function ContactForm() {
-  const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+  const [status, setStatus] = useState<
+    "idle" | "submitting" | "success" | "error"
+  >("idle");
   const [token, setToken] = useState<string | null>(null);
   const [selectedServices, setSelectedServices] = useState<string[]>([]);
   const [serviceError, setServiceError] = useState(false);
@@ -46,7 +48,9 @@ export function ContactForm() {
   function toggleService(service: string) {
     setServiceError(false);
     setSelectedServices((prev) =>
-      prev.includes(service) ? prev.filter((s) => s !== service) : [...prev, service]
+      prev.includes(service)
+        ? prev.filter((s) => s !== service)
+        : [...prev, service],
     );
   }
 
@@ -95,7 +99,10 @@ export function ContactForm() {
 
   if (status === "success") {
     return (
-      <div className="bg-[#F8F6F1] p-8 text-center" style={{ borderRadius: "2px" }}>
+      <div
+        className="bg-[#F8F6F1] p-8 text-center"
+        style={{ borderRadius: "2px" }}
+      >
         <p
           className="font-serif italic text-2xl text-[#2A2421] mb-3"
           style={{ fontFamily: '"Playfair Display", Georgia, serif' }}
@@ -285,14 +292,21 @@ export function ContactForm() {
       {/* Photos */}
       <div>
         <p className={labelClass}>
-          Photos <span className="text-[#9e9087] normal-case font-normal tracking-normal">(optional — up to 3)</span>
+          Photos{" "}
+          <span className="text-[#9e9087] normal-case font-normal tracking-normal">
+            (optional — up to 3)
+          </span>
         </p>
         <label
           className="flex items-center gap-2 px-4 py-3 bg-[#F8F6F1] border border-dashed border-[rgba(42,36,33,0.2)] text-[#6B5E55] text-sm font-sans cursor-pointer hover:border-[#11B2E8] hover:text-[#11B2E8] transition-colors"
           style={{ borderRadius: "2px" }}
         >
           <Paperclip size={14} />
-          <span>{photos.length === 0 ? "Attach photos" : `${photos.length}/3 attached`}</span>
+          <span>
+            {photos.length === 0
+              ? "Attach photos"
+              : `${photos.length}/3 attached`}
+          </span>
           <input
             type="file"
             accept="image/*"
@@ -305,8 +319,14 @@ export function ContactForm() {
         {photos.length > 0 && (
           <ul className="mt-2 space-y-1">
             {photos.map((f, i) => (
-              <li key={i} className="flex items-center justify-between px-3 py-1.5 bg-[#F8F6F1] border border-[rgba(42,36,33,0.1)]" style={{ borderRadius: "2px" }}>
-                <span className="text-xs font-sans text-[#6B5E55] truncate max-w-[80%]">{f.name}</span>
+              <li
+                key={i}
+                className="flex items-center justify-between px-3 py-1.5 bg-[#F8F6F1] border border-[rgba(42,36,33,0.1)]"
+                style={{ borderRadius: "2px" }}
+              >
+                <span className="text-xs font-sans text-[#6B5E55] truncate max-w-[80%]">
+                  {f.name}
+                </span>
                 <button
                   type="button"
                   onClick={() => removePhoto(i)}
@@ -363,8 +383,8 @@ export function ContactForm() {
       )}
 
       <p className="text-xs font-sans text-[#6B5E55] text-center">
-        We typically respond within one business day. If you need to reach us sooner,
-        call{" "}
+        We typically respond within one business day. If you need to reach us
+        sooner, call{" "}
         <a href="tel:3143676054" className="text-[#11B2E8]">
           (314) 367-6054
         </a>
