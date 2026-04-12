@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     template: "%s | Sue Wheeler Wood Refinishing",
   },
   description:
-    "St. Louis's most trusted architectural wood refinisher. Hand-stripped, never dipped. EPA Certified. BBB A+. 36 years. Sue answers every call personally. (314) 367-6054.",
+    "St. Louis's most trusted architectural wood refinisher. Hand-stripped, never dipped. EPA Certified. 36 years. Sue answers every call personally. (314) 367-6054.",
   metadataBase: new URL("https://suewheelerstl.com"),
   openGraph: {
     type: "website",

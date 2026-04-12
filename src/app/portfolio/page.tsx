@@ -47,14 +47,18 @@ export default function PortfolioPage() {
         <div className="max-w-3xl mx-auto">
           <h1
             className="text-4xl md:text-5xl text-[#2A2421] mb-4"
-            style={{ fontFamily: '"Playfair Display", Georgia, serif', fontWeight: 400 }}
+            style={{
+              fontFamily: '"Playfair Display", Georgia, serif',
+              fontWeight: 400,
+            }}
           >
             Thirty-six years of work. <em>Here&rsquo;s some of it.</em>
           </h1>
           <p className="text-lg text-[#6B5E55] font-sans mb-8 leading-relaxed">
-            Kitchens, doors, staircases, built-ins, bar tops, church pews, concert
-            halls. Every job in this portfolio was stripped by hand, finished with
-            polyurethane, and returned in better shape than it arrived.
+            Kitchens, doors, staircases, built-ins, bar tops, church pews,
+            concert halls. Every job in this portfolio was stripped by hand,
+            finished with polyurethane, and returned in better shape than it
+            arrived.
           </p>
           <a
             href="tel:3143676054"
@@ -73,12 +77,12 @@ export default function PortfolioPage() {
             There&rsquo;s no substitute for seeing the work.
           </p>
           <p className="text-base font-sans text-[#6B5E55] leading-relaxed">
-            Sue Wheeler has been refinishing architectural woodwork in St. Louis since
-            1989. In that time, she&rsquo;s restored original pocket doors in Central
-            West End bungalows, refinished the woodwork at The Sheldon Concert Hall,
-            matched 100-year-old stain on built-in hutches in Compton Heights, and
-            brought back hundreds of kitchen cabinets that homeowners thought were past
-            saving.
+            Sue Wheeler has been refinishing architectural woodwork in St. Louis
+            since 1989. In that time, she&rsquo;s restored original pocket doors
+            in Central West End bungalows, stripped and refinished original
+            staircases in Benton Park, matched 100-year-old stain on built-in
+            hutches in Compton Heights, and brought back hundreds of kitchen
+            cabinets that homeowners thought were past saving.
           </p>
         </div>
       </section>
@@ -131,7 +135,8 @@ export default function PortfolioPage() {
             <a href="tel:3143676054" className="text-[#11B2E8]">
               (314) 367-6054
             </a>{" "}
-            — Sue can describe the work she&rsquo;s done that matches your project.
+            — Sue can describe the work she&rsquo;s done that matches your
+            project.
           </p>
         </div>
       </section>
