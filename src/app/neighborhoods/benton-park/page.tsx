@@ -3,12 +3,12 @@ import Link from "next/link";
 import { CTABlock } from "@/components/CTABlock";
 
 export const metadata: Metadata = {
-  title: "Wood Refinishing — Lafayette Square St. Louis | Sue Wheeler",
+  title: "Wood Refinishing — Benton Park St. Louis | Sue Wheeler",
   description:
-    "Wood refinishing in Lafayette Square. Victorian homes, ornate staircases, pocket doors, front door curb appeal. Local historic district. EPA Certified. Sue Wheeler.",
+    "Wood refinishing in Benton Park. 1870s–1900s Victorian row houses with original old-growth woodwork. EPA Certified Lead Renovator. Free estimate: (314) 367-6054.",
 };
 
-export default function LafayetteSquarePage() {
+export default function BentonParkPage() {
   return (
     <>
       {/* Hero */}
@@ -21,12 +21,11 @@ export default function LafayetteSquarePage() {
               fontWeight: 400,
             }}
           >
-            Wood Refinishing in Lafayette Square
+            Wood Refinishing in Benton Park
           </h1>
           <p className="text-lg text-[#6B5E55] font-sans leading-relaxed">
-            St. Louis's oldest intact Victorian neighborhood — carved newel
-            posts, ornate pocket door surrounds, and wainscoting that defines
-            every room. Sue Wheeler has worked here for decades.
+            1870s–1900s Victorian row houses and Folk Victorian homes — original
+            woodwork under layers of paint.
           </p>
         </div>
       </section>
@@ -35,25 +34,29 @@ export default function LafayetteSquarePage() {
       <section className="py-16 px-6 bg-[#F8F6F1]">
         <div className="max-w-3xl mx-auto">
           <p className="text-[#2A2421] font-sans leading-relaxed text-base">
-            Lafayette Square is St. Louis's oldest intact Victorian
-            neighborhood. The homes here were built primarily between 1865 and
-            1895 — Italianate, Second Empire, Queen Anne, and Romanesque Revival
-            styles that packed more wood into their interiors than almost any
-            other era of residential construction.
+            Benton Park is one of the oldest neighborhoods in St. Louis City.
+            Settled between the 1870s and 1900s, its streets are lined with
+            Italianate, Folk Victorian, and Queen Anne row houses — dense brick
+            construction on narrow lots, with streetscapes that remain
+            remarkably intact. The woodwork inside these homes was built to
+            last: old-growth fir and oak in the doors, staircases, and
+            built-ins, tight-grained and durable in a way that new-cut lumber
+            simply is not.
           </p>
           <p className="text-[#2A2421] font-sans leading-relaxed text-base mt-4">
-            These aren't just old houses. They're houses with carved newel
-            posts, ornate turned spindles, elaborate pocket door surrounds, and
-            wainscoting that runs floor to ceiling in the dining room. The
-            woodwork wasn't decorative — it was structural identity. Restoring
-            it is the whole point.
+            Many of these homes have had three to five owners since they were
+            built. Each one left something behind — a coat of paint over a door,
+            a layer of stain on the staircase, decades of buildup on original
+            pocket doors that were painted shut and forgotten. First-time
+            historic homeowners in Benton Park are often the ones who finally
+            ask what's underneath — and the answer is usually worth uncovering.
           </p>
           <p className="text-[#2A2421] font-sans leading-relaxed text-base mt-4">
-            Sue Wheeler has worked in Lafayette Square throughout her career.
-            She knows the neighborhood's stock and its quirks: the original fir
-            floors with shellac finishes, the pocket doors that have been
-            painted shut and forgotten, the front doors that face south and take
-            a beating from the sun every year.
+            Sue Wheeler has been working in Benton Park for years. She knows
+            these houses: the elaborate Victorian front doors, the
+            turned-spindle staircases, the interior pocket doors that were
+            standard in this era. She knows what the wood looks like under the
+            paint, and she knows how to bring it back without damaging it.
           </p>
         </div>
       </section>
@@ -68,12 +71,14 @@ export default function LafayetteSquarePage() {
               fontWeight: 400,
             }}
           >
-            What We Do Most Often in Lafayette Square
+            What We Do Most Often in Benton Park
           </h2>
           <p className="text-[#6B5E55] font-sans leading-relaxed mb-6">
-            Lafayette Square homes concentrate the best of what makes historic
-            St. Louis woodwork worth saving — and some of the most challenging
-            refinishing conditions.
+            Benton Park homes were built with original woodwork as a central
+            feature. Front doors with decorative molding, turned-spindle
+            staircases, interior pocket doors between parlors — these pieces are
+            still there in most homes, waiting under paint that should have come
+            off a long time ago.
           </p>
           <ul className="space-y-6">
             <li>
@@ -81,15 +86,15 @@ export default function LafayetteSquarePage() {
                 className="text-lg font-semibold text-[#2A2421] mb-1"
                 style={{ fontFamily: '"Playfair Display", Georgia, serif' }}
               >
-                Pocket door refinishing
+                Front door refinishing
               </h3>
               <p className="text-[#6B5E55] font-sans leading-relaxed">
-                Lafayette Square homes often have multiple sets of pocket doors,
-                frequently in original fir or oak with intricate raised panel
-                detail. Many have been painted over one or more times. We remove
-                them from the pocket, hand-strip the finish, refinish to match
-                the surrounding millwork, and reinstall. Hardware is preserved
-                wherever possible.
+                Benton Park's Victorian front doors are among the most
+                distinctive features of the neighborhood — paneled, often with
+                original hardware and decorative molding profiles that can't be
+                replicated. Most have been painted over multiple times. Sue
+                hand-strips each door, repairs any damage, and refinishes to
+                restore the original wood rather than cover it again.
               </p>
             </li>
             <li>
@@ -100,11 +105,12 @@ export default function LafayetteSquarePage() {
                 Staircase refinishing
               </h3>
               <p className="text-[#6B5E55] font-sans leading-relaxed">
-                Victorian staircases in Lafayette Square are frequently the most
-                ornate part of the house: turned and carved spindles, heavy
-                carved newel posts, continuous curved railings. Every component
-                has to be stripped by hand — the profiles on these pieces make
-                dipping impossible without destroying the detail.
+                The turned-spindle staircases in these homes require hand work.
+                Dipping destroys the glue joints in spindles and raises the
+                grain across treads. Sue strips and refinishes treads, risers,
+                spindles, newel posts, and railings by hand — all components
+                matched to the same finish so the staircase reads as one piece
+                again.
               </p>
             </li>
             <li>
@@ -112,23 +118,30 @@ export default function LafayetteSquarePage() {
                 className="text-lg font-semibold text-[#2A2421] mb-1"
                 style={{ fontFamily: '"Playfair Display", Georgia, serif' }}
               >
-                Front door refinishing
+                Interior pocket door refinishing
               </h3>
               <p className="text-[#6B5E55] font-sans leading-relaxed">
-                The front door on a Lafayette Square home is a statement. Most
-                are solid wood with raised panels and transoms. South-facing
-                doors get UV and weather damage year after year. We remove the
-                door, strip and refinish it in our shop, and rehang it — usually
-                in one visit.
+                Pocket doors between the front parlor and back parlor were
+                standard in Benton Park's Victorian floor plans. Many were
+                painted shut at some point and haven't moved in decades. Sue
+                removes them, hand-strips and refinishes in the shop, then
+                reinstalls — hardware intact, wood restored, doors operational
+                again.
               </p>
             </li>
           </ul>
+          <p className="text-[#6B5E55] font-sans leading-relaxed mt-6">
+            Every job starts with a free in-person estimate. Sue looks at the
+            wood directly, identifies what's under the current finish, notes any
+            lead paint considerations, and gives you a straight answer on what
+            it will take.
+          </p>
           <div className="mt-6 flex flex-col sm:flex-row gap-3">
             <Link
-              href="/door-refinishing/pocket-door-refinishing/"
+              href="/door-refinishing/front-door-refinishing/"
               className="text-[#A65D37] font-sans font-medium hover:underline"
             >
-              Pocket Door Refinishing →
+              Front Door Refinishing →
             </Link>
             <Link
               href="/staircase-refinishing/"
@@ -137,10 +150,10 @@ export default function LafayetteSquarePage() {
               Staircase Refinishing →
             </Link>
             <Link
-              href="/door-refinishing/front-door-refinishing/"
+              href="/door-refinishing/pocket-door-refinishing/"
               className="text-[#A65D37] font-sans font-medium hover:underline"
             >
-              Front Door Refinishing →
+              Pocket Door Refinishing →
             </Link>
           </div>
         </div>
@@ -156,39 +169,44 @@ export default function LafayetteSquarePage() {
               fontWeight: 400,
             }}
           >
-            Historic District Status and Tax Credits
+            Historic District & EPA Requirements
           </h2>
           <p className="text-[#6B5E55] font-sans leading-relaxed mb-4">
-            Lafayette Square is a <strong>Local Historic District</strong> —
-            qualifying rehabilitation work may be eligible for the{" "}
-            <strong>Missouri Historic Tax Credit (25–35%)</strong>, and
-            properties listed individually on the National Register may also
-            qualify for the <strong>Federal Historic Tax Credit (20%)</strong>.
-            Check with your tax advisor and the Missouri State Historic
-            Preservation Office to confirm your property's status.
+            Benton Park is listed on the{" "}
+            <strong>National Register of Historic Places</strong>. Sue's
+            hand-strip method is compliant with the Secretary of the Interior's
+            Standards for Rehabilitation — the preservation standard that
+            applies to National Register properties. Chemical dip-stripping is
+            not compliant with those standards and can compromise the structural
+            integrity of historic woodwork.
           </p>
           <p className="text-[#6B5E55] font-sans leading-relaxed mb-6">
-            Wood refinishing qualifies as a Qualified Rehabilitation Expenditure
-            when the work is compliant with the Secretary of the Interior's
-            Standards. Hand-strip method: compliant. Chemical dip-stripping: not
-            compliant — it can alter the wood's character and disqualify the
-            expenditure.
+            If you're planning a broader restoration project, working with a
+            contractor whose methods meet preservation standards matters. Sue's
+            process does.
           </p>
-          <div className="mb-6">
+          <div className="flex flex-col sm:flex-row gap-3 mb-6">
             <Link
               href="/historic-preservation/"
               className="text-[#A65D37] font-sans font-medium hover:underline"
             >
               Historic Preservation Guide →
             </Link>
+            <Link
+              href="/faq"
+              className="text-[#A65D37] font-sans font-medium hover:underline"
+            >
+              FAQ: Hand-Stripping vs. Dipping →
+            </Link>
           </div>
           <div className="bg-[#EBE6DE] border-l-4 border-[#11B2E8] p-4 rounded">
             <p className="text-[#2A2421] font-sans text-sm leading-relaxed">
-              <strong>EPA note:</strong> Lafayette Square homes almost
-              universally predate 1978 — most predate 1900. EPA RRP regulations
-              apply to any work that disturbs lead paint. Sue Wheeler is EPA
-              Certified and follows proper containment and documentation
-              procedures on every job.
+              <strong>EPA note:</strong> Virtually every home in Benton Park
+              predates 1978 — most predate 1920. EPA RRP regulations require a
+              Certified Lead Renovator for any refinishing work that disturbs
+              lead paint. Sue Wheeler is EPA Certified. Her process includes
+              proper containment, HEPA vacuuming, and documentation — protecting
+              your family and keeping your project compliant.
             </p>
           </div>
         </div>
@@ -204,18 +222,15 @@ export default function LafayetteSquarePage() {
               fontWeight: 400,
             }}
           >
-            From a Lafayette Square Client
+            From a Benton Park Client
           </h2>
           <blockquote className="border-l-4 border-[#A65D37] pl-6">
             <p className="text-[#2A2421] font-sans leading-relaxed italic mb-3">
-              "We have pocket doors on both floors — six sets total. They'd all
-              been painted shut at some point. Sue opened them up, stripped the
-              paint by hand, refinished them to match the floors, and they
-              actually work now. It was a significant project and she handled
-              every piece of it."
+              "[Testimonial about Benton Park project — front door, staircase,
+              or full house woodwork]"
             </p>
             <cite className="text-[#6B5E55] font-sans text-sm not-italic">
-              — Homeowner, Lafayette Square
+              — Homeowner, Benton Park
             </cite>
           </blockquote>
         </div>
@@ -231,7 +246,7 @@ export default function LafayetteSquarePage() {
               fontWeight: 400,
             }}
           >
-            Get a Free Estimate for Your Lafayette Square Home
+            Get a Free Estimate for Your Benton Park Home
           </h2>
           <p className="text-[#6B5E55] font-sans leading-relaxed mb-4">
             Sue Wheeler answers every call personally:{" "}
@@ -243,9 +258,9 @@ export default function LafayetteSquarePage() {
             </a>
           </p>
           <p className="text-[#6B5E55] font-sans leading-relaxed mb-6">
-            She's been working in Lafayette Square for decades. She'll look at
-            your pocket doors, your staircase, your front door — and tell you
-            exactly what they need and what it will cost.
+            She'll come to your home, look at the wood in person, and tell you
+            exactly what's under the current finish — and what it will cost to
+            do it right. No upselling, no guesswork.
           </p>
           <Link
             href="/contact/"
@@ -255,7 +270,7 @@ export default function LafayetteSquarePage() {
           </Link>
           <p className="text-[#6B5E55] font-sans text-sm mt-6">
             EPA Certified Lead Renovator. Est. 1989. St. Louis Magazine —
-            "Perfect Finish."
+            &ldquo;Perfect Finish.&rdquo;
           </p>
         </div>
       </section>

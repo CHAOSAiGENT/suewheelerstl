@@ -7,31 +7,31 @@ import { ServiceCard } from "@/components/ServiceCard";
 import { FAQAccordion, FAQSchema } from "@/components/FAQAccordion";
 
 export const metadata: Metadata = {
-  title: "Historic Wood Preservation St. Louis | Tax Credits | Sue Wheeler",
+  title: "Historic Home Wood Refinishing St. Louis | Sue Wheeler",
   description:
-    "Historic preservation wood refinishing in St. Louis. Hand-strip method aligns with NPS Standards. Tax credit guidance. EPA Certified. Sue Wheeler, 36 years. Free consult.",
+    "Wood refinishing for St. Louis historic homes. Hand-strip method aligns with NPS Standards. EPA Certified Lead Renovator. 36 years. Free estimate: (314) 367-6054.",
 };
 
 const faqs = [
   {
-    question: "Does wood refinishing qualify for historic tax credits?",
+    question: "Does Sue's method comply with preservation standards?",
     answer:
-      "It can — if your property is eligible, the work meets the Secretary of Interior's Standards, and you're using methods that preserve the original material. Hand-stripping is compliant. Dipping may not be. We can help you understand whether your project qualifies, and we document our work in the format that preservation applications require.",
+      "Yes. The Secretary of the Interior's Standards for Rehabilitation call for the gentlest effective stripping method — hand-scraping and hand-sanding. Sue Wheeler has always stripped by hand. Chemical dip-stripping is not endorsed by the Standards and compromises wood integrity.",
   },
   {
-    question: "My home is in the Central West End / Lafayette Square / Soulard. Do I qualify?",
+    question: "My home is in a historic district. Does that affect the work?",
     answer:
-      "Those neighborhoods are among St. Louis's most significant certified historic areas. Most properties in them are eligible for at least the Missouri state historic tax credit. The specifics depend on your building's contributing status. A conversation with your SHPO consultant (or with Sue) can clarify your situation quickly.",
+      "Historic district status means your home's original material and character are worth preserving — and that work should be consistent with the Standards for Rehabilitation. Sue's method is preservation-compliant. Call Sue to discuss your specific home: (314) 367-6054.",
   },
   {
-    question: "What is a \"Qualified Rehabilitation Expenditure\"?",
+    question: "Is lead paint a concern in historic homes?",
     answer:
-      "A QRE is a cost incurred for certified rehabilitation work on a certified historic structure. Wood refinishing that meets the Secretary of Interior's Standards — preserving original material, using approved methods — can be a QRE. Replacement of original woodwork with new material generally is not.",
+      "In St. Louis, virtually all pre-1978 homes have lead paint on woodwork surfaces. EPA RRP regulations require a Certified Lead Renovator for any work disturbing those surfaces. Sue Wheeler is EPA Certified. Every project on a pre-1978 home uses proper containment, HEPA filtration, and documented cleanup.",
   },
   {
-    question: "Can you help me understand whether my project qualifies?",
+    question: "Why is hand-stripping better for historic wood than dipping?",
     answer:
-      "We can give you a working understanding of the standards and whether your project direction aligns with them. For a formal credit determination, you'll want to work with a preservation architect or SHPO consultant. We can work with them on the documentation side. Call Sue: (314) 367-6054.",
+      "Dip-stripping immerses the piece in caustic chemicals. It raises the wood grain, softens carved profiles, dissolves hide glue in joints, and strips out the tonal variation in old-growth wood. For an original door, turned newel post, or paneled built-in — that damage is permanent. Hand-stripping preserves what makes the piece worth keeping.",
   },
 ];
 
@@ -46,12 +46,16 @@ export default function HistoricPreservationHubPage() {
         <div className="max-w-3xl mx-auto">
           <h1
             className="text-4xl md:text-6xl text-[#2A2421] mb-6 leading-tight"
-            style={{ fontFamily: '"Playfair Display", Georgia, serif', fontWeight: 400 }}
+            style={{
+              fontFamily: '"Playfair Display", Georgia, serif',
+              fontWeight: 400,
+            }}
           >
             Historic preservation wood refinishing in <em>St. Louis.</em>
           </h1>
           <p className="text-xl font-sans text-[#6B5E55] mb-10 leading-relaxed">
-            Hand-stripped, never dipped. The method the National Park Service recommends — and the one that keeps your project tax-credit eligible.
+            Hand-stripped, never dipped. The method the National Park Service
+            recommends — and the standard Sue Wheeler has held for 36 years.
           </p>
           <a
             href="tel:3143676054"
@@ -64,35 +68,37 @@ export default function HistoricPreservationHubPage() {
         </div>
       </section>
 
-      {/* The tax credit angle */}
+      {/* Why it matters for historic homes */}
       <section className="py-16 px-6" style={{ backgroundColor: "#F8F6F1" }}>
         <div className="max-w-3xl mx-auto">
           <h2
             className="text-3xl md:text-4xl text-[#2A2421] mb-6"
-            style={{ fontFamily: '"Playfair Display", Georgia, serif', fontWeight: 400 }}
+            style={{
+              fontFamily: '"Playfair Display", Georgia, serif',
+              fontWeight: 400,
+            }}
           >
-            Most homeowners in St. Louis&rsquo;s historic neighborhoods don&rsquo;t know this.
+            The woodwork in historic St. Louis homes is <em>irreplaceable.</em>
           </h2>
-          <div className="space-y-4 text-base font-sans text-[#6B5E55] leading-relaxed mb-8">
+          <div className="space-y-4 text-base font-sans text-[#6B5E55] leading-relaxed">
             <p>
-              If your home is in a certified historic district — Central West End, Lafayette Square, Soulard, Compton Heights, Shaw, and a dozen others — there&rsquo;s a real chance a meaningful portion of your wood refinishing project qualifies for historic preservation tax credits.
+              Homes in the Central West End, Lafayette Square, Benton Park,
+              Compton Heights, and Shaw were built from old-growth lumber —
+              denser, tighter-grained wood than anything available today. The
+              doors, staircases, built-ins, and millwork in these homes have
+              density and character that modern materials cannot replicate.
             </p>
             <p>
-              Not a small deduction. Credits. Dollar for dollar against what you owe. The Missouri state program returns{" "}
-              <strong className="text-[#2A2421]">25% of qualified rehabilitation expenditures</strong>{" "}
-              for owner-occupied homes in St. Louis. Combined with the federal 20% credit for income-producing properties, eligible projects can see{" "}
-              <strong className="text-[#2A2421]">45% of costs returned.</strong>
+              Refinishing preserves the original material. Replacement loses it
+              permanently. That distinction matters for the character of the
+              home, for its historic integrity, and for any preservation review.
             </p>
             <p>
-              Wood refinishing — restoring original doors, staircases, built-ins, and millwork — is exactly the work these programs were designed to support. It preserves the original material. It keeps the historic character. And when it&rsquo;s done right, it qualifies.
+              Sue Wheeler has been refinishing historic woodwork in St. Louis
+              for 36 years. She knows what these houses were built with, how
+              that wood ages, and what it takes to restore it properly.
             </p>
           </div>
-          <Link
-            href="/historic-preservation/historic-tax-credits"
-            className="inline-flex items-center gap-1.5 text-xs font-sans font-semibold uppercase tracking-widest text-[#A65D37] hover:gap-3 transition-all"
-          >
-            Historic tax credits: the full guide <ArrowRight size={12} />
-          </Link>
         </div>
       </section>
 
@@ -104,24 +110,41 @@ export default function HistoricPreservationHubPage() {
         <div className="max-w-3xl mx-auto">
           <h2
             className="text-3xl md:text-4xl mb-6"
-            style={{ fontFamily: '"Playfair Display", Georgia, serif', fontWeight: 400, color: "#EBE6DE" }}
+            style={{
+              fontFamily: '"Playfair Display", Georgia, serif',
+              fontWeight: 400,
+              color: "#EBE6DE",
+            }}
           >
-            Hand-stripping is what the NPS recommends. <em>Dipping tensions the standards — and may cost you credits.</em>
+            Hand-stripping is what the NPS recommends.{" "}
+            <em>Dipping compromises the wood and the standards.</em>
           </h2>
-          <div className="space-y-4 text-base font-sans leading-relaxed mb-8" style={{ color: "#9e9087" }}>
+          <div
+            className="space-y-4 text-base font-sans leading-relaxed mb-8"
+            style={{ color: "#9e9087" }}
+          >
             <p>
-              The Secretary of the Interior&rsquo;s Standards for Rehabilitation — the rulebook for all certified historic rehabilitations — explicitly call for the gentlest effective stripping method: hand-scraping, hand-sanding, with chemical strippers as a supplement. They do not endorse immersion stripping. A property owner whose contractor dips the woodwork may find those costs challenged as Qualified Rehabilitation Expenditures in a tax credit application.
+              The Secretary of the Interior&rsquo;s Standards for Rehabilitation
+              — the guidelines for certified historic rehabilitations —
+              explicitly call for the gentlest effective stripping method:
+              hand-scraping, hand-sanding, with chemical strippers as a
+              supplement. They do not endorse immersion stripping. Dipping
+              compromises the wood grain, softens profiles, and dissolves glue
+              joints in original millwork.
             </p>
             <p style={{ color: "#EBE6DE" }}>
-              Sue Wheeler has never dipped. For 36 years, every door, cabinet, piece of millwork, and staircase component has been stripped by hand. That method isn&rsquo;t just better for the wood. For a project pursuing preservation tax credits, it&rsquo;s the method that holds up to scrutiny.
+              Sue Wheeler has never dipped. For 36 years, every door, cabinet,
+              piece of millwork, and staircase component has been stripped by
+              hand. That method is better for the wood — and it&rsquo;s what
+              preservation standards recommend.
             </p>
           </div>
           <Link
-            href="/historic-preservation/secretary-of-interior-standards"
+            href="/faq"
             className="inline-flex items-center gap-1.5 text-xs font-sans font-semibold uppercase tracking-widest hover:gap-3 transition-all"
             style={{ color: "#11B2E8" }}
           >
-            NPS Standards and wood refinishing: the full breakdown <ArrowRight size={12} />
+            FAQ: hand-stripping vs. dipping <ArrowRight size={12} />
           </Link>
         </div>
       </section>
@@ -131,25 +154,28 @@ export default function HistoricPreservationHubPage() {
         <div className="max-w-5xl mx-auto">
           <h2
             className="text-2xl text-[#2A2421] mb-8"
-            style={{ fontFamily: '"Playfair Display", Georgia, serif', fontWeight: 400 }}
+            style={{
+              fontFamily: '"Playfair Display", Georgia, serif',
+              fontWeight: 400,
+            }}
           >
             Where to go next.
           </h2>
           <div className="grid md:grid-cols-3 gap-4">
             <ServiceCard
-              title="Historic Tax Credits Guide"
-              description="Federal 20% + Missouri 25–35%. Who qualifies. What properties qualify. The math in real dollars."
-              href="/historic-preservation/historic-tax-credits"
+              title="Staircase Refinishing"
+              description="Treads, spindles, newel posts, railings — the most visually significant woodwork in a historic home, done properly."
+              href="/staircase-refinishing"
             />
             <ServiceCard
-              title="Secretary of Interior's Standards"
-              description="What the NPS actually says about stripping historic wood. Why hand-stripping is compliant and dipping isn't."
-              href="/historic-preservation/secretary-of-interior-standards"
+              title="Doors & Frames"
+              description="Original doors are irreplaceable. We remove, strip, refinish in our shop, and reinstall. Hardware intact."
+              href="/door-refinishing"
             />
             <ServiceCard
-              title="St. Louis Historic Districts"
-              description="Which neighborhoods qualify. What district type you're in. What that means for your credit eligibility."
-              href="/historic-preservation/st-louis-historic-districts"
+              title="Architectural Woodwork"
+              description="Built-in hutches, wainscoting, crown molding, mantels, pocket door frames — the millwork that defines the room."
+              href="/built-ins-and-millwork-refinishing"
             />
           </div>
         </div>
@@ -160,16 +186,28 @@ export default function HistoricPreservationHubPage() {
         <div className="max-w-3xl mx-auto">
           <h2
             className="text-3xl md:text-4xl text-[#2A2421] mb-6"
-            style={{ fontFamily: '"Playfair Display", Georgia, serif', fontWeight: 400 }}
+            style={{
+              fontFamily: '"Playfair Display", Georgia, serif',
+              fontWeight: 400,
+            }}
           >
-            EPA Certified Lead Renovator — required for preservation-compliant work on pre-1978 wood.
+            EPA Certified Lead Renovator — required for preservation-compliant
+            work on pre-1978 wood.
           </h2>
           <div className="space-y-4 text-base font-sans text-[#6B5E55] leading-relaxed">
             <p>
-              All of St. Louis&rsquo;s certified historic districts contain homes built before 1978. All of them have lead paint on their original woodwork. A certified rehabilitation that doesn&rsquo;t handle lead paint correctly isn&rsquo;t compliant — and creates health, legal, and documentation exposure.
+              All of St. Louis&rsquo;s certified historic districts contain
+              homes built before 1978. All of them have lead paint on their
+              original woodwork. A certified rehabilitation that doesn&rsquo;t
+              handle lead paint correctly isn&rsquo;t compliant — and creates
+              health, legal, and documentation exposure.
             </p>
             <p>
-              Sue Wheeler is an EPA Certified Lead Renovator. Every pre-1978 project on historic woodwork includes proper containment, HEPA filtration, wet-sanding methods, and documented cleanup. The completion record goes in your property file — and supports your rehabilitation documentation.
+              Sue Wheeler is an EPA Certified Lead Renovator. Every pre-1978
+              project on historic woodwork includes proper containment, HEPA
+              filtration, wet-sanding methods, and documented cleanup. The
+              completion record goes in your property file — and supports your
+              rehabilitation documentation.
             </p>
           </div>
         </div>
@@ -180,7 +218,10 @@ export default function HistoricPreservationHubPage() {
         <div className="max-w-3xl mx-auto">
           <h2
             className="text-2xl text-[#2A2421] mb-8"
-            style={{ fontFamily: '"Playfair Display", Georgia, serif', fontWeight: 400 }}
+            style={{
+              fontFamily: '"Playfair Display", Georgia, serif',
+              fontWeight: 400,
+            }}
           >
             Common questions.
           </h2>

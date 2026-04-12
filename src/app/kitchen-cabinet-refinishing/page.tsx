@@ -9,7 +9,7 @@ import { FAQAccordion, FAQSchema } from "@/components/FAQAccordion";
 export const metadata: Metadata = {
   title: "Kitchen Cabinet Refinishing St. Louis | Sue Wheeler",
   description:
-    "Hand-stripped kitchen cabinet refinishing in St. Louis. Painted, stained, or color-change — restored by Sue Wheeler, 36 years, EPA Certified, BBB A+. Free estimate.",
+    "Hand-stripped kitchen cabinet refinishing in St. Louis. Painted, stained, or color-change — restored by Sue Wheeler, 36 years, EPA Certified. Free estimate: (314) 367-6054.",
 };
 
 const faqItems = [
@@ -51,14 +51,18 @@ export default function KitchenCabinetRefinishingPage() {
         <div className="max-w-4xl mx-auto">
           <h1
             className="text-4xl md:text-5xl text-[#2A2421] mb-5"
-            style={{ fontFamily: '"Playfair Display", Georgia, serif', fontWeight: 400 }}
+            style={{
+              fontFamily: '"Playfair Display", Georgia, serif',
+              fontWeight: 400,
+            }}
           >
             Kitchen cabinet refinishing in <em>St. Louis.</em>
           </h1>
           <p className="text-lg text-[#6B5E55] font-sans leading-relaxed max-w-2xl mb-8">
-            Your original cabinets are almost certainly worth saving. We'll strip them back to bare
-            wood, repair what needs repairing, and finish them to last another 30 years — for a
-            fraction of the cost of replacement.
+            Your original cabinets are almost certainly worth saving. We'll
+            strip them back to bare wood, repair what needs repairing, and
+            finish them to last another 30 years — for a fraction of the cost of
+            replacement.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <Link
@@ -107,26 +111,31 @@ export default function KitchenCabinetRefinishingPage() {
         <div className="max-w-3xl mx-auto">
           <h2
             className="text-3xl text-[#2A2421] mb-6"
-            style={{ fontFamily: '"Playfair Display", Georgia, serif', fontWeight: 400 }}
+            style={{
+              fontFamily: '"Playfair Display", Georgia, serif',
+              fontWeight: 400,
+            }}
           >
             Painted. Stained. <em>Color-changed.</em> We do all three.
           </h2>
           <div className="space-y-4 text-[#6B5E55] font-sans text-base leading-relaxed">
             <p>
-              Wood Refinishing by Sue Wheeler refinishes kitchen cabinets of every finish type —
-              painted cabinets being refreshed or color-changed, natural wood cabinets being
-              stripped and re-stained, and everything in between. The method is the same regardless:
-              hand-strip to bare wood, prepare the surface properly, apply the right finish for how
-              the cabinets will be used.
+              Wood Refinishing by Sue Wheeler refinishes kitchen cabinets of
+              every finish type — painted cabinets being refreshed or
+              color-changed, natural wood cabinets being stripped and
+              re-stained, and everything in between. The method is the same
+              regardless: hand-strip to bare wood, prepare the surface properly,
+              apply the right finish for how the cabinets will be used.
             </p>
             <p>
-              What we don't do: spray a new coat over an old one and call it done. That's not
-              refinishing. It's painting over a problem. Within a few years the old finish
-              telegraphs through the new, the adhesion fails, and you're back where you started —
-              or worse.
+              What we don't do: spray a new coat over an old one and call it
+              done. That's not refinishing. It's painting over a problem. Within
+              a few years the old finish telegraphs through the new, the
+              adhesion fails, and you're back where you started — or worse.
             </p>
             <p>
-              Every cabinet project starts at bare wood. That's what "refinishing" means.
+              Every cabinet project starts at bare wood. That's what
+              "refinishing" means.
             </p>
           </div>
         </div>
@@ -137,7 +146,10 @@ export default function KitchenCabinetRefinishingPage() {
         <div className="max-w-3xl mx-auto">
           <h2
             className="text-3xl text-[#2A2421] mb-8"
-            style={{ fontFamily: '"Playfair Display", Georgia, serif', fontWeight: 400 }}
+            style={{
+              fontFamily: '"Playfair Display", Georgia, serif',
+              fontWeight: 400,
+            }}
           >
             The case for <em>keeping</em> your original cabinets.
           </h2>
@@ -157,12 +169,12 @@ export default function KitchenCabinetRefinishingPage() {
               },
             ].map(({ label, body }) => (
               <div key={label} className="flex gap-4">
-                <span
-                  className="text-[#A65D37] font-sans font-semibold text-sm mt-1 shrink-0"
-                >
+                <span className="text-[#A65D37] font-sans font-semibold text-sm mt-1 shrink-0">
                   {label}
                 </span>
-                <p className="text-[#6B5E55] font-sans text-base leading-relaxed">{body}</p>
+                <p className="text-[#6B5E55] font-sans text-base leading-relaxed">
+                  {body}
+                </p>
               </div>
             ))}
           </div>
@@ -177,20 +189,25 @@ export default function KitchenCabinetRefinishingPage() {
         <div className="max-w-3xl mx-auto">
           <h2
             className="text-2xl text-[#2A2421] mb-4"
-            style={{ fontFamily: '"Playfair Display", Georgia, serif', fontWeight: 400 }}
+            style={{
+              fontFamily: '"Playfair Display", Georgia, serif',
+              fontWeight: 400,
+            }}
           >
             Pre-1978 kitchen? <em>Lead paint is almost certainly present.</em>
           </h2>
           <p className="text-[#6B5E55] font-sans text-base leading-relaxed mb-4">
-            In St. Louis City, 89.8% of homes were built before 1978. The cabinets in those
-            kitchens were painted or stained with products that contain lead. Stripping those
-            cabinets without EPA-certified lead-safe protocols creates lead dust in a room where
-            your family prepares food.
+            In St. Louis City, 89.8% of homes were built before 1978. The
+            cabinets in those kitchens were painted or stained with products
+            that contain lead. Stripping those cabinets without EPA-certified
+            lead-safe protocols creates lead dust in a room where your family
+            prepares food.
           </p>
           <p className="text-[#6B5E55] font-sans text-base leading-relaxed mb-4">
-            Sue Wheeler is an EPA Certified Lead Renovator. Every cabinet project in a pre-1978
-            home is handled with full containment, HEPA filtration, wet-sanding methods, and
-            documented cleanup. You get a completion record. You don't have to wonder.
+            Sue Wheeler is an EPA Certified Lead Renovator. Every cabinet
+            project in a pre-1978 home is handled with full containment, HEPA
+            filtration, wet-sanding methods, and documented cleanup. You get a
+            completion record. You don't have to wonder.
           </p>
           <Link
             href="/faq#lead-paint"
@@ -206,7 +223,10 @@ export default function KitchenCabinetRefinishingPage() {
         <div className="max-w-3xl mx-auto">
           <h2
             className="text-3xl text-[#2A2421] mb-8"
-            style={{ fontFamily: '"Playfair Display", Georgia, serif', fontWeight: 400 }}
+            style={{
+              fontFamily: '"Playfair Display", Georgia, serif',
+              fontWeight: 400,
+            }}
           >
             What cabinet refinishing <em>actually</em> involves.
           </h2>
@@ -256,12 +276,12 @@ export default function KitchenCabinetRefinishingPage() {
                   {step}
                 </div>
                 <div>
-                  <h3
-                    className="font-sans font-semibold text-[#2A2421] text-sm uppercase tracking-widest mb-1"
-                  >
+                  <h3 className="font-sans font-semibold text-[#2A2421] text-sm uppercase tracking-widest mb-1">
                     {title}
                   </h3>
-                  <p className="text-[#6B5E55] font-sans text-base leading-relaxed">{body}</p>
+                  <p className="text-[#6B5E55] font-sans text-base leading-relaxed">
+                    {body}
+                  </p>
                 </div>
               </div>
             ))}
@@ -274,7 +294,10 @@ export default function KitchenCabinetRefinishingPage() {
         <div className="max-w-3xl mx-auto">
           <h2
             className="text-3xl text-[#2A2421] mb-8"
-            style={{ fontFamily: '"Playfair Display", Georgia, serif', fontWeight: 400 }}
+            style={{
+              fontFamily: '"Playfair Display", Georgia, serif',
+              fontWeight: 400,
+            }}
           >
             Strip &amp; Refinish or <em>Perk Up &amp; Protect?</em>
           </h2>
@@ -290,9 +313,9 @@ export default function KitchenCabinetRefinishingPage() {
                 Strip &amp; Refinish (S&amp;R)
               </h3>
               <p className="text-[#6B5E55] font-sans text-sm leading-relaxed">
-                Full restoration. Existing finish stripped to bare wood, repairs made, new stain
-                and finish applied. For cabinets with failing finish, significant wear, or a major
-                color change.
+                Full restoration. Existing finish stripped to bare wood, repairs
+                made, new stain and finish applied. For cabinets with failing
+                finish, significant wear, or a major color change.
               </p>
             </div>
             <div
@@ -306,10 +329,12 @@ export default function KitchenCabinetRefinishingPage() {
                 Perk Up &amp; Protect (PUP)
               </h3>
               <p className="text-[#6B5E55] font-sans text-sm leading-relaxed">
-                Maintenance coat. Light sanding to prepare the surface, fresh finish applied over
-                the existing. For cabinets in good structural condition with a solid existing finish
-                that just needs refreshing. Faster and less expensive. Not right for every
-                situation — we'll tell you honestly which option your cabinets need.
+                Maintenance coat. Light sanding to prepare the surface, fresh
+                finish applied over the existing. For cabinets in good
+                structural condition with a solid existing finish that just
+                needs refreshing. Faster and less expensive. Not right for every
+                situation — we'll tell you honestly which option your cabinets
+                need.
               </p>
             </div>
           </div>
@@ -321,13 +346,19 @@ export default function KitchenCabinetRefinishingPage() {
         <div className="max-w-2xl mx-auto text-center">
           <blockquote
             className="text-xl text-[#2A2421] leading-relaxed mb-4"
-            style={{ fontFamily: '"Playfair Display", Georgia, serif', fontStyle: "italic" }}
+            style={{
+              fontFamily: '"Playfair Display", Georgia, serif',
+              fontStyle: "italic",
+            }}
           >
-            "We had a contractor tell us our 1940s oak cabinets were beyond saving. Sue came out,
-            looked at them for five minutes, and told us they were some of the best original
-            cabinets she'd seen. We refinished them. They look incredible."
+            "We had a contractor tell us our 1940s oak cabinets were beyond
+            saving. Sue came out, looked at them for five minutes, and told us
+            they were some of the best original cabinets she'd seen. We
+            refinished them. They look incredible."
           </blockquote>
-          <p className="text-sm font-sans text-[#6B5E55]">— Homeowner, Webster Groves</p>
+          <p className="text-sm font-sans text-[#6B5E55]">
+            — Homeowner, Maplewood
+          </p>
         </div>
       </section>
 
@@ -336,7 +367,10 @@ export default function KitchenCabinetRefinishingPage() {
         <div className="max-w-3xl mx-auto">
           <h2
             className="text-3xl text-[#2A2421] mb-8"
-            style={{ fontFamily: '"Playfair Display", Georgia, serif', fontWeight: 400 }}
+            style={{
+              fontFamily: '"Playfair Display", Georgia, serif',
+              fontWeight: 400,
+            }}
           >
             Common questions
           </h2>

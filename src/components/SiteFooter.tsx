@@ -3,26 +3,33 @@ import { Phone, MapPin } from "lucide-react";
 
 export function SiteFooter() {
   return (
-    <footer style={{ backgroundColor: "#2A2421", color: "#EBE6DE" }}>
+    <footer
+      style={{
+        backgroundColor: "#F8F6F1",
+        borderTop: "4px solid #11B2E8",
+        color: "#2A2421",
+      }}
+    >
       {/* Main footer grid */}
       <div className="max-w-7xl mx-auto px-6 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           {/* Col 1 — Business info */}
           <div>
             <p
-              className="font-serif italic text-2xl mb-4 text-white"
+              className="font-serif italic text-2xl mb-1 text-[#2A2421]"
               style={{ fontFamily: '"Playfair Display", Georgia, serif' }}
             >
               Sue Wheeler
             </p>
             <p className="text-xs uppercase tracking-widest text-[#6B5E55] mb-4 font-sans">
-              Wood Refinishing
+              Wood Refinishing · St. Louis
             </p>
-            <div className="space-y-2 text-sm text-[#EBE6DE] font-sans">
+            <div className="space-y-2 text-sm text-[#6B5E55] font-sans">
               <div className="flex items-start gap-2">
                 <MapPin size={14} className="mt-0.5 text-[#11B2E8] shrink-0" />
                 <span>
-                  5260 Washington Place<br />
+                  5260 Washington Place
+                  <br />
                   St. Louis, MO 63108
                 </span>
               </div>
@@ -30,7 +37,7 @@ export function SiteFooter() {
                 <Phone size={14} className="text-[#11B2E8] shrink-0" />
                 <a
                   href="tel:3143676054"
-                  className="text-[#11B2E8] hover:text-white transition-colors"
+                  className="text-[#11B2E8] hover:text-[#0e96c4] transition-colors font-medium"
                 >
                   (314) 367-6054
                 </a>
@@ -48,12 +55,17 @@ export function SiteFooter() {
                 ["Kitchen Cabinet Refinishing", "/kitchen-cabinet-refinishing"],
                 ["Door Refinishing", "/door-refinishing"],
                 ["Staircase Refinishing", "/staircase-refinishing"],
-                ["Built-Ins & Millwork", "/built-ins-and-millwork-refinishing"],
-                ["Commercial & Hospitality", "/commercial-and-hospitality-refinishing"],
-                ["Institutional Refinishing", "/institutional-refinishing"],
+                [
+                  "Architectural Woodwork",
+                  "/built-ins-and-millwork-refinishing",
+                ],
+                ["Perk Up & Protect", "/perk-up-and-protect"],
               ].map(([label, href]) => (
                 <li key={href}>
-                  <Link href={href} className="text-[#EBE6DE] hover:text-[#11B2E8] transition-colors">
+                  <Link
+                    href={href}
+                    className="text-[#2A2421] hover:text-[#11B2E8] transition-colors"
+                  >
                     {label}
                   </Link>
                 </li>
@@ -76,7 +88,10 @@ export function SiteFooter() {
                 ["Contact", "/contact"],
               ].map(([label, href]) => (
                 <li key={href}>
-                  <Link href={href} className="text-[#EBE6DE] hover:text-[#11B2E8] transition-colors">
+                  <Link
+                    href={href}
+                    className="text-[#2A2421] hover:text-[#11B2E8] transition-colors"
+                  >
                     {label}
                   </Link>
                 </li>
@@ -92,21 +107,15 @@ export function SiteFooter() {
             <ul className="space-y-3 text-sm font-sans">
               <li className="flex items-start gap-2">
                 <span className="text-[#11B2E8] mt-0.5">✓</span>
-                <span>BBB A+ Accredited</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-[#11B2E8] mt-0.5">✓</span>
                 <span>EPA Certified Lead Renovator</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-[#11B2E8] mt-0.5">✓</span>
-                <span>In Business Since 1989</span>
               </li>
               <li className="flex items-start gap-2">
                 <span className="text-[#11B2E8] mt-0.5">✓</span>
                 <span>
                   Featured in{" "}
-                  <em style={{ fontFamily: '"Playfair Display", Georgia, serif' }}>
+                  <em
+                    style={{ fontFamily: '"Playfair Display", Georgia, serif' }}
+                  >
                     St. Louis Magazine
                   </em>{" "}
                   — &ldquo;Perfect Finish&rdquo;
@@ -114,7 +123,11 @@ export function SiteFooter() {
               </li>
               <li className="flex items-start gap-2">
                 <span className="text-[#11B2E8] mt-0.5">✓</span>
-                <span>The Sheldon Concert Hall</span>
+                <span>Sue Answers Every Call Personally</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-[#11B2E8] mt-0.5">✓</span>
+                <span>Est. 1989 · St. Louis</span>
               </li>
             </ul>
           </div>
@@ -122,14 +135,20 @@ export function SiteFooter() {
       </div>
 
       {/* Bottom bar */}
-      <div className="border-t border-[#3D3532]">
+      <div className="border-t border-[#DDD8D0]">
         <div className="max-w-7xl mx-auto px-6 py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-[#6B5E55] font-sans">
           <span>© 2026 Wood Refinishing by Sue Wheeler, LLC</span>
           <div className="flex gap-4">
-            <Link href="/privacy-policy" className="hover:text-[#EBE6DE] transition-colors">
+            <Link
+              href="/privacy-policy"
+              className="hover:text-[#2A2421] transition-colors"
+            >
               Privacy Policy
             </Link>
-            <Link href="/sitemap" className="hover:text-[#EBE6DE] transition-colors">
+            <Link
+              href="/sitemap"
+              className="hover:text-[#2A2421] transition-colors"
+            >
               Sitemap
             </Link>
           </div>

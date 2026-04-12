@@ -7,13 +7,13 @@ import { TestimonialCard } from "@/components/TestimonialCard";
 import { CTABlock } from "@/components/CTABlock";
 
 export const metadata: Metadata = {
-  title: "Wood Refinishing St. Louis | Sue Wheeler — Since 1989",
+  title: "Wood Refinishing St. Louis | Sue Wheeler",
   description:
-    "St. Louis's most trusted architectural wood refinisher. Hand-stripped, never dipped. EPA Certified. BBB A+. 36 years. Sue answers every call personally. (314) 367-6054.",
+    "Your woodwork shouldn't look its age. Hand-stripped, never dipped. EPA Certified Lead Renovator. Historic home specialist. Sue answers every call personally. (314) 367-6054.",
   openGraph: {
-    title: "Wood Refinishing St. Louis | Sue Wheeler — Since 1989",
+    title: "Wood Refinishing St. Louis | Sue Wheeler",
     description:
-      "St. Louis's most trusted architectural wood refinisher. Hand-stripped, never dipped. EPA Certified. BBB A+. 36 years.",
+      "Your woodwork shouldn't look its age. Hand-stripped, never dipped. EPA Certified. Historic home specialist. St. Louis.",
     url: "https://suewheelerstl.com",
   },
 };
@@ -23,7 +23,7 @@ const localBusinessSchema = {
   "@type": "LocalBusiness",
   name: "Wood Refinishing by Sue Wheeler, LLC",
   description:
-    "St. Louis's most trusted architectural wood refinisher. Hand-stripped, never dipped. EPA Certified. BBB A+. 36 years.",
+    "Your woodwork shouldn't look its age. Hand-stripped, never dipped. EPA Certified Lead Renovator. Historic home specialist. St. Louis.",
   url: "https://suewheelerstl.com",
   telephone: "+13143676054",
   address: {
@@ -39,7 +39,7 @@ const localBusinessSchema = {
     name: "St. Louis",
   },
   foundingDate: "1989",
-  hasCredential: ["EPA Certified Lead Renovator", "BBB A+ Accredited"],
+  hasCredential: ["EPA Certified Lead Renovator"],
   sameAs: [],
 };
 
@@ -63,22 +63,16 @@ const services = [
     href: "/staircase-refinishing",
   },
   {
-    title: "Built-Ins & Millwork",
+    title: "Architectural Woodwork",
     description:
-      "Hutches, buffets, bookcases, wainscoting, crown molding, mantels, chair rail.",
+      "Built-ins, hutches, mantels, crown molding, wainscoting, chair rail — the millwork that defines the room.",
     href: "/built-ins-and-millwork-refinishing",
   },
   {
-    title: "Commercial & Hospitality",
+    title: "Perk Up & Protect",
     description:
-      "Bar tops, tabletops, wainscoting, booths. Off-hours scheduling. Maintenance contracts.",
-    href: "/commercial-and-hospitality-refinishing",
-  },
-  {
-    title: "Institutional & Historic Venues",
-    description:
-      "Concert halls, churches, universities, landmark buildings. EPA certified. Standards compliant.",
-    href: "/institutional-refinishing",
+      "Sound finish, dull appearance? A maintenance coat restores the look without a full strip. Sue determines which you need.",
+    href: "/perk-up-and-protect",
   },
 ];
 
@@ -91,7 +85,7 @@ const testimonials = [
   {
     quote:
       "We were quoted $40,000 for new cabinets. Sue refinished the originals for a fraction of that and they look brand new. I wish we'd called her five years ago.",
-    attribution: "Homeowner, Webster Groves",
+    attribution: "Homeowner, Benton Park",
   },
   {
     quote:
@@ -102,38 +96,24 @@ const testimonials = [
 
 const neighborhoods = [
   "Central West End",
-  "Lafayette Square",
+  "Benton Park",
   "Compton Heights",
-  "Tower Grove",
+  "Lafayette Square",
   "Shaw",
-  "Webster Groves",
-  "Kirkwood",
   "Clayton",
   "University City",
   "Maplewood",
-  "Ladue",
-  "Frontenac",
-  "Town & Country",
-  "Chesterfield",
-  "Ballwin",
 ];
 
 const neighborhoodHrefs: Record<string, string> = {
   "Central West End": "/neighborhoods/central-west-end",
-  "Lafayette Square": "/neighborhoods/lafayette-square",
+  "Benton Park": "/neighborhoods/benton-park",
   "Compton Heights": "/neighborhoods/compton-heights",
-  "Tower Grove": "/neighborhoods/tower-grove",
+  "Lafayette Square": "/neighborhoods/lafayette-square",
   Shaw: "/neighborhoods/shaw",
-  "Webster Groves": "/neighborhoods/webster-groves",
-  Kirkwood: "/neighborhoods/kirkwood",
   Clayton: "/neighborhoods/clayton",
   "University City": "/neighborhoods/university-city",
   Maplewood: "/neighborhoods/maplewood",
-  Ladue: "/neighborhoods/ladue",
-  Frontenac: "/neighborhoods/frontenac",
-  "Town & Country": "/neighborhoods/town-and-country",
-  Chesterfield: "/neighborhoods/chesterfield",
-  Ballwin: "/neighborhoods/ballwin",
 };
 
 export default function HomePage() {
@@ -141,7 +121,9 @@ export default function HomePage() {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(localBusinessSchema),
+        }}
       />
 
       {/* Trust bar */}
@@ -152,15 +134,18 @@ export default function HomePage() {
         <div className="max-w-5xl mx-auto">
           <h1
             className="text-4xl md:text-6xl text-[#2A2421] mb-6 leading-tight max-w-3xl"
-            style={{ fontFamily: '"Playfair Display", Georgia, serif', fontWeight: 400 }}
+            style={{
+              fontFamily: '"Playfair Display", Georgia, serif',
+              fontWeight: 400,
+            }}
           >
-            St. Louis&rsquo;s architectural wood specialist —{" "}
-            <em style={{ color: "#A65D37" }}>hand-stripped, never dipped.</em>
+            Your woodwork{" "}
+            <em style={{ color: "#A65D37" }}>shouldn&rsquo;t look its age.</em>
           </h1>
           <p className="text-lg text-[#6B5E55] font-sans mb-8 max-w-xl leading-relaxed">
-            Sue Wheeler has been refinishing the doors, staircases, cabinets, and
-            built-ins of St. Louis&rsquo;s finest homes and landmark buildings since
-            1989. When you call, Sue answers.
+            The doors, staircases, cabinets, and built-ins in your home are
+            worth restoring — not replacing. Sue Wheeler has been doing it right
+            in St. Louis for 36 years. When you call, she answers.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <Link
@@ -187,23 +172,26 @@ export default function HomePage() {
         <div className="max-w-3xl mx-auto">
           <h2
             className="text-3xl md:text-4xl text-[#2A2421] mb-6"
-            style={{ fontFamily: '"Playfair Display", Georgia, serif', fontWeight: 400 }}
+            style={{
+              fontFamily: '"Playfair Display", Georgia, serif',
+              fontWeight: 400,
+            }}
           >
             <em>The right way</em> to refinish architectural wood.
           </h2>
           <div className="space-y-4 text-base font-sans text-[#6B5E55] leading-relaxed">
             <p>
-              There&rsquo;s a shortcut in this industry — a chemical dip tank that strips
-              a door or cabinet in minutes. It raises the wood grain, softens the
-              profiles, loosens the glue joints, and washes out the stain. The result
-              looks flat. It doesn&rsquo;t last.
+              There&rsquo;s a shortcut in this industry — a chemical dip tank
+              that strips a door or cabinet in minutes. It raises the wood
+              grain, softens the profiles, loosens the glue joints, and washes
+              out the stain. The result looks flat. It doesn&rsquo;t last.
             </p>
             <p className="text-[#2A2421] font-medium">We don&rsquo;t dip.</p>
             <p>
-              Wood Refinishing by Sue Wheeler hand-strips every piece — by hand, with
-              the right chemistry, the right tools, and 36 years of knowing the
-              difference. It takes longer. It costs more to do it this way. The wood
-              lasts decades instead of years.
+              Wood Refinishing by Sue Wheeler hand-strips every piece — by hand,
+              with the right chemistry, the right tools, and 36 years of knowing
+              the difference. It takes longer. It costs more to do it this way.
+              The wood lasts decades instead of years.
             </p>
             <p>That&rsquo;s the choice you&rsquo;re making when you call us.</p>
           </div>
@@ -222,15 +210,18 @@ export default function HomePage() {
           <div className="mb-10">
             <h2
               className="text-3xl md:text-4xl text-[#2A2421] mb-3"
-              style={{ fontFamily: '"Playfair Display", Georgia, serif', fontWeight: 400 }}
+              style={{
+                fontFamily: '"Playfair Display", Georgia, serif',
+                fontWeight: 400,
+              }}
             >
               What we <em>refinish.</em>
             </h2>
             <p className="text-base font-sans text-[#6B5E55] max-w-2xl">
-              We work on architectural woodwork — the pieces built into a home or
-              building that define its character. Not furniture. Not floors. The elements
-              that came with the structure and can&rsquo;t be replaced without losing
-              something real.
+              We work on architectural woodwork — the pieces built into a home
+              or building that define its character. Not furniture. Not floors.
+              The elements that came with the structure and can&rsquo;t be
+              replaced without losing something real.
             </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -241,52 +232,29 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Sheldon Spotlight */}
-      <section className="py-16 px-6 bg-[#2A2421] text-[#EBE6DE]">
-        <div className="max-w-3xl mx-auto text-center">
-          <p className="text-xs font-sans font-semibold uppercase tracking-widest text-[#11B2E8] mb-4">
-            Project Spotlight
-          </p>
-          <h2
-            className="text-3xl md:text-4xl mb-6"
-            style={{ fontFamily: '"Playfair Display", Georgia, serif', fontWeight: 400 }}
-          >
-            <em>The Sheldon Concert Hall.</em> St. Louis landmark. Our work.
-          </h2>
-          <p className="text-base font-sans text-[#9e9087] leading-relaxed mb-8">
-            During the Sheldon&rsquo;s $11 million renovation, Wood Refinishing by Sue
-            Wheeler refinished the doors of one of St. Louis&rsquo;s most important
-            concert halls. The same hands. The same standard. The same method we bring
-            to your home.
-          </p>
-          <Link
-            href="/institutional-refinishing/historic-venue-restoration"
-            className="inline-flex items-center gap-2 text-xs font-sans font-semibold uppercase tracking-widest text-[#11B2E8] hover:gap-3 transition-all"
-          >
-            Learn about our institutional work <ArrowRight size={12} />
-          </Link>
-        </div>
-      </section>
-
       {/* EPA Certification */}
       <section className="py-16 px-6 bg-[#F8F6F1]">
         <div className="max-w-3xl mx-auto">
           <h2
             className="text-3xl md:text-4xl text-[#2A2421] mb-6"
-            style={{ fontFamily: '"Playfair Display", Georgia, serif', fontWeight: 400 }}
+            style={{
+              fontFamily: '"Playfair Display", Georgia, serif',
+              fontWeight: 400,
+            }}
           >
             EPA Certified Lead Renovator.
           </h2>
           <p className="text-base font-sans text-[#6B5E55] leading-relaxed mb-4">
-            89.8% of homes in St. Louis City were built before 1978. That means lead
-            paint — in the doors, the trim, the cabinets, the staircase railings. Work
-            done without EPA certification on those surfaces isn&rsquo;t just sloppy.
-            It&rsquo;s a legal and health risk.
+            89.8% of homes in St. Louis City were built before 1978. That means
+            lead paint — in the doors, the trim, the cabinets, the staircase
+            railings. Work done without EPA certification on those surfaces
+            isn&rsquo;t just sloppy. It&rsquo;s a legal and health risk.
           </p>
           <p className="text-base font-sans text-[#6B5E55] leading-relaxed mb-6">
-            Sue Wheeler is an EPA Certified Lead Renovator. Every project on a pre-1978
-            home is handled with full lead-safe protocols, documented and compliant. You
-            don&rsquo;t have to ask whether it&rsquo;s being done right.
+            Sue Wheeler is an EPA Certified Lead Renovator. Every project on a
+            pre-1978 home is handled with full lead-safe protocols, documented
+            and compliant. You don&rsquo;t have to ask whether it&rsquo;s being
+            done right.
           </p>
           <Link
             href="/faq#epa-cert"
@@ -302,7 +270,10 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto">
           <h2
             className="text-3xl text-white mb-8 text-center"
-            style={{ fontFamily: '"Playfair Display", Georgia, serif', fontWeight: 400 }}
+            style={{
+              fontFamily: '"Playfair Display", Georgia, serif',
+              fontWeight: 400,
+            }}
           >
             What St. Louis homeowners say.
           </h2>
@@ -327,24 +298,26 @@ export default function HomePage() {
         <div className="max-w-3xl mx-auto">
           <h2
             className="text-3xl md:text-4xl text-[#2A2421] mb-6"
-            style={{ fontFamily: '"Playfair Display", Georgia, serif', fontWeight: 400 }}
+            style={{
+              fontFamily: '"Playfair Display", Georgia, serif',
+              fontWeight: 400,
+            }}
           >
             <em>36 years.</em> One city. One owner.
           </h2>
           <div className="space-y-4 text-base font-sans text-[#6B5E55] leading-relaxed">
             <p>
-              Sue Wheeler started refinishing wood in St. Louis in 1989. Since then, she
-              has worked on homes in the Central West End, Lafayette Square, Webster
-              Groves, Kirkwood, Ladue, and dozens of neighborhoods in between. She has
-              refinished the doors of The Sheldon Concert Hall and the kitchen cabinets
-              of first-time homeowners in Maplewood.
+              Sue Wheeler started refinishing wood in St. Louis in 1989. Since
+              then, she has worked in the Central West End, Benton Park, Compton
+              Heights, Lafayette Square, Shaw, Clayton, and dozens of
+              neighborhoods across the city and inner-ring suburbs.
             </p>
             <p>She has never dipped a door.</p>
             <p>
-              When you call Wood Refinishing by Sue Wheeler, Sue Wheeler answers. She
-              will ask you the right questions, tell you what the work actually involves,
-              and give you an honest estimate. No call centers. No project managers. No
-              surprises.
+              When you call Wood Refinishing by Sue Wheeler, Sue Wheeler
+              answers. She will ask you the right questions, tell you what the
+              work actually involves, and give you an honest estimate. No call
+              centers. No project managers. No surprises.
             </p>
           </div>
           <Link
@@ -361,15 +334,17 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto">
           <h2
             className="text-3xl text-[#2A2421] mb-4"
-            style={{ fontFamily: '"Playfair Display", Georgia, serif', fontWeight: 400 }}
+            style={{
+              fontFamily: '"Playfair Display", Georgia, serif',
+              fontWeight: 400,
+            }}
           >
-            Serving <em>metropolitan St. Louis</em> — city and county.
+            Serving the neighborhoods where the <em>woodwork is worth it.</em>
           </h2>
           <p className="text-base font-sans text-[#6B5E55] mb-8 max-w-2xl">
-            We work throughout the greater St. Louis area — historic city neighborhoods
-            and inner-ring suburbs where the architectural woodwork is original, and West
-            County communities where the homes are newer and the cabinets and doors still
-            deserve the best finish available.
+            We specialize in St. Louis City and the inner-ring suburbs — the
+            neighborhoods with pre-war homes, original old-growth millwork, and
+            woodwork that repays proper restoration.
           </p>
           <div className="flex flex-wrap gap-2">
             {neighborhoods.map((n) => (
@@ -383,30 +358,6 @@ export default function HomePage() {
               </Link>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* Historic Preservation callout */}
-      <section className="py-16 px-6 bg-[#EBE6DE]">
-        <div className="max-w-3xl mx-auto">
-          <h2
-            className="text-3xl md:text-4xl text-[#2A2421] mb-4"
-            style={{ fontFamily: '"Playfair Display", Georgia, serif', fontWeight: 400 }}
-          >
-            Historic home? <em>Tax credits may apply.</em>
-          </h2>
-          <p className="text-base font-sans text-[#6B5E55] leading-relaxed mb-6">
-            If your home is in a certified or local historic district, the federal and
-            Missouri historic tax credit programs may return up to 45–55 cents on every
-            dollar you spend on qualifying woodwork restoration. No other wood refinisher
-            in St. Louis explains this. We do.
-          </p>
-          <Link
-            href="/historic-preservation/historic-tax-credits"
-            className="inline-flex items-center gap-1.5 text-xs font-sans font-semibold uppercase tracking-widest text-[#A65D37] hover:gap-3 transition-all"
-          >
-            Historic tax credit guide for St. Louis homeowners <ArrowRight size={12} />
-          </Link>
         </div>
       </section>
 

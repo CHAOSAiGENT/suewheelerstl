@@ -22,10 +22,22 @@ const sections = [
   {
     label: "Kitchen Cabinet Refinishing",
     links: [
-      ["Kitchen Cabinet Refinishing — Overview", "/kitchen-cabinet-refinishing"],
-      ["Painted Cabinet Refinishing", "/kitchen-cabinet-refinishing/painted-cabinets"],
-      ["Stained Cabinet Refinishing", "/kitchen-cabinet-refinishing/stained-cabinets"],
-      ["Cabinet Color Change", "/kitchen-cabinet-refinishing/cabinet-color-change"],
+      [
+        "Kitchen Cabinet Refinishing — Overview",
+        "/kitchen-cabinet-refinishing",
+      ],
+      [
+        "Painted Cabinet Refinishing",
+        "/kitchen-cabinet-refinishing/painted-cabinets",
+      ],
+      [
+        "Stained Cabinet Refinishing",
+        "/kitchen-cabinet-refinishing/stained-cabinets",
+      ],
+      [
+        "Cabinet Color Change",
+        "/kitchen-cabinet-refinishing/cabinet-color-change",
+      ],
     ],
   },
   {
@@ -33,7 +45,10 @@ const sections = [
     links: [
       ["Door Refinishing — Overview", "/door-refinishing"],
       ["Front Door Refinishing", "/door-refinishing/front-door-refinishing"],
-      ["Interior Door Refinishing", "/door-refinishing/interior-door-refinishing"],
+      [
+        "Interior Door Refinishing",
+        "/door-refinishing/interior-door-refinishing",
+      ],
       ["French Door Refinishing", "/door-refinishing/french-door-refinishing"],
       ["Pocket Door Refinishing", "/door-refinishing/pocket-door-refinishing"],
     ],
@@ -42,7 +57,10 @@ const sections = [
     label: "Staircase Refinishing",
     links: [
       ["Staircase Refinishing — Overview", "/staircase-refinishing"],
-      ["Stair Treads & Risers", "/staircase-refinishing/stair-treads-and-risers"],
+      [
+        "Stair Treads & Risers",
+        "/staircase-refinishing/stair-treads-and-risers",
+      ],
       ["Spindles & Balusters", "/staircase-refinishing/spindles-and-balusters"],
       ["Newel Posts", "/staircase-refinishing/newel-posts"],
       ["Stair Railings", "/staircase-refinishing/stair-railings"],
@@ -51,56 +69,42 @@ const sections = [
   {
     label: "Built-Ins & Millwork",
     links: [
-      ["Built-Ins & Millwork — Overview", "/built-ins-and-millwork-refinishing"],
-      ["Built-In Hutches, Buffets & Bookcases", "/built-ins-and-millwork-refinishing/built-in-hutches-buffets-bookcases"],
+      [
+        "Built-Ins & Millwork — Overview",
+        "/built-ins-and-millwork-refinishing",
+      ],
+      [
+        "Built-In Hutches, Buffets & Bookcases",
+        "/built-ins-and-millwork-refinishing/built-in-hutches-buffets-bookcases",
+      ],
       ["Room Millwork", "/built-ins-and-millwork-refinishing/room-millwork"],
     ],
   },
   {
-    label: "Commercial & Hospitality",
+    label: "Architectural Woodwork & Perk Up",
     links: [
-      ["Commercial & Hospitality — Overview", "/commercial-and-hospitality-refinishing"],
-      ["Restaurant & Bar Refinishing", "/commercial-and-hospitality-refinishing/restaurant-and-bar-refinishing"],
-      ["Hotel & Venue Woodwork", "/commercial-and-hospitality-refinishing/hotel-and-venue-woodwork"],
-      ["Commercial Maintenance Contracts", "/commercial-and-hospitality-refinishing/commercial-maintenance-contracts"],
-    ],
-  },
-  {
-    label: "Institutional Refinishing",
-    links: [
-      ["Institutional Refinishing — Overview", "/institutional-refinishing"],
-      ["Historic Venue Restoration", "/institutional-refinishing/historic-venue-restoration"],
-      ["Church & Religious Facility Woodwork", "/institutional-refinishing/church-and-religious-facility-woodwork"],
-      ["University & Public Building Woodwork", "/institutional-refinishing/university-and-public-building-woodwork"],
+      [
+        "Architectural Woodwork — Overview",
+        "/built-ins-and-millwork-refinishing",
+      ],
+      ["Perk Up & Protect", "/perk-up-and-protect"],
     ],
   },
   {
     label: "Historic Preservation",
-    links: [
-      ["Historic Preservation — Overview", "/historic-preservation"],
-      ["Historic Tax Credits Guide", "/historic-preservation/historic-tax-credits"],
-      ["Secretary of Interior's Standards", "/historic-preservation/secretary-of-interior-standards"],
-      ["St. Louis Historic Districts Guide", "/historic-preservation/st-louis-historic-districts"],
-    ],
+    links: [["Historic Preservation — Overview", "/historic-preservation"]],
   },
   {
     label: "Neighborhoods",
     links: [
       ["Central West End", "/neighborhoods/central-west-end"],
-      ["Lafayette Square", "/neighborhoods/lafayette-square"],
+      ["Benton Park", "/neighborhoods/benton-park"],
       ["Compton Heights", "/neighborhoods/compton-heights"],
-      ["Tower Grove", "/neighborhoods/tower-grove"],
+      ["Lafayette Square", "/neighborhoods/lafayette-square"],
       ["Shaw", "/neighborhoods/shaw"],
-      ["Maplewood", "/neighborhoods/maplewood"],
       ["Clayton", "/neighborhoods/clayton"],
       ["University City", "/neighborhoods/university-city"],
-      ["Webster Groves", "/neighborhoods/webster-groves"],
-      ["Kirkwood", "/neighborhoods/kirkwood"],
-      ["Frontenac", "/neighborhoods/frontenac"],
-      ["Ladue", "/neighborhoods/ladue"],
-      ["Town & Country", "/neighborhoods/town-and-country"],
-      ["Chesterfield", "/neighborhoods/chesterfield"],
-      ["Ballwin", "/neighborhoods/ballwin"],
+      ["Maplewood", "/neighborhoods/maplewood"],
     ],
   },
 ];
@@ -111,7 +115,10 @@ export default function SitemapPage() {
       <div className="max-w-3xl mx-auto">
         <h1
           className="text-3xl md:text-4xl text-[#2A2421] mb-2"
-          style={{ fontFamily: '"Playfair Display", Georgia, serif', fontWeight: 400 }}
+          style={{
+            fontFamily: '"Playfair Display", Georgia, serif',
+            fontWeight: 400,
+          }}
         >
           Sitemap
         </h1>
@@ -129,9 +136,7 @@ export default function SitemapPage() {
         <div className="space-y-10">
           {sections.map((section) => (
             <div key={section.label}>
-              <h2
-                className="text-sm font-sans font-semibold uppercase tracking-widest text-[#6B5E55] mb-3"
-              >
+              <h2 className="text-sm font-sans font-semibold uppercase tracking-widest text-[#6B5E55] mb-3">
                 {section.label}
               </h2>
               <ul className="space-y-1.5">

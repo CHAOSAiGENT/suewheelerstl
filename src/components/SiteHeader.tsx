@@ -8,9 +8,11 @@ const services = [
   { label: "Kitchen Cabinets", href: "/kitchen-cabinet-refinishing" },
   { label: "Doors & Frames", href: "/door-refinishing" },
   { label: "Staircases", href: "/staircase-refinishing" },
-  { label: "Built-Ins & Millwork", href: "/built-ins-and-millwork-refinishing" },
-  { label: "Commercial", href: "/commercial-and-hospitality-refinishing" },
-  { label: "Institutional", href: "/institutional-refinishing" },
+  {
+    label: "Architectural Woodwork",
+    href: "/built-ins-and-millwork-refinishing",
+  },
+  { label: "Perk Up & Protect", href: "/perk-up-and-protect" },
 ];
 
 export function SiteHeader() {
@@ -35,7 +37,9 @@ export function SiteHeader() {
         {/* Desktop nav */}
         <nav className="hidden lg:flex items-center gap-6 text-sm font-sans font-medium text-[#2A2421]">
           <div className="relative group">
-            <button className="hover:text-[#11B2E8] transition-colors">Services ▾</button>
+            <button className="hover:text-[#11B2E8] transition-colors">
+              Services ▾
+            </button>
             <div className="absolute top-full left-0 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
               <div className="bg-[#F8F6F1] shadow-[0_10px_30px_-10px_rgba(42,36,33,0.15)] border border-[#EBE6DE] min-w-[200px] py-2">
                 {services.map((s) => (
@@ -50,13 +54,22 @@ export function SiteHeader() {
               </div>
             </div>
           </div>
-          <Link href="/historic-preservation" className="hover:text-[#11B2E8] transition-colors">
+          <Link
+            href="/historic-preservation"
+            className="hover:text-[#11B2E8] transition-colors"
+          >
             Historic Preservation
           </Link>
-          <Link href="/portfolio" className="hover:text-[#11B2E8] transition-colors">
+          <Link
+            href="/portfolio"
+            className="hover:text-[#11B2E8] transition-colors"
+          >
             Portfolio
           </Link>
-          <Link href="/about" className="hover:text-[#11B2E8] transition-colors">
+          <Link
+            href="/about"
+            className="hover:text-[#11B2E8] transition-colors"
+          >
             About
           </Link>
           <Link href="/faq" className="hover:text-[#11B2E8] transition-colors">
@@ -96,7 +109,9 @@ export function SiteHeader() {
       {mobileOpen && (
         <div className="lg:hidden bg-[#F8F6F1] border-t border-[#EBE6DE]">
           <div className="px-6 py-4 space-y-1">
-            <p className="text-xs uppercase tracking-widest text-[#6B5E55] font-sans mb-2">Services</p>
+            <p className="text-xs uppercase tracking-widest text-[#6B5E55] font-sans mb-2">
+              Services
+            </p>
             {services.map((s) => (
               <Link
                 key={s.href}
@@ -107,16 +122,32 @@ export function SiteHeader() {
                 {s.label}
               </Link>
             ))}
-            <Link href="/historic-preservation" onClick={() => setMobileOpen(false)} className="block py-2 text-sm font-sans text-[#2A2421] hover:text-[#11B2E8] border-b border-[#EBE6DE]">
+            <Link
+              href="/historic-preservation"
+              onClick={() => setMobileOpen(false)}
+              className="block py-2 text-sm font-sans text-[#2A2421] hover:text-[#11B2E8] border-b border-[#EBE6DE]"
+            >
               Historic Preservation
             </Link>
-            <Link href="/portfolio" onClick={() => setMobileOpen(false)} className="block py-2 text-sm font-sans text-[#2A2421] hover:text-[#11B2E8] border-b border-[#EBE6DE]">
+            <Link
+              href="/portfolio"
+              onClick={() => setMobileOpen(false)}
+              className="block py-2 text-sm font-sans text-[#2A2421] hover:text-[#11B2E8] border-b border-[#EBE6DE]"
+            >
               Portfolio
             </Link>
-            <Link href="/about" onClick={() => setMobileOpen(false)} className="block py-2 text-sm font-sans text-[#2A2421] hover:text-[#11B2E8] border-b border-[#EBE6DE]">
+            <Link
+              href="/about"
+              onClick={() => setMobileOpen(false)}
+              className="block py-2 text-sm font-sans text-[#2A2421] hover:text-[#11B2E8] border-b border-[#EBE6DE]"
+            >
               About
             </Link>
-            <Link href="/faq" onClick={() => setMobileOpen(false)} className="block py-2 text-sm font-sans text-[#2A2421] hover:text-[#11B2E8] border-b border-[#EBE6DE]">
+            <Link
+              href="/faq"
+              onClick={() => setMobileOpen(false)}
+              className="block py-2 text-sm font-sans text-[#2A2421] hover:text-[#11B2E8] border-b border-[#EBE6DE]"
+            >
               FAQ
             </Link>
             <div className="pt-4 space-y-2">

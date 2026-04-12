@@ -8,19 +8,19 @@ import { CTABlock } from "@/components/CTABlock";
 export const metadata: Metadata = {
   title: "Reviews | Wood Refinishing by Sue Wheeler, St. Louis",
   description:
-    "Customer reviews for Wood Refinishing by Sue Wheeler. BBB A+ Accredited, HomeAdvisor Top Rated. 36 years of happy clients in St. Louis — kitchens, doors, staircases, and more.",
+    "Customer reviews for Wood Refinishing by Sue Wheeler. 36 years of referrals in St. Louis — kitchens, doors, staircases, and architectural woodwork.",
 };
 
 const kitchenReviews = [
   {
     quote:
       "We thought we'd have to replace our entire kitchen. The cabinets were painted over, the finish was gone in half the spots. Sue stripped every cabinet door by hand and matched the stain exactly. We keep catching ourselves just staring at it.",
-    attribution: "Homeowner, Kirkwood",
+    attribution: "Homeowner, Compton Heights",
   },
   {
     quote:
       "She talked us out of replacing the cabinets — saved us probably $20,000. The refinished result looks better than new because the wood itself is original old-growth oak. Nobody's making that anymore.",
-    attribution: "Homeowner, Webster Groves",
+    attribution: "Homeowner, Maplewood",
   },
 ];
 
@@ -46,14 +46,26 @@ const staircaseReviews = [
   {
     quote:
       "She explained why dipping the spindles would have destroyed them. I didn't know any of that going in. She stripped every one by hand. It took longer, and it was absolutely worth it.",
-    attribution: "Homeowner, Tower Grove",
+    attribution: "Homeowner, Shaw",
   },
 ];
 
 const sections = [
-  { label: "Kitchens & Cabinets", reviews: kitchenReviews, href: "/kitchen-cabinet-refinishing" },
-  { label: "Doors & Entryways", reviews: doorReviews, href: "/door-refinishing" },
-  { label: "Staircases & Railings", reviews: staircaseReviews, href: "/staircase-refinishing" },
+  {
+    label: "Kitchens & Cabinets",
+    reviews: kitchenReviews,
+    href: "/kitchen-cabinet-refinishing",
+  },
+  {
+    label: "Doors & Entryways",
+    reviews: doorReviews,
+    href: "/door-refinishing",
+  },
+  {
+    label: "Staircases & Railings",
+    reviews: staircaseReviews,
+    href: "/staircase-refinishing",
+  },
 ];
 
 export default function ReviewsPage() {
@@ -66,25 +78,34 @@ export default function ReviewsPage() {
         <div className="max-w-3xl mx-auto">
           <h1
             className="text-4xl md:text-5xl text-[#2A2421] mb-4"
-            style={{ fontFamily: '"Playfair Display", Georgia, serif', fontWeight: 400 }}
+            style={{
+              fontFamily: '"Playfair Display", Georgia, serif',
+              fontWeight: 400,
+            }}
           >
             What clients say about <em>Sue Wheeler.</em>
           </h1>
           <p className="text-lg text-[#6B5E55] font-sans leading-relaxed">
-            BBB A+ Accredited. HomeAdvisor Top Rated. Thirty-six years of referrals from
-            people who&rsquo;ve seen the work.
+            Thirty-six years of referrals from people who&rsquo;ve seen the
+            work. Most projects come in through word of mouth.
           </p>
         </div>
       </section>
 
       {/* Aggregate trust badges */}
-      <section className="py-8 px-6 bg-[#F8F6F1] border-b" style={{ borderColor: "rgba(42,36,33,0.08)" }}>
+      <section
+        className="py-8 px-6 bg-[#F8F6F1] border-b"
+        style={{ borderColor: "rgba(42,36,33,0.08)" }}
+      >
         <div className="max-w-3xl mx-auto">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {[
-              { label: "BBB", value: "A+ Accredited Business" },
-              { label: "HomeAdvisor", value: "Top Rated Pro" },
+              { label: "EPA Certified", value: "Lead Renovator" },
               { label: "Google", value: "★★★★★" },
+              {
+                label: "St. Louis Magazine",
+                value: "\u201cPerfect Finish\u201d",
+              },
               { label: "Experience", value: "36 Years · Est. 1989" },
             ].map((b) => (
               <div key={b.label} className="text-center py-3">
@@ -110,7 +131,10 @@ export default function ReviewsPage() {
           <div className="max-w-5xl mx-auto">
             <h2
               className="text-2xl text-[#2A2421] mb-8"
-              style={{ fontFamily: '"Playfair Display", Georgia, serif', fontWeight: 400 }}
+              style={{
+                fontFamily: '"Playfair Display", Georgia, serif',
+                fontWeight: 400,
+              }}
             >
               {section.label}
             </h2>
@@ -137,7 +161,7 @@ export default function ReviewsPage() {
             <a href="tel:3143676054" className="text-[#11B2E8]">
               call (314) 367-6054
             </a>{" "}
-            or find us on Google and the BBB.
+            or leave us a review on Google.
           </p>
         </div>
       </section>

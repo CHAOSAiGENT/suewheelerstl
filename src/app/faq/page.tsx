@@ -56,7 +56,8 @@ const leadPaintFAQs = [
       "Sue Wheeler holds EPA Certified Lead Renovator certification. This means she is trained and authorized to perform work on pre-1978 surfaces using the required lead-safe protocols: containment, HEPA vacuuming, wet-sanding methods, proper disposal, and documentation. Every project on a pre-1978 home is fully compliant. You receive a completion record.",
   },
   {
-    question: "What happens if I hire someone without EPA certification for a pre-1978 home?",
+    question:
+      "What happens if I hire someone without EPA certification for a pre-1978 home?",
     answer:
       "Beyond the legal risk to the contractor, the homeowner may bear liability for improper lead work. More practically: lead dust left in your home is a health hazard that doesn't go away on its own. EPA certification isn't a technicality — it's the difference between work that's done safely and work that isn't.",
   },
@@ -115,24 +116,15 @@ const processFAQs = [
 
 const preservationFAQs = [
   {
-    question: "Can wood refinishing qualify for historic tax credits?",
+    question:
+      "What does the National Park Service say about refinishing historic wood?",
     answer:
-      "Yes, in many cases. The federal Historic Tax Credit program offers a 20% credit on Qualified Rehabilitation Expenditures for income-producing historic properties. Missouri's program adds 25–35% on top for qualifying projects. Combined, that can return 45–55 cents on every dollar of qualifying work. For owner-occupied residential properties, the Missouri Historic Homeowner Credit offers separate eligibility.",
-  },
-  {
-    question: "Does my home need to be in a historic district to qualify?",
-    answer:
-      "For most federal and state credit programs, yes — the property typically must be a certified historic structure or contributing structure within a registered historic district. Many St. Louis neighborhoods qualify: the Central West End, Lafayette Square, Compton Heights, Tower Grove, Shaw, and others.",
-  },
-  {
-    question: "What does the National Park Service say about refinishing historic wood?",
-    answer:
-      "The Secretary of the Interior's Standards for Rehabilitation — the guidelines governing certified historic rehabilitations — specifically recommend the 'gentlest method' for removing paint from historic wood: hand-scraping and hand-sanding. Chemical dipping is not recommended and may disqualify a project from tax credit eligibility. Sue Wheeler's hand-strip method is compliant with these standards. A dip-tank contractor's work is not.",
+      "The Secretary of the Interior's Standards for Rehabilitation specifically recommend the 'gentlest method' for removing paint from historic wood: hand-scraping and hand-sanding. Chemical dipping is not recommended and can compromise wood integrity. Sue Wheeler's hand-strip method is compliant with these standards.",
   },
   {
     question: "How do I know if my neighborhood is a historic district?",
     answer:
-      "Missouri has both certified historic districts (listed on the National Register of Historic Places) and locally designated historic districts. We've put together a guide to every major St. Louis district and what historic status means for tax credit eligibility.",
+      "Missouri has both National Register historic districts and locally designated historic districts. Many St. Louis neighborhoods qualify, including the Central West End, Lafayette Square, Compton Heights, Benton Park, and Shaw. See our Historic Preservation page for more details.",
   },
 ];
 
@@ -155,13 +147,16 @@ export default function FAQPage() {
         <div className="max-w-3xl mx-auto">
           <h1
             className="text-4xl md:text-5xl text-[#2A2421] mb-4"
-            style={{ fontFamily: '"Playfair Display", Georgia, serif', fontWeight: 400 }}
+            style={{
+              fontFamily: '"Playfair Display", Georgia, serif',
+              fontWeight: 400,
+            }}
           >
             <em>Frequently asked questions</em> about wood refinishing.
           </h1>
           <p className="text-lg text-[#6B5E55] font-sans leading-relaxed">
-            Thirty-six years of answering the same good questions. Here are the ones we
-            hear most.
+            Thirty-six years of answering the same good questions. Here are the
+            ones we hear most.
           </p>
         </div>
       </section>
@@ -195,7 +190,10 @@ export default function FAQPage() {
         <div className="max-w-xl mx-auto text-center">
           <h2
             className="text-3xl text-[#2A2421] mb-4"
-            style={{ fontFamily: '"Playfair Display", Georgia, serif', fontWeight: 400 }}
+            style={{
+              fontFamily: '"Playfair Display", Georgia, serif',
+              fontWeight: 400,
+            }}
           >
             Still have questions?
           </h2>

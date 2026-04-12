@@ -1,9 +1,9 @@
 const credentials = [
-  { label: "36 Years in Business", sub: "Since 1989" },
   { label: "EPA Certified", sub: "Lead Renovator" },
-  { label: "BBB A+", sub: "Accredited" },
+  { label: "Sue Answers Every Call", sub: "Personally" },
+  { label: "Historic Home Specialist", sub: "36 Years" },
   { label: "St. Louis Magazine", sub: '"Perfect Finish"' },
-  { label: "The Sheldon", sub: "Concert Hall" },
+  { label: "Est. 1989", sub: "St. Louis" },
 ];
 
 export function TrustBar() {
@@ -22,12 +22,12 @@ export function TrustBar() {
               key={i}
               className="flex flex-col items-center text-center px-3"
             >
-              <span
-                className="text-xs font-sans font-semibold uppercase tracking-[0.1em] text-[#2A2421]"
-              >
+              <span className="text-xs font-sans font-semibold uppercase tracking-[0.1em] text-[#2A2421]">
                 {c.label}
               </span>
-              <span className="text-[11px] font-sans text-[#6B5E55]">{c.sub}</span>
+              <span className="text-[11px] font-sans text-[#6B5E55]">
+                {c.sub}
+              </span>
             </div>
           ))}
         </div>

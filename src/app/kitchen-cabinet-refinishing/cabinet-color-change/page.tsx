@@ -7,7 +7,7 @@ import { FAQAccordion, FAQSchema } from "@/components/FAQAccordion";
 export const metadata: Metadata = {
   title: "Cabinet Color Change St. Louis | Wood Refinishing by Sue Wheeler",
   description:
-    "Update your kitchen cabinet color without replacing the boxes. Expert color-change refinishing in St. Louis. Sue Wheeler, EPA Certified, BBB A+. Free estimate.",
+    "Update your kitchen cabinet color without replacing the boxes. Expert color-change refinishing in St. Louis. Sue Wheeler, EPA Certified. Free estimate: (314) 367-6054.",
 };
 
 const faqItems = [
@@ -17,7 +17,8 @@ const faqItems = [
       "Yes — it's one of the most common transitions. Full strip of the existing stain and finish, primer selected for the wood species, then paint. The important step is the strip — painting over a stain finish without stripping creates adhesion problems within a few years.",
   },
   {
-    question: "I want to update my oak cabinets to a gray tone. Is that possible with a stain?",
+    question:
+      "I want to update my oak cabinets to a gray tone. Is that possible with a stain?",
     answer:
       "Yes. Gray-toned and greige stains applied over properly prepped oak produce a good result — the grain reads through but the color is contemporary. The specific tone depends on the species, the grain, and the stain selection. We'll show you options.",
   },
@@ -42,14 +43,20 @@ export default function CabinetColorChangePage() {
       <section className="py-20 px-6" style={{ backgroundColor: "#EBE6DE" }}>
         <div className="max-w-4xl mx-auto">
           <p className="text-xs font-sans font-semibold uppercase tracking-widest text-[#11B2E8] mb-4">
-            <Link href="/kitchen-cabinet-refinishing" className="hover:underline">
+            <Link
+              href="/kitchen-cabinet-refinishing"
+              className="hover:underline"
+            >
               Kitchen Cabinet Refinishing
             </Link>{" "}
             / Cabinet Color Change
           </p>
           <h1
             className="text-4xl md:text-5xl text-[#2A2421] mb-5"
-            style={{ fontFamily: '"Playfair Display", Georgia, serif', fontWeight: 400 }}
+            style={{
+              fontFamily: '"Playfair Display", Georgia, serif',
+              fontWeight: 400,
+            }}
           >
             Cabinet color change in <em>St. Louis.</em>
           </h1>
@@ -80,26 +87,32 @@ export default function CabinetColorChangePage() {
         <div className="max-w-3xl mx-auto">
           <h2
             className="text-3xl text-[#2A2421] mb-6"
-            style={{ fontFamily: '"Playfair Display", Georgia, serif', fontWeight: 400 }}
+            style={{
+              fontFamily: '"Playfair Display", Georgia, serif',
+              fontWeight: 400,
+            }}
           >
             You don't need new cabinets. You need a new finish.
           </h2>
           <div className="space-y-4 text-[#6B5E55] font-sans text-base leading-relaxed">
             <p>
-              If your kitchen's cabinet boxes are solid — structurally intact, doors hanging right,
-              drawers that work — there's no reason to replace them. The boxes are fine. What you
-              want to change is the color.
+              If your kitchen's cabinet boxes are solid — structurally intact,
+              doors hanging right, drawers that work — there's no reason to
+              replace them. The boxes are fine. What you want to change is the
+              color.
             </p>
             <p>
-              Cabinet color-change refinishing does exactly that. We strip the existing finish,
-              prepare the surface for the new color, and apply the finish you want — stained in a
-              different tone, painted in a new color, or taken from orange-honey oak to a more
-              contemporary natural look. The bones stay. The look changes completely.
+              Cabinet color-change refinishing does exactly that. We strip the
+              existing finish, prepare the surface for the new color, and apply
+              the finish you want — stained in a different tone, painted in a
+              new color, or taken from orange-honey oak to a more contemporary
+              natural look. The bones stay. The look changes completely.
             </p>
             <p>
-              Cabinet replacement in a St. Louis kitchen costs $15,000–$50,000 or more depending
-              on scope and materials. Color-change refinishing costs a fraction of that and produces
-              a result that reads as new to anyone who walks in.
+              Cabinet replacement in a St. Louis kitchen costs $15,000–$50,000
+              or more depending on scope and materials. Color-change refinishing
+              costs a fraction of that and produces a result that reads as new
+              to anyone who walks in.
             </p>
           </div>
         </div>
@@ -110,7 +123,10 @@ export default function CabinetColorChangePage() {
         <div className="max-w-3xl mx-auto">
           <h2
             className="text-3xl text-[#2A2421] mb-8"
-            style={{ fontFamily: '"Playfair Display", Georgia, serif', fontWeight: 400 }}
+            style={{
+              fontFamily: '"Playfair Display", Georgia, serif',
+              fontWeight: 400,
+            }}
           >
             Stain-to-stain. Stain-to-paint. Paint-to-paint.
           </h2>
@@ -140,7 +156,9 @@ export default function CabinetColorChangePage() {
                 >
                   {label}
                 </h3>
-                <p className="text-[#6B5E55] font-sans text-sm leading-relaxed">{body}</p>
+                <p className="text-[#6B5E55] font-sans text-sm leading-relaxed">
+                  {body}
+                </p>
               </div>
             ))}
           </div>
@@ -155,16 +173,20 @@ export default function CabinetColorChangePage() {
         <div className="max-w-3xl mx-auto">
           <h2
             className="text-2xl text-[#2A2421] mb-4"
-            style={{ fontFamily: '"Playfair Display", Georgia, serif', fontWeight: 400 }}
+            style={{
+              fontFamily: '"Playfair Display", Georgia, serif',
+              fontWeight: 400,
+            }}
           >
             EPA Certified for pre-1978 kitchens.
           </h2>
           <p className="text-[#6B5E55] font-sans text-base leading-relaxed">
-            Pre-1978 kitchen cabinets frequently have lead paint somewhere in their finish history
-            — sometimes buried under layers of subsequent work. Stripping them requires
-            EPA-certified lead-safe protocols. Sue Wheeler is an EPA Certified Lead Renovator.
-            Every pre-1978 color-change project is handled with proper containment and documented
-            cleanup.
+            Pre-1978 kitchen cabinets frequently have lead paint somewhere in
+            their finish history — sometimes buried under layers of subsequent
+            work. Stripping them requires EPA-certified lead-safe protocols. Sue
+            Wheeler is an EPA Certified Lead Renovator. Every pre-1978
+            color-change project is handled with proper containment and
+            documented cleanup.
           </p>
         </div>
       </section>
@@ -174,7 +196,10 @@ export default function CabinetColorChangePage() {
         <div className="max-w-3xl mx-auto">
           <h2
             className="text-3xl text-[#2A2421] mb-8"
-            style={{ fontFamily: '"Playfair Display", Georgia, serif', fontWeight: 400 }}
+            style={{
+              fontFamily: '"Playfair Display", Georgia, serif',
+              fontWeight: 400,
+            }}
           >
             Common questions
           </h2>
