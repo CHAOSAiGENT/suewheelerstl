@@ -184,7 +184,7 @@ export default function CabinetColorChangePage() {
             Pre-1978 kitchen cabinets frequently have lead paint somewhere in
             their finish history — sometimes buried under layers of subsequent
             work. Stripping them requires EPA-certified lead-safe protocols. Sue
-            Wheeler is an EPA Certified Lead Renovator. Every pre-1978
+            Wheeler is an EPA Certified Lead Removal. Every pre-1978
             color-change project is handled with proper containment and
             documented cleanup.
           </p>

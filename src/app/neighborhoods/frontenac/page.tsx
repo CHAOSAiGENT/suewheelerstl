@@ -136,7 +136,7 @@ export default function FrontenacPage() {
             conditions, and reinstalled. On-site work is done with full protection for surrounding surfaces.
           </p>
           <p className="text-[#6B5E55] font-sans leading-relaxed mt-4">
-            EPA Certified Lead Renovator — applicable if any pre-1978 components are involved.
+            EPA Certified Lead Removal — applicable if any pre-1978 components are involved.
           </p>
         </div>
       </section>
@@ -186,7 +186,7 @@ export default function FrontenacPage() {
             Request a Free Estimate →
           </Link>
           <p className="text-[#6B5E55] font-sans text-sm mt-6">
-            EPA Certified Lead Renovator. BBB A+ Accredited. Since 1989.
+            EPA Certified Lead Removal. BBB A+ Accredited. Since 1989.
           </p>
         </div>
       </section>

@@ -146,7 +146,7 @@ export default function SpindlesAndBalustersPage() {
           </h2>
           <p className="text-[#6B5E55] font-sans text-base leading-relaxed">
             Painted spindles in pre-1978 homes carry lead paint. Stripping them requires
-            EPA-certified protocols. Sue Wheeler is an EPA Certified Lead Renovator. Every
+            EPA-certified protocols. Sue Wheeler is an EPA Certified Lead Removal. Every
             pre-1978 spindle project includes proper containment and documented cleanup.
           </p>
         </div>

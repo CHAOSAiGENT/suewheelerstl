@@ -164,7 +164,7 @@ export default function FrontDoorRefinishingPage() {
           <p className="text-[#6B5E55] font-sans text-base leading-relaxed">
             The paint on exterior doors in St. Louis's older homes almost certainly contains lead.
             Stripping them without EPA-certified protocols generates lead dust at the entry of your
-            home. Sue Wheeler is an EPA Certified Lead Renovator. Every pre-1978 door project
+            home. Sue Wheeler is an EPA Certified Lead Removal. Every pre-1978 door project
             includes proper containment and documented cleanup.
           </p>
         </div>

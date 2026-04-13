@@ -107,7 +107,7 @@ export function SiteFooter() {
             <ul className="space-y-3 text-sm font-sans">
               <li className="flex items-start gap-2">
                 <span className="text-[#11B2E8] mt-0.5">✓</span>
-                <span>EPA Certified Lead Renovator</span>
+                <span>EPA Certified Lead Removal</span>
               </li>
               <li className="flex items-start gap-2">
                 <span className="text-[#11B2E8] mt-0.5">✓</span>

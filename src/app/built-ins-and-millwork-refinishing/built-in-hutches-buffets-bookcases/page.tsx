@@ -220,7 +220,7 @@ export default function BuiltInHutchesPage() {
           </h2>
           <p className="text-[#6B5E55] font-sans text-base leading-relaxed">
             The finish on built-in cabinetry in pre-1978 homes almost certainly
-            contains lead. Sue Wheeler is an EPA Certified Lead Renovator. Every
+            contains lead. Sue Wheeler is an EPA Certified Lead Removal. Every
             pre-1978 project includes proper containment, HEPA filtration, and
             documented cleanup. Especially relevant in dining rooms where food
             is present.

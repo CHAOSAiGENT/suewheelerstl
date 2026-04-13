@@ -177,7 +177,7 @@ export default function PocketDoorRefinishingPage() {
           <p className="text-[#6B5E55] font-sans text-base leading-relaxed">
             The finish on pocket doors in pre-1978 homes almost certainly contains lead. Because
             pocket doors are worked on in place, containment and HEPA filtration are especially
-            important. Sue Wheeler is an EPA Certified Lead Renovator. Every pre-1978 pocket door
+            important. Sue Wheeler is an EPA Certified Lead Removal. Every pre-1978 pocket door
             project includes proper containment and documented cleanup.
           </p>
         </div>

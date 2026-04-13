@@ -134,7 +134,7 @@ export default function BallwinPage() {
           </h2>
           <p className="text-[#6B5E55] font-sans leading-relaxed">
             Homes built before 1978 — including some of the older ranch homes and split-levels in Ballwin — may
-            have lead-based paint on original woodwork. EPA RRP regulations require a Certified Lead Renovator for
+            have lead-based paint on original woodwork. EPA RRP regulations require a Certified Lead Removal for
             any refinishing work that disturbs lead paint on pre-1978 construction. Sue Wheeler is EPA Certified.
             She'll identify any relevant lead paint considerations during the estimate.
           </p>
@@ -187,7 +187,7 @@ export default function BallwinPage() {
             Request a Free Estimate →
           </Link>
           <p className="text-[#6B5E55] font-sans text-sm mt-6">
-            EPA Certified Lead Renovator. BBB A+ Accredited. Since 1989.
+            EPA Certified Lead Removal. BBB A+ Accredited. Since 1989.
           </p>
         </div>
       </section>

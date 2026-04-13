@@ -1,5 +1,6 @@
 const credentials = [
-  { label: "EPA Certified", sub: "Lead Renovator" },
+  { label: "BBB A+", sub: "Accredited" },
+  { label: "EPA Certified", sub: "Lead Removal" },
   { label: "Sue Answers Every Call", sub: "Personally" },
   { label: "Historic Home Specialist", sub: "36 Years" },
   { label: "St. Louis Magazine", sub: '"Perfect Finish"' },

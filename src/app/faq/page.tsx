@@ -51,9 +51,9 @@ const leadPaintFAQs = [
       "Yes, if handled improperly. Sanding, scraping, or stripping surfaces with lead paint creates lead dust, which is hazardous — especially for children and pregnant women. The EPA's Renovation, Repair, and Painting (RRP) Rule requires that any contractor disturbing paint on pre-1978 homes where children or pregnant women live must be certified and follow lead-safe practices.",
   },
   {
-    question: "What does EPA Certified Lead Renovator mean?",
+    question: "What does EPA Certified Lead Removal mean?",
     answer:
-      "Sue Wheeler holds EPA Certified Lead Renovator certification. This means she is trained and authorized to perform work on pre-1978 surfaces using the required lead-safe protocols: containment, HEPA vacuuming, wet-sanding methods, proper disposal, and documentation. Every project on a pre-1978 home is fully compliant. You receive a completion record.",
+      "Sue Wheeler holds EPA Certified Lead Removal certification. This means she is trained and authorized to perform work on pre-1978 surfaces using the required lead-safe protocols: containment, HEPA vacuuming, wet-sanding methods, proper disposal, and documentation. Every project on a pre-1978 home is fully compliant. You receive a completion record.",
   },
   {
     question:

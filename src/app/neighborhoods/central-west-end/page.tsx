@@ -188,7 +188,7 @@ export default function CentralWestEndPage() {
             <p className="text-[#2A2421] font-sans text-sm leading-relaxed">
               <strong>EPA note:</strong> The vast majority of homes in the
               Central West End predate 1978 — most predate 1940. EPA RRP
-              regulations require a Certified Lead Renovator for any refinishing
+              regulations require a Certified Lead Removal for any refinishing
               work that disturbs lead paint. Sue Wheeler is EPA Certified. Her
               process includes proper containment, HEPA vacuuming, and
               documentation — protecting your family and keeping your project
@@ -259,7 +259,7 @@ export default function CentralWestEndPage() {
             Request a Free Estimate →
           </Link>
           <p className="text-[#6B5E55] font-sans text-sm mt-6">
-            EPA Certified Lead Renovator. Est. 1989. St. Louis Magazine —
+            EPA Certified Lead Removal. Est. 1989. St. Louis Magazine —
             "Perfect Finish."
           </p>
         </div>

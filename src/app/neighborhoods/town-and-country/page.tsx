@@ -141,7 +141,7 @@ export default function TownAndCountryPage() {
             coordinators — whoever is managing the project. Sue is the point of contact throughout.
           </p>
           <p className="text-[#6B5E55] font-sans leading-relaxed mt-4">
-            EPA Certified Lead Renovator — applicable if any pre-1978 components are present, including older
+            EPA Certified Lead Removal — applicable if any pre-1978 components are present, including older
             additions or custom built-in pieces with earlier finishes.
           </p>
         </div>
@@ -193,7 +193,7 @@ export default function TownAndCountryPage() {
             Request a Free Estimate →
           </Link>
           <p className="text-[#6B5E55] font-sans text-sm mt-6">
-            EPA Certified Lead Renovator. BBB A+ Accredited. Since 1989.
+            EPA Certified Lead Removal. BBB A+ Accredited. Since 1989.
           </p>
         </div>
       </section>

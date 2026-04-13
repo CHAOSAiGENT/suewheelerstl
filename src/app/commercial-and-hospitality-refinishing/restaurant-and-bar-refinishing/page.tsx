@@ -224,7 +224,7 @@ export default function RestaurantBarPage() {
               <strong style={{ color: "#EBE6DE" }}>$37,500 per violation per day.</strong>
             </p>
             <p>
-              Sue Wheeler is an EPA Certified Lead Renovator. We handle every pre-1978 project with proper containment and documented cleanup.
+              Sue Wheeler is an EPA Certified Lead Removal. We handle every pre-1978 project with proper containment and documented cleanup.
             </p>
           </div>
         </div>

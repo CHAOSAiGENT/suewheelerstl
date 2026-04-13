@@ -263,7 +263,7 @@ export default function StaircaseRefinishingPage() {
             EPA-certified lead-safe protocols generates lead dust.
           </p>
           <p className="text-[#6B5E55] font-sans text-base leading-relaxed mb-4">
-            Sue Wheeler is an EPA Certified Lead Renovator. Lead-safe work on pre-1978 staircases
+            Sue Wheeler is an EPA Certified Lead Removal. Lead-safe work on pre-1978 staircases
             is standard for us — documented, contained, and correctly disposed of.
           </p>
           <Link

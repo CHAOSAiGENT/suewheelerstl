@@ -9,7 +9,7 @@ import { CTABlock } from "@/components/CTABlock";
 export const metadata: Metadata = {
   title: "Wood Refinishing St. Louis | Sue Wheeler",
   description:
-    "Your woodwork shouldn't look its age. Hand-stripped, never dipped. EPA Certified Lead Renovator. Historic home specialist. Sue answers every call personally. (314) 367-6054.",
+    "Your woodwork shouldn't look its age. Hand-stripped, never dipped. EPA Certified Lead Removal. Historic home specialist. Sue answers every call personally. (314) 367-6054.",
   openGraph: {
     title: "Wood Refinishing St. Louis | Sue Wheeler",
     description:
@@ -23,7 +23,7 @@ const localBusinessSchema = {
   "@type": "LocalBusiness",
   name: "Wood Refinishing by Sue Wheeler, LLC",
   description:
-    "Your woodwork shouldn't look its age. Hand-stripped, never dipped. EPA Certified Lead Renovator. Historic home specialist. St. Louis.",
+    "Your woodwork shouldn't look its age. Hand-stripped, never dipped. EPA Certified Lead Removal. Historic home specialist. St. Louis.",
   url: "https://suewheelerstl.com",
   telephone: "+13143676054",
   address: {
@@ -39,7 +39,7 @@ const localBusinessSchema = {
     name: "St. Louis",
   },
   foundingDate: "1989",
-  hasCredential: ["EPA Certified Lead Renovator"],
+  hasCredential: ["EPA Certified Lead Removal"],
   sameAs: [],
 };
 
@@ -242,7 +242,7 @@ export default function HomePage() {
               fontWeight: 400,
             }}
           >
-            EPA Certified Lead Renovator.
+            EPA Certified Lead Removal.
           </h2>
           <p className="text-base font-sans text-[#6B5E55] leading-relaxed mb-4">
             89.8% of homes in St. Louis City were built before 1978. That means
@@ -251,7 +251,7 @@ export default function HomePage() {
             isn&rsquo;t just sloppy. It&rsquo;s a legal and health risk.
           </p>
           <p className="text-base font-sans text-[#6B5E55] leading-relaxed mb-6">
-            Sue Wheeler is an EPA Certified Lead Renovator. Every project on a
+            Sue Wheeler is an EPA Certified Lead Removal. Every project on a
             pre-1978 home is handled with full lead-safe protocols, documented
             and compliant. You don&rsquo;t have to ask whether it&rsquo;s being
             done right.

@@ -204,7 +204,7 @@ export default function KitchenCabinetRefinishingPage() {
             prepares food.
           </p>
           <p className="text-[#6B5E55] font-sans text-base leading-relaxed mb-4">
-            Sue Wheeler is an EPA Certified Lead Renovator. Every cabinet
+            Sue Wheeler is an EPA Certified Lead Removal. Every cabinet
             project in a pre-1978 home is handled with full containment, HEPA
             filtration, wet-sanding methods, and documented cleanup. You get a
             completion record. You don't have to wonder.

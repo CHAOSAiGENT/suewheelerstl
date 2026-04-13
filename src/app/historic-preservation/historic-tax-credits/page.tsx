@@ -515,7 +515,7 @@ export default function HistoricTaxCreditsPage() {
               The historic tax credit programs don&rsquo;t require an EPA-certified contractor. That&rsquo;s the technical answer.
             </p>
             <p>
-              The practical answer: in St. Louis, where 89.8% of City housing was built before 1978, almost every historic woodwork project involves lead-containing finishes. Under the EPA&rsquo;s Renovation, Repair, and Painting (RRP) Rule, contractors disturbing more than six square feet of lead paint in a pre-1978 home must be EPA Certified Lead Renovators.
+              The practical answer: in St. Louis, where 89.8% of City housing was built before 1978, almost every historic woodwork project involves lead-containing finishes. Under the EPA&rsquo;s Renovation, Repair, and Painting (RRP) Rule, contractors disturbing more than six square feet of lead paint in a pre-1978 home must be EPA Certified Lead Removals.
             </p>
             <p>
               Hiring an uncertified contractor to strip lead-painted woodwork in a pre-1978 home creates real legal and health liability — and the incomplete documentation can complicate your tax credit application.

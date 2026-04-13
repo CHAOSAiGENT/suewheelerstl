@@ -243,7 +243,7 @@ export default function MaplewoodPage() {
             Request a Free Estimate →
           </Link>
           <p className="text-[#6B5E55] font-sans text-sm mt-6">
-            EPA Certified Lead Renovator. Est. 1989. St. Louis Magazine —
+            EPA Certified Lead Removal. Est. 1989. St. Louis Magazine —
             "Perfect Finish."
           </p>
         </div>

@@ -9,7 +9,7 @@ import { FAQAccordion, FAQSchema } from "@/components/FAQAccordion";
 export const metadata: Metadata = {
   title: "Historic Home Wood Refinishing St. Louis | Sue Wheeler",
   description:
-    "Wood refinishing for St. Louis historic homes. Hand-strip method aligns with NPS Standards. EPA Certified Lead Renovator. 36 years. Free estimate: (314) 367-6054.",
+    "Wood refinishing for St. Louis historic homes. Hand-strip method aligns with NPS Standards. EPA Certified Lead Removal. 36 years. Free estimate: (314) 367-6054.",
 };
 
 const faqs = [
@@ -26,7 +26,7 @@ const faqs = [
   {
     question: "Is lead paint a concern in historic homes?",
     answer:
-      "In St. Louis, virtually all pre-1978 homes have lead paint on woodwork surfaces. EPA RRP regulations require a Certified Lead Renovator for any work disturbing those surfaces. Sue Wheeler is EPA Certified. Every project on a pre-1978 home uses proper containment, HEPA filtration, and documented cleanup.",
+      "In St. Louis, virtually all pre-1978 homes have lead paint on woodwork surfaces. EPA RRP regulations require a Certified Lead Removal for any work disturbing those surfaces. Sue Wheeler is EPA Certified. Every project on a pre-1978 home uses proper containment, HEPA filtration, and documented cleanup.",
   },
   {
     question: "Why is hand-stripping better for historic wood than dipping?",
@@ -191,7 +191,7 @@ export default function HistoricPreservationHubPage() {
               fontWeight: 400,
             }}
           >
-            EPA Certified Lead Renovator — required for preservation-compliant
+            EPA Certified Lead Removal — required for preservation-compliant
             work on pre-1978 wood.
           </h2>
           <div className="space-y-4 text-base font-sans text-[#6B5E55] leading-relaxed">
@@ -203,7 +203,7 @@ export default function HistoricPreservationHubPage() {
               health, legal, and documentation exposure.
             </p>
             <p>
-              Sue Wheeler is an EPA Certified Lead Renovator. Every pre-1978
+              Sue Wheeler is an EPA Certified Lead Removal. Every pre-1978
               project on historic woodwork includes proper containment, HEPA
               filtration, wet-sanding methods, and documented cleanup. The
               completion record goes in your property file — and supports your

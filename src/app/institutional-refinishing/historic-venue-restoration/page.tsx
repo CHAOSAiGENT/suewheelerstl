@@ -179,7 +179,7 @@ export default function HistoricVenueRestorationPage() {
             EPA Certification for pre-1978 landmark buildings.
           </h2>
           <p className="text-base font-sans text-[#6B5E55] mb-6 leading-relaxed">
-            Every significant historic building in St. Louis predates 1978. The woodwork contains lead paint. EPA RRP certification is required for any stripping work — and in a landmark building where public access is ongoing, proper containment isn&rsquo;t optional. Sue Wheeler is an EPA Certified Lead Renovator. All pre-1978 venue projects include certified protocols and documented cleanup.
+            Every significant historic building in St. Louis predates 1978. The woodwork contains lead paint. EPA RRP certification is required for any stripping work — and in a landmark building where public access is ongoing, proper containment isn&rsquo;t optional. Sue Wheeler is an EPA Certified Lead Removal. All pre-1978 venue projects include certified protocols and documented cleanup.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <Link

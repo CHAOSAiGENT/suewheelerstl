@@ -128,7 +128,7 @@ export default function InstitutionalHubPage() {
                 EPA Certification — Not Optional for Pre-1978 Buildings
               </h3>
               <p className="text-base font-sans text-[#6B5E55] leading-relaxed">
-                Under EPA RRP regulations, any renovation work that disturbs lead-based paint in a pre-1978 institutional building requires a certified renovator. Penalties for non-compliance run up to <strong className="text-[#2A2421]">$37,500 per violation per day</strong> — and the enforcement risk falls on the building operator, not just the contractor. Sue Wheeler is an EPA Certified Lead Renovator. Every pre-1978 project includes proper containment, certified testing, and full documentation that protects your organization and your compliance record.
+                Under EPA RRP regulations, any renovation work that disturbs lead-based paint in a pre-1978 institutional building requires a certified renovator. Penalties for non-compliance run up to <strong className="text-[#2A2421]">$37,500 per violation per day</strong> — and the enforcement risk falls on the building operator, not just the contractor. Sue Wheeler is an EPA Certified Lead Removal. Every pre-1978 project includes proper containment, certified testing, and full documentation that protects your organization and your compliance record.
               </p>
             </div>
             <div>

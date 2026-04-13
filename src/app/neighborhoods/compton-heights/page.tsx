@@ -187,7 +187,7 @@ export default function ComptonHeightsPage() {
             <p className="text-[#2A2421] font-sans text-sm leading-relaxed">
               <strong>EPA note:</strong> Most Compton Heights homes predate
               1978, and many original finish layers contain lead. EPA RRP
-              regulations require a Certified Lead Renovator for work that
+              regulations require a Certified Lead Removal for work that
               disturbs lead paint. Sue Wheeler is EPA Certified — containment,
               HEPA vacuuming, and documentation are standard on every project.
             </p>
@@ -255,7 +255,7 @@ export default function ComptonHeightsPage() {
             Request a Free Estimate →
           </Link>
           <p className="text-[#6B5E55] font-sans text-sm mt-6">
-            EPA Certified Lead Renovator. Est. 1989. St. Louis Magazine —
+            EPA Certified Lead Removal. Est. 1989. St. Louis Magazine —
             "Perfect Finish."
           </p>
         </div>

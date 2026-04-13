@@ -8,7 +8,7 @@ import { PillBadge } from "@/components/PillBadge";
 export const metadata: Metadata = {
   title: "About Sue Wheeler | 36 Years of Wood Refinishing in St. Louis",
   description:
-    "Meet Sue Wheeler — St. Louis's most experienced architectural wood refinisher since 1989. EPA Certified Lead Renovator. St. Louis Magazine. She answers every call personally.",
+    "Meet Sue Wheeler — St. Louis's most experienced architectural wood refinisher since 1989. EPA Certified Lead Removal. St. Louis Magazine. She answers every call personally.",
 };
 
 export default function AboutPage() {
@@ -131,7 +131,7 @@ export default function AboutPage() {
                 className="font-serif text-xl text-[#2A2421] mb-3"
                 style={{ fontFamily: '"Playfair Display", Georgia, serif' }}
               >
-                EPA Certified Lead Renovator
+                EPA Certified Lead Removal
               </h3>
               <p className="text-base font-sans text-[#6B5E55] leading-relaxed">
                 In St. Louis City, 89.8% of homes were built before 1978. That
@@ -141,7 +141,7 @@ export default function AboutPage() {
                 a health risk to your family.
               </p>
               <p className="text-base font-sans text-[#6B5E55] leading-relaxed mt-3">
-                Sue Wheeler is an EPA Certified Lead Renovator. Every project on
+                Sue Wheeler is an EPA Certified Lead Removal. Every project on
                 a pre-1978 property is handled with full lead-safe protocols:
                 containment, HEPA filtration, documented disposal, and a
                 completion certificate you can keep with your property records.

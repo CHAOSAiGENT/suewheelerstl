@@ -100,7 +100,7 @@ export default function ReviewsPage() {
         <div className="max-w-3xl mx-auto">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {[
-              { label: "EPA Certified", value: "Lead Renovator" },
+              { label: "EPA Certified", value: "Lead Removal" },
               { label: "Google", value: "★★★★★" },
               {
                 label: "St. Louis Magazine",

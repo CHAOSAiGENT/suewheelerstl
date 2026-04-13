@@ -136,7 +136,7 @@ export default function ChesterfieldPage() {
           <p className="text-[#6B5E55] font-sans leading-relaxed">
             Most Chesterfield homes were built after 1978, so EPA lead paint regulations typically don't apply. If
             your home was built before 1978 — or includes older additions or custom millwork from earlier decades —
-            lead paint rules do apply. Sue Wheeler is EPA Certified Lead Renovator. She'll flag anything relevant
+            lead paint rules do apply. Sue Wheeler is EPA Certified Lead Removal. She'll flag anything relevant
             during the estimate.
           </p>
         </div>
@@ -188,7 +188,7 @@ export default function ChesterfieldPage() {
             Request a Free Estimate →
           </Link>
           <p className="text-[#6B5E55] font-sans text-sm mt-6">
-            EPA Certified Lead Renovator. BBB A+ Accredited. Since 1989.
+            EPA Certified Lead Removal. BBB A+ Accredited. Since 1989.
           </p>
         </div>
       </section>

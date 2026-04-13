@@ -168,7 +168,7 @@ export default function HotelVenuePage() {
               The majority of St. Louis&rsquo;s historic hotel and event venue buildings predate 1978. EPA RRP regulations require a certified renovator for any work disturbing lead-based paint in these buildings. The compliance responsibility, and the enforcement risk, falls on the property operator.
             </p>
             <p>
-              Sue Wheeler is an EPA Certified Lead Renovator. We handle pre-1978 venue projects with proper containment and documented cleanup.
+              Sue Wheeler is an EPA Certified Lead Removal. We handle pre-1978 venue projects with proper containment and documented cleanup.
             </p>
           </div>
         </div>

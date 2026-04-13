@@ -200,7 +200,7 @@ export default function RoomMillworkPage() {
           <p className="text-[#6B5E55] font-sans text-base leading-relaxed">
             Room millwork in pre-1978 homes has lead paint. Working in living spaces — dining
             rooms, bedrooms, living rooms — makes proper containment and HEPA filtration especially
-            important. Sue Wheeler is an EPA Certified Lead Renovator. Every pre-1978 millwork
+            important. Sue Wheeler is an EPA Certified Lead Removal. Every pre-1978 millwork
             project includes proper containment and documented cleanup.
           </p>
         </div>

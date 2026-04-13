@@ -5,7 +5,7 @@ import { CTABlock } from "@/components/CTABlock";
 export const metadata: Metadata = {
   title: "Wood Refinishing — Benton Park St. Louis | Sue Wheeler",
   description:
-    "Wood refinishing in Benton Park. 1870s–1900s Victorian row houses with original old-growth woodwork. EPA Certified Lead Renovator. Free estimate: (314) 367-6054.",
+    "Wood refinishing in Benton Park. 1870s–1900s Victorian row houses with original old-growth woodwork. EPA Certified Lead Removal. Free estimate: (314) 367-6054.",
 };
 
 export default function BentonParkPage() {
@@ -203,7 +203,7 @@ export default function BentonParkPage() {
             <p className="text-[#2A2421] font-sans text-sm leading-relaxed">
               <strong>EPA note:</strong> Virtually every home in Benton Park
               predates 1978 — most predate 1920. EPA RRP regulations require a
-              Certified Lead Renovator for any refinishing work that disturbs
+              Certified Lead Removal for any refinishing work that disturbs
               lead paint. Sue Wheeler is EPA Certified. Her process includes
               proper containment, HEPA vacuuming, and documentation — protecting
               your family and keeping your project compliant.
@@ -269,7 +269,7 @@ export default function BentonParkPage() {
             Request a Free Estimate →
           </Link>
           <p className="text-[#6B5E55] font-sans text-sm mt-6">
-            EPA Certified Lead Renovator. Est. 1989. St. Louis Magazine —
+            EPA Certified Lead Removal. Est. 1989. St. Louis Magazine —
             &ldquo;Perfect Finish.&rdquo;
           </p>
         </div>

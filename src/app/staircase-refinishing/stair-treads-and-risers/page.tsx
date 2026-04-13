@@ -156,7 +156,7 @@ export default function StairTreadsAndRisersPage() {
           </h2>
           <p className="text-[#6B5E55] font-sans text-base leading-relaxed">
             Stair finishes in pre-1978 homes contain lead. Stripping them generates lead dust in
-            the most-trafficked part of your home. Sue Wheeler is an EPA Certified Lead Renovator.
+            the most-trafficked part of your home. Sue Wheeler is an EPA Certified Lead Removal.
             Every pre-1978 staircase project includes proper containment, HEPA filtration, and
             documented cleanup.
           </p>

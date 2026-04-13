@@ -100,7 +100,7 @@ export default function ContactPage() {
               {/* Trust signals */}
               <div className="mt-8 flex flex-wrap gap-3">
                 {[
-                  "EPA Certified Lead Renovator",
+                  "EPA Certified Lead Removal",
                   'St. Louis Magazine — "Perfect Finish"',
                   "Est. 1989",
                 ].map((c) => (

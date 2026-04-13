@@ -130,7 +130,7 @@ export default function PaintedCabinetsPage() {
               },
               {
                 label: "EPA Certified for pre-1978 homes.",
-                body: "If your kitchen cabinets were built before 1978, they may have lead paint underneath whatever finish is on them now. Sue Wheeler is an EPA Certified Lead Renovator. Every project on a pre-1978 surface is handled with proper containment and documented cleanup.",
+                body: "If your kitchen cabinets were built before 1978, they may have lead paint underneath whatever finish is on them now. Sue Wheeler is an EPA Certified Lead Removal. Every project on a pre-1978 surface is handled with proper containment and documented cleanup.",
               },
             ].map(({ label, body }) => (
               <div key={label} className="flex gap-4">

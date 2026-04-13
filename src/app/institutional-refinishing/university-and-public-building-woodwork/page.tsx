@@ -192,7 +192,7 @@ export default function UniversityPublicBuildingPage() {
               The construction dates of St. Louis&rsquo;s most significant university and civic buildings — WashU&rsquo;s Brookings Hall (1902), the St. Louis Central Library (1912), SLU&rsquo;s DuBourg Hall (1888) — mean that every one of them carries lead paint in its finish history. EPA RRP certification is required for any stripping work. In buildings with ongoing public access, proper containment is especially critical.
             </p>
             <p>
-              Sue Wheeler is an EPA Certified Lead Renovator. Every pre-1978 institutional project includes certified protocols and documented cleanup.
+              Sue Wheeler is an EPA Certified Lead Removal. Every pre-1978 institutional project includes certified protocols and documented cleanup.
             </p>
           </div>
           <div className="flex flex-col sm:flex-row gap-4 mt-8">

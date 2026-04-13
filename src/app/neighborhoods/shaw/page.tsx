@@ -173,7 +173,7 @@ export default function ShawPage() {
             <p className="text-[#2A2421] font-sans text-sm leading-relaxed">
               <strong>EPA note:</strong> Nearly all Shaw housing stock predates
               1978. Many homes have multiple lead paint layers, particularly on
-              woodwork. EPA RRP regulations require a Certified Lead Renovator
+              woodwork. EPA RRP regulations require a Certified Lead Removal
               for work that disturbs those layers. Sue Wheeler is EPA Certified.
             </p>
           </div>
@@ -239,7 +239,7 @@ export default function ShawPage() {
             Request a Free Estimate →
           </Link>
           <p className="text-[#6B5E55] font-sans text-sm mt-6">
-            EPA Certified Lead Renovator. Est. 1989. St. Louis Magazine —
+            EPA Certified Lead Removal. Est. 1989. St. Louis Magazine —
             "Perfect Finish."
           </p>
         </div>

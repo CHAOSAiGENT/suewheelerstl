@@ -221,7 +221,7 @@ export default function BuiltInsMillworkPage() {
               with children.
             </p>
             <p>
-              Sue Wheeler is an EPA Certified Lead Renovator. Millwork refinishing on pre-1978
+              Sue Wheeler is an EPA Certified Lead Removal. Millwork refinishing on pre-1978
               surfaces is handled with proper containment, HEPA filtration, wet methods, and
               documented cleanup. You receive a completion record.
             </p>

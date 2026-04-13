@@ -190,7 +190,7 @@ export default function ChurchWoodworkPage() {
           </h2>
           <div className="space-y-4 text-base font-sans leading-relaxed" style={{ color: "#9e9087" }}>
             <p>
-              The woodwork in St. Louis&rsquo;s historic churches — most of them built between 1860 and 1940 — contains lead paint. Stripping it requires EPA-certified protocols. In a sanctuary where members of all ages are present, proper containment isn&rsquo;t optional. Sue Wheeler is an EPA Certified Lead Renovator. Every pre-1978 project includes proper containment and documented cleanup.
+              The woodwork in St. Louis&rsquo;s historic churches — most of them built between 1860 and 1940 — contains lead paint. Stripping it requires EPA-certified protocols. In a sanctuary where members of all ages are present, proper containment isn&rsquo;t optional. Sue Wheeler is an EPA Certified Lead Removal. Every pre-1978 project includes proper containment and documented cleanup.
             </p>
           </div>
         </div>

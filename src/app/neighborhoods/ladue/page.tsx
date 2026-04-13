@@ -139,7 +139,7 @@ export default function LaduePage() {
             staircase, and room millwork, we sequence the work to minimize disruption.
           </p>
           <p className="text-[#6B5E55] font-sans leading-relaxed">
-            EPA Certified Lead Renovator — applicable if any pre-1978 components are involved, including older custom
+            EPA Certified Lead Removal — applicable if any pre-1978 components are involved, including older custom
             built-ins or additions containing earlier-era wood.
           </p>
         </div>
@@ -191,7 +191,7 @@ export default function LaduePage() {
             Request a Free Estimate →
           </Link>
           <p className="text-[#6B5E55] font-sans text-sm mt-6">
-            EPA Certified Lead Renovator. BBB A+ Accredited. Since 1989.
+            EPA Certified Lead Removal. BBB A+ Accredited. Since 1989.
           </p>
         </div>
       </section>

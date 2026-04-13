@@ -175,7 +175,7 @@ export default function UniversityCityPage() {
             <p className="text-[#2A2421] font-sans text-sm leading-relaxed">
               <strong>EPA note:</strong> U-City's pre-1978 homes — the majority
               of the housing stock — may have lead paint in their finish layers.
-              EPA RRP regulations require a Certified Lead Renovator for work
+              EPA RRP regulations require a Certified Lead Removal for work
               that disturbs lead paint. Sue Wheeler is EPA Certified and follows
               proper containment procedures on every applicable project.
             </p>
@@ -241,7 +241,7 @@ export default function UniversityCityPage() {
             Request a Free Estimate →
           </Link>
           <p className="text-[#6B5E55] font-sans text-sm mt-6">
-            EPA Certified Lead Renovator. Est. 1989. St. Louis Magazine —
+            EPA Certified Lead Removal. Est. 1989. St. Louis Magazine —
             "Perfect Finish."
           </p>
         </div>

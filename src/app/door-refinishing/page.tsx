@@ -171,7 +171,7 @@ export default function DoorRefinishingPage() {
               In the room your family walks through every day.
             </p>
             <p>
-              Sue Wheeler is an EPA Certified Lead Renovator. Every door project on a pre-1978
+              Sue Wheeler is an EPA Certified Lead Removal. Every door project on a pre-1978
               home is handled with proper containment, HEPA filtration, wet-sanding methods, and
               documented cleanup. You receive a completion record for your property file.
             </p>

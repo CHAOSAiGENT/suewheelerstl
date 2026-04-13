@@ -209,7 +209,7 @@ export default function NewelPostsPage() {
             EPA Certified for pre-1978 newel posts.
           </h2>
           <p className="text-[#6B5E55] font-sans text-base leading-relaxed">
-            Sue Wheeler is an EPA Certified Lead Renovator. Pre-1978 newel posts
+            Sue Wheeler is an EPA Certified Lead Removal. Pre-1978 newel posts
             include lead paint — every project includes proper containment and
             documented cleanup.
           </p>

@@ -163,7 +163,7 @@ export default function FrenchDoorRefinishingPage() {
           </h2>
           <p className="text-[#6B5E55] font-sans text-base leading-relaxed">
             French doors in older St. Louis homes carry the same lead paint considerations as any
-            other pre-1978 wood surface. Sue Wheeler is an EPA Certified Lead Renovator. All
+            other pre-1978 wood surface. Sue Wheeler is an EPA Certified Lead Removal. All
             pre-1978 projects include proper containment and documented cleanup.
           </p>
         </div>

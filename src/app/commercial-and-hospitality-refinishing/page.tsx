@@ -197,7 +197,7 @@ export default function CommercialHubPage() {
               In St. Louis, 89.8% of the city&rsquo;s building stock was built before 1978 — and the commercial buildings in the neighborhoods where the best restaurant locations concentrate (Central West End, Soulard, Grand Center, Maplewood, the Grove) skew even older. EPA compliance isn&rsquo;t something to sort out later.
             </p>
             <p>
-              Sue Wheeler is an EPA Certified Lead Renovator. We handle every pre-1978 commercial project with proper containment, certified test procedures, and documented cleanup. When you work with us, you don&rsquo;t have to think about this.
+              Sue Wheeler is an EPA Certified Lead Removal. We handle every pre-1978 commercial project with proper containment, certified test procedures, and documented cleanup. When you work with us, you don&rsquo;t have to think about this.
             </p>
           </div>
         </div>

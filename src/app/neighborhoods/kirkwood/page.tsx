@@ -142,7 +142,7 @@ export default function KirkwoodPage() {
           <div className="bg-[#EBE6DE] border-l-4 border-[#11B2E8] p-4 rounded">
             <p className="text-[#2A2421] font-sans text-sm leading-relaxed">
               <strong>EPA note:</strong> Kirkwood's oldest housing stock predates 1978, and lead paint is common in
-              original finish layers. EPA RRP regulations require a Certified Lead Renovator for any work that
+              original finish layers. EPA RRP regulations require a Certified Lead Removal for any work that
               disturbs lead paint. Sue Wheeler is EPA Certified — proper containment and documentation are included
               on every applicable project.
             </p>
@@ -197,7 +197,7 @@ export default function KirkwoodPage() {
             Request a Free Estimate →
           </Link>
           <p className="text-[#6B5E55] font-sans text-sm mt-6">
-            EPA Certified Lead Renovator. BBB A+ Accredited. Since 1989.
+            EPA Certified Lead Removal. BBB A+ Accredited. Since 1989.
           </p>
         </div>
       </section>

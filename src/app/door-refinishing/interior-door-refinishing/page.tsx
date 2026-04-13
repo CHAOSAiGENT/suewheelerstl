@@ -148,7 +148,7 @@ export default function InteriorDoorRefinishingPage() {
           <p className="text-[#6B5E55] font-sans text-base leading-relaxed">
             Pre-1978 interior doors in St. Louis homes frequently have lead paint in their finish
             history — sometimes buried under layers of subsequent work that came later. Sue Wheeler
-            is an EPA Certified Lead Renovator. Every pre-1978 interior door project is handled
+            is an EPA Certified Lead Removal. Every pre-1978 interior door project is handled
             with proper containment, HEPA filtration, and documented cleanup. Especially important
             in bedrooms and rooms where children spend time.
           </p>
