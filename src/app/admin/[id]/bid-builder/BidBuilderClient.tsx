@@ -58,6 +58,7 @@ export function BidBuilderClient({
   );
   const [generating, setGenerating] = useState(false);
   const [sending, setSending] = useState(false);
+  const [sendError, setSendError] = useState<string | null>(null);
 
   // Add block from library click
   const handleAddBlock = useCallback(
@@ -131,8 +132,9 @@ export function BidBuilderClient({
 
   const handleSendToClient = async () => {
     setSending(true);
+    setSendError(null);
     try {
-      await fetch("/api/admin/bid/generate-pdf", {
+      const res = await fetch("/api/admin/bid/generate-pdf", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -142,6 +144,11 @@ export function BidBuilderClient({
           send: true,
         }),
       });
+      if (!res.ok) {
+        setSendError("Failed to send — please try again.");
+      }
+    } catch {
+      setSendError("Network error — please try again.");
     } finally {
       setSending(false);
     }
@@ -354,6 +361,11 @@ export function BidBuilderClient({
               {sending ? "Sending…" : "Send to Client"}
             </button>
           </div>
+          {sendError && (
+            <div style={{ color: "#A65D37", fontSize: 11, marginTop: 4 }}>
+              {sendError}
+            </div>
+          )}
         </div>
 
         {/* Document editor */}

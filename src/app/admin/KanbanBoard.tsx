@@ -50,12 +50,14 @@ export function KanbanBoard({ initialSubmissions, crew }: Props) {
       newStatus: SubmissionStatus,
       extra?: { lost_reason?: LostReason; lost_note?: string },
     ) => {
-      // Optimistic update
-      setSubmissions((prev) =>
-        prev.map((s) =>
+      // Snapshot before move for accurate revert
+      let preMoveSubs: Submission[] = [];
+      setSubmissions((prev) => {
+        preMoveSubs = prev;
+        return prev.map((s) =>
           s.id === submissionId ? { ...s, status: newStatus, ...extra } : s,
-        ),
-      );
+        );
+      });
 
       try {
         const res = await fetch(`/api/admin/submissions/${submissionId}`, {
@@ -65,17 +67,10 @@ export function KanbanBoard({ initialSubmissions, crew }: Props) {
         });
         if (!res.ok) throw new Error("PATCH failed");
       } catch {
-        // Revert
-        setSubmissions((prev) =>
-          prev.map((s) =>
-            s.id === submissionId
-              ? (initialSubmissions.find((i) => i.id === submissionId) ?? s)
-              : s,
-          ),
-        );
+        setSubmissions(preMoveSubs);
       }
     },
-    [initialSubmissions],
+    [],
   );
 
   const handleDragStart = ({ active }: DragStartEvent) => {

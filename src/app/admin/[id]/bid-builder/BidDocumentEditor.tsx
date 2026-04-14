@@ -25,19 +25,28 @@ interface Props {
   photoUrls: string[];
 }
 
-// Debounce helper
-function useDebounce<T extends unknown[]>(
+// Debounce helper — keyed by a string key so multiple blocks don't share one timer
+function useDebouncedCallback<T extends unknown[]>(
   fn: (...args: T) => void,
   delay: number,
 ) {
-  const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const timers = useRef<Map<string, ReturnType<typeof setTimeout>>>(new Map());
+  const fnRef = useRef(fn);
+  fnRef.current = fn;
+
   return useCallback(
-    (...args: T) => {
-      if (timer.current) clearTimeout(timer.current);
-      timer.current = setTimeout(() => fn(...args), delay);
+    (key: string, ...args: T) => {
+      const existing = timers.current.get(key);
+      if (existing) clearTimeout(existing);
+      timers.current.set(
+        key,
+        setTimeout(() => {
+          timers.current.delete(key);
+          fnRef.current(...args);
+        }, delay),
+      );
     },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [fn, delay],
+    [delay],
   );
 }
 
@@ -203,23 +212,20 @@ export function BidDocumentEditor({
     [],
   );
 
-  const debouncedSaveTitle = useDebounce(
-    (id: string, title: string) => saveBlock(id, { title }),
-    500,
-  );
-  const debouncedSaveBody = useDebounce(
-    (id: string, body: string) => saveBlock(id, { body }),
+  const debouncedSave = useDebouncedCallback(
+    (id: string, update: { title?: string; body?: string }) =>
+      saveBlock(id, update),
     500,
   );
 
   const handleTitleChange = (id: string, title: string) => {
     onBlocksChange(blocks.map((b) => (b.id === id ? { ...b, title } : b)));
-    debouncedSaveTitle(id, title);
+    debouncedSave(`${id}-title`, id, { title });
   };
 
   const handleBodyChange = (id: string, body: string) => {
     onBlocksChange(blocks.map((b) => (b.id === id ? { ...b, body } : b)));
-    debouncedSaveBody(id, body);
+    debouncedSave(`${id}-body`, id, { body });
   };
 
   const handleRemove = async (id: string) => {

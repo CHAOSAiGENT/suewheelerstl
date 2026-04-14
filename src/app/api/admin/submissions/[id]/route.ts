@@ -36,17 +36,18 @@ export async function PATCH(
     update.status = body.status;
   }
 
-  if (body.admin_notes !== undefined) {
-    update.admin_notes = body.admin_notes;
-  }
-
-  if (body.lost_reason !== undefined) {
-    update.lost_reason = body.lost_reason;
-  }
-
-  if (body.lost_note !== undefined) {
-    update.lost_note = body.lost_note;
-  }
+  if (body.admin_notes !== undefined) update.admin_notes = body.admin_notes;
+  if (body.lost_reason !== undefined) update.lost_reason = body.lost_reason;
+  if (body.lost_note !== undefined) update.lost_note = body.lost_note;
+  if (body.crew_member_ids !== undefined)
+    update.crew_member_ids = body.crew_member_ids;
+  if (body.after_photos_uploaded !== undefined)
+    update.after_photos_uploaded = body.after_photos_uploaded;
+  if (body.final_payment_confirmed !== undefined)
+    update.final_payment_confirmed = body.final_payment_confirmed;
+  if (body.bid_start_date !== undefined)
+    update.bid_start_date = body.bid_start_date;
+  if (body.bid_amount !== undefined) update.bid_amount = body.bid_amount;
 
   if (Object.keys(update).length === 0) {
     return NextResponse.json({ error: "Nothing to update" }, { status: 400 });

@@ -155,6 +155,7 @@ export async function POST(req: Request) {
   };
 
   const updatePayload: SubmissionUpdate = {
+    // bid_file_url stores the raw storage path; consumers must generate a signed URL to display it
     bid_file_url: storagePath,
   };
 
@@ -195,7 +196,7 @@ export async function POST(req: Request) {
       html: tpl.html,
       attachments: [
         {
-          filename: `estimate-${submission.name.replace(/\s+/g, "-").toLowerCase()}.pdf`,
+          filename: `estimate-${(submission.name ?? "client").replace(/\s+/g, "-").toLowerCase()}.pdf`,
           content: pdfBuffer,
         },
       ],

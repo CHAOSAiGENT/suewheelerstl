@@ -15,6 +15,16 @@ export async function PATCH(
   }
 
   const { id } = await params;
+
+  const supabase = createServiceSupabaseClient();
+  const { data: existing } = await supabase
+    .from("bid_blocks")
+    .select("id")
+    .eq("id", id)
+    .single();
+  if (!existing)
+    return NextResponse.json({ error: "Not found" }, { status: 404 });
+
   const body = await req.json();
   const update: Record<string, unknown> = {};
 
@@ -27,7 +37,6 @@ export async function PATCH(
     return NextResponse.json({ error: "Nothing to update" }, { status: 400 });
   }
 
-  const supabase = createServiceSupabaseClient();
   const { data, error } = await supabase
     .from("bid_blocks")
     .update(update)
@@ -56,6 +65,14 @@ export async function DELETE(
 
   const { id } = await params;
   const supabase = createServiceSupabaseClient();
+  const { data: existing } = await supabase
+    .from("bid_blocks")
+    .select("id")
+    .eq("id", id)
+    .single();
+  if (!existing)
+    return NextResponse.json({ error: "Not found" }, { status: 404 });
+
   const { error } = await supabase.from("bid_blocks").delete().eq("id", id);
 
   if (error) {
