@@ -40,6 +40,14 @@ export async function PATCH(
     update.admin_notes = body.admin_notes;
   }
 
+  if (body.lost_reason !== undefined) {
+    update.lost_reason = body.lost_reason;
+  }
+
+  if (body.lost_note !== undefined) {
+    update.lost_note = body.lost_note;
+  }
+
   if (Object.keys(update).length === 0) {
     return NextResponse.json({ error: "Nothing to update" }, { status: 400 });
   }
