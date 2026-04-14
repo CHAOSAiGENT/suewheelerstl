@@ -1,0 +1,556 @@
+[
+  {
+    "key": "1a-framework-items-bidding-framework-v2-xlsx",
+    "label": "1A. FRAMEWORK ITEMS (Bidding_Framework_v2.xlsx)",
+    "blocks": [
+      {
+        "key": "front-door",
+        "title": "FRONT DOOR",
+        "body": "| Element | Tier | Severity | Min | Default | Max | Input | Notes |\n|---|---|---|---|---|---|---|---|\n| Door Panel — Exterior Face | S&R | Moderate | 3 | 5 | 8 | Radio (Board-Up/On-Prem) | UV/weather damage typical south-facing |\n| Door Panel — Interior Face | S&R | Light | 2 | 3 | 5 | Radio (Board-Up/On-Prem) | Usually lighter; often PUP candidate |\n| Door Panel — Interior Face | PUP | Light | 1 | 1.5 | 2.5 | Checkbox | Maintenance coat when exterior gets S&R |\n| Door Panel — Edges (Top/Bottom/Sides) | S&R | Moderate | 1 | 1.5 | 2 | Checkbox | Critical for moisture sealing |\n| Raised/Recessed Panels | S&R | Moderate | 1 | 2 | 3 | Number (count) | Deep profiles trap old finish |\n| Stiles & Rails | S&R | Moderate | 1 | 1.5 | 2 | Checkbox | Check for rot at bottom rail |\n| Glass/Glazing Surround | S&R | Light | 0.5 | 1 | 2 | Multi-Select (Leaded/Beveled/Stained) | Leaded glass adds significant time |\n| Mail Slot Surround | S&R | Light | 0.25 | 0.5 | 1 | Checkbox | Common on historic STL homes |\n| Kickplate Area | S&R | Moderate | 0.5 | 1 | 1.5 | Checkbox | High wear zone; often needs repair |"
+      },
+      {
+        "key": "door-frame",
+        "title": "DOOR FRAME",
+        "body": "| Element | Tier | Severity | Min | Default | Max | Input | Notes |\n|---|---|---|---|---|---|---|---|\n| Head Jamb | S&R | Light | 0.5 | 1 | 1.5 | Checkbox | Top horizontal; usually less damage |\n| Side Jambs (pair) | S&R | Moderate | 1 | 2 | 3 | Checkbox | Check where door closes for wear |\n| Threshold / Sill | S&R | Severe | 1 | 2 | 4 | Radio (Replace/Repair) | Highest rot risk — water/foot traffic |\n| Interior Casing / Trim | S&R | Light | 1 | 2 | 3 | Checkbox | Profile-specific for historic homes |\n| Exterior Casing / Brick Mold | S&R | Moderate | 1 | 2 | 4 | Checkbox | Brick mold common on masonry homes |\n| Plinth Blocks (pair) | S&R | Light | 0.5 | 1 | 1.5 | Checkbox | Base blocks at door casing; Victorian/Greek Revival |\n| Rosettes / Corner Blocks | S&R | Light | 0.5 | 1 | 1.5 | Number (count) | Decorative corners; common on Victorian trim |\n| Pediment / Header | S&R | Light | 1 | 2 | 3 | Checkbox | Decorative piece above door; Greek Revival, Colonial |\n| Pilasters | S&R | Light | 1 | 2 | 3 | Number (count) | Flat decorative columns flanking doorway |"
+      },
+      {
+        "key": "transom",
+        "title": "TRANSOM",
+        "body": "| Element | Tier | Severity | Min | Default | Max | Input | Notes |\n|---|---|---|---|---|---|---|---|\n| Transom Window Frame | S&R | Moderate | 1 | 2 | 3 | Checkbox | Often matches door casing profile |\n| Transom Sash / Glass Surround | S&R | Light | 0.5 | 1 | 2 | Multi-Select (Leaded/Stained/Clear) | Mask glass; leaded/stained adds time |\n| Transom Bar (horizontal divider) | S&R | Light | 0.5 | 1 | 1.5 | Checkbox | Separates transom from door |"
+      },
+      {
+        "key": "sidelights",
+        "title": "SIDELIGHTS",
+        "body": "| Element | Tier | Severity | Min | Default | Max | Input | Notes |\n|---|---|---|---|---|---|---|---|\n| Sidelight Frame(s) | S&R | Moderate | 1 | 2 | 3 | Radio (Single/Pair) | Narrow window panels flanking front door |\n| Sidelight Sash / Muntins | S&R | Light | 0.5 | 1 | 2 | Checkbox | Inner frame holding glass panes |\n| Sidelight Sill | S&R | Moderate | 0.5 | 1 | 1.5 | Checkbox | Rot risk similar to threshold |"
+      },
+      {
+        "key": "storm-door-screen-door",
+        "title": "STORM DOOR / SCREEN DOOR",
+        "body": "| Element | Tier | Severity | Min | Default | Max | Notes |\n|---|---|---|---|---|---|---|\n| Storm Door — Full | S&R | Light | 2 | 3 | 5 | Seasonal protection door; lighter construction |\n| Storm Door Frame | S&R | Light | 1 | 1.5 | 2 | Outer frame for storm door |\n| Screen Door — Full | S&R | Light | 2 | 3 | 5 | Wood frame screen door; often decorative |\n| Screen Door Frame | S&R | Light | 1 | 1.5 | 2 | |"
+      },
+      {
+        "key": "specialty-door-types",
+        "title": "SPECIALTY DOOR TYPES",
+        "body": "| Door Type | Element | Tier | Severity | Min | Default | Max | Notes |\n|---|---|---|---|---|---|---|---|\n| Back Door | Door Panel | S&R | Moderate | 3 | 5 | 8 | Similar scope to front; less ornate |\n| Back Door | Door Frame (full) | S&R | Moderate | 2 | 3 | 5 | Frame, jambs, threshold |\n| Interior Door | Door Panel | S&R | Light | 2 | 3 | 5 | Standard interior; usually less damage |\n| Interior Door | Door Panel | PUP | Light | 0.75 | 1 | 2 | Quick maintenance coat |\n| Interior Door | Door Frame / Casing | S&R | Light | 1 | 2 | 3 | Interior trim around opening |\n| French Door | Door Panels (pair) | S&R | Moderate | 5 | 8 | 12 | Many muntins = significant time |\n| French Door | Muntins / Glazing Bars | S&R | Moderate | 2 | 4 | 6 | Per muntin; each must be stripped individually |\n| French Door | Door Frame (full) | S&R | Moderate | 2 | 3 | 5 | |\n| Pocket Door | Door Panel | S&R | Moderate | 3 | 5 | 8 | Slides into wall; may need removal from track |\n| Pocket Door | Door Frame / Track Trim | S&R | Light | 1 | 2 | 3 | Trim concealing pocket mechanism |\n| Double Entry | Door Panels (pair) | S&R | Moderate | 6 | 10 | 16 | Grand entry; often ornate raised panels |\n| Double Entry | Door Frame / Surround | S&R | Moderate | 2 | 4 | 6 | |\n| Patio Door | Door Panel(s) | S&R | Moderate | 3 | 5 | 8 | Sliding or hinged |\n| Patio Door | Door Frame / Track | S&R | Moderate | 1 | 2 | 3 | |\n| Side Door | Door Panel | S&R | Moderate | 3 | 5 | 8 | Secondary exterior door; side/garage entry |\n| Side Door | Door Frame (full) | S&R | Moderate | 2 | 3 | 5 | |\n| Barn / Sliding | Door Panel | S&R | Light | 2 | 4 | 6 | Interior; track hardware stays |\n| Folding | Door Panels (set) | S&R | Light | 2 | 4 | 8 | Multi-panel; price per panel |\n| Garage Door | Door Panel(s) — Exterior | S&R | Severe | 4 | 8 | 16 | Large surface; heavy UV; rare for Sue |\n| Vestibule | All Woodwork | S&R | Moderate | 4 | 8 | 16 | Assess individually |\n| Shutters | Shutter Panels (pair) | S&R | Moderate | 2 | 4 | 6 | Per pair |"
+      },
+      {
+        "key": "door-modifiers-any-door-type",
+        "title": "DOOR MODIFIERS (any door type)",
+        "body": "| Modifier | Tier | Min | Default | Max | Notes |\n|---|---|---|---|---|---|\n| Hardware (remove/reinstall) | General | 0.25 | 0.5 | 1 | Hinges, knobs, locks, knocker, mail slot, kickplate |\n| Weather Stripping | General | 0.5 | 1 | 2 | Spring bronze preferred; replace during refinish |\n| Caulking / Silicone | General | 0.25 | 0.5 | 1 | Seal gaps at frame-to-wall and threshold joints |\n\n\n================================================================================"
+      }
+    ]
+  },
+  {
+    "key": "1b-historical-copyblocks-doors-and-frames",
+    "label": "1B. HISTORICAL COPYBLOCKS — DOORS & FRAMES",
+    "blocks": [
+      {
+        "key": "front-door-121-occurrences-range-200-8-000-median-2-500",
+        "title": "FRONT DOOR — 121 occurrences | Range: $200–$8,000 | Median: $2,500",
+        "body": "These doors have interior damage from dogs. There are options for the work we can do, and I have listed them for your choice. We will also do a Maintenance coat on the exterior doors to maintain the current finish. The door frame on the exterior needs to be stripped and refinished as well. We can install plexiglass over the interior doors to the height the dogs hit. This gives protection to the wood.\n\n---\n\nThis door will be taken to the shop. Any splits will be filled with epoxy. We will check the bottom of the door for any holes or rot and repair this. We will remove the screen door and remount it when we are finished. We will dig out the old caulk that surrounds the brick mold and replace it with appropriate caulk. After stripping and sanding we will consult on color and finish. Includes pick up within 15 miles of 63108. Turn around is 6 weeks or less.\n\n---\n\nIncludes exterior of front door, transom, storm cover for transom, framing and wood threshold. This door has splits from weathering and gaps at seams. These will be filled with the appropriate epoxy and stained to match. We will check the bottom of the door for any holes or rot and repair this.\n\n---\n\nIncludes both sides of front door. These doors will be done as a board up. We will take them to the shop. This will allow us to epoxy splits, check the bottom for rot and advise on weather stripping.\n\n---\n\nIncludes exterior of front door. Any splits will be filled with appropriate epoxy and stained to match. We will remove the door to work on it and we will check the bottom for rot, apply appropriate epoxy and seal it. We will check the fit on the door and advise on weather stripping.\n\n---\n\nThese doors are painted on both sides. We can advise on color after strip and sand. We will take these doors to the shop and check the bottom for rot and epoxy if needed. Splits will be epoxied and stained to blend. Doors will be done on both sides."
+      },
+      {
+        "key": "door-frame-82-occurrences-range-350-6-800-median-1-400",
+        "title": "DOOR FRAME — 82 occurrences | Range: $350–$6,800 | Median: $1,400",
+        "body": "Exterior door frame has lead paint and we will use EPA Lead Safe Guidelines to remove paint and repaint or refinish. We will strip, sand and stain to match the doors. Appropriate caulk will be applied for water sealant. Storm door will be removed and rehung if desired. We will try to get paint off the brick before we caulk for a better look. Paint cost will be added to the invoice and remaining paint stays with the customer.\n\n---\n\nIncludes doorframe, jamb, threshold, and transoms. We can make wood and foam molding for weather stripping to match the finished wood.\n\n---\n\nIncludes complete refinish of painted interior door frame. Work will be done on site.\n\n---\n\nIncludes face frame, jamb and transom for each entry. Storm doors will be removed and rehung if necessary. Appropriate caulk will be applied to brick mold.\n\n---\n\nIncludes the painted exterior door frame, jamb, sidelight, transom and face frame. The jamb is paneled and has lots of detail. We will remove the added storms on the sidelight and transom. Storm door will be removed for this work and rehung if desired."
+      },
+      {
+        "key": "front-door-door-frame-22-occurrences-range-200-10-200-median-4-800",
+        "title": "FRONT DOOR + DOOR FRAME — 22 occurrences | Range: $200–$10,200 | Median: $4,800",
+        "body": "Includes exterior of front door, transom, storm cover for transom, framing and wood threshold. This door has splits from weathering and gaps at seams. These will be filled with the appropriate epoxy and stained to match. We will check the bottom of the door for any holes or rot and repair this. We will remove the screen door and remount it when we are finished. We will dig out the old caulk that surrounds the brick mold and replace it with appropriate caulk.\n\n---\n\nIncludes exterior of front door, door frame, sidelights, threshold and door frame. We will fill any holes not needed for hardware. This door is very weathered and will require sanding included in this bid. We will fill splits in the wood and glue as needed. There is a lot of lead paint on this entry and we will use Lead Safe Practices as required by the EPA. We are certified for lead paint removal."
+      },
+      {
+        "key": "front-door-sidelights-transom-8-occurrences-range-7-800-12-000-median-8-200",
+        "title": "FRONT DOOR + SIDELIGHTS + TRANSOM — 8 occurrences | Range: $7,800–$12,000 | Median: $8,200",
+        "body": "Includes exterior of front door, door frame, transom, and sidelights. We will assess for weather stripping. Any weather stripping would be an additional charge, and we will consult with you on any issues before proceeding. The loose caulk around the frame will be dug out and we will apply appropriate caulk when finished. After stripping and sanding we will consult on color of stain."
+      },
+      {
+        "key": "storm-door-21-occurrences-range-250-2-500-median-1-400",
+        "title": "STORM DOOR — 21 occurrences | Range: $250–$2,500 | Median: $1,400",
+        "body": "Storm door will be taken to the shop, along with screen insert. The door and both inserts will be refinished on both sides. If new screen is needed it will be an extra charge. The hinge may need a shim, or we may need to sand the bottom to stop door from dragging. Hardware issues should be addressed by a locksmith.\n\n---\n\nThese doors will be taken to the shop. We will try to remove the gray with oxalic acid. Any splits will be filled with epoxy."
+      },
+      {
+        "key": "screen-door-16-occurrences-range-250-5-400-median-2-400",
+        "title": "SCREEN DOOR — 16 occurrences | Range: $250–$5,400 | Median: $2,400",
+        "body": "This door can be taken to the shop at any time. Includes both sides of door, repair/replace missing molding and install new screen. Door seems to be rubbing at the top of the jamb and we will check for fit. Joints appear a little loose and we will glue this. We will epoxy split in the bottom panel for weather tightness."
+      },
+      {
+        "key": "interior-doors-12-occurrences-range-500-12-500-median-1-700",
+        "title": "INTERIOR DOORS — 12 occurrences | Range: $500–$12,500 | Median: $1,700",
+        "body": "Includes the interior and exterior of double entry doors. These doors will be done at the shop. Any splits will be filled with epoxy. We will check the bottom of the doors for rot and epoxy as needed. If extra carpentry needs to be done, we will advise before proceeding. After stripping and sanding we will consult on color and finish.\n\n---\n\nThese doors should be refinished on both sides. We can take one down during the day and work on it in the parking lot and rehang each day. Any stain or finish we apply will be dry by the time you open."
+      },
+      {
+        "key": "back-door-11-occurrences-range-350-2-800-median-2-400",
+        "title": "BACK DOOR — 11 occurrences | Range: $350–$2,800 | Median: $2,400",
+        "body": "This door will be done on site and only the exterior. We will advise on stain or paint after stripping and sanding. The threshold should be repaired as soon as possible.\n\n---\n\nIncludes both sides of back door. This door will be taken to the shop, and the entry will be boarded up. We will have the door for 2–3 weeks. The exterior door frame will be done on site when the weather is warm enough for exterior work."
+      },
+      {
+        "key": "pocket-door-6-occurrences-range-1-600-4-000-median-2-200",
+        "title": "POCKET DOOR — 6 occurrences | Range: $1,600–$4,000 | Median: $2,200",
+        "body": "These doors will be removed and brought to the shop. Quote is for strip, fill, repair and sand OR for complete refinish of both sides of door. Price is per door.\n\n---\n\nIncludes both sides of 2 pocket doors, framing on exterior and interior sides of this opening. We will advise on repairs. Carpentry will incur an extra charge."
+      },
+      {
+        "key": "french-doors-3-occurrences-range-550-2-800-median-625",
+        "title": "FRENCH DOORS — 3 occurrences | Range: $550–$2,800 | Median: $625",
+        "body": "These doors will be taken down and refinished on all sides at the shop. We can coordinate with art glass company for any work done to the glass. We will advise on color after stripping and sanding. Splits in the wood will be filled with epoxy. Hardware and kickplates will be removed and cleaned."
+      },
+      {
+        "key": "patio-doors-3-occurrences-range-3-800-4-800-median-4-800",
+        "title": "PATIO DOORS — 3 occurrences | Range: $3,800–$4,800 | Median: $4,800",
+        "body": "Includes exterior of 2 patio doors. We will remove water damaged veneer panels and re-veneer. The entire exterior will be refinished, and the veneer will be matched to it."
+      },
+      {
+        "key": "doors-general-9-occurrences-range-400-2-800-median-2-000",
+        "title": "DOORS — GENERAL — 9 occurrences | Range: $400–$2,800 | Median: $2,000",
+        "body": "Includes interior of front door. We will remove the hardware to work on these doors and put it back on each day. We will check the bottom for any rot or holes, and we will fill with epoxy. Any splits will be filled with epoxy and stained to match. If a bottom sweep is needed, we will advise and add if desired. Replacing hinges will add $250–300 per door."
+      },
+      {
+        "key": "misc-door-types-1-3-occurrences",
+        "title": "MISC DOOR TYPES (1–3 occurrences)",
+        "body": "**Double Entry Doors:** Includes both sides of double entry doors. These are painted. We can advise on color after strip and sand. We will take these doors to the shop and check the bottom for rot and epoxy if needed. Splits will be epoxied and stained to blend.\n\n**Basement Door:** This door is heavily painted (likely lead paint). We will check the bottom for any rot or holes, and we will fill with epoxy. Any splits will be filled with epoxy and stained to match. Hardware will be cleaned, but not polished.\n\n**Bath Door:** Bathroom door will be removed and taken to the shop. Hardware will be cleaned, but not polished.\n\n**Folding Doors:** These folding doors will be refinished on both sides. There are four doors per set for each room.\n\n**Garage Doors:** Includes both sides of new garage doors. We will take the doors to the shop and board up the entry if desired. There is a waterline on the bottom 1/3 of the doors that we should be able to sand out. The fill that is on the door will be stained to blend in.\n\n**Dipped Door (repair):** This dipped door has split and lifting veneer. We should be able to glue this down and refinish the door.\n\n---\n\n\n================================================================================"
+      }
+    ]
+  },
+  {
+    "key": "2a-framework-items-bidding-framework-v2-xlsx",
+    "label": "2A. FRAMEWORK ITEMS (Bidding_Framework_v2.xlsx)",
+    "blocks": [
+      {
+        "key": "staircase-treads-risers-stringers",
+        "title": "STAIRCASE — Treads, Risers, Stringers",
+        "body": "| Element | Tier | Severity | Min | Default | Max | Input | Notes |\n|---|---|---|---|---|---|---|---|\n| Treads (per step) | S&R | Moderate | 0.5 | 0.75 | 1.5 | Number (count) | Heavy wear on nosing |\n| Treads (per step) | PUP | Light | 0.25 | 0.5 | 0.75 | Number (count) | Maintenance coat for treads in good condition |\n| Risers (per step) | S&R | Light | 0.25 | 0.5 | 1 | Number (count) | Vertical face; less wear than treads |\n| Stair Nosing / Bullnose | S&R | Moderate | 0.25 | 0.5 | 0.75 | Number (count) | Highest wear point |\n| Stringers (open/closed) | S&R | Moderate | 1 | 2 | 4 | Select (Open/Closed/Both) | Open stringers more visible/more work |\n| Stringer Trim / Skirt Board | S&R | Light | 0.5 | 1 | 2 | Checkbox | Trim along wall-side stringer |\n| Landing Platform | S&R | Moderate | 1 | 2 | 3 | Checkbox | Flat area at turn or top |\n| Apron (landing face) | S&R | Light | 0.5 | 1 | 2 | Checkbox | Vertical face below landing |\n| Tight Access / Curved Sections | S&R | Severe | 2 | 4 | 8 | Checkbox | Premium time — curved/tight turns |"
+      },
+      {
+        "key": "balustrade-spindles-newels-handrail",
+        "title": "BALUSTRADE — Spindles, Newels, Handrail",
+        "body": "| Element | Tier | Severity | Min | Default | Max | Input | Notes |\n|---|---|---|---|---|---|---|---|\n| Spindles / Balusters | S&R | Moderate | 0.25 | 0.5 | 0.75 | Number (count) | Per spindle; turned profiles trap finish; 12–20+ per flight |\n| Spindles / Balusters | PUP | Light | 0.1 | 0.25 | 0.5 | Number (count) | Quick maintenance coat per spindle |\n| Newel Post — Main (starting) | S&R | Moderate | 1 | 2 | 4 | Select (Turned/Box/Fluted) | Large post at stair base; showcase piece |\n| Newel Post — Landing / Turn | S&R | Moderate | 1 | 1.5 | 3 | Number (count) | Intermediate newels |\n| Newel Cap / Finial | S&R | Light | 0.25 | 0.5 | 1 | Select (Ball/Acorn/Urn/Custom) | Decorative top; often removable |\n| Newel Drop / Pendant | S&R | Light | 0.5 | 1 | 2 | Checkbox | Hanging below newel at open floor transitions |\n| Rosette (newel base) | S&R | Light | 0.25 | 0.5 | 1 | Checkbox | Decorative disk at base or where rail meets wall |\n| Handrail / Banister | S&R | Moderate | 1 | 2 | 4 | Number (linear ft) | Per linear foot; profile complexity matters |\n| Handrail / Banister | PUP | Light | 0.5 | 1 | 2 | Number (linear ft) | Maintenance coat |\n| Handrail Fittings (gooseneck, volute, turnout) | S&R | Light | 0.5 | 1 | 2 | Checkbox | Curved transitions; gooseneck at landing, volute at bottom |"
+      },
+      {
+        "key": "porch-and-deck-railing",
+        "title": "PORCH & DECK RAILING",
+        "body": "| Element | Tier | Severity | Min | Default | Max | Notes |\n|---|---|---|---|---|---|---|\n| Porch Railing — Top/Bottom Rails | S&R | Moderate | 1 | 2 | 4 | Per linear foot; exterior exposure |\n| Porch Balusters / Spindles | S&R | Moderate | 0.25 | 0.5 | 0.75 | Per baluster; weather-exposed = more damage |\n| Porch Newel Posts | S&R | Moderate | 1 | 2 | 3 | Per post |\n| Deck Railing System | S&R | Moderate | 2 | 4 | 8 | Full railing; price by linear foot |\n| Bar Rail / Chicago Bar Rail | S&R | Light | 1 | 2 | 4 | Interior decorative rail; dining/entertainment areas |\n\n================================================================================"
+      }
+    ]
+  },
+  {
+    "key": "2b-historical-copyblocks-staircases-and-railings",
+    "label": "2B. HISTORICAL COPYBLOCKS — STAIRCASES & RAILINGS",
+    "blocks": [
+      {
+        "key": "staircase-28-occurrences-range-150-22-000-median-5-200",
+        "title": "STAIRCASE — 28 occurrences | Range: $150–$22,000 | Median: $5,200",
+        "body": "We will consult on color before starting. Areas that need to be stripped and completely refinished are near the top of the staircase. They will be refinished and are included in this bid. PUP includes base plate for spindles, banister, newel posts, baseboard along carpeted treads, support posts in basement. We will protect the carpet as carefully as possible.\n\n---\n\nIncludes treads, risers and landing from first to 3rd floor. Includes 3 banisters. No other molding will be refinished. This will take 8–10 days to complete.\n\n---\n\nWe will touch up the spots on the risers that were left from removal of the carpet. It may take a couple of coats. We will then apply 2 coats of polyurethane to seal.\n\n---\n\nIncludes treads, risers, base and windows."
+      },
+      {
+        "key": "banister-and-newels-3-occurrences-range-2-150-5-700-median-3-650",
+        "title": "BANISTER & NEWELS — 3 occurrences | Range: $2,150–$5,700 | Median: $3,650",
+        "body": "Staircase runs from first to second floor. This bid includes banister, newel posts and anchor plates. Areas include main staircase, and the rail along the second floor. Spindles will be taped off, but the tape may pull off paint and require touch up by painter. We will use EPA Lead Safe Practices.\n\n---\n\nIncludes lower banister, wall anchor and newel post. Upper banister will be removed and taken to the shop. Spindles will be taped off for protection and can be repainted when we finish.\n\n---\n\nIncludes banister and 5 newel posts. Taping done by customer. We will provide plastic, Econruner and Ramboard for floor covering. Strip only."
+      },
+      {
+        "key": "misc-staircase-items",
+        "title": "MISC STAIRCASE ITEMS",
+        "body": "**Banister Only (handrail):** This is the handrail that runs from the first to second floor. It is supported by [iron/wood], and this will be taped off.\n\n**Newel Drop:** Includes newel drop from second floor stairs, seen from the kitchen. Complete strip and refinish.\n\n**Newel Drops (pair):** Includes newel drop from second floor stairs, seen from the kitchen. Also includes stain and finish of lower newel drop.\n\n**Back Stairs:** The treads and risers need to be stripped and sanded. We will consult on color before we stain and apply 3 coats of polyurethane.\n\n**Staircase Windows:** The large window will need the sill stripped and refinished. We will check other areas when we get up there, but PUP may work on the rest of it.\n\n---\n\n\n================================================================================"
+      }
+    ]
+  },
+  {
+    "key": "3a-framework-items-bidding-framework-v2-xlsx",
+    "label": "3A. FRAMEWORK ITEMS (Bidding_Framework_v2.xlsx)",
+    "blocks": [
+      {
+        "key": "cabinets-upper",
+        "title": "CABINETS — UPPER",
+        "body": "| Element | Tier | Severity | Min | Default | Max | Input | Notes |\n|---|---|---|---|---|---|---|---|\n| Cabinet Face Frames | S&R | Moderate | 2 | 4 | 8 | Number (count boxes) | Rails and stiles of face frame |\n| Cabinet Doors | S&R | Moderate | 0.5 | 0.75 | 1.5 | Number (per door) | Raised panel, recessed, or Shaker |\n| Cabinet Doors | PUP | Light | 0.25 | 0.5 | 0.75 | Number (per door) | Maintenance coat per door |\n| Cabinet Interior Edges | S&R | Light | 0.25 | 0.5 | 1 | Checkbox | Visible inside edges of door openings |"
+      },
+      {
+        "key": "cabinets-lower",
+        "title": "CABINETS — LOWER",
+        "body": "| Element | Tier | Severity | Min | Default | Max | Input | Notes |\n|---|---|---|---|---|---|---|---|\n| Cabinet Face Frames | S&R | Moderate | 2 | 4 | 8 | Number (count boxes) | More wear than uppers |\n| Cabinet Doors | S&R | Moderate | 0.5 | 0.75 | 1.5 | Number (per door) | Knees/feet/water splash = more wear |\n| Drawer Fronts | S&R | Moderate | 0.25 | 0.5 | 1 | Number (per drawer) | Handle area shows most wear |\n| Toe Kick | S&R | Moderate | 0.5 | 1 | 2 | Checkbox | Recessed base strip; high kick/scuff damage |"
+      },
+      {
+        "key": "cabinets-general-modifiers",
+        "title": "CABINETS — GENERAL MODIFIERS",
+        "body": "| Element | Tier | Severity | Min | Default | Max | Notes |\n|---|---|---|---|---|---|---|\n| End Panels (exposed sides) | S&R | Light | 0.5 | 1 | 2 | Side panels at end of cabinet run |\n| Fillers & Spacers | S&R | Light | 0.25 | 0.5 | 1 | Filler strips between cabinets or at walls |\n| Crown Molding (cabinet top) | S&R | Light | 0.5 | 1 | 2 | Decorative molding at top of upper cabinets |\n| Light Rail (under cabinet) | S&R | Light | 0.5 | 1 | 1.5 | Trim hiding under-cabinet lights |\n| Hardware (remove/reinstall) | General | — | 0.5 | 1 | 2 | Remove all hardware before refinish; reinstall after |\n| Lazy Susan / Corner Cabinet | S&R | Moderate | 1 | 2 | 3 | Rotating shelves complicate access |"
+      },
+      {
+        "key": "island",
+        "title": "ISLAND",
+        "body": "| Element | Tier | Severity | Min | Default | Max | Notes |\n|---|---|---|---|---|---|---|\n| Island Cabinet Faces & Doors | S&R | Moderate | 2 | 4 | 8 | Often different wood/finish than wall cabinets |\n| Island End Panels | S&R | Light | 0.5 | 1 | 2 | 4 sides exposed vs 1–2 on wall cabinets |\n| Island Countertop Edge (wood) | S&R | Moderate | 1 | 2 | 4 | Wood edges or butcher block surfaces |"
+      },
+      {
+        "key": "kitchen-built-ins",
+        "title": "KITCHEN BUILT-INS",
+        "body": "| Element | Tier | Severity | Min | Default | Max | Notes |\n|---|---|---|---|---|---|---|\n| Hutch / China Cabinet | S&R | Moderate | 4 | 8 | 16 | Glass doors, shelves, drawers |\n| Buffet / Sideboard | S&R | Moderate | 3 | 6 | 12 | Lower built-in with countertop; often in dining area |\n| Pantry Cabinets | S&R | Moderate | 2 | 4 | 8 | Tall pantry storage; many shelves |\n| Butler's Pantry | S&R | Moderate | 4 | 8 | 16 | Full pantry with cabinets, counters, pass-through |\n| Wine Rack / Bar Cabinet | S&R | Light | 1 | 2 | 4 | |\n| Wood Countertop / Butcher Block | S&R | Moderate | 2 | 4 | 8 | Full sand and refinish; price by square foot |\n\n================================================================================"
+      }
+    ]
+  },
+  {
+    "key": "3b-historical-copyblocks-kitchens",
+    "label": "3B. HISTORICAL COPYBLOCKS — KITCHENS",
+    "blocks": [
+      {
+        "key": "kitchen-14-occurrences-range-1-550-11-100-median-4-800",
+        "title": "KITCHEN — 14 occurrences | Range: $1,550–$11,100 | Median: $4,800",
+        "body": "Includes 1 window with sashes that is over sink. All doors and drawers will be taken to the shop and bases will be done on site. If we can remove drawer fronts and sink fronts, we will take them that way.\n\n---\n\nBid includes all doors, drawers, and bases in kitchen. These items will be done at the shop. We will remove and rehang doors. Cabinets do not have to be emptied, but drawers will. We will install the old hardware or new hardware (supplied by customer) will be installed if it is the same footprint as the old. We will have the doors and drawers for six weeks or less. During this time, we will schedule refinishing of on-site bases. This usually takes about a week to complete."
+      },
+      {
+        "key": "countertops-2-occurrences-range-150-2-200-median-600",
+        "title": "COUNTERTOPS — 2 occurrences | Range: $150–$2,200 | Median: $600",
+        "body": "The island and the sink area should be stripped and sanded for best results. We will try to sand out scratches and water damage, but if they are deep and across the grain, they may leave a hint of a line.\n\nPERK UP AND PROTECT (PUP): Some areas can be touched up and have 1–2 coats of polyurethane applied to spruce them up. One coat included; additional coats $150 each area."
+      },
+      {
+        "key": "butler-s-pantry-2-occurrences",
+        "title": "BUTLER'S PANTRY — 2 occurrences",
+        "body": "Includes wall-to-wall pantry and interior shelves. We will install beadboard on the back wall. We will try to make the drawers work more smoothly. Hardware will be cleaned, but not polished. This area also includes refinishing of one side of swing door, baseboard, doorframes, and windows.\n\n\n---\n\n\n================================================================================"
+      }
+    ]
+  },
+  {
+    "key": "4a-framework-items-bidding-framework-v2-xlsx",
+    "label": "4A. FRAMEWORK ITEMS (Bidding_Framework_v2.xlsx)",
+    "blocks": [
+      {
+        "key": "windows",
+        "title": "WINDOWS",
+        "body": "| Element | Tier | Severity | Min | Default | Max | Input | Notes |\n|---|---|---|---|---|---|---|---|\n| Window Sash (operable) | S&R | Moderate | 1 | 2 | 4 | Number (count) | Double-hung has 2 sashes |\n| Window Sash (operable) | PUP | Light | 0.5 | 1 | 1.5 | Number (count) | Maintenance coat |\n| Window Frame / Casing | S&R | Light | 0.5 | 1 | 2 | Number (count) | Fixed frame + decorative casing |\n| Window Sill / Stool | S&R | Moderate | 0.5 | 1 | 1.5 | Number (count) | Interior ledge; sun/water damage common |\n| Window Apron | S&R | Light | 0.25 | 0.5 | 1 | Number (count) | Trim piece below sill |\n| Muntins / Glazing Bars | S&R | Moderate | 0.5 | 1 | 2 | Number (count) | More panes = more time |\n| Mullion (between windows) | S&R | Light | 0.5 | 1 | 1.5 | Checkbox | Vertical divider between paired windows |\n| Stained Glass Window | S&R | Severe | 2 | 4 | 8 | Checkbox | Extreme care; mask all glass; premium pricing |\n| Window Seat | S&R | Moderate | 2 | 4 | 8 | Checkbox | Built-in bench in window alcove |"
+      },
+      {
+        "key": "baseboards-moldings-rails",
+        "title": "BASEBOARDS, MOLDINGS, RAILS",
+        "body": "| Element | Tier | Severity | Min | Default | Max | Input | Notes |\n|---|---|---|---|---|---|---|---|\n| Baseboard (per room) | S&R | Light | 1 | 2 | 4 | Number (perimeter ft) | Historic homes have tall profiles |\n| Baseboard (per room) | PUP | Light | 0.5 | 1 | 2 | Number (perimeter ft) | Maintenance coat |\n| Base Cap / Top Molding | S&R | Light | 0.5 | 1 | 1.5 | Checkbox | Decorative profile at top of baseboard |\n| Quarter Round / Shoe Mold | S&R | Light | 0.5 | 1 | 1.5 | Checkbox | Small molding at baseboard-floor junction |\n| Door Frame / Casing (per opening) | S&R | Light | 0.5 | 1 | 2 | Number (count) | Interior door surrounds within room |\n| Door Frame / Casing (per opening) | PUP | Light | 0.25 | 0.5 | 1 | Number (count) | Maintenance coat |\n| Crown Molding (per room) | S&R | Light | 1 | 2 | 4 | Number (perimeter ft) | Complex profiles in Victorian homes |\n| Crown Molding (per room) | PUP | Light | 0.5 | 1 | 2 | Number (perimeter ft) | Maintenance coat |\n| Dentil Molding | S&R | Moderate | 1 | 2 | 4 | Checkbox | Tooth-like blocks below crown; Greek Revival/Colonial |\n| Chair Rail (per room) | S&R | Light | 0.5 | 1 | 2 | Number (perimeter ft) | ~32–36 in height |\n| Picture Rail (per room) | S&R | Light | 0.5 | 1 | 2 | Number (perimeter ft) | Near ceiling; Victorian/Edwardian |"
+      },
+      {
+        "key": "wainscoting-and-wall-paneling",
+        "title": "WAINSCOTING & WALL PANELING",
+        "body": "| Element | Tier | Severity | Min | Default | Max | Notes |\n|---|---|---|---|---|---|---|\n| Wainscoting / Raised Panel | S&R | Moderate | 3 | 6 | 12 | Per sq ft; raised, flat, or beadboard |\n| Beadboard Wainscoting | S&R | Moderate | 2 | 4 | 8 | Tongue-and-groove; grooves trap old finish |"
+      },
+      {
+        "key": "ceilings",
+        "title": "CEILINGS",
+        "body": "| Element | Tier | Severity | Min | Default | Max | Notes |\n|---|---|---|---|---|---|---|\n| Coffered Ceiling | S&R | Moderate | 4 | 8 | 20 | Per panel; grid of recessed panels; very labor-intensive |\n| Exposed Beams | S&R | Moderate | 1 | 2 | 4 | Per beam; height/access is the challenge |\n| Beadboard Ceiling | S&R | Moderate | 2 | 4 | 10 | Per sq ft; common on porches and historic rooms |\n| Ceiling Cap / Medallion Surround | S&R | Light | 0.5 | 1 | 2 | Wood trim around light fixture |"
+      },
+      {
+        "key": "fireplace-mantel-and-surround",
+        "title": "FIREPLACE MANTEL & SURROUND",
+        "body": "| Element | Tier | Severity | Min | Default | Max | Notes |\n|---|---|---|---|---|---|---|\n| Mantel Shelf | S&R | Moderate | 1 | 2 | 4 | Showcase piece; focal point of room |\n| Mantel Surround — Legs/Pilasters | S&R | Moderate | 1 | 2 | 4 | Vertical sides framing fireplace |\n| Mantel Surround — Breast/Frieze | S&R | Moderate | 1 | 2 | 3 | Horizontal panel between shelf and opening |\n| Corbels (mantel support) | S&R | Light | 0.5 | 1 | 2 | Decorative brackets supporting shelf |\n| Fireplace Surround — Full | S&R | Moderate | 4 | 8 | 16 | Complete: mantel + legs + breast + trim |"
+      },
+      {
+        "key": "columns-and-built-ins",
+        "title": "COLUMNS & BUILT-INS",
+        "body": "| Element | Tier | Severity | Min | Default | Max | Notes |\n|---|---|---|---|---|---|---|\n| Column — Full Height | S&R | Moderate | 2 | 4 | 8 | Per column; fluted adds time |\n| Pilaster (wall-mounted) | S&R | Light | 1 | 2 | 4 | Per pilaster; flat decorative column |\n| Entry Hall Pillars | S&R | Moderate | 2 | 4 | 8 | Structural or decorative foyer pillars |\n| Bookcase / Shelving Unit | S&R | Moderate | 3 | 6 | 12 | Built-in; shelves, sides, facing, crown |\n| Window Seat (with storage) | S&R | Moderate | 2 | 4 | 8 | Lid, sides, facing |\n| Closet Interior | S&R | Light | 1 | 2 | 4 | Shelving, rods, trim inside closet |\n| Display Niche / Alcove | S&R | Light | 1 | 2 | 4 | Recessed wall niche with wood trim |"
+      },
+      {
+        "key": "hardwood-floors",
+        "title": "HARDWOOD FLOORS",
+        "body": "| Element | Tier | Severity | Min | Default | Max | Notes |\n|---|---|---|---|---|---|---|\n| Hardwood Floor (per room) | S&R | Moderate | 4 | 8 | 20 | Full sand and refinish; per sq ft |\n| Hardwood Floor (per room) | PUP | Light | 2 | 4 | 8 | Screen and recoat; maintenance finish |\n\n================================================================================"
+      }
+    ]
+  },
+  {
+    "key": "4b-historical-copyblocks-rooms",
+    "label": "4B. HISTORICAL COPYBLOCKS — ROOMS",
+    "blocks": [
+      {
+        "key": "entry-foyer-12-occurrences-range-3-600-16-200-median-7-200",
+        "title": "ENTRY / FOYER — 12 occurrences | Range: $3,600–$16,200 | Median: $7,200",
+        "body": "Includes exterior of front door, door frame, transom and sidelights. We will check the bottom for rot and repair if needed. This entry is very weathered, and we will use oxalic acid to remove the grey before we sand. We will dig out the mortar that was applied around the frame and apply the appropriate caulk when finished. Broken window molding will be replaced, but not with the same design. The current molding is handmade and we are unable to duplicate.\n\n---\n\nIncludes wainscoting and ceiling, face frame of entry. We will prime after stripping."
+      },
+      {
+        "key": "dining-room-11-occurrences-range-2-150-12-600-median-5-250",
+        "title": "DINING ROOM — 11 occurrences | Range: $2,150–$12,600 | Median: $5,250",
+        "body": "Includes wainscoting, baseboard, windows with sashes, door frames, interior of doors, 2 pocket doors and beamed ceiling. Windowsills will be sanded and refinished completely (included). Extra coats of polyurethane are 10% each."
+      },
+      {
+        "key": "living-room-11-occurrences-range-800-9-600-median-4-650",
+        "title": "LIVING ROOM — 11 occurrences | Range: $800–$9,600 | Median: $4,650",
+        "body": "Includes wainscoting around the entire room, window frames, and door frames. Does not include any doors. The area near the exterior doors has been exposed to the sun and will need to be refinished. The horizontal areas, i.e. shelves and windowsills will also need complete refinish."
+      },
+      {
+        "key": "windows-11-occurrences-range-250-7-500-median-1-300",
+        "title": "WINDOWS — 11 occurrences | Range: $250–$7,500 | Median: $1,300",
+        "body": "This window is on the landing and will need new framing. We can strip the current jamb and any exposed wood and come back for the stain and finish work when it is assembled.\n\n---\n\nSand and blend color on casing, stop and sash to match windowsill as close as possible. Apply 3 coats of polyurethane to sash, frame and stops.\n\n---\n\nStained glass windows will be removed and taken to the shop. We will clean the glass, strip and repaint the frame with one coat primer and 2 coats paint."
+      },
+      {
+        "key": "bedroom-10-occurrences-range-800-18-300-median-5-800",
+        "title": "BEDROOM — 10 occurrences | Range: $800–$18,300 | Median: $5,800",
+        "body": "Includes 2 door frames with transoms, closet door frame and both sides of door, crown, corner protectors, baseboards, 3 closet door both sides, 2 small windows (interior & exterior, reglaze), single window with sash and wainscot, double window with sash and wainscot. We will pull up quarter round and replace it when we do the baseboards.\n\n---\n\nEach bedroom has similar woodwork, including wall panels, desks, bookshelves, door frames, 1 side of closet doors, both sides of entry door, window frames and sills. Some areas like windowsills will need to be stripped. This is included in each bedroom."
+      },
+      {
+        "key": "wainscot-3-occurrences-range-3-600-8-000-median-6-200",
+        "title": "WAINSCOT — 3 occurrences | Range: $3,600–$8,000 | Median: $6,200",
+        "body": "Wainscot is on each side of alcove and the back of the brick on the entry. This butts to the ceiling.\n\nBecause the base gets a lot of digs from vacuuming, I recommend a routine of applying stain and topcoat to hide damage. We can teach an employee to do this."
+      },
+      {
+        "key": "crown-molding-3-occurrences-range-600-5-200-median-1-800",
+        "title": "CROWN MOLDING — 3 occurrences | Range: $600–$5,200 | Median: $1,800",
+        "body": "Includes ceiling with crown molding above wainscot. If the color is staying the same we can do a Maintenance Coat on this area and match the bottom to this. Refinishing to change color would add to the cost.\n\nIncludes ceiling in parlor. Prefinished and installed. Touch up after installation.\n\nThis crown runs from the front door to the back window in the entry hall. We will not strip this molding, but do PUP."
+      },
+      {
+        "key": "bathroom-4-occurrences-range-1-500-9-800-median-1-950",
+        "title": "BATHROOM — 4 occurrences | Range: $1,500–$9,800 | Median: $1,950",
+        "body": "Second floor master bathroom. I have itemized these areas so we can do the windows right away. If we do all at one time you can take off 10%. Double windows with frame, sash, and wainscot. Sashes appear to have primer and will not be stripped, but we will apply 2 coats of paint.\n\n---\n\nThis bathroom needs some wood replaced and the rest refinished. I would do a separate bid for this after we discuss in person.\n\n---\n\nThis bathroom should be stripped first in the shower area. We would use silicone caulk to seal the end cuts. Shower damage could appear later and will need to be maintained and watched for damage. Includes walls, cabinet, window and frame, entry door and frame."
+      },
+      {
+        "key": "hallway-4-occurrences-range-2-700-3-700-median-2-950",
+        "title": "HALLWAY — 4 occurrences | Range: $2,700–$3,700 | Median: $2,950",
+        "body": "Includes double door frame to living room, 1 single door frame, 2 windows and baseboard.\n\n---\n\nIncludes 8 door frames and baseboard.\n\n---\n\nIncludes 4 door frames, one with transom and baseboards.\n\n---\n\nIncludes 3 door frames, doors, transom, and baseboard in main hall. Double front doors are bid separately for stripping and refinishing."
+      },
+      {
+        "key": "mantel-2-occurrences-range-1-600",
+        "title": "MANTEL — 2 occurrences | Range: $1,600",
+        "body": "This mantle has been stripped and sanded. We will consult on stain color, apply stain and 3 coats of polyurethane in Satin or Semigloss. Missing parts need to be provided by customer. We can install. This will take about 4–5 days to complete."
+      },
+      {
+        "key": "pillars-columns-3-occurrences-range-12-500",
+        "title": "PILLARS / COLUMNS — 3 occurrences | Range: $12,500",
+        "body": "Water damage to the wood has caused the finish to deteriorate and this archway will need to be stripped and refinished.\n\n---\n\nWe will remove this pillar and take it to the shop to refinish and then remount it. I also recommend caulk at the brick mold. This area should be sealed to keep out moisture and pests."
+      },
+      {
+        "key": "built-in-bookcase-1-occurrence-9-800",
+        "title": "BUILT-IN BOOKCASE — 1 occurrence | $9,800",
+        "body": "Bookcase includes doors, molding, corbels, bench, shelves and back. It is possible these shelves were added, and the wood may need to be replaced. We will advise after stripping."
+      },
+      {
+        "key": "window-seat-3-occurrences-4-200",
+        "title": "WINDOW SEAT — 3 occurrences | $4,200",
+        "body": "Includes window seat on stair landing. 2 lids for cubbies."
+      },
+      {
+        "key": "misc-room-types-single-and-double-occurrences",
+        "title": "MISC ROOM TYPES — SINGLE & DOUBLE OCCURRENCES",
+        "body": "**Parlor / East Parlor / West Parlor:**\nIncludes door frame facing hall, plus the side in the hall, large window with wainscot, and baseboard. We will use EPA Lead Safe Practices to remove lead paint from these areas.\n\nComplete strip and refinish of painted wood. Includes large window with sash, baseboard, doorframe to hall and doorframe to foyer. Priced separately for new crown molding and picture rail to be installed after painting is completed.\n\n**Library:**\nIncludes doorframe to hall, 2 pocket doors, 2 bookcases, small doorframe, 4 windows with sashes and mantle. Windowsills will be sanded, stained and finished with 3 coats of polyurethane.\n\n**Great Room:**\nIncludes 2 very tall door frames and the frame to the kitchen. Includes windowsills and mullions, bookcase above bench includes shelves, and bookcase on opposite wall, and face frame of seating. Includes wall paneling around room. The height of this paneling will require the use of rolling scaffolding. We will check for repairs as we work and advise.\n\n**Circle Room:**\nThis room includes 2 door frames to hall and kitchen, 2 doorframes with transoms to exterior, 2 windows, baseboard and built-in cabinet. This woodwork is currently painted black. After stripping and sanding we will advise on paint or stain.\n\n**Vestibule:**\nThis area includes the 2nd set of entry doors, door frame, jamb, transom and sidelights, both sides, baseboard in vestibule and door with frame and jamb. We would check this area when maintenance is done on the outside and recommend any action we deem necessary to maintain finish.\n\n**Office / Study:**\nIncludes 2 window frames, 3 door frames and baseboard.\n\nIncludes 2 windows (sills will be stripped), door frames, baseboard, one side of 2 doors, pocket door.\n\n**Third Floor (PUP):**\nWe will do the baseboards in the hallway, both sides of 4 doors and one side of 5 door frames with this method. The 5th door is painted and will be S&R at the shop. We will also check the fit on this door.\n\n**Den (PUP):**\nThe baseboards will be stained with a darker gel stain to match the color that was started. We will apply 3 coats of polyurethane over this. The door frames, window frames, and doors facing into the room will have PUP with one coat of polyurethane. The window sashes and sills will be stripped and refinished.\n\n**Bar Area:**\nThis area is adjacent to the kitchen and includes cabinets and shelves.\n\n**Bar Rail:**\nThis includes the arm rest area of the bar. No refinishing on the vertical front surface of the bar.\n\n\n---\n\n\n================================================================================"
+      }
+    ]
+  },
+  {
+    "key": "5b-historical-copyblocks-epa-lead",
+    "label": "5B. HISTORICAL COPYBLOCKS — EPA / LEAD",
+    "blocks": [
+      {
+        "key": "standard-epa-lead-safe-language",
+        "title": "STANDARD EPA LEAD-SAFE LANGUAGE",
+        "body": "This area has lead paint and we will use EPA Lead Safe Guidelines for removal. We are EPA Certified Lead Renovators. We will use plastic containment, chemical stripping, and HEPA vacuum for cleanup. All waste is disposed of per EPA regulations.\n\n---\n\nExterior door frame has lead paint and we will use EPA Lead Safe Guidelines to remove paint and repaint or refinish. We will strip, sand and stain to match the doors. Appropriate caulk will be applied for water sealant.\n\n---\n\nThis door frame has lead paint with latex over it. We will use EPA Lead Safe Practices to remove the paint. Storm door will be removed to do this work and we will rehang it if desired.\n\n---\n\nThere is lead paint on this frame and we will use EPA Lead Safe Practices for paint removal. We will also patch missing spring bronze weather stripping.\n\n---\n\nThis area has a lot of lead paint and we will use Lead Safe Practices as required by the EPA. We are certified for lead paint removal.\n\n---\n\nThis frame and door is covered in lead paint. We will use EPA Lead Safe Practices to remove the paint. After paint is removed we will advise on painting or staining.\n\n---\n\nSpindles will be taped off, but the tape may pull off paint and require touch up by painter. We will use EPA Lead Safe Practices.\n\n---\n\nThese areas are painted and we will use EPA Lead Safe Practices to remove paint.\n\n---\n\nWe will use EPA Lead Safe Practices to remove lead paint from these areas. We will then prime and paint 2 coats to match existing wood.\n\n\n---\n\n\n================================================================================"
+      }
+    ]
+  },
+  {
+    "key": "6b-historical-copyblocks-furniture",
+    "label": "6B. HISTORICAL COPYBLOCKS — FURNITURE",
+    "blocks": [
+      {
+        "key": "table-furniture-6-occurrences-range-800-3-600-median-2-600",
+        "title": "TABLE / FURNITURE — 6 occurrences | Range: $800–$3,600 | Median: $2,600",
+        "body": "Includes top, base, and 2 leaves of table. Pick up date to be determined.\n\n---\n\nEach item will be taken to the shop. Depending on condition we will strip, sand, stain and apply 3 coats of polyurethane:\n- Vanity: $1,200 | Seat: $650 (missing seat)\n- Coffee Table: $350 | End tables: $300 each\n- Dining Room Table: $1,800 + Leaves @ $200 each\n- Chairs: $350 each\n\n---\n\nParts will be taken to the shop, and the base will be done on site in the home. We will ventilate with a fan in the window."
+      },
+      {
+        "key": "individual-furniture-items",
+        "title": "INDIVIDUAL FURNITURE ITEMS",
+        "body": "**Chairs (set of 6):** 6 chairs $350 each. Seats will be removed, and wood will be refinished. No upholstery is included in this bid.\n\n**Blanket Chest:** Pick up, refinish at shop.\n\n**Drop Leaf Table:** Epoxy broken leaf and fill if needed. Refinish top to seal.\n\n**Desk / Desktop:** This desk has damage from wind and water and various items hitting it. There are gouges that will be filled and stained to blend. There is lifting of the embossed leather that we will glue down. If we cannot save the leather, there will be an additional charge for replacement. The top will be refinished to match the base.\n\n**Counsel Table:** Water damage to top. We will pick up this table and take it to the shop. Top will be color matched to the rest of the piece.\n\n**Credenza Top:** We will repair the damaged areas and refinish the top. Pricing for a shelf will be estimated after it is in the shop.\n\n**Hall Tree:** Carpentry to attach shelf and drawer. Touch up finish when repaired. Look for any other damage and repair.\n\n**Tea Cart / Mahogany Table:** Refinish at shop.\n\n**Small Cabinet:** Exterior of cabinet to match interior. We will consult with plating company for hardware fix. If they cannot be fixed, we will price replacement.\n\n**Medicine Cabinet:** Includes base cabinet and door. Recommend a new door for better finish.\n\n**Piano:** Parts will be taken to the shop, and the base will be done on site in the home. We will ventilate with a fan in the window.\n\n**Bedroom Furniture:**\n- TV Cabinet: $1,800 | Dresser: $1,800\n- Nightstands: $900 each | Footboard: $1,200\n\n**Smoke-Damaged Furniture (special case):** Pick up furniture and refinish in shop. These items were smoke damaged in a fire. They did not clean up well and the finish needs to be stripped and refinished.\n\n\n---\n\n\n================================================================================"
+      }
+    ]
+  },
+  {
+    "key": "7a-framework-items-bidding-framework-v2-xlsx",
+    "label": "7A. FRAMEWORK ITEMS (Bidding_Framework_v2.xlsx)",
+    "blocks": [
+      {
+        "key": "porch",
+        "title": "PORCH",
+        "body": "| Element | Tier | Severity | Min | Default | Max | Input | Notes |\n|---|---|---|---|---|---|---|---|\n| Porch Floor / Decking | S&R | Severe | 4 | 8 | 20 | Sq ft | Full sand and refinish; heavy weather exposure |\n| Porch Ceiling / Beadboard | S&R | Moderate | 2 | 4 | 10 | Sq ft | Beadboard ceiling common on covered porches |\n| Porch Columns | S&R | Moderate | 1 | 2 | 4 | Count | Structural columns; round, square, or tapered |\n| Porch Trim / Fascia | S&R | Moderate | 1 | 2 | 4 | Checkbox | Fascia boards, soffit trim, decorative brackets |\n| Porch Steps | S&R | Severe | 1 | 2 | 4 | Count | Exterior steps; high rot risk |\n| Porch Skirt / Lattice | S&R | Moderate | 1 | 2 | 4 | Checkbox | Below-deck screening; lattice or solid panels |\n| Deck Surface | S&R | Severe | 4 | 8 | 20 | Sq ft | Full deck refinish; UV/weather damage |"
+      },
+      {
+        "key": "exterior-trim",
+        "title": "EXTERIOR TRIM",
+        "body": "| Element | Tier | Severity | Min | Default | Max | Notes |\n|---|---|---|---|---|---|---|\n| Window Trim — Exterior | S&R | Moderate | 0.5 | 1 | 2 | Per window; exterior casing and sill |\n| Fascia / Soffit | S&R | Moderate | 2 | 4 | 8 | Roof-edge trim; ladder/scaffold access |\n| Eave Brackets / Corbels | S&R | Light | 0.5 | 1 | 2 | Decorative brackets under eaves; Craftsman style |\n| Gable Trim / Vergeboard | S&R | Moderate | 1 | 2 | 4 | Decorative trim on gable ends; Victorian |\n\n================================================================================"
+      }
+    ]
+  },
+  {
+    "key": "7b-historical-copyblocks-porches-and-exterior",
+    "label": "7B. HISTORICAL COPYBLOCKS — PORCHES & EXTERIOR",
+    "blocks": [
+      {
+        "key": "porch-9-occurrences-range-4-500-64-800-median-8-800",
+        "title": "PORCH — 9 occurrences | Range: $4,500–$64,800 | Median: $8,800",
+        "body": "This is the woodwork at the top of the pillars, and under gutters. Also includes pillars. Ceiling priced separately. We would do repairs as needed and advise if we find something that requires an extra charge. It has chipping lead paint, and we will use EPA Lead Safe Guidelines for removal. We will fill and sand, apply one coat of primer and 2 coats of Sherwin Williams paint in the color of your choice. Customer chooses color, we supply paint in proper type for this project. Cost of paint will be added to invoice.\n\n---\n\nThis door was damaged by wind from the tornado. The repair to the wood will make refinishing necessary. This door will be taken to the shop."
+      },
+      {
+        "key": "ceiling-11-occurrences-range-1-200-4-600-median-2-200",
+        "title": "CEILING — 11 occurrences | Range: $1,200–$4,600 | Median: $2,200",
+        "body": "We will purchase new beadboard plywood and do the finish work in the shop. This includes sanding, wood conditioning, stain (one coat), and 3 coats of polyurethane. Additional coats of stain will incur a charge per coat. We will remove the current molding around the existing ceiling and refinish this wood or provide new. We will install finished beadboard and molding, then apply silicone around the edges.\n\n---\n\nWe will purchase beadboard plywood and cut to fit over old ceiling. We will apply wood conditioner, stain and 3 coats of polyurethane. After installation we will apply trim molding to the outer edge, stained to match."
+      },
+      {
+        "key": "beamed-ceiling-5-occurrences-range-5-200-39-000-median-10-000",
+        "title": "BEAMED CEILING — 5 occurrences | Range: $5,200–$39,000 | Median: $10,000",
+        "body": "We will erect rolling scaffold to finish stripping on the beams and cross beams. No sanding. Fill holes as needed."
+      },
+      {
+        "key": "porch-ceiling-3-occurrences-range-21-000-42-000-median-21-000",
+        "title": "PORCH CEILING — 3 occurrences | Range: $21,000–$42,000 | Median: $21,000",
+        "body": "Includes pre-finishing bead board plywood and installing over original ceiling. Refinish beams and crown."
+      },
+      {
+        "key": "portico-ceiling-1-occurrence-3-600",
+        "title": "PORTICO CEILING — 1 occurrence | $3,600",
+        "body": "We will purchase beadboard plywood to cap the current water damaged wood ceiling. Stain and finish work will be done in the shop. We will install the plywood and install molding around the edges. Light fixture should be removed before we install."
+      },
+      {
+        "key": "exterior-maintenance-coat",
+        "title": "EXTERIOR MAINTENANCE COAT",
+        "body": "We can do a maintenance coat of polyurethane on these doors. This will be done on site. If you do the door frame we will do this for no charge.\n\n---\n\nThe entry exterior will be scuff sanded and wiped with stain. We will then apply one coat of polyurethane as a maintenance coat."
+      },
+      {
+        "key": "framing-and-transoms-exterior-warm-weather-work",
+        "title": "FRAMING & TRANSOMS (exterior, warm-weather work)",
+        "body": "Includes face frame, jambs, sidelights, and transoms — exterior only. This work can be done on-site in warmer weather. We will dig out loose caulk and apply appropriate caulk when finished. We will also silicone the bottom of the woodwork to prevent wicking. On-site work will be scheduled for warmer weather."
+      },
+      {
+        "key": "oak-panels-exterior-special-case",
+        "title": "OAK PANELS (exterior — special case)",
+        "body": "This paneling appears to be red oak, which is not appropriate for exterior exposure. I recommend painting this wood with one coat of primer and 2 coats of paint. Sand and patch as needed to prep. Caulk edges after painting."
+      },
+      {
+        "key": "spring-bronze-weather-stripping",
+        "title": "SPRING BRONZE WEATHER STRIPPING",
+        "body": "Old spring bronze will be removed and we will install new.\n\n---\n\nThe spring bronze is missing on this door jamb. We can install new spring bronze. This on-site work can be scheduled for warm weather.\n\n---\n\nInstall Spring Bronze weatherstripping. [Price range: $450–$550 depending on door type.]"
+      },
+      {
+        "key": "stoop",
+        "title": "STOOP",
+        "body": "The threshold and stoop will be refinished."
+      },
+      {
+        "key": "handrails-metal-exterior",
+        "title": "HANDRAILS (metal — exterior)",
+        "body": "Includes 2 handrails on steps. These are beginning to show chipping and some rust. We will wire brush and apply 2 coats of Rustoleum paint. This will be scheduled for warmer weather.\n\n---\n\nHand rails and porch rails are metal. They will be wire brushed to remove rust and then painted with one coat of Rustoleum paint.\n\n\n---\n\n\n================================================================================"
+      }
+    ]
+  },
+  {
+    "key": "8b-historical-copyblocks-service-descriptions",
+    "label": "8B. HISTORICAL COPYBLOCKS — SERVICE DESCRIPTIONS",
+    "blocks": [
+      {
+        "key": "board-up-shop-work-9-occurrences",
+        "title": "BOARD-UP (SHOP WORK) — 9 occurrences",
+        "body": "We will install plywood to cover the entry and take the door to the shop. This method is preferred when there is a lot of damage to the door that requires sanding or when the weather is not good for working outside. Turn around is 2–3 weeks. The door is hand stripped — no dipping or FloOver as these methods are bad for the wood and the glue. We then repair, sand and stain in the color of your choice. Color testing at the shop is an option if you need to see colors. The door is sealed with 3 coats of polyurethane in the sheen of your choice.\n\n---\n\nEstimate includes pick up within 15 miles of 63108. Turn around is 6 weeks or less.\n\n---\n\nWe do hand stripping only, no dipping or FloOver. These methods are bad for the wood and the glue. After stripping we will sand and repair as needed. We will then stain in the color of your choice and apply 3 coats of polyurethane (Satin or SemiGloss). This finish is very heat and water resistant. No wax or polish, just wipe with a damp cloth."
+      },
+      {
+        "key": "on-site-work-9-occurrences",
+        "title": "ON-SITE WORK — 9 occurrences",
+        "body": "All work areas will be taped off, where necessary, with high quality painter's tape and the floors will be protected with plastic and cardboard. Sometimes tape does not fully protect paint and you may have to touch up paint. We will then use a chemical stripper to remove old varnish from the designated areas. We will sand for best results. An oil stain will be applied, and the wood will be sealed with 3 topcoats of polyurethane varnish in the sheen of your choice. Up to 2 coats of stain are included."
+      },
+      {
+        "key": "strip-and-refinish-sandr-3-occurrences",
+        "title": "STRIP & REFINISH (S&R) — 3 occurrences",
+        "body": "(S&R) All work areas will be taped off, where necessary, with high quality painter's tape and the floors will be protected with plastic and cardboard. Sometimes tape does not fully protect paint, and you may have to touch up paint. We will then use a combination of heat gun and chemical stripper to remove old paint and varnish from the designated areas. An oil stain will be applied, and the wood will be sealed with 3 topcoats of polyurethane varnish in the sheen of your choice. If additional coats are needed, they will incur an added charge."
+      },
+      {
+        "key": "perk-up-and-protect-pup-7-occurrences",
+        "title": "PERK UP & PROTECT (PUP) — 7 occurrences",
+        "body": "(PUP) We will fix any scratches and glue loose pieces. This is followed by a wipe down with the appropriate stain. We will apply one coat of polyurethane in Satin or Semi-Gloss. If additional coats are needed there will be an added charge.\n\n---\n\nThis process will renew wood without stripping. We scuff sand the area, make repairs, apply stain to even out color, then apply 1–3 coats of polyurethane. This will not remove any prior stains, but we will try to minimize them.\n\n---\n\nThe woodwork in all rooms seems dry and dull from age. Most of it is in good shape and we can do a process called Perk Up and Protect (PUP). PUP is done by wet sanding the woodwork, applying appropriate stain as needed then applying one coat of polyurethane in either Satin or Semigloss. This can be done by the hour and work from room to room."
+      },
+      {
+        "key": "carpentry-brian-s-scope-3-occurrences",
+        "title": "CARPENTRY (Brian's scope) — 3 occurrences",
+        "body": "This bid is for stained and finished wood molding to be cut and installed. Includes full panel on the left with a wrap around on the beam. The right side includes wainscot in the area that has a chair rail. Design will mimic current elements. We will stain and finish to match existing. Installation will take 5–7 days to complete.\n\n---\n\nIncludes new mahogany jamb for garage doors. We will apply new caulk when done.\n\n---\n\nIf extra carpentry needs to be done, we will advise before proceeding. [Carpentry incurs an extra charge.]"
+      },
+      {
+        "key": "hourly-work",
+        "title": "HOURLY WORK",
+        "body": "We will wet sand the water damaged areas and apply stain to blend. We will then apply a coat of polyurethane to seal. Rate: $125/hr, $125 minimum.\n\n---\n\nThere are several areas that need bare wood to be stained and finished. We will work room by room. Stain and finish will be supplied for this. It will take several trips to do this.\n\n---\n\nBecause the base gets a lot of digs from vacuuming, I recommend a routine of applying stain and topcoat to hide damage. We can teach an employee to do this. We will do the first round at an hourly rate of $125 per hour with a 4 hour minimum."
+      },
+      {
+        "key": "the-process-generic-explanation-block",
+        "title": "THE PROCESS (generic explanation block)",
+        "body": "We do hand stripping only, no dipping or FloOver. These methods are bad for the wood and the glue. After stripping we will sand and repair as needed. We will then stain in the color of your choice and apply 3 coats of polyurethane (Satin or SemiGloss). This finish is very heat and water resistant. No wax or polish, just wipe with a damp cloth.\n\n\n---\n\n\n================================================================================"
+      }
+    ]
+  },
+  {
+    "key": "9b-repair-copyblocks-historical",
+    "label": "9B. REPAIR COPYBLOCKS — HISTORICAL",
+    "blocks": [
+      {
+        "key": "epoxy-repairs-most-common-appears-in-majority-of-bids",
+        "title": "EPOXY REPAIRS (most common — appears in majority of bids)",
+        "body": "Any splits will be filled with epoxy and stained to match.\n\n---\n\nWe will check the bottom of the door for any holes or rot and fill with epoxy.\n\n---\n\nThis door has splits from weathering and gaps at seams. These will be filled with the appropriate epoxy and stained to match.\n\n---\n\nWe will epoxy split in the bottom panel for weather tightness.\n\n---\n\nWe will fill splits in the wood and glue as needed.\n\n---\n\nJoints appear a little loose and we will glue this.\n\n---\n\nThis dipped door has split and lifting veneer. We should be able to glue this down and refinish the door.\n\n---\n\nThere are splits in the veneer in the wainscot and some of it is lifting. Bryan can usually glue this back down.\n\n---\n\nWe will investigate the issue of the door dragging. The backer wood at the floor level will be cut out to see if there is debris or if the floor under the door needs to be sanded down."
+      },
+      {
+        "key": "custom-mill-repairs",
+        "title": "CUSTOM / MILL REPAIRS",
+        "body": "Broken window molding will be replaced, but not with the same design. The current molding is handmade and we are unable to duplicate.\n\n---\n\nSupply molding for staircase. Includes Knife, Set Up and Wood from mill. Does not include any paint or finish. Also includes installation on walls.\n\n---\n\nWe can make wood and foam molding for weather stripping to match the finished wood.\n\n---\n\nThis office door was damaged in the storm. Repairs include mounting the panel that was blown out and the molding (if found) to hold it in. If we have to make the molding, there will be an extra charge."
+      },
+      {
+        "key": "oxalic-acid-graying-treatment",
+        "title": "OXALIC ACID / GRAYING TREATMENT",
+        "body": "This entry is very weathered, and we will use oxalic acid to remove the grey before we sand.\n\n---\n\nWe will try to remove the gray with oxalic acid."
+      },
+      {
+        "key": "reglazing-glass-work",
+        "title": "REGLAZING / GLASS WORK",
+        "body": "Any loose glazing will be removed when we strip the exterior. No sanding, no fill, no new glazing.\n\n---\n\nWe can coordinate with art glass company for any work done to the glass. Glass work will be invoiced separately by Preston Artglass company.\n\n---\n\nWe will clean the glass, strip and repaint the frame.\n\n---\n\nMullioned windows add $50 per side (strip only)."
+      },
+      {
+        "key": "hardware-notes",
+        "title": "HARDWARE NOTES",
+        "body": "Hardware will be cleaned, but not polished.\n\n---\n\nIf polish or plating is needed, we will take these to Theiss plating. Invoice separately.\n\n---\n\nReplacing hinges will add $250–300 per door.\n\n---\n\nWe will fill any holes that are not needed for hardware.\n\n---\n\nWe will install the old hardware or new hardware (supplied by customer) will be installed if it is the same footprint as the old."
+      },
+      {
+        "key": "stain-color-selection",
+        "title": "STAIN COLOR SELECTION",
+        "body": "After stripping and sanding we will consult on color and finish.\n\n---\n\nWe will advise on stain or paint after stripping and sanding.\n\n---\n\nColor testing at the shop is an option if you need to see colors.\n\n---\n\nWe will consult on color before starting."
+      },
+      {
+        "key": "scaffolding-access",
+        "title": "SCAFFOLDING / ACCESS",
+        "body": "We will erect rolling scaffold to finish stripping on the beams and cross beams.\n\n---\n\nThe height of this paneling will require the use of rolling scaffolding.\n\n---\n\nCBG will provide ladders and walk board to do this work."
+      },
+      {
+        "key": "floor-protection-on-prem-work",
+        "title": "FLOOR PROTECTION (on-prem work)",
+        "body": "All work areas will be taped off, where necessary, with high quality painter's tape and the floors will be protected with plastic and cardboard. Sometimes tape does not fully protect paint and you may have to touch up paint.\n\n---\n\nWe will provide plastic, Econruner and Ramboard for floor covering.\n\n\n---\n\n\n================================================================================\nThese are standard closing, scheduling, and payment blocks that appear across bids.\nStrip out client-specific names/dates when using as templates.\n================================================================================"
+      },
+      {
+        "key": "payment-methods",
+        "title": "PAYMENT METHODS",
+        "body": "Cash or check payable to Sue Wheeler OR VenMo Susan Wheeler@Susan-Wheeler-44.\n\nCredit card payments through PayPal incur a 3% charge."
+      },
+      {
+        "key": "scheduling-blocks",
+        "title": "SCHEDULING BLOCKS",
+        "body": "Next available pick-up date: [DATE]. Next available on-site start date: [DATE], weather permitting.\n\n---\n\nThis bid is good for [MONTH–MONTH] [YEAR].\n\n---\n\nOn-site work will be scheduled for warmer weather. [Board-up / shop work can be scheduled now.]\n\n---\n\nScreen / door can be picked up immediately if desired.\n\n---\n\nStart date to be determined and weather permitting."
+      },
+      {
+        "key": "volume-discount-language",
+        "title": "VOLUME DISCOUNT LANGUAGE",
+        "body": "Less 10% for entire contract. [Applied when all work done at one time.]\n\n---\n\nAny contract over $15,000 at one time receives a 10% discount.\n\n---\n\nDiscount for all: $[AMOUNT] (10% for entire contract at one time)."
+      },
+      {
+        "key": "acceptance-line",
+        "title": "ACCEPTANCE LINE",
+        "body": "Accepted By: _________________________________ Date: _____________\nSue Wheeler: _________________________________"
+      },
+      {
+        "key": "sash-strip-only-pricing-note",
+        "title": "SASH STRIP-ONLY PRICING NOTE",
+        "body": "Price is per sash. We will hand strip the paint, including lead paint. Any loose glazing will be removed when we strip the exterior. No sanding, no fill, no new glazing. Strip only. Mullioned windows add $50 per side."
+      },
+      {
+        "key": "assessment-hourly-minimum",
+        "title": "ASSESSMENT / HOURLY MINIMUM",
+        "body": "This is $125 per hour with a $125 minimum. We will be able to assess the costs once we know the problem.\n\n---\n\nWe will investigate the issue and offer suggestions. This will be charged at $125 per hour with a $125 minimum."
+      },
+      {
+        "key": "maintenance-recommendation-language",
+        "title": "MAINTENANCE RECOMMENDATION LANGUAGE",
+        "body": "It is recommended that you apply a maintenance coat each year to minimize deterioration from the sun and weather.\n\n---\n\nWe would check this area when maintenance is done and recommend any action we deem necessary to maintain the finish."
+      },
+      {
+        "key": "touch-up-partial-work-language",
+        "title": "TOUCH-UP / PARTIAL WORK LANGUAGE",
+        "body": "The only way to get a good outcome is to strip and refinish the entire side.\n\n---\n\nWe will have the doors and drawers for six weeks or less.\n\n---\n\nWe will do the first round at an hourly rate, and we can teach an employee to continue this maintenance routine.\n\n---\n\nIf painting is desired, we will apply primer and 2 coats of Sherwin Williams paint. One color. Paint will be purchased and remaining paint left with customer.\n\n\n---\n\n\n================================================================================\nSourced from Boilerplate_Library.xlsx (345 bids, 222 unique job types).\nAll figures from real 2024–2026 bids. Use as sanity-check only — always price by hours.\n================================================================================\n\n| Job Type | Occurrences | Min | Max | Median |\n|---|---|---|---|---|\n| Front Door | 121 | $200 | $8,000 | $2,500 |\n| Door Frame | 82 | $350 | $6,800 | $1,400 |\n| Staircase | 28 | $150 | $22,000 | $5,200 |\n| Front Door + Door Frame | 22 | $200 | $10,200 | $4,800 |\n| Storm Door | 21 | $250 | $2,500 | $1,400 |\n| Screen Door | 16 | $250 | $5,400 | $2,400 |\n| Kitchen (full) | 14 | $1,550 | $11,100 | $4,800 |\n| Entry / Foyer | 12 | $3,600 | $16,200 | $7,200 |\n| Interior Doors | 12 | $500 | $12,500 | $1,700 |\n| Back Door | 11 | $350 | $2,800 | $2,400 |\n| Ceiling (beadboard install) | 11 | $1,200 | $4,600 | $2,200 |\n| Dining Room | 11 | $2,150 | $12,600 | $5,250 |\n| Living Room | 11 | $800 | $9,600 | $4,650 |\n| Windows | 11 | $250 | $7,500 | $1,300 |\n| Bedroom | 10 | $800 | $18,300 | $5,800 |\n| Porch | 9 | $4,500 | $64,800 | $8,800 |\n| Doors (general) | 9 | $400 | $2,800 | $2,000 |\n| Front Door + SL + Transom | 8 | $7,800 | $12,000 | $8,200 |\n| PUP (standalone) | 7 | $400 | $400 | $400 |\n| Pocket Door | 6 | $1,600 | $4,000 | $2,200 |\n| Table / Furniture | 6 | $800 | $3,600 | $2,600 |\n| Beamed Ceiling | 5 | $5,200 | $39,000 | $10,000 |\n| Bathroom | 4 | $1,500 | $9,800 | $1,950 |\n| Hallway | 4 | $2,700 | $3,700 | $2,950 |\n| French Doors | 3 | $550 | $2,800 | $625 |\n| Banister & Newels | 3 | $2,150 | $5,700 | $3,650 |\n| Patio Doors | 3 | $3,800 | $4,800 | $4,800 |\n| Porch Ceiling | 3 | $21,000 | $42,000 | $21,000 |\n| Crown Molding | 3 | $600 | $5,200 | $1,800 |\n| Pillars / Columns | 3 | $12,500 | $12,500 | $12,500 |\n| Wainscot | 3 | $3,600 | $8,000 | $6,200 |\n| Kitchen Cabinets | 2 | $2,400 | $9,300 | $5,850 |\n| Countertops | 2 | $150 | $2,200 | $600 |\n| Basement Door | 2 | $2,400 | $2,800 | $2,600 |\n| Spring Bronze Weather Strip | 2 | $450 | $550 | $500 |\n| Vestibule | 2 | $19.50 | $4,200 | $2,110 |\n| Window Seat | 3 | $4,200 | $4,200 | $4,200 |\n| Mantle | 2 | $1,600 | $1,600 | $1,600 |\n| Portico Ceiling | 1 | $3,600 | $3,600 | $3,600 |\n| Built-In Bookcase | 1 | $9,800 | $9,800 | $9,800 |\n| Butler's Pantry | 1 | $10,400 | $10,400 | $10,400 |\n| Bar Rail | 1 | $1,400 | $1,400 | $1,400 |\n| Threshold (new) | 1 | $450 | $450 | $450 |\n| Piano | 1 | $4,200 | $4,200 | $4,200 |\n\n\n---"
+      }
+    ]
+  }
+]
