@@ -66,7 +66,7 @@ function btn(href: string, label: string): string {
 // ── 1. Admin notification — sent to sue@suewheelerstl.com ──────
 export function adminNotificationEmail(
   sub: Submission,
-  adminUrl: string
+  adminUrl: string,
 ): { subject: string; html: string } {
   const subject = `New estimate request — ${sub.name}`;
   const html = base(
@@ -86,7 +86,7 @@ export function adminNotificationEmail(
 <p style="margin:0 0 8px;font-family:Arial,sans-serif;font-size:11px;font-weight:700;color:${brand.muted};text-transform:uppercase;letter-spacing:0.08em;">Project description</p>
 <div style="background:${brand.bg};border-left:3px solid ${brand.blue};padding:12px 16px;margin-bottom:28px;font-family:Arial,sans-serif;font-size:14px;color:${brand.dark};line-height:1.6;">${sub.project_description.replace(/\n/g, "<br/>")}</div>
 ${sub.photo_urls.length > 0 ? `<p style="margin:0 0 20px;font-family:Arial,sans-serif;font-size:13px;color:${brand.muted};">${sub.photo_urls.length} photo${sub.photo_urls.length > 1 ? "s" : ""} attached — view in portal.</p>` : ""}
-${btn(adminUrl, "Open in Admin Portal")}`
+${btn(adminUrl, "Open in Admin Portal")}`,
   );
   return { subject, html };
 }
@@ -94,7 +94,7 @@ ${btn(adminUrl, "Open in Admin Portal")}`
 // ── 2. Client confirmation — sent to the person who submitted ──
 export function clientConfirmationEmail(
   sub: Submission,
-  portalUrl: string
+  portalUrl: string,
 ): { subject: string; html: string } {
   const subject = "We received your estimate request";
   const html = base(
@@ -113,7 +113,7 @@ export function clientConfirmationEmail(
 
 <p style="margin:0 0 16px;font-family:Arial,sans-serif;font-size:13px;color:${brand.muted};line-height:1.6;">Use the link below to check the status of your request and see any messages from Sue:</p>
 ${btn(portalUrl, "View My Request")}
-<p style="margin:16px 0 0;font-family:Arial,sans-serif;font-size:11px;color:${brand.muted};">This link is unique to your request. No account needed.</p>`
+<p style="margin:16px 0 0;font-family:Arial,sans-serif;font-size:11px;color:${brand.muted};">This link is unique to your request. No account needed.</p>`,
   );
   return { subject, html };
 }
@@ -122,7 +122,7 @@ ${btn(portalUrl, "View My Request")}
 export function adminReplyEmail(
   msg: Message,
   sub: Submission,
-  portalUrl: string
+  portalUrl: string,
 ): { subject: string; html: string } {
   const subject = `Sue Wheeler replied to your estimate request`;
   const html = base(
@@ -132,7 +132,53 @@ export function adminReplyEmail(
 <div style="background:${brand.bg};border-left:3px solid ${brand.blue};padding:16px 20px;margin-bottom:28px;font-family:Georgia,serif;font-size:15px;color:${brand.dark};line-height:1.7;font-style:italic;">${msg.body.replace(/\n/g, "<br/>")}</div>
 <p style="margin:0 0 20px;font-family:Arial,sans-serif;font-size:13px;color:${brand.muted};">You can reply directly from your request portal:</p>
 ${btn(portalUrl, "View & Reply")}
-<p style="margin:16px 0 0;font-family:Arial,sans-serif;font-size:12px;color:${brand.muted};">Or call Sue directly at <a href="tel:3143676054" style="color:${brand.blue};text-decoration:none;">(314) 367-6054</a>.</p>`
+<p style="margin:16px 0 0;font-family:Arial,sans-serif;font-size:12px;color:${brand.muted};">Or call Sue directly at <a href="tel:3143676054" style="color:${brand.blue};text-decoration:none;">(314) 367-6054</a>.</p>`,
+  );
+  return { subject, html };
+}
+
+// ── 5. Bid sent — sent to client when Sue sends an estimate ──
+export function bidSentEmail(
+  sub: Submission,
+  amount: number,
+  notes: string | null,
+  portalUrl: string,
+): { subject: string; html: string } {
+  const subject = `Sue Wheeler sent you an estimate — $${amount.toFixed(2)}`;
+  const html = base(
+    subject,
+    `<h2 style="margin:0 0 8px;font-family:Georgia,serif;font-size:24px;font-weight:400;color:${brand.dark};">Your estimate is ready, ${sub.name.split(" ")[0]}.</h2>
+<p style="margin:0 0 24px;font-family:Arial,sans-serif;font-size:14px;color:${brand.muted};line-height:1.7;">Sue has reviewed your project and prepared an estimate. Review the details below, then accept it directly from your portal.</p>
+<div style="background:${brand.bg};border:1px solid ${brand.border};padding:24px;margin-bottom:28px;border-radius:2px;">
+  <p style="margin:0 0 4px;font-family:Arial,sans-serif;font-size:11px;font-weight:700;color:${brand.muted};text-transform:uppercase;letter-spacing:0.08em;">Estimate Total</p>
+  <p style="margin:0 0 ${notes ? "16px" : "0"};font-family:Georgia,serif;font-size:32px;color:${brand.dark};font-weight:400;">$${amount.toFixed(2)}</p>
+  ${notes ? `<p style="margin:0;font-family:Arial,sans-serif;font-size:13px;color:${brand.dark};line-height:1.7;">${notes.replace(/\n/g, "<br/>")}</p>` : ""}
+</div>
+<p style="margin:0 0 16px;font-family:Arial,sans-serif;font-size:13px;color:${brand.muted};">To accept this estimate and get on Sue's schedule:</p>
+${btn(portalUrl, "Review & Accept Estimate")}
+<p style="margin:16px 0 0;font-family:Arial,sans-serif;font-size:11px;color:${brand.muted};">Questions? Call Sue at <a href="tel:3143676054" style="color:${brand.blue};text-decoration:none;">(314) 367-6054</a> — she answers personally.</p>`,
+  );
+  return { subject, html };
+}
+
+// ── 6. Bid accepted — sent to Sue when client accepts ──────────
+export function bidAcceptedEmail(
+  sub: Submission,
+  adminUrl: string,
+): { subject: string; html: string } {
+  const subject = `${sub.name} accepted your estimate — $${sub.bid_amount?.toFixed(2)}`;
+  const html = base(
+    subject,
+    `<h2 style="margin:0 0 8px;font-family:Georgia,serif;font-size:22px;font-weight:400;color:${brand.dark};">${sub.name} accepted your estimate.</h2>
+<p style="margin:0 0 24px;font-family:Arial,sans-serif;font-size:13px;color:${brand.muted};">They're ready to schedule. Reach out to confirm timing.</p>
+<table cellpadding="0" cellspacing="0" style="width:100%;border-top:1px solid ${brand.border};margin-bottom:24px;">
+  ${field("Name", sub.name)}
+  ${field("Phone", `<a href="tel:${sub.phone.replace(/\D/g, "")}" style="color:${brand.blue};text-decoration:none;">${sub.phone}</a>`)}
+  ${field("Email", `<a href="mailto:${sub.email}" style="color:${brand.blue};text-decoration:none;">${sub.email}</a>`)}
+  ${field("Estimate", `$${sub.bid_amount?.toFixed(2)}`)}
+  ${field("Services", sub.service_types.join(", "))}
+</table>
+${btn(adminUrl, "Open in Admin Portal")}`,
   );
   return { subject, html };
 }
@@ -141,7 +187,7 @@ ${btn(portalUrl, "View & Reply")}
 export function clientReplyEmail(
   msg: Message,
   sub: Submission,
-  adminUrl: string
+  adminUrl: string,
 ): { subject: string; html: string } {
   const subject = `${sub.name} replied to their estimate request`;
   const html = base(
@@ -149,7 +195,7 @@ export function clientReplyEmail(
     `<h2 style="margin:0 0 8px;font-family:Georgia,serif;font-size:22px;font-weight:400;color:${brand.dark};">${sub.name} sent a message.</h2>
 <p style="margin:0 0 24px;font-family:Arial,sans-serif;font-size:13px;color:${brand.muted};">Re: ${sub.service_types.join(", ")} · <a href="mailto:${sub.email}" style="color:${brand.blue};text-decoration:none;">${sub.email}</a></p>
 <div style="background:${brand.bg};border-left:3px solid ${brand.accent};padding:16px 20px;margin-bottom:28px;font-family:Georgia,serif;font-size:15px;color:${brand.dark};line-height:1.7;font-style:italic;">${msg.body.replace(/\n/g, "<br/>")}</div>
-${btn(adminUrl, "Reply in Admin Portal")}`
+${btn(adminUrl, "Reply in Admin Portal")}`,
   );
   return { subject, html };
 }

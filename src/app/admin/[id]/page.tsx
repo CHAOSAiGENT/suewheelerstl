@@ -5,6 +5,8 @@ import { STATUS_LABELS, STATUS_COLORS } from "@/lib/types";
 import { AdminReplyForm } from "./AdminReplyForm";
 import { StatusUpdater } from "./StatusUpdater";
 import { AdminNotesForm } from "./AdminNotesForm";
+import { AdminPhotoUpload } from "./AdminPhotoUpload";
+import { AdminBidForm } from "./AdminBidForm";
 
 interface Props {
   params: Promise<{ id: string }>;
@@ -57,7 +59,10 @@ export default async function AdminSubmissionPage({ params }: Props) {
         <div>
           <h1
             className="text-3xl text-[#2A2421]"
-            style={{ fontFamily: '"Playfair Display", Georgia, serif', fontWeight: 400 }}
+            style={{
+              fontFamily: '"Playfair Display", Georgia, serif',
+              fontWeight: 400,
+            }}
           >
             {submission.name}
           </h1>
@@ -70,7 +75,10 @@ export default async function AdminSubmissionPage({ params }: Props) {
             CT
           </p>
         </div>
-        <StatusUpdater submissionId={submission.id} currentStatus={submission.status} />
+        <StatusUpdater
+          submissionId={submission.id}
+          currentStatus={submission.status}
+        />
       </div>
 
       {/* Contact info */}
@@ -85,7 +93,10 @@ export default async function AdminSubmissionPage({ params }: Props) {
           <div>
             <dt className="text-[#9e9087] text-xs mb-0.5">Phone</dt>
             <dd>
-              <a href={`tel:${submission.phone.replace(/\D/g, "")}`} className="text-[#11B2E8]">
+              <a
+                href={`tel:${submission.phone.replace(/\D/g, "")}`}
+                className="text-[#11B2E8]"
+              >
                 {submission.phone}
               </a>
             </dd>
@@ -93,7 +104,10 @@ export default async function AdminSubmissionPage({ params }: Props) {
           <div>
             <dt className="text-[#9e9087] text-xs mb-0.5">Email</dt>
             <dd>
-              <a href={`mailto:${submission.email}`} className="text-[#11B2E8] break-all">
+              <a
+                href={`mailto:${submission.email}`}
+                className="text-[#11B2E8] break-all"
+              >
                 {submission.email}
               </a>
             </dd>
@@ -106,8 +120,12 @@ export default async function AdminSubmissionPage({ params }: Props) {
           )}
           {submission.best_time && (
             <div>
-              <dt className="text-[#9e9087] text-xs mb-0.5">Best time to call</dt>
-              <dd className="text-[#2A2421] capitalize">{submission.best_time}</dd>
+              <dt className="text-[#9e9087] text-xs mb-0.5">
+                Best time to call
+              </dt>
+              <dd className="text-[#2A2421] capitalize">
+                {submission.best_time}
+              </dd>
             </div>
           )}
           {submission.referral && (
@@ -119,7 +137,11 @@ export default async function AdminSubmissionPage({ params }: Props) {
           <div className="col-span-2">
             <dt className="text-[#9e9087] text-xs mb-0.5">Client portal</dt>
             <dd>
-              <a href={portalUrl} target="_blank" className="text-[#11B2E8] text-xs break-all">
+              <a
+                href={portalUrl}
+                target="_blank"
+                className="text-[#11B2E8] text-xs break-all"
+              >
                 {portalUrl}
               </a>
             </dd>
@@ -137,17 +159,25 @@ export default async function AdminSubmissionPage({ params }: Props) {
         </h2>
         <dl className="space-y-3 text-sm font-sans">
           <div className="flex gap-4">
-            <dt className="text-[#9e9087] w-28 shrink-0 text-xs pt-0.5">Services</dt>
-            <dd className="text-[#2A2421]">{submission.service_types.join(", ")}</dd>
+            <dt className="text-[#9e9087] w-28 shrink-0 text-xs pt-0.5">
+              Services
+            </dt>
+            <dd className="text-[#2A2421]">
+              {submission.service_types.join(", ")}
+            </dd>
           </div>
           {submission.timeline && (
             <div className="flex gap-4">
-              <dt className="text-[#9e9087] w-28 shrink-0 text-xs pt-0.5">Timeline</dt>
+              <dt className="text-[#9e9087] w-28 shrink-0 text-xs pt-0.5">
+                Timeline
+              </dt>
               <dd className="text-[#2A2421]">{submission.timeline}</dd>
             </div>
           )}
           <div className="flex gap-4">
-            <dt className="text-[#9e9087] w-28 shrink-0 text-xs pt-0.5">Description</dt>
+            <dt className="text-[#9e9087] w-28 shrink-0 text-xs pt-0.5">
+              Description
+            </dt>
             <dd className="text-[#2A2421] whitespace-pre-wrap leading-relaxed">
               {submission.project_description}
             </dd>
@@ -174,6 +204,23 @@ export default async function AdminSubmissionPage({ params }: Props) {
             </div>
           </div>
         )}
+        <AdminPhotoUpload submissionId={submission.id} />
+      </div>
+
+      {/* Estimate / Bid */}
+      <div
+        className="bg-white border p-6 mb-4"
+        style={{ borderRadius: "2px", borderColor: "rgba(42,36,33,0.1)" }}
+      >
+        <h2 className="text-xs font-sans font-semibold uppercase tracking-widest text-[#6B5E55] mb-4">
+          Estimate
+        </h2>
+        <AdminBidForm
+          submissionId={submission.id}
+          bidStatus={submission.bid_status}
+          currentAmount={submission.bid_amount}
+          currentNotes={submission.bid_notes}
+        />
       </div>
 
       {/* Admin notes */}
@@ -184,8 +231,13 @@ export default async function AdminSubmissionPage({ params }: Props) {
         <h2 className="text-xs font-sans font-semibold uppercase tracking-widest text-[#6B5E55] mb-3">
           Private Notes
         </h2>
-        <p className="text-xs font-sans text-[#9e9087] mb-3">Not visible to the client.</p>
-        <AdminNotesForm submissionId={submission.id} initialNotes={submission.admin_notes ?? ""} />
+        <p className="text-xs font-sans text-[#9e9087] mb-3">
+          Not visible to the client.
+        </p>
+        <AdminNotesForm
+          submissionId={submission.id}
+          initialNotes={submission.admin_notes ?? ""}
+        />
       </div>
 
       {/* Message thread */}
@@ -200,7 +252,7 @@ export default async function AdminSubmissionPage({ params }: Props) {
           </span>
         </h2>
 
-        {(!messages || messages.length === 0) ? (
+        {!messages || messages.length === 0 ? (
           <p className="text-sm font-sans text-[#9e9087] italic mb-6">
             No messages yet.
           </p>
@@ -258,7 +310,9 @@ function StatusChip({ status }: { status: string }) {
     >
       <span
         className="w-2 h-2 rounded-full"
-        style={{ background: STATUS_COLORS[status as keyof typeof STATUS_COLORS] }}
+        style={{
+          background: STATUS_COLORS[status as keyof typeof STATUS_COLORS],
+        }}
       />
       {STATUS_LABELS[status as keyof typeof STATUS_LABELS]}
     </span>

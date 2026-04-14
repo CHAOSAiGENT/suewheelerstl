@@ -5,6 +5,8 @@ export type SubmissionStatus =
   | "scheduled"
   | "completed";
 
+export type BidStatus = "none" | "sent" | "accepted" | "declined";
+
 export interface Submission {
   id: string;
   created_at: string;
@@ -22,6 +24,12 @@ export interface Submission {
   admin_notes: string | null;
   client_token: string;
   client_token_expires_at: string;
+  bid_amount: number | null;
+  bid_notes: string | null;
+  bid_file_url: string | null;
+  bid_status: BidStatus;
+  bid_sent_at: string | null;
+  bid_accepted_at: string | null;
 }
 
 export interface Message {
@@ -29,6 +37,7 @@ export interface Message {
   created_at: string;
   submission_id: string;
   is_from_admin: boolean;
+  is_bid: boolean;
   body: string;
   sent_by_email: string;
 }
