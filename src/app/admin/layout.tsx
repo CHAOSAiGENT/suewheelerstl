@@ -11,10 +11,7 @@ export default async function AdminLayout({
   const {
     data: { user },
   } = await supabase.auth.getUser();
-
-  if (!user) {
-    redirect("/admin/login");
-  }
+  if (!user) redirect("/admin/login");
 
   return (
     <div className="min-h-screen bg-[#EBE6DE]">
@@ -27,6 +24,12 @@ export default async function AdminLayout({
         </a>
         <div className="flex items-center gap-6">
           <a
+            href="/admin/settings"
+            className="text-xs font-sans text-[rgba(255,255,255,0.4)] hover:text-white transition-colors uppercase tracking-widest"
+          >
+            Settings
+          </a>
+          <a
             href="/"
             target="_blank"
             className="text-xs font-sans text-[rgba(255,255,255,0.4)] hover:text-white transition-colors uppercase tracking-widest"
@@ -36,7 +39,7 @@ export default async function AdminLayout({
           <SignOutButtonClient />
         </div>
       </nav>
-      <main className="px-6 py-10 max-w-5xl mx-auto">{children}</main>
+      <main className="py-8">{children}</main>
     </div>
   );
 }
