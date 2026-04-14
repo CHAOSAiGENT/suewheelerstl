@@ -1,12 +1,14 @@
 import { notFound } from "next/navigation";
 import { createServiceSupabaseClient } from "@/lib/supabase/service";
-import type { Message, Submission } from "@/lib/types";
+import type { Message, Submission, CrewMember } from "@/lib/types";
 import { STATUS_LABELS, STATUS_COLORS } from "@/lib/types";
 import { AdminReplyForm } from "./AdminReplyForm";
 import { StatusUpdater } from "./StatusUpdater";
 import { AdminNotesForm } from "./AdminNotesForm";
 import { AdminPhotoUpload } from "./AdminPhotoUpload";
 import { AdminBidForm } from "./AdminBidForm";
+import { CrewAssigner } from "../CrewAssigner";
+import { ProjectFieldsForm } from "./ProjectFieldsForm";
 
 interface Props {
   params: Promise<{ id: string }>;
@@ -33,6 +35,13 @@ export default async function AdminSubmissionPage({ params }: Props) {
     .order("created_at", { ascending: true })
     .returns<Message[]>();
 
+  const { data: crewMembers } = await supabase
+    .from("crew_members")
+    .select()
+    .eq("active", true)
+    .order("name", { ascending: true })
+    .returns<CrewMember[]>();
+
   // Signed photo URLs
   const signedPhotos: string[] = [];
   for (const path of submission.photo_urls) {
@@ -45,7 +54,7 @@ export default async function AdminSubmissionPage({ params }: Props) {
   const portalUrl = `${process.env.NEXT_PUBLIC_SITE_URL ?? "https://suewheelerstl.com"}/my-request/${submission.client_token}`;
 
   return (
-    <div className="max-w-3xl">
+    <div className="max-w-3xl mx-auto">
       {/* Back */}
       <a
         href="/admin"
@@ -205,6 +214,29 @@ export default async function AdminSubmissionPage({ params }: Props) {
           </div>
         )}
         <AdminPhotoUpload submissionId={submission.id} />
+
+        <div className="mt-5 pt-5 border-t border-[rgba(42,36,33,0.08)]">
+          <p className="text-xs font-sans font-semibold uppercase tracking-widest text-[#6B5E55] mb-3">
+            Crew Assignment
+          </p>
+          <CrewAssigner
+            submissionId={submission.id}
+            allCrew={crewMembers || []}
+            initialAssigned={submission.crew_member_ids}
+          />
+        </div>
+
+        <div className="mt-5 pt-5 border-t border-[rgba(42,36,33,0.08)]">
+          <p className="text-xs font-sans font-semibold uppercase tracking-widest text-[#6B5E55] mb-3">
+            Completion Status
+          </p>
+          <ProjectFieldsForm
+            submissionId={submission.id}
+            initialStartDate={submission.bid_start_date}
+            initialAfterPhotos={submission.after_photos_uploaded}
+            initialFinalPayment={submission.final_payment_confirmed}
+          />
+        </div>
       </div>
 
       {/* Estimate / Bid */}
@@ -212,9 +244,18 @@ export default async function AdminSubmissionPage({ params }: Props) {
         className="bg-white border p-6 mb-4"
         style={{ borderRadius: "2px", borderColor: "rgba(42,36,33,0.1)" }}
       >
-        <h2 className="text-xs font-sans font-semibold uppercase tracking-widest text-[#6B5E55] mb-4">
-          Estimate
-        </h2>
+        <div className="flex items-center justify-between mb-4">
+          <h2 className="text-xs font-sans font-semibold uppercase tracking-widest text-[#6B5E55]">
+            Estimate
+          </h2>
+          <a
+            href={`/admin/${submission.id}/bid-builder`}
+            className="px-3 py-1.5 text-xs font-sans font-semibold uppercase tracking-wider bg-[#11B2E8] text-white border border-[#11B2E8] transition-colors hover:bg-[#0A9FD9]"
+            style={{ borderRadius: "2px" }}
+          >
+            Build Estimate
+          </a>
+        </div>
         <AdminBidForm
           submissionId={submission.id}
           bidStatus={submission.bid_status}
