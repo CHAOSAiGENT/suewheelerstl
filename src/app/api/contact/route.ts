@@ -6,9 +6,11 @@ import {
   clientConfirmationEmail,
 } from "@/lib/email/templates";
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://suewheelerstl.com";
+const SITE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://suewheelerstl.com";
 const TO_EMAIL = process.env.CONTACT_EMAIL ?? "sue@suewheelerstl.com";
 const FROM_EMAIL = process.env.FROM_EMAIL ?? "no-reply@suewheelerstl.com";
+const ADMIN_CC = process.env.ADMIN_CC_EMAIL ? [process.env.ADMIN_CC_EMAIL] : [];
 
 export async function POST(req: Request) {
   let formData: FormData;
@@ -29,10 +31,16 @@ export async function POST(req: Request) {
   const service_types = formData.getAll("service_types") as string[];
 
   if (!name || !phone || !email || !project_description) {
-    return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
+    return NextResponse.json(
+      { error: "Missing required fields" },
+      { status: 400 },
+    );
   }
   if (service_types.length === 0) {
-    return NextResponse.json({ error: "Select at least one service type" }, { status: 400 });
+    return NextResponse.json(
+      { error: "Select at least one service type" },
+      { status: 400 },
+    );
   }
 
   const supabase = createServiceSupabaseClient();
@@ -56,7 +64,10 @@ export async function POST(req: Request) {
 
   if (insertError || !submission) {
     console.error("[contact] insert error", insertError);
-    return NextResponse.json({ error: "Failed to save submission" }, { status: 500 });
+    return NextResponse.json(
+      { error: "Failed to save submission" },
+      { status: 500 },
+    );
   }
 
   // Upload photos
@@ -104,6 +115,7 @@ export async function POST(req: Request) {
       resend.emails.send({
         from: FROM_EMAIL,
         to: [TO_EMAIL],
+        cc: ADMIN_CC,
         replyTo: email,
         subject: adminTpl.subject,
         html: adminTpl.html,

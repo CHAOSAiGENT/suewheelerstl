@@ -2,10 +2,10 @@
 
 ## 1 — Supabase: Run SQL Migration
 
-- [ ] Open [Supabase Dashboard](https://supabase.com/dashboard) → project **zemmpcilhxobljzdhnig**
-- [ ] SQL Editor → New query → paste contents of `supabase/migrations/001_contact_portal.sql` → Run
-- [ ] Confirm tables exist: `submissions`, `messages`
-- [ ] Confirm storage bucket exists: `submission-photos`
+- [x] Open [Supabase Dashboard](https://supabase.com/dashboard) → project **khioedholasaxemmtooz**
+- [x] SQL Editor → New query → paste contents of `supabase/migrations/001_contact_portal.sql` → Run
+- [x] Confirm tables exist: `submissions`, `messages`
+- [x] Confirm storage bucket exists: `submission-photos`
 
 ---
 
@@ -25,7 +25,7 @@ Apply each to **Production + Preview + Development**.
 | `CONTACT_EMAIL`                        | `sue@suewheelerstl.com`                          |
 | `FROM_EMAIL`                           | `no-reply@suewheelerstl.com`                     |
 
-- [ ] All 7 variables saved in Vercel
+- [x] All 7 variables saved in Vercel
 
 ---
 
@@ -70,7 +70,7 @@ Go to [Resend → Domains](https://resend.com/domains)
 
 ## 7 — Redeploy & Smoke Test
 
-- [ ] Vercel → Deployments → redeploy latest after env vars are saved
+- [x] Vercel → Deployments → redeploy latest after env vars are saved
 - [ ] Visit `https://suewheelerstl.com` — site loads correctly
 - [ ] Submit a test form entry → check Supabase `submissions` table for the row
 - [ ] Confirm admin notification email arrives at `sue@suewheelerstl.com`
