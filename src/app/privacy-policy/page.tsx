@@ -17,8 +17,8 @@ export default function PrivacyPolicyPage() {
           Privacy Policy
         </h1>
         <p className="text-sm font-sans text-[#6B5E55] mb-10">
-          Wood Refinishing by Sue Wheeler, LLC · 5260 Washington Place, St. Louis, MO
-          63108 · (314) 367-6054 · Last updated: March 2026
+          Wood Refinishing by Sue Wheeler, LLC · 900 S Boyle Ave, St. Louis, MO
+          63110 · (314) 367-6054 · Last updated: March 2026
         </p>
 
         <div className="space-y-10 text-base font-sans text-[#6B5E55] leading-relaxed">

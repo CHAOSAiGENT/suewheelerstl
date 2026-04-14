@@ -28,9 +28,9 @@ export function SiteFooter() {
               <div className="flex items-start gap-2">
                 <MapPin size={14} className="mt-0.5 text-[#11B2E8] shrink-0" />
                 <span>
-                  5260 Washington Place
+                  900 S Boyle Ave
                   <br />
-                  St. Louis, MO 63108
+                  St. Louis, MO 63110
                 </span>
               </div>
               <div className="flex items-center gap-2">

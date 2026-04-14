@@ -38,7 +38,7 @@ function base(title: string, body: string): string {
       <tr>
         <td style="border-top:1px solid ${brand.border};padding:20px 32px;">
           <p style="margin:0;font-family:Arial,sans-serif;font-size:11px;color:${brand.muted};line-height:1.6;">
-            Wood Refinishing by Sue Wheeler · 100 S. Boyle, St. Louis, MO 63108<br/>
+            Wood Refinishing by Sue Wheeler · 900 S Boyle Ave, St. Louis, MO 63110<br/>
             <a href="tel:3143676054" style="color:${brand.blue};text-decoration:none;">(314) 367-6054</a> ·
             <a href="https://suewheelerstl.com" style="color:${brand.blue};text-decoration:none;">suewheelerstl.com</a>
           </p>

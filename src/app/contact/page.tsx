@@ -68,9 +68,9 @@ export default function ContactPage() {
                   />
                   <div className="text-sm font-sans text-[#6B5E55]">
                     <p className="font-medium text-[#2A2421]">
-                      5260 Washington Place
+                      900 S Boyle Ave
                     </p>
-                    <p>St. Louis, MO 63108</p>
+                    <p>St. Louis, MO 63110</p>
                     <p className="mt-2">
                       Metropolitan St. Louis — city neighborhoods and county
                       communities west of the Mississippi. If you&rsquo;re
@@ -86,7 +86,7 @@ export default function ContactPage() {
                 style={{ borderRadius: "2px" }}
               >
                 <iframe
-                  src="https://maps.google.com/maps?q=5260+Washington+Pl,+St.+Louis,+MO+63108&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                  src="https://maps.google.com/maps?q=900+S+Boyle+Ave,+St.+Louis,+MO+63110&t=&z=15&ie=UTF8&iwloc=&output=embed"
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}

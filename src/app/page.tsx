@@ -28,10 +28,10 @@ const localBusinessSchema = {
   telephone: "+13143676054",
   address: {
     "@type": "PostalAddress",
-    streetAddress: "5260 Washington Place",
+    streetAddress: "900 S Boyle Ave",
     addressLocality: "St. Louis",
     addressRegion: "MO",
-    postalCode: "63108",
+    postalCode: "63110",
     addressCountry: "US",
   },
   areaServed: {
