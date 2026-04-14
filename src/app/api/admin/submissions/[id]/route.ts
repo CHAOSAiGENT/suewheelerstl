@@ -4,19 +4,23 @@ import { createServiceSupabaseClient } from "@/lib/supabase/service";
 import type { SubmissionStatus } from "@/lib/types";
 
 const VALID_STATUSES: SubmissionStatus[] = [
-  "new",
-  "reviewed",
-  "quote_sent",
-  "scheduled",
-  "completed",
+  "to_bid",
+  "bid_sent",
+  "on_deck",
+  "active",
+  "finishing",
+  "fully_complete",
+  "lost",
 ];
 
 export async function PATCH(
   req: Request,
-  { params }: { params: Promise<{ id: string }> }
+  { params }: { params: Promise<{ id: string }> },
 ) {
   const supabaseAuth = await createServerSupabaseClient();
-  const { data: { user } } = await supabaseAuth.auth.getUser();
+  const {
+    data: { user },
+  } = await supabaseAuth.auth.getUser();
   if (!user) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
