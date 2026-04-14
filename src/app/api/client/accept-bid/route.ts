@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { createServiceSupabaseClient } from "@/lib/supabase/service";
 import { resend } from "@/lib/email/resend";
 import { bidAcceptedEmail } from "@/lib/email/templates";
+import { generateAdminMagicLink } from "@/lib/supabase/admin-link";
 
 const FROM_EMAIL = process.env.FROM_EMAIL ?? "sue@suewheelerstl.com";
 const CONTACT_EMAIL = process.env.CONTACT_EMAIL ?? "sue@suewheelerstl.com";
@@ -38,7 +39,7 @@ export async function POST(req: Request) {
     .eq("id", submission.id);
 
   // Notify Sue
-  const adminUrl = `${SITE_URL}/admin/${submission.id}`;
+  const adminUrl = await generateAdminMagicLink(`/admin/${submission.id}`);
   if (process.env.RESEND_API_KEY) {
     const tpl = bidAcceptedEmail(submission, adminUrl);
     await resend.emails.send({

@@ -3,17 +3,32 @@
 import { useState } from "react";
 import { createBrowserSupabaseClient } from "@/lib/supabase/client";
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://suewheelerstl.com";
+const SITE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://suewheelerstl.com";
+const ALLOWED_EMAILS = (
+  process.env.NEXT_PUBLIC_ADMIN_EMAILS ?? "sue@suewheelerstl.com"
+)
+  .split(",")
+  .map((e) => e.trim().toLowerCase())
+  .filter(Boolean);
 
 export default function AdminLoginPage() {
-  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+  const [email, setEmail] = useState("");
+  const [status, setStatus] = useState<
+    "idle" | "sending" | "sent" | "error" | "unauthorized"
+  >("idle");
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    const normalized = email.trim().toLowerCase();
+    if (!ALLOWED_EMAILS.includes(normalized)) {
+      setStatus("unauthorized");
+      return;
+    }
     setStatus("sending");
     const supabase = createBrowserSupabaseClient();
     const { error } = await supabase.auth.signInWithOtp({
-      email: "sue@suewheelerstl.com",
+      email: normalized,
       options: {
         emailRedirectTo: `${SITE_URL}/admin/auth/callback`,
       },
@@ -30,7 +45,10 @@ export default function AdminLoginPage() {
         <div className="mb-8 text-center">
           <h1
             className="text-2xl text-[#2A2421]"
-            style={{ fontFamily: '"Playfair Display", Georgia, serif', fontWeight: 400 }}
+            style={{
+              fontFamily: '"Playfair Display", Georgia, serif',
+              fontWeight: 400,
+            }}
           >
             Admin Portal
           </h1>
@@ -51,7 +69,7 @@ export default function AdminLoginPage() {
               Check your email.
             </p>
             <p className="text-sm font-sans text-[#6B5E55]">
-              A sign-in link has been sent to sue@suewheelerstl.com.
+              A sign-in link has been sent to {email.trim().toLowerCase()}.
             </p>
           </div>
         ) : (
@@ -70,12 +88,22 @@ export default function AdminLoginPage() {
               <input
                 id="email"
                 type="email"
-                value="sue@suewheelerstl.com"
-                readOnly
-                className={inputClass + " opacity-60 cursor-default"}
+                value={email}
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                  setStatus("idle");
+                }}
+                placeholder="your@email.com"
+                required
+                className={inputClass}
                 style={{ borderRadius: "2px" }}
               />
             </div>
+            {status === "unauthorized" && (
+              <p className="text-xs font-sans text-[#A65D37]">
+                That email is not authorized to access this portal.
+              </p>
+            )}
             {status === "error" && (
               <p className="text-xs font-sans text-[#A65D37]">
                 Something went wrong. Please try again.

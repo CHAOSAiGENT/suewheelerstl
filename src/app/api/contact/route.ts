@@ -5,6 +5,7 @@ import {
   adminNotificationEmail,
   clientConfirmationEmail,
 } from "@/lib/email/templates";
+import { generateAdminMagicLink } from "@/lib/supabase/admin-link";
 
 const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL ?? "https://suewheelerstl.com";
@@ -104,7 +105,7 @@ export async function POST(req: Request) {
   }
 
   const portalUrl = `${SITE_URL}/my-request/${submission.client_token}`;
-  const adminUrl = `${SITE_URL}/admin/${submission.id}`;
+  const adminUrl = await generateAdminMagicLink(`/admin/${submission.id}`);
 
   // Send emails (non-blocking — don't fail the submission if email fails)
   if (process.env.RESEND_API_KEY) {

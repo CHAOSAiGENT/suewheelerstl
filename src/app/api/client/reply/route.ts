@@ -2,8 +2,10 @@ import { NextResponse } from "next/server";
 import { createServiceSupabaseClient } from "@/lib/supabase/service";
 import { resend } from "@/lib/email/resend";
 import { clientReplyEmail } from "@/lib/email/templates";
+import { generateAdminMagicLink } from "@/lib/supabase/admin-link";
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://suewheelerstl.com";
+const SITE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://suewheelerstl.com";
 const FROM_EMAIL = process.env.FROM_EMAIL ?? "no-reply@suewheelerstl.com";
 const ADMIN_EMAIL = process.env.CONTACT_EMAIL ?? "sue@suewheelerstl.com";
 
@@ -24,11 +26,17 @@ export async function POST(req: Request) {
     .single();
 
   if (fetchError || !submission) {
-    return NextResponse.json({ error: "Invalid or expired link" }, { status: 404 });
+    return NextResponse.json(
+      { error: "Invalid or expired link" },
+      { status: 404 },
+    );
   }
 
   if (new Date(submission.client_token_expires_at) < new Date()) {
-    return NextResponse.json({ error: "This link has expired" }, { status: 410 });
+    return NextResponse.json(
+      { error: "This link has expired" },
+      { status: 410 },
+    );
   }
 
   // Insert message
@@ -44,20 +52,25 @@ export async function POST(req: Request) {
     .single();
 
   if (msgError || !message) {
-    return NextResponse.json({ error: "Failed to save message" }, { status: 500 });
+    return NextResponse.json(
+      { error: "Failed to save message" },
+      { status: 500 },
+    );
   }
 
   // Email Sue
   if (process.env.RESEND_API_KEY) {
-    const adminUrl = `${SITE_URL}/admin/${submission.id}`;
+    const adminUrl = await generateAdminMagicLink(`/admin/${submission.id}`);
     const tpl = clientReplyEmail(message, submission, adminUrl);
-    await resend.emails.send({
-      from: FROM_EMAIL,
-      to: [ADMIN_EMAIL],
-      replyTo: submission.email,
-      subject: tpl.subject,
-      html: tpl.html,
-    }).catch((e) => console.error("[client/reply] email error", e));
+    await resend.emails
+      .send({
+        from: FROM_EMAIL,
+        to: [ADMIN_EMAIL],
+        replyTo: submission.email,
+        subject: tpl.subject,
+        html: tpl.html,
+      })
+      .catch((e) => console.error("[client/reply] email error", e));
   }
 
   return NextResponse.json({ ok: true, message });
