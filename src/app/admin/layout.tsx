@@ -1,5 +1,3 @@
-import { redirect } from "next/navigation";
-import { createServerSupabaseClient } from "@/lib/supabase/server";
 import { SignOutButtonClient } from "./SignOutButton";
 
 export default async function AdminLayout({
@@ -7,12 +5,6 @@ export default async function AdminLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const supabase = await createServerSupabaseClient();
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
-  if (!user) redirect("/admin/login");
-
   return (
     <div className="min-h-screen bg-[#EBE6DE]">
       <nav className="bg-[#2A2421] px-6 py-4 flex items-center justify-between">
