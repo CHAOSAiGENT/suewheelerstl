@@ -74,20 +74,6 @@ _Last updated: 2026-03-17_
 
 ---
 
-## Pending — Next Session
-
-- [ ] **DB migration (fresh chat — Supabase MCP needs new session to auth)**
-      Run in Supabase SQL Editor OR via MCP once re-authenticated:
-  ```sql
-  create table submission_notes (
-    id uuid primary key default gen_random_uuid(),
-    submission_id uuid not null references submissions(id) on delete cascade,
-    body text not null,
-    created_at timestamptz not null default now()
-  );
-  create index on submission_notes(submission_id, created_at desc);
-  ```
-
 ---
 
 ## Lessons → tasks/lessons.md
