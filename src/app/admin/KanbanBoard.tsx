@@ -23,6 +23,7 @@ import { KanbanColumn } from "./KanbanColumn";
 import { KanbanCard } from "./KanbanCard";
 import { LostReasonModal } from "./LostReasonModal";
 import { FinishingGateModal } from "./FinishingGateModal";
+import { NewLeadModal } from "./NewLeadModal";
 
 interface Props {
   initialSubmissions: Submission[];
@@ -50,6 +51,8 @@ export function KanbanBoard({ initialSubmissions, crew }: Props) {
     missingAfterPhotos: boolean;
     missingPayment: boolean;
   } | null>(null);
+
+  const [newLeadOpen, setNewLeadOpen] = useState(false);
 
   const getById = (id: string) => submissions.find((s) => s.id === id);
 
@@ -118,6 +121,11 @@ export function KanbanBoard({ initialSubmissions, crew }: Props) {
     applyMove(submissionId, newStatus);
   };
 
+  function handleNewLead(submission: Submission) {
+    setSubmissions((prev) => [submission, ...prev]);
+    setNewLeadOpen(false);
+  }
+
   const draggingSubmission = draggingId ? getById(draggingId) : null;
 
   const byColumn = (col: SubmissionStatus) =>
@@ -125,6 +133,27 @@ export function KanbanBoard({ initialSubmissions, crew }: Props) {
 
   return (
     <>
+      {/* Board header */}
+      <div className="flex items-center justify-between px-4 py-3 border-b border-[rgba(42,36,33,0.08)]">
+        <h1
+          className="text-lg text-[#2A2421]"
+          style={{
+            fontFamily: '"Playfair Display", Georgia, serif',
+            fontWeight: 400,
+          }}
+        >
+          Pipeline
+        </h1>
+        <button
+          type="button"
+          onClick={() => setNewLeadOpen(true)}
+          className="flex items-center gap-2 px-4 py-2 bg-[#11B2E8] text-white text-xs font-sans font-semibold uppercase tracking-widest hover:bg-[#0e96c4] transition-colors"
+          style={{ borderRadius: "2px" }}
+        >
+          + New Lead
+        </button>
+      </div>
+
       <DndContext
         sensors={sensors}
         collisionDetection={closestCenter}
@@ -176,6 +205,13 @@ export function KanbanBoard({ initialSubmissions, crew }: Props) {
             setFinishingGate(null);
           }}
           onCancel={() => setFinishingGate(null)}
+        />
+      )}
+
+      {newLeadOpen && (
+        <NewLeadModal
+          onClose={() => setNewLeadOpen(false)}
+          onCreated={handleNewLead}
         />
       )}
     </>
