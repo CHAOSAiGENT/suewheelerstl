@@ -71,27 +71,21 @@ export async function POST(req: Request) {
     );
   }
 
-  // Upload photos
-  const photoFiles = formData.getAll("photos") as File[];
-  const photo_urls: string[] = [];
-
-  for (const file of photoFiles) {
-    if (!file || file.size === 0) continue;
-    const ext = file.name.split(".").pop() ?? "jpg";
-    const path = `submissions/${submission.id}/${crypto.randomUUID()}.${ext}`;
-    const buffer = Buffer.from(await file.arrayBuffer());
-
-    const { error: uploadError } = await supabase.storage
-      .from("submission-photos")
-      .upload(path, buffer, {
-        contentType: file.type || "image/jpeg",
-        upsert: false,
-      });
-
-    if (!uploadError) {
-      photo_urls.push(path);
-    } else {
-      console.error("[contact] photo upload error", uploadError);
+  // Parse photo paths from FormData (uploaded client-side before submission)
+  let photo_urls: string[] = [];
+  const rawPaths = formData.get("photo_paths") as string | null;
+  if (rawPaths) {
+    try {
+      const parsed = JSON.parse(rawPaths);
+      if (Array.isArray(parsed)) {
+        // Only accept paths that look like our own storage paths (uploads/<uuid>.<ext>)
+        photo_urls = parsed.filter(
+          (p): p is string =>
+            typeof p === "string" && /^uploads\/[a-f0-9-]+\.[a-z]+$/.test(p),
+        );
+      }
+    } catch {
+      console.warn("[contact] malformed photo_paths, ignoring");
     }
   }
 
