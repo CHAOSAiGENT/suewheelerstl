@@ -36,6 +36,12 @@ const TIMELINE_OPTIONS = [
   "Just exploring",
 ];
 
+type PhotoEntry = {
+  file: File;
+  path: string | null; // null = still uploading or failed
+  error: boolean;
+};
+
 export function ContactForm() {
   const [status, setStatus] = useState<
     "idle" | "submitting" | "success" | "error"
@@ -43,7 +49,30 @@ export function ContactForm() {
   const [token, setToken] = useState<string | null>(null);
   const [selectedServices, setSelectedServices] = useState<string[]>([]);
   const [serviceError, setServiceError] = useState(false);
-  const [photos, setPhotos] = useState<File[]>([]);
+  const [photos, setPhotos] = useState<PhotoEntry[]>([]);
+  const [photoError, setPhotoError] = useState(false);
+
+  async function uploadPhoto(file: File): Promise<string | null> {
+    try {
+      const res = await fetch("/api/upload-url", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ contentType: file.type || "image/jpeg" }),
+      });
+      if (!res.ok) return null;
+      const { signedUrl, path } = await res.json();
+
+      const uploadRes = await fetch(signedUrl, {
+        method: "PUT",
+        headers: { "Content-Type": file.type || "image/jpeg" },
+        body: file,
+      });
+      return uploadRes.ok ? path : null;
+    } catch (err) {
+      console.error("[upload] photo upload failed", err);
+      return null;
+    }
+  }
 
   function toggleService(service: string) {
     setServiceError(false);
@@ -54,15 +83,44 @@ export function ContactForm() {
     );
   }
 
-  function handlePhotos(e: React.ChangeEvent<HTMLInputElement>) {
+  async function handlePhotos(e: React.ChangeEvent<HTMLInputElement>) {
     const files = Array.from(e.target.files ?? []);
-    const next = [...photos, ...files].slice(0, 3);
-    setPhotos(next);
     e.target.value = "";
+    setPhotoError(false);
+
+    const slots = 3 - photos.length;
+    if (slots <= 0) return;
+    const toAdd = files.slice(0, slots);
+
+    // Add as "uploading" immediately so UI updates
+    const entries: PhotoEntry[] = toAdd.map((file) => ({
+      file,
+      path: null,
+      error: false,
+    }));
+    setPhotos((prev) => [...prev, ...entries]);
+
+    // Upload concurrently, update state as each resolves
+    await Promise.all(
+      toAdd.map(async (file) => {
+        const path = await uploadPhoto(file);
+        setPhotos((prev) => {
+          const next = [...prev];
+          const idx = next.findIndex(
+            (e) => e.file === file && e.path === null && !e.error,
+          );
+          if (idx !== -1) {
+            next[idx] = { file, path, error: path === null };
+          }
+          return next;
+        });
+      }),
+    );
   }
 
   function removePhoto(idx: number) {
     setPhotos((prev) => prev.filter((_, i) => i !== idx));
+    setPhotoError(false);
   }
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -73,15 +131,31 @@ export function ContactForm() {
       return;
     }
 
+    // Block if any photo is still uploading
+    const uploading = photos.some((p) => p.path === null && !p.error);
+    if (uploading) return;
+
+    const hasFailed = photos.some((p) => p.error);
+    if (hasFailed) {
+      setPhotoError(true);
+      return;
+    }
+    setPhotoError(false); // clear if proceeding normally
+
     setStatus("submitting");
 
     const form = e.currentTarget;
     const fd = new FormData(form);
 
-    // Remove auto-appended service_types from FormData (checkboxes aren't named properly in state)
-    // and re-append from state
     selectedServices.forEach((s) => fd.append("service_types", s));
-    photos.forEach((f) => fd.append("photos", f));
+
+    // Send paths as JSON string — no raw files
+    const uploadedPaths = photos
+      .filter((p) => p.path !== null)
+      .map((p) => p.path as string);
+    if (uploadedPaths.length > 0) {
+      fd.append("photo_paths", JSON.stringify(uploadedPaths));
+    }
 
     try {
       const res = await fetch("/api/contact", { method: "POST", body: fd });
@@ -313,19 +387,31 @@ export function ContactForm() {
             multiple
             className="sr-only"
             onChange={handlePhotos}
-            disabled={photos.length >= 3}
+            disabled={
+              photos.length >= 3 ||
+              photos.some((p) => p.path === null && !p.error)
+            }
           />
         </label>
         {photos.length > 0 && (
           <ul className="mt-2 space-y-1">
-            {photos.map((f, i) => (
+            {photos.map((entry, i) => (
               <li
-                key={i}
+                key={`${entry.file.name}-${entry.file.lastModified}-${entry.file.size}`}
                 className="flex items-center justify-between px-3 py-1.5 bg-[#F8F6F1] border border-[rgba(42,36,33,0.1)]"
                 style={{ borderRadius: "2px" }}
               >
-                <span className="text-xs font-sans text-[#6B5E55] truncate max-w-[80%]">
-                  {f.name}
+                <span
+                  className={[
+                    "text-xs font-sans truncate max-w-[80%]",
+                    entry.error ? "text-[#A65D37]" : "text-[#6B5E55]",
+                  ].join(" ")}
+                >
+                  {entry.error
+                    ? `${entry.file.name} — upload failed`
+                    : entry.path === null
+                      ? `${entry.file.name} — uploading…`
+                      : entry.file.name}
                 </span>
                 <button
                   type="button"
@@ -338,6 +424,12 @@ export function ContactForm() {
               </li>
             ))}
           </ul>
+        )}
+        {photoError && (
+          <p className="mt-1.5 text-xs font-sans text-[#A65D37]">
+            One or more photos failed to upload. Remove them and try again, or
+            submit without photos.
+          </p>
         )}
       </div>
 
@@ -364,12 +456,19 @@ export function ContactForm() {
       {/* Submit */}
       <button
         type="submit"
-        disabled={status === "submitting"}
+        disabled={
+          status === "submitting" ||
+          photos.some((p) => p.path === null && !p.error)
+        }
         className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-[#11B2E8] text-white text-sm font-sans font-medium uppercase tracking-widest hover:bg-[#0e96c4] disabled:opacity-60 transition-colors"
         style={{ borderRadius: "2px" }}
       >
         <Send size={14} />
-        {status === "submitting" ? "Sending…" : "Send My Request"}
+        {photos.some((p) => p.path === null && !p.error)
+          ? "Uploading photos…"
+          : status === "submitting"
+            ? "Sending…"
+            : "Send My Request"}
       </button>
 
       {status === "error" && (
