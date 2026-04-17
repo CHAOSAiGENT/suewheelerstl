@@ -94,6 +94,13 @@ export const STATUS_COLORS: Record<SubmissionStatus, string> = {
   lost: "#9e9087",
 };
 
+export interface SubmissionNote {
+  id: string;
+  submission_id: string;
+  body: string;
+  created_at: string;
+}
+
 export const KANBAN_COLUMNS: SubmissionStatus[] = [
   "to_bid",
   "bid_sent",
@@ -103,3 +110,10 @@ export const KANBAN_COLUMNS: SubmissionStatus[] = [
   "fully_complete",
   "lost",
 ];
+
+export interface SubmissionNote {
+  id: string;
+  submission_id: string;
+  body: string;
+  created_at: string;
+}
