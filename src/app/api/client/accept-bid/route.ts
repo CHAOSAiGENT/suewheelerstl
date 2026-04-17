@@ -28,6 +28,9 @@ export async function POST(req: Request) {
   if (submission.bid_status !== "sent") {
     return NextResponse.json({ error: "No pending bid" }, { status: 409 });
   }
+  if (new Date(submission.client_token_expires_at) < new Date()) {
+    return NextResponse.json({ error: "Token expired" }, { status: 410 });
+  }
 
   await supabase
     .from("submissions")

@@ -9,6 +9,15 @@ const brand = {
   border: "rgba(42,36,33,0.12)",
 };
 
+function escHtml(str: string | null | undefined): string {
+  if (!str) return "";
+  return str
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+}
+
 function base(title: string, body: string): string {
   return `<!DOCTYPE html>
 <html lang="en">
@@ -84,7 +93,7 @@ export function adminNotificationEmail(
   ${field("How they heard", sub.referral)}
 </table>
 <p style="margin:0 0 8px;font-family:Arial,sans-serif;font-size:11px;font-weight:700;color:${brand.muted};text-transform:uppercase;letter-spacing:0.08em;">Project description</p>
-<div style="background:${brand.bg};border-left:3px solid ${brand.blue};padding:12px 16px;margin-bottom:28px;font-family:Arial,sans-serif;font-size:14px;color:${brand.dark};line-height:1.6;">${sub.project_description.replace(/\n/g, "<br/>")}</div>
+<div style="background:${brand.bg};border-left:3px solid ${brand.blue};padding:12px 16px;margin-bottom:28px;font-family:Arial,sans-serif;font-size:14px;color:${brand.dark};line-height:1.6;">${escHtml(sub.project_description).replace(/\n/g, "<br/>")}</div>
 ${sub.photo_urls.length > 0 ? `<p style="margin:0 0 20px;font-family:Arial,sans-serif;font-size:13px;color:${brand.muted};">${sub.photo_urls.length} photo${sub.photo_urls.length > 1 ? "s" : ""} attached — view in portal.</p>` : ""}
 ${btn(adminUrl, "Open in Admin Portal")}`,
   );
@@ -129,7 +138,7 @@ export function adminReplyEmail(
     subject,
     `<h2 style="margin:0 0 8px;font-family:Georgia,serif;font-size:22px;font-weight:400;color:${brand.dark};">Sue sent you a message.</h2>
 <p style="margin:0 0 24px;font-family:Arial,sans-serif;font-size:13px;color:${brand.muted};">Regarding your ${sub.service_types.join(", ")} request.</p>
-<div style="background:${brand.bg};border-left:3px solid ${brand.blue};padding:16px 20px;margin-bottom:28px;font-family:Georgia,serif;font-size:15px;color:${brand.dark};line-height:1.7;font-style:italic;">${msg.body.replace(/\n/g, "<br/>")}</div>
+<div style="background:${brand.bg};border-left:3px solid ${brand.blue};padding:16px 20px;margin-bottom:28px;font-family:Georgia,serif;font-size:15px;color:${brand.dark};line-height:1.7;font-style:italic;">${escHtml(msg.body).replace(/\n/g, "<br/>")}</div>
 <p style="margin:0 0 20px;font-family:Arial,sans-serif;font-size:13px;color:${brand.muted};">You can reply directly from your request portal:</p>
 ${btn(portalUrl, "View & Reply")}
 <p style="margin:16px 0 0;font-family:Arial,sans-serif;font-size:12px;color:${brand.muted};">Or call Sue directly at <a href="tel:3143676054" style="color:${brand.blue};text-decoration:none;">(314) 367-6054</a>.</p>`,
@@ -152,7 +161,7 @@ export function bidSentEmail(
 <div style="background:${brand.bg};border:1px solid ${brand.border};padding:24px;margin-bottom:28px;border-radius:2px;">
   <p style="margin:0 0 4px;font-family:Arial,sans-serif;font-size:11px;font-weight:700;color:${brand.muted};text-transform:uppercase;letter-spacing:0.08em;">Estimate Total</p>
   <p style="margin:0 0 ${notes ? "16px" : "0"};font-family:Georgia,serif;font-size:32px;color:${brand.dark};font-weight:400;">$${amount.toFixed(2)}</p>
-  ${notes ? `<p style="margin:0;font-family:Arial,sans-serif;font-size:13px;color:${brand.dark};line-height:1.7;">${notes.replace(/\n/g, "<br/>")}</p>` : ""}
+  ${notes ? `<p style="margin:0;font-family:Arial,sans-serif;font-size:13px;color:${brand.dark};line-height:1.7;">${escHtml(notes).replace(/\n/g, "<br/>")}</p>` : ""}
 </div>
 <p style="margin:0 0 16px;font-family:Arial,sans-serif;font-size:13px;color:${brand.muted};">To accept this estimate and get on Sue's schedule:</p>
 ${btn(portalUrl, "Review & Accept Estimate")}
@@ -194,7 +203,7 @@ export function clientReplyEmail(
     subject,
     `<h2 style="margin:0 0 8px;font-family:Georgia,serif;font-size:22px;font-weight:400;color:${brand.dark};">${sub.name} sent a message.</h2>
 <p style="margin:0 0 24px;font-family:Arial,sans-serif;font-size:13px;color:${brand.muted};">Re: ${sub.service_types.join(", ")} · <a href="mailto:${sub.email}" style="color:${brand.blue};text-decoration:none;">${sub.email}</a></p>
-<div style="background:${brand.bg};border-left:3px solid ${brand.accent};padding:16px 20px;margin-bottom:28px;font-family:Georgia,serif;font-size:15px;color:${brand.dark};line-height:1.7;font-style:italic;">${msg.body.replace(/\n/g, "<br/>")}</div>
+<div style="background:${brand.bg};border-left:3px solid ${brand.accent};padding:16px 20px;margin-bottom:28px;font-family:Georgia,serif;font-size:15px;color:${brand.dark};line-height:1.7;font-style:italic;">${escHtml(msg.body).replace(/\n/g, "<br/>")}</div>
 ${btn(adminUrl, "Reply in Admin Portal")}`,
   );
   return { subject, html };

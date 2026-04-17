@@ -1,7 +1,9 @@
 {
   "permissions": {
     "allow": [
-      "Bash(claude plugin:*)"
+      "Bash(claude plugin:*)",
+      "Bash(grep -n \"\\\\.select\\\\\\(\\\\\\)\" /Users/peterledgrowth/CHAOS/CLIENT_SITES/suewheelerstl/src/app/api/admin/submissions/[id]/route.ts)",
+      "Bash(grep -n \"select\" /Users/peterledgrowth/CHAOS/CLIENT_SITES/suewheelerstl/src/app/api/admin/submissions/[id]/route.ts)"
     ]
   }
 }

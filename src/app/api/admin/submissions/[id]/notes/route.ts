@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { createServiceSupabaseClient } from "@/lib/supabase/service";
+import { createServerSupabaseClient } from "@/lib/supabase/server";
 import type { SubmissionNote } from "@/lib/types";
 
 interface Params {
@@ -8,6 +9,14 @@ interface Params {
 
 export async function POST(req: Request, { params }: Params) {
   const { id } = await params;
+
+  const supabaseAuth = await createServerSupabaseClient();
+  const {
+    data: { user },
+  } = await supabaseAuth.auth.getUser();
+  if (!user) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
 
   let body: { body: string };
   try {

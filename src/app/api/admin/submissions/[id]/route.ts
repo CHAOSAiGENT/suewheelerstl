@@ -58,7 +58,9 @@ export async function PATCH(
     .from("submissions")
     .update(update)
     .eq("id", id)
-    .select()
+    .select(
+      "id, status, bid_status, bid_amount, bid_notes, bid_sent_at, bid_accepted_at, admin_notes, lost_reason, lost_note, crew_member_ids, after_photos_uploaded, final_payment_confirmed, bid_start_date",
+    )
     .single();
 
   if (error) {

@@ -46,7 +46,10 @@ export async function POST(req: Request) {
   }
 
   const ext = EXT_MAP[contentType];
-  const path = `uploads/${crypto.randomUUID()}.${ext}`;
+  // Intentionally unauthenticated: used by the public contact form for
+  // pre-submission photo uploads. MIME type is validated above.
+  // Paths are scoped to contact-uploads/ and use a random UUID.
+  const path = `contact-uploads/${crypto.randomUUID()}.${ext}`;
 
   const supabase = createServiceSupabaseClient();
   const { data, error } = await supabase.storage

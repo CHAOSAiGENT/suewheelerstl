@@ -55,8 +55,6 @@ export async function POST(req: Request) {
     bid_status: "none" as const,
     crew_member_ids: [],
     photo_urls: [],
-    client_token: "",
-    client_token_expires_at: "",
   };
 
   const supabase = createServiceSupabaseClient();
