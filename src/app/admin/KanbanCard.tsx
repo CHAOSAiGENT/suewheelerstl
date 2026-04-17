@@ -51,9 +51,9 @@ export function KanbanCard({ submission, crew, isDragging }: Props) {
       {...attributes}
       className="bg-white border border-[rgba(42,36,33,0.12)] p-3 rounded-sm shadow-sm hover:shadow-md transition-shadow select-none"
     >
-      {/* Last name */}
+      {/* Full name */}
       <div className="font-sans font-bold text-sm text-[#2A2421] mb-0.5">
-        {lastName(submission.name)}
+        {submission.name}
       </div>
 
       {/* Address */}
@@ -91,7 +91,7 @@ export function KanbanCard({ submission, crew, isDragging }: Props) {
 
       {/* Last note snippet */}
       {submission.admin_notes && (
-        <div className="text-[10px] font-sans italic text-[#9e9087] leading-tight truncate">
+        <div className="text-[10px] font-sans italic text-[#9e9087] leading-tight line-clamp-2 mt-1">
           {submission.admin_notes}
         </div>
       )}
@@ -99,7 +99,8 @@ export function KanbanCard({ submission, crew, isDragging }: Props) {
       {/* Link to detail */}
       <a
         href={`/admin/${submission.id}`}
-        className="block mt-2 text-[9px] font-sans text-[#11B2E8] uppercase tracking-widest hover:underline"
+        className="block mt-2.5 px-3 py-1.5 text-center text-xs font-sans font-semibold text-[#11B2E8] border border-[#11B2E8] hover:bg-[#11B2E8] hover:text-white transition-colors"
+        style={{ borderRadius: "2px" }}
         onClick={(e) => e.stopPropagation()}
       >
         View →

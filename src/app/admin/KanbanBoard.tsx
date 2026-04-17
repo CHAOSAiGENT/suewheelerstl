@@ -4,6 +4,10 @@ import { useState, useCallback } from "react";
 import {
   DndContext,
   DragOverlay,
+  PointerSensor,
+  KeyboardSensor,
+  useSensor,
+  useSensors,
   closestCenter,
   type DragStartEvent,
   type DragEndEvent,
@@ -26,6 +30,11 @@ interface Props {
 }
 
 export function KanbanBoard({ initialSubmissions, crew }: Props) {
+  const sensors = useSensors(
+    useSensor(PointerSensor, { activationConstraint: { distance: 8 } }),
+    useSensor(KeyboardSensor),
+  );
+
   const [submissions, setSubmissions] = useState(initialSubmissions);
   const [draggingId, setDraggingId] = useState<string | null>(null);
 
@@ -117,6 +126,7 @@ export function KanbanBoard({ initialSubmissions, crew }: Props) {
   return (
     <>
       <DndContext
+        sensors={sensors}
         collisionDetection={closestCenter}
         onDragStart={handleDragStart}
         onDragEnd={handleDragEnd}
