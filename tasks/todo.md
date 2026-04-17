@@ -1,7 +1,9 @@
 # suewheelerstl.com — Build Plan
+
 _Last updated: 2026-03-17_
 
 ## PHASE 1 — Project Scaffolding
+
 - [ ] 1.1 Create package.json (Next.js 15, TypeScript, Tailwind v4, Shadcn)
 - [ ] 1.2 Create next.config.ts
 - [ ] 1.3 Create tsconfig.json
@@ -10,6 +12,7 @@ _Last updated: 2026-03-17_
 - [ ] 1.6 Create src/app/ directory structure (layout, globals.css)
 
 ## PHASE 2 — Shared Components
+
 - [ ] 2.1 SiteHeader (sticky, Playfair italic wordmark, nav, phone, CTA)
 - [ ] 2.2 SiteFooter (dark bg #2A2421, serif phone, address, credentials, nav)
 - [ ] 2.3 CTABlock ("Free estimate..." + button + phone)
@@ -21,6 +24,7 @@ _Last updated: 2026-03-17_
 - [ ] 2.9 ProcessStep (numbered circle + title + description)
 
 ## PHASE 3 — Core Pages (8 pages)
+
 - [ ] 3.1 / — homepage
 - [ ] 3.2 /about
 - [ ] 3.3 /contact (with Resend form)
@@ -31,20 +35,24 @@ _Last updated: 2026-03-17_
 - [ ] 3.8 /sitemap (HTML sitemap page)
 
 ## PHASE 4 — Residential Hub + Spoke Pages (18 pages)
+
 - [ ] 4.1 /kitchen-cabinet-refinishing + 3 spokes
 - [ ] 4.2 /door-refinishing + 4 spokes
 - [ ] 4.3 /staircase-refinishing + 4 spokes (Version B cost section)
 - [ ] 4.4 /built-ins-and-millwork-refinishing + 2 spokes
 
 ## PHASE 5 — Commercial + Institutional + Preservation (10 pages)
+
 - [ ] 5.1 /commercial-and-hospitality-refinishing + 3 spokes
 - [ ] 5.2 /institutional-refinishing + 3 spokes
 - [ ] 5.3 /historic-preservation + 3 spokes
 
 ## PHASE 6 — Neighborhood Pages (15 pages)
+
 - [ ] 6.1 /neighborhoods/central-west-end through /neighborhoods/ballwin
 
 ## PHASE 7 — SEO Infrastructure
+
 - [ ] 7.1 src/app/sitemap.ts (all 55+ URLs)
 - [ ] 7.2 src/app/robots.ts
 - [ ] 7.3 Per-page metadata (title, description, OG) on all pages
@@ -53,14 +61,33 @@ _Last updated: 2026-03-17_
 - [ ] 7.6 LocalBusiness JSON-LD schema on homepage
 
 ## PHASE 8 — Contact Form
+
 - [ ] 8.1 Resend API route (src/app/api/contact/route.ts)
 - [ ] 8.2 Contact form component with validation
 
 ## PHASE 9 — Final Checks
+
 - [ ] 9.1 pnpm build passes with zero errors
 - [ ] 9.2 All 55 routes resolve correctly
 - [ ] 9.3 Mobile responsive check
 - [ ] 9.4 Push to github.com/CHAOSAiGENT/suewheelerstl
 
 ---
+
+## Pending — Next Session
+
+- [ ] **DB migration (fresh chat — Supabase MCP needs new session to auth)**
+      Run in Supabase SQL Editor OR via MCP once re-authenticated:
+  ```sql
+  create table submission_notes (
+    id uuid primary key default gen_random_uuid(),
+    submission_id uuid not null references submissions(id) on delete cascade,
+    body text not null,
+    created_at timestamptz not null default now()
+  );
+  create index on submission_notes(submission_id, created_at desc);
+  ```
+
+---
+
 ## Lessons → tasks/lessons.md
