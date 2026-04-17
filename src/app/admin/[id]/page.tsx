@@ -1,10 +1,15 @@
 import { notFound } from "next/navigation";
 import { createServiceSupabaseClient } from "@/lib/supabase/service";
-import type { Message, Submission, CrewMember } from "@/lib/types";
+import type {
+  Message,
+  Submission,
+  CrewMember,
+  SubmissionNote,
+} from "@/lib/types";
 import { STATUS_LABELS, STATUS_COLORS } from "@/lib/types";
 import { AdminReplyForm } from "./AdminReplyForm";
 import { StatusUpdater } from "./StatusUpdater";
-import { AdminNotesForm } from "./AdminNotesForm";
+import { NotesPanel } from "./NotesPanel";
 import { AdminPhotoUpload } from "./AdminPhotoUpload";
 import { AdminBidForm } from "./AdminBidForm";
 import { CrewAssigner } from "../CrewAssigner";
@@ -41,6 +46,13 @@ export default async function AdminSubmissionPage({ params }: Props) {
     .eq("active", true)
     .order("name", { ascending: true })
     .returns<CrewMember[]>();
+
+  const { data: submissionNotes } = await supabase
+    .from("submission_notes")
+    .select()
+    .eq("submission_id", id)
+    .order("created_at", { ascending: false })
+    .returns<SubmissionNote[]>();
 
   // Signed photo URLs
   const signedPhotos: string[] = [];
@@ -269,15 +281,15 @@ export default async function AdminSubmissionPage({ params }: Props) {
         className="bg-white border p-6 mb-4"
         style={{ borderRadius: "2px", borderColor: "rgba(42,36,33,0.1)" }}
       >
-        <h2 className="text-xs font-sans font-semibold uppercase tracking-widest text-[#6B5E55] mb-3">
+        <h2 className="text-xs font-sans font-semibold uppercase tracking-widest text-[#6B5E55] mb-1">
           Private Notes
         </h2>
         <p className="text-xs font-sans text-[#9e9087] mb-3">
-          Not visible to the client.
+          Not visible to the client. Most recent shows on Kanban card.
         </p>
-        <AdminNotesForm
+        <NotesPanel
           submissionId={submission.id}
-          initialNotes={submission.admin_notes ?? ""}
+          initialNotes={submissionNotes ?? []}
         />
       </div>
 
