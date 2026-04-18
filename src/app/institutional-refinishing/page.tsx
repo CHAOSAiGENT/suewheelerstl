@@ -4,7 +4,8 @@ import { ArrowRight, Phone } from "lucide-react";
 import { TrustBar } from "@/components/TrustBar";
 import { CTABlock } from "@/components/CTABlock";
 import { ServiceCard } from "@/components/ServiceCard";
-import { FAQAccordion, FAQSchema } from "@/components/FAQAccordion";
+import { FAQAccordion } from "@/components/FAQAccordion";
+import { FAQSchema } from "@/components/FAQSchema";
 
 export const metadata: Metadata = {
   title: "Institutional Wood Refinishing St. Louis | Sue Wheeler",

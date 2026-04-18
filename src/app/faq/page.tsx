@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Phone } from "lucide-react";
-import { FAQAccordion, FAQSchema } from "@/components/FAQAccordion";
+import { FAQAccordion } from "@/components/FAQAccordion";
+import { FAQSchema } from "@/components/FAQSchema";
 import { TrustBar } from "@/components/TrustBar";
 import { CTABlock } from "@/components/CTABlock";
 

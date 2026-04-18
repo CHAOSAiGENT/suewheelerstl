@@ -18,29 +18,101 @@ export const metadata: Metadata = {
   },
 };
 
-const localBusinessSchema = {
+const homepageSchema = {
   "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  name: "Wood Refinishing by Sue Wheeler, LLC",
-  description:
-    "Your woodwork shouldn't look its age. Hand-stripped, never dipped. EPA Certified Lead Removal. Historic home specialist. St. Louis.",
-  url: "https://suewheelerstl.com",
-  telephone: "+13143676054",
-  address: {
-    "@type": "PostalAddress",
-    streetAddress: "900 S Boyle Ave",
-    addressLocality: "St. Louis",
-    addressRegion: "MO",
-    postalCode: "63110",
-    addressCountry: "US",
-  },
-  areaServed: {
-    "@type": "City",
-    name: "St. Louis",
-  },
-  foundingDate: "1989",
-  hasCredential: ["EPA Certified Lead Removal"],
-  sameAs: [],
+  "@graph": [
+    {
+      "@type": "LocalBusiness",
+      "@id": "https://suewheelerstl.com/#business",
+      name: "Wood Refinishing by Sue Wheeler, LLC",
+      description:
+        "Architectural wood refinishing for St. Louis's historic homes. Hand-stripped, never dipped. EPA Certified Lead Removal. In business since 1989. Sue answers every call personally.",
+      url: "https://suewheelerstl.com",
+      telephone: "+13143676054",
+      priceRange: "$$",
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: "900 S Boyle Ave",
+        addressLocality: "St. Louis",
+        addressRegion: "MO",
+        postalCode: "63110",
+        addressCountry: "US",
+      },
+      geo: {
+        "@type": "GeoCoordinates",
+        latitude: 38.6138,
+        longitude: -90.2614,
+      },
+      areaServed: [
+        { "@type": "Neighborhood", name: "Central West End" },
+        { "@type": "Neighborhood", name: "Benton Park" },
+        { "@type": "Neighborhood", name: "Compton Heights" },
+        { "@type": "Neighborhood", name: "Shaw" },
+        { "@type": "Neighborhood", name: "Lafayette Square" },
+        { "@type": "City", name: "Clayton" },
+        { "@type": "City", name: "University City" },
+        { "@type": "City", name: "Maplewood" },
+      ],
+      foundingDate: "1989",
+      hasCredential: "EPA Certified Lead Removal Contractor (RRP Rule)",
+      hasOfferCatalog: {
+        "@type": "OfferCatalog",
+        name: "Wood Refinishing Services",
+        itemListElement: [
+          {
+            "@type": "Offer",
+            itemOffered: {
+              "@type": "Service",
+              name: "Door Refinishing",
+              url: "https://suewheelerstl.com/door-refinishing",
+            },
+          },
+          {
+            "@type": "Offer",
+            itemOffered: {
+              "@type": "Service",
+              name: "Staircase Refinishing",
+              url: "https://suewheelerstl.com/staircase-refinishing",
+            },
+          },
+          {
+            "@type": "Offer",
+            itemOffered: {
+              "@type": "Service",
+              name: "Kitchen Cabinet Refinishing",
+              url: "https://suewheelerstl.com/kitchen-cabinet-refinishing",
+            },
+          },
+          {
+            "@type": "Offer",
+            itemOffered: {
+              "@type": "Service",
+              name: "Architectural Woodwork Refinishing",
+              url: "https://suewheelerstl.com/built-ins-and-millwork-refinishing",
+            },
+          },
+          {
+            "@type": "Offer",
+            itemOffered: {
+              "@type": "Service",
+              name: "Perk Up & Protect",
+              url: "https://suewheelerstl.com/perk-up-and-protect",
+            },
+          },
+        ],
+      },
+      sameAs: [],
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://suewheelerstl.com/#website",
+      url: "https://suewheelerstl.com",
+      name: "Wood Refinishing by Sue Wheeler",
+      description:
+        "Architectural wood refinishing for St. Louis historic homes.",
+      publisher: { "@id": "https://suewheelerstl.com/#business" },
+    },
+  ],
 };
 
 const services = [
@@ -122,7 +194,7 @@ export default function HomePage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(localBusinessSchema),
+          __html: JSON.stringify(homepageSchema),
         }}
       />
 

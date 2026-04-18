@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Phone } from "lucide-react";
 import { CTABlock } from "@/components/CTABlock";
-import { FAQAccordion, FAQSchema } from "@/components/FAQAccordion";
+import { FAQAccordion } from "@/components/FAQAccordion";
+import { FAQSchema } from "@/components/FAQSchema";
 
 export const metadata: Metadata = {
   title: "Stained Cabinet Refinishing St. Louis | Sue Wheeler",

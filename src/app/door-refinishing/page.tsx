@@ -4,7 +4,9 @@ import { Phone } from "lucide-react";
 import { TrustBar } from "@/components/TrustBar";
 import { CTABlock } from "@/components/CTABlock";
 import { ServiceCard } from "@/components/ServiceCard";
-import { FAQAccordion, FAQSchema } from "@/components/FAQAccordion";
+import { FAQAccordion } from "@/components/FAQAccordion";
+import { FAQSchema } from "@/components/FAQSchema";
+import { BreadcrumbSchema } from "@/components/BreadcrumbSchema";
 
 export const metadata: Metadata = {
   title: "Door Refinishing St. Louis | Sue Wheeler — Since 1989",
@@ -43,6 +45,7 @@ const faqItems = [
 export default function DoorRefinishingPage() {
   return (
     <>
+      <BreadcrumbSchema items={[{ name: "Home", url: "https://suewheelerstl.com" }, { name: "Door Refinishing", url: "https://suewheelerstl.com/door-refinishing" }]} />
       <FAQSchema items={faqItems} />
       <TrustBar />
 
