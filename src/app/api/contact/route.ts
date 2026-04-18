@@ -59,6 +59,7 @@ export async function POST(req: Request) {
       timeline: timeline || null,
       project_description,
       referral: referral || null,
+      status: "to_bid",
     })
     .select()
     .single();
