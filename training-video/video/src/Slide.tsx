@@ -57,10 +57,14 @@ export const Slide: React.FC<Props> = ({
   });
   const titleY = interpolate(titleSpring, [0, 1], [20, 0]);
 
-  // Description fades in slightly later
-  const descOpacity = interpolate(frame, [22, 40], [0, 1], {
-    extrapolateRight: "clamp",
+  // Subtitle bar slides up from below on entry (starts at frame 20)
+  const subtitleSpring = spring({
+    frame,
+    fps,
+    config: { damping: 26, stiffness: 180 },
+    delay: 20,
   });
+  const subtitleY = interpolate(subtitleSpring, [0, 1], [80, 0]);
 
   return (
     <AbsoluteFill style={{ background: "#1a1614", opacity }}>
@@ -128,24 +132,32 @@ export const Slide: React.FC<Props> = ({
         </div>
       </div>
 
-      {/* Description — bottom */}
+      {/* Subtitle bar — bottom */}
       <div
         style={{
           position: "absolute",
-          bottom: 40,
-          left: 48,
-          right: 48,
-          opacity: descOpacity,
+          bottom: 0,
+          left: 0,
+          right: 0,
+          background: "rgba(0,0,0,0.78)",
+          padding: "18px 48px",
+          transform: `translateY(${subtitleY}px)`,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
         }}
       >
         <div
           style={{
             fontFamily: "sans-serif",
-            fontSize: 19,
-            color: "rgba(255,255,255,0.92)",
-            lineHeight: 1.55,
-            textShadow: "0 1px 8px rgba(0,0,0,0.6)",
-            maxWidth: 860,
+            fontSize: 21,
+            color: "#fff",
+            lineHeight: 1.45,
+            textAlign: "center",
+            display: "-webkit-box",
+            WebkitLineClamp: 2,
+            WebkitBoxOrient: "vertical",
+            overflow: "hidden",
           }}
         >
           {description}
