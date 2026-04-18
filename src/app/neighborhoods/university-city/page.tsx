@@ -8,9 +8,33 @@ export const metadata: Metadata = {
     "Wood refinishing in University City — Tudor and Colonial Revival homes, deep original millwork, staircase restoration. Some local historic districts. Sue Wheeler.",
 };
 
+
+const neighborhoodSchema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "@id": "https://suewheelerstl.com/#business",
+  name: "Wood Refinishing by Sue Wheeler, LLC",
+  url: "https://suewheelerstl.com/neighborhoods/university-city",
+  telephone: "+13143676054",
+  areaServed: {
+    "@type": "Neighborhood",
+    name: "University City",
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: 38.6624,
+      longitude: -90.3115,
+    },
+  },
+};
+
 export default function UniversityCityPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(neighborhoodSchema) }}
+      />
+
       {/* Hero */}
       <section className="py-20 px-6 bg-[#EBE6DE]">
         <div className="max-w-3xl mx-auto">

@@ -8,9 +8,33 @@ export const metadata: Metadata = {
     "Wood refinishing in Maplewood — Craftsman bungalows, 1920s–1940s housing stock, staircase restoration. Some NR contributing structures. Sue Wheeler, EPA Certified.",
 };
 
+
+const neighborhoodSchema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "@id": "https://suewheelerstl.com/#business",
+  name: "Wood Refinishing by Sue Wheeler, LLC",
+  url: "https://suewheelerstl.com/neighborhoods/maplewood",
+  telephone: "+13143676054",
+  areaServed: {
+    "@type": "Neighborhood",
+    name: "Maplewood",
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: 38.6094,
+      longitude: -90.3269,
+    },
+  },
+};
+
 export default function MaplewoodPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(neighborhoodSchema) }}
+      />
+
       {/* Hero */}
       <section className="py-20 px-6 bg-[#EBE6DE]">
         <div className="max-w-3xl mx-auto">

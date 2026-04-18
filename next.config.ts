@@ -66,11 +66,11 @@ const nextConfig: NextConfig = {
         destination: "/",
         permanent: true,
       },
-      // Architectural woodwork — new canonical URL (old slug still works)
+      // Architectural woodwork — canonical URL is /built-ins-and-millwork-refinishing
       {
         source: "/architectural-woodwork-refinishing",
         destination: "/built-ins-and-millwork-refinishing",
-        permanent: false,
+        permanent: true,
       },
     ];
   },

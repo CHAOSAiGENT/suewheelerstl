@@ -8,9 +8,33 @@ export const metadata: Metadata = {
     "Wood refinishing in Compton Heights — Craftsman and Colonial Revival homes, built-in hutches, bookcases, and staircases. Certified local historic district. Sue Wheeler.",
 };
 
+
+const neighborhoodSchema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "@id": "https://suewheelerstl.com/#business",
+  name: "Wood Refinishing by Sue Wheeler, LLC",
+  url: "https://suewheelerstl.com/neighborhoods/compton-heights",
+  telephone: "+13143676054",
+  areaServed: {
+    "@type": "Neighborhood",
+    name: "Compton Heights",
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: 38.6088,
+      longitude: -90.239,
+    },
+  },
+};
+
 export default function ComptonHeightsPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(neighborhoodSchema) }}
+      />
+
       {/* Hero */}
       <section className="py-20 px-6 bg-[#EBE6DE]">
         <div className="max-w-3xl mx-auto">

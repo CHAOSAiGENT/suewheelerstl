@@ -8,9 +8,33 @@ export const metadata: Metadata = {
     "Wood refinishing in St. Louis's Central West End. Pre-1900 architecture, pocket doors, original millwork. EPA Certified. Historic district eligible. Sue Wheeler.",
 };
 
+
+const neighborhoodSchema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "@id": "https://suewheelerstl.com/#business",
+  name: "Wood Refinishing by Sue Wheeler, LLC",
+  url: "https://suewheelerstl.com/neighborhoods/central-west-end",
+  telephone: "+13143676054",
+  areaServed: {
+    "@type": "Neighborhood",
+    name: "Central West End",
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: 38.6461,
+      longitude: -90.2649,
+    },
+  },
+};
+
 export default function CentralWestEndPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(neighborhoodSchema) }}
+      />
+
       {/* Hero */}
       <section className="py-20 px-6 bg-[#EBE6DE]">
         <div className="max-w-3xl mx-auto">

@@ -68,9 +68,64 @@ const sections = [
   },
 ];
 
+const reviewSchema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "@id": "https://suewheelerstl.com/#business",
+  name: "Wood Refinishing by Sue Wheeler, LLC",
+  review: [
+    {
+      "@type": "Review",
+      reviewBody:
+        "We thought we'd have to replace our entire kitchen. The cabinets were painted over, the finish was gone in half the spots. Sue stripped every cabinet door by hand and matched the stain exactly. We keep catching ourselves just staring at it.",
+      author: { "@type": "Person", name: "Homeowner, Compton Heights" },
+      itemReviewed: { "@type": "Service", name: "Kitchen Cabinet Refinishing" },
+    },
+    {
+      "@type": "Review",
+      reviewBody:
+        "She talked us out of replacing the cabinets — saved us probably $20,000. The refinished result looks better than new because the wood itself is original old-growth oak. Nobody's making that anymore.",
+      author: { "@type": "Person", name: "Homeowner, Maplewood" },
+      itemReviewed: { "@type": "Service", name: "Kitchen Cabinet Refinishing" },
+    },
+    {
+      "@type": "Review",
+      reviewBody:
+        "The front door looks like it was installed last week. She took it, refinished it in her shop, brought it back, and hung it. The whole neighborhood commented. Our house is from 1912 — the door looks like it belongs.",
+      author: { "@type": "Person", name: "Homeowner, Lafayette Square" },
+      itemReviewed: { "@type": "Service", name: "Door Refinishing" },
+    },
+    {
+      "@type": "Review",
+      reviewBody:
+        "Seven interior doors — all original, all in bad shape. She took every one of them to her shop, matched the stain on all seven, and had them back in less than two weeks. We barely noticed the disruption.",
+      author: { "@type": "Person", name: "Homeowner, Clayton" },
+      itemReviewed: { "@type": "Service", name: "Door Refinishing" },
+    },
+    {
+      "@type": "Review",
+      reviewBody:
+        "This was the most dramatic transformation in our house. The staircase is the first thing you see when you walk in. She refinished the treads, the newel post, all the spindles — everything. It looks the way it must have looked in 1905.",
+      author: { "@type": "Person", name: "Homeowner, Compton Heights" },
+      itemReviewed: { "@type": "Service", name: "Staircase Refinishing" },
+    },
+    {
+      "@type": "Review",
+      reviewBody:
+        "She explained why dipping the spindles would have destroyed them. I didn't know any of that going in. She stripped every one by hand. It took longer, and it was absolutely worth it.",
+      author: { "@type": "Person", name: "Homeowner, Shaw" },
+      itemReviewed: { "@type": "Service", name: "Staircase Refinishing" },
+    },
+  ],
+};
+
 export default function ReviewsPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(reviewSchema) }}
+      />
       <TrustBar />
 
       {/* Hero */}

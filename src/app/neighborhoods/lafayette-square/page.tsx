@@ -8,9 +8,33 @@ export const metadata: Metadata = {
     "Wood refinishing in Lafayette Square. Victorian homes, ornate staircases, pocket doors, front door curb appeal. Local historic district. EPA Certified. Sue Wheeler.",
 };
 
+
+const neighborhoodSchema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "@id": "https://suewheelerstl.com/#business",
+  name: "Wood Refinishing by Sue Wheeler, LLC",
+  url: "https://suewheelerstl.com/neighborhoods/lafayette-square",
+  telephone: "+13143676054",
+  areaServed: {
+    "@type": "Neighborhood",
+    name: "Lafayette Square",
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: 38.6139,
+      longitude: -90.2252,
+    },
+  },
+};
+
 export default function LafayetteSquarePage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(neighborhoodSchema) }}
+      />
+
       {/* Hero */}
       <section className="py-20 px-6 bg-[#EBE6DE]">
         <div className="max-w-3xl mx-auto">

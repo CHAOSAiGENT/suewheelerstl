@@ -8,9 +8,33 @@ export const metadata: Metadata = {
     "Wood refinishing in Clayton — upscale residential, high-end kitchen cabinet refinishing, mixed era housing. Some NR contributing structures. Sue Wheeler.",
 };
 
+
+const neighborhoodSchema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "@id": "https://suewheelerstl.com/#business",
+  name: "Wood Refinishing by Sue Wheeler, LLC",
+  url: "https://suewheelerstl.com/neighborhoods/clayton",
+  telephone: "+13143676054",
+  areaServed: {
+    "@type": "Neighborhood",
+    name: "Clayton",
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: 38.6471,
+      longitude: -90.3237,
+    },
+  },
+};
+
 export default function ClaytonPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(neighborhoodSchema) }}
+      />
+
       {/* Hero */}
       <section className="py-20 px-6 bg-[#EBE6DE]">
         <div className="max-w-3xl mx-auto">

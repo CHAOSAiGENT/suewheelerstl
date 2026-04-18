@@ -14,6 +14,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/reviews",
     "/privacy-policy",
     "/sitemap",
+    "/blog",
+    "/blog/dip-stripping-historic-woodwork",
+    "/blog/lead-paint-wood-refinishing-st-louis",
+    "/blog/wood-refinishing-cost-st-louis",
   ];
 
   const servicePages = [
@@ -33,7 +37,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/staircase-refinishing/stair-railings",
     "/built-ins-and-millwork-refinishing",
     "/built-ins-and-millwork-refinishing/built-in-hutches-buffets-bookcases",
-    "/architectural-woodwork-refinishing",
+    "/built-ins-and-millwork-refinishing/room-millwork",
     "/perk-up-and-protect",
     "/historic-preservation",
   ];
