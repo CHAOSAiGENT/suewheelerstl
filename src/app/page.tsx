@@ -101,7 +101,10 @@ const homepageSchema = {
           },
         ],
       },
-      sameAs: [],
+      sameAs: [
+        "https://www.bbb.org/us/mo/saint-louis/profile/woodworking/wood-refinishing-by-sue-wheeler-0734-110214169",
+        "https://www.facebook.com/p/Wood-Refinishing-by-Sue-Wheeler-100034017228127/",
+      ],
     },
     {
       "@type": "WebSite",

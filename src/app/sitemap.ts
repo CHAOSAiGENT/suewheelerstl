@@ -14,6 +14,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/reviews",
     "/privacy-policy",
     "/sitemap",
+    "/press",
     "/blog",
     "/blog/dip-stripping-historic-woodwork",
     "/blog/lead-paint-wood-refinishing-st-louis",
