@@ -8,6 +8,7 @@ const services = [
   { label: "Kitchen Cabinets", href: "/kitchen-cabinet-refinishing" },
   { label: "Doors & Frames", href: "/door-refinishing" },
   { label: "Staircases", href: "/staircase-refinishing" },
+  { label: "Furniture Refinishing", href: "/furniture-refinishing" },
   {
     label: "Architectural Woodwork",
     href: "/built-ins-and-millwork-refinishing",
