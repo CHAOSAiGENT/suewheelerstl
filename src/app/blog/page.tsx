@@ -18,6 +18,15 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    slug: "perk-up-and-protect",
+    title:
+      "Perk Up & Protect: When Your Wood Doesn't Need Stripping — It Needs a Second Life",
+    description:
+      "Most people think refinishing means a full strip. Sue Wheeler invented a third option — wet sand, color coat, and topcoat for finishes that are sound underneath. Faster, less invasive, and extends finish life 5–10 years.",
+    category: "Methods & Technique",
+    date: "April 2026",
+  },
+  {
     slug: "dip-stripping-historic-woodwork",
     title: "Why Dip-Stripping Destroys Historic Woodwork",
     description:
@@ -40,6 +49,23 @@ const posts = [
       "Realistic price ranges for door refinishing, staircase refinishing, and kitchen cabinet refinishing in St. Louis — plus what drives cost up or down, and how it compares to replacement.",
     category: "Cost & Planning",
     date: "April 2025",
+  },
+  {
+    slug: "refinish-or-replace-woodwork",
+    title: "Refinish or Replace? How to Decide for Historic St. Louis Woodwork",
+    description:
+      "For pre-1950s St. Louis homes, the original woodwork is old-growth wood that cannot be replicated. A clear decision framework — with a condition table and real cost comparisons — for doors, staircases, and cabinets.",
+    category: "Decision Guide",
+    date: "April 2026",
+  },
+  {
+    slug: "wood-damage-guide-st-louis",
+    title:
+      "What's Wrong With My Wood? A St. Louis Homeowner's Guide to Wood Finish Damage",
+    description:
+      "Peeling finish, water rings, yellowing clear coat, alligatoring, dark stains — this diagnostic guide identifies every common damage type, what caused it, and whether it needs Perk Up & Protect or a full strip and refinish.",
+    category: "Diagnostic Guide",
+    date: "April 2026",
   },
 ];
 

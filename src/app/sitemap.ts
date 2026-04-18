@@ -16,9 +16,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/sitemap",
     "/press",
     "/blog",
+    "/blog/perk-up-and-protect",
     "/blog/dip-stripping-historic-woodwork",
     "/blog/lead-paint-wood-refinishing-st-louis",
     "/blog/wood-refinishing-cost-st-louis",
+    "/blog/refinish-or-replace-woodwork",
+    "/blog/wood-damage-guide-st-louis",
   ];
 
   const servicePages = [
@@ -41,6 +44,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/built-ins-and-millwork-refinishing/room-millwork",
     "/perk-up-and-protect",
     "/historic-preservation",
+    "/furniture-refinishing",
+    "/door-refinishing/central-west-end",
+    "/door-refinishing/benton-park",
+    "/door-refinishing/compton-heights",
+    "/door-refinishing/shaw",
+    "/door-refinishing/lafayette-square",
   ];
 
   const neighborhoodPages = [

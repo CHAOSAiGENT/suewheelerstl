@@ -31,7 +31,7 @@ const methodFAQs = [
   {
     question: "Do you refinish furniture?",
     answer:
-      "No. We work exclusively on architectural woodwork — the pieces built into a home or building: doors, cabinets, staircases, built-ins, and millwork. We don't work on freestanding furniture, dining tables, or antiques.",
+      "Yes. Furniture refinishing was the foundation of this business. We refinish dining tables, chairs, dressers, antiques, and other freestanding wood pieces using the same hand-strip method we apply to architectural woodwork. Call to discuss your piece and get an estimate.",
   },
   {
     question: 'What is the "board-up" method?',

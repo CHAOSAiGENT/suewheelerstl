@@ -18,18 +18,6 @@ const categories = [
     href: "/portfolio/residential",
   },
   {
-    title: "Commercial",
-    description:
-      "Bar tops, restaurant tables and booths, hotel lobby woodwork, retail fixtures. Off-hours scheduling. Back in service before you open.",
-    href: "/portfolio/commercial",
-  },
-  {
-    title: "Institutional",
-    description:
-      "Concert halls, churches, universities, and civic landmarks. Work that requires documentation, scheduling around active occupancy, and hands that have done it before.",
-    href: "/portfolio/institutional",
-  },
-  {
     title: "Historic Preservation",
     description:
       "Properties in certified historic districts where the Secretary of the Interior's Standards apply. Hand-strip method. Documented and compliant.",

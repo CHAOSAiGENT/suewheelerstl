@@ -294,9 +294,10 @@ export default function HomePage() {
             </h2>
             <p className="text-base font-sans text-[#6B5E55] max-w-2xl">
               We work on architectural woodwork — the pieces built into a home
-              or building that define its character. Not furniture. Not floors.
-              The elements that came with the structure and can&rsquo;t be
-              replaced without losing something real.
+              or building that define its character — and on freestanding
+              furniture, antiques, and heirloom pieces. Not floors or decks. The
+              wood that came with the structure, or the pieces passed down
+              through families: both deserve the same care.
             </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
