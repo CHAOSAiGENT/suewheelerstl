@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Phone, ArrowRight } from "lucide-react";
 import { CTABlock } from "@/components/CTABlock";
+import { BreadcrumbSchema } from "@/components/BreadcrumbSchema";
+import { FAQSchema } from "@/components/FAQSchema";
 
 export const metadata: Metadata = {
   title: "Perk Up & Protect | Wood Finish Maintenance St. Louis | Sue Wheeler",
@@ -9,9 +11,54 @@ export const metadata: Metadata = {
     "Wood finish looking dull but not damaged? Perk Up & Protect is a three-step maintenance coat — no full strip required. Sue Wheeler, St. Louis. Free estimate: (314) 367-6054.",
 };
 
+const localBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "@id": "https://suewheelerstl.com/#business",
+  name: "Wood Refinishing by Sue Wheeler, LLC",
+  url: "https://suewheelerstl.com/perk-up-and-protect",
+  telephone: "+13143676054",
+  foundingDate: "1989",
+};
+
+const faqItems = [
+  {
+    question:
+      "How do I know if my woodwork needs Perk Up & Protect or a full refinish?",
+    answer:
+      "If the finish is peeling, cracking, or completely worn through, a full refinish is the correct call. If it's dull, lightly scratched, or faded but structurally intact, Perk Up & Protect is likely the right approach. Sue evaluates every job in person before recommending either.",
+  },
+  {
+    question: "What does Perk Up & Protect actually involve?",
+    answer:
+      "We clean the surface thoroughly, lightly abrade the existing finish to create adhesion, and apply fresh finish coats. No chemical stripping, no bare wood, no multi-week timeline. Most projects are completed in a day or two.",
+  },
+  {
+    question: "How long does a Perk Up & Protect finish last?",
+    answer:
+      "With normal care, 5–10 years before another maintenance coat is needed. The underlying wood and original finish remain intact, which makes subsequent maintenance easier.",
+  },
+];
+
 export default function PerkUpAndProtectPage() {
   return (
     <>
+      <BreadcrumbSchema
+        items={[
+          { name: "Home", url: "https://suewheelerstl.com" },
+          {
+            name: "Perk Up & Protect",
+            url: "https://suewheelerstl.com/perk-up-and-protect",
+          },
+        ]}
+      />
+      <FAQSchema items={faqItems} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(localBusinessSchema),
+        }}
+      />
       {/* Hero */}
       <section className="py-20 px-6" style={{ backgroundColor: "#EBE6DE" }}>
         <div className="max-w-4xl mx-auto">
@@ -60,6 +107,12 @@ export default function PerkUpAndProtectPage() {
           >
             Is this the right service for <em>your wood?</em>
           </h2>
+          <p className="text-[#6B5E55] font-sans text-base leading-relaxed mb-6 max-w-2xl">
+            Perk Up &amp; Protect is a maintenance coat — a way to revive a
+            sound wood finish without stripping back to bare wood. If your
+            woodwork isn&rsquo;t failing, just showing its age, this is often
+            the right call.
+          </p>
           <p className="text-[#6B5E55] font-sans text-base leading-relaxed mb-10 max-w-2xl">
             Perk Up &amp; Protect is a category-creating service — no other wood
             refinisher in St. Louis offers this as a named standalone
@@ -370,6 +423,45 @@ export default function PerkUpAndProtectPage() {
               <Phone size={16} />
               (314) 367-6054
             </a>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ section */}
+      <section className="py-16 px-6" style={{ backgroundColor: "#F8F6F1" }}>
+        <div className="max-w-3xl mx-auto">
+          <p className="text-xs font-sans font-semibold uppercase tracking-widest text-[#11B2E8] mb-3">
+            Common Questions
+          </p>
+          <h2
+            className="text-3xl text-[#2A2421] mb-10"
+            style={{
+              fontFamily: '"Playfair Display", Georgia, serif',
+              fontWeight: 400,
+            }}
+          >
+            Perk Up &amp; Protect: FAQ
+          </h2>
+          <div className="space-y-6">
+            {faqItems.map((item, i) => (
+              <div
+                key={i}
+                className="border border-[rgba(42,36,33,0.15)] bg-white rounded-sm p-6"
+              >
+                <h3
+                  style={{
+                    fontFamily: '"Playfair Display", Georgia, serif',
+                    fontWeight: 400,
+                  }}
+                  className="text-xl text-[#2A2421] mb-3"
+                >
+                  {item.question}
+                </h3>
+                <p className="font-sans text-[#6B5E55] leading-relaxed text-base">
+                  {item.answer}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
       </section>

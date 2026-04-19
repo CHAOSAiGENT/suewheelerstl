@@ -6,14 +6,14 @@ import { CTABlock } from "@/components/CTABlock";
 
 export const metadata: Metadata = {
   title:
-    "How Much Does Wood Refinishing Cost in St. Louis? (2025 Price Guide) | Sue Wheeler Wood Refinishing",
+    "Why Refinishing Beats Replacement — The Case for Keeping Your Original Woodwork | Sue Wheeler",
   description:
-    "Door refinishing, staircase refinishing, and cabinet refinishing costs in St. Louis — realistic ranges, what affects the price, and why refinishing original wood is almost always cheaper than replacing it.",
+    "New woodwork is made from plantation-grown lumber with wide grain and soft wood. The fir and oak in your St. Louis home is old-growth — tighter, denser, and irreplaceable. Here is why that matters.",
   openGraph: {
     title:
-      "How Much Does Wood Refinishing Cost in St. Louis? (2025 Price Guide)",
+      "Why Refinishing Beats Replacement — The Case for Keeping Your Original Woodwork",
     description:
-      "Door refinishing, staircase refinishing, and cabinet refinishing costs in St. Louis — realistic ranges, what affects the price, and why refinishing original wood is almost always cheaper than replacing it.",
+      "New woodwork is made from plantation-grown lumber with wide grain and soft wood. The fir and oak in your St. Louis home is old-growth — tighter, denser, and irreplaceable. Here is why that matters.",
     url: "https://suewheelerstl.com/blog/wood-refinishing-cost-st-louis",
     type: "article",
   },
@@ -23,12 +23,12 @@ const articleSchema = {
   "@context": "https://schema.org",
   "@type": "Article",
   headline:
-    "How Much Does Wood Refinishing Cost in St. Louis? (2025 Price Guide)",
+    "Why Refinishing Beats Replacement — The Case for Keeping Your Original Woodwork",
   description:
-    "Door refinishing, staircase refinishing, and cabinet refinishing costs in St. Louis — realistic ranges, what affects the price, and why refinishing original wood is almost always cheaper than replacing it.",
+    "New woodwork is made from plantation-grown lumber with wide grain and soft wood. The fir and oak in your St. Louis home is old-growth — tighter, denser, and irreplaceable. Here is why that matters.",
   url: "https://suewheelerstl.com/blog/wood-refinishing-cost-st-louis",
-  datePublished: "2025-04-17",
-  dateModified: "2025-04-17",
+  datePublished: "2026-04-19",
+  dateModified: "2026-04-19",
   author: {
     "@type": "Person",
     name: "Sue Wheeler",
@@ -47,28 +47,29 @@ const articleSchema = {
 
 const faqItems = [
   {
-    question: "Do you give free estimates?",
+    question: "Is old-growth wood really different from new wood?",
     answer:
-      "Yes, always. There is no charge for an estimate and no obligation to proceed. For most projects, Sue visits the home to look at the scope in person — condition of the existing finish, number of pieces, lead paint considerations, and any special requirements like stain matching or on-site versus off-site work. A written estimate follows. We do not quote over the phone without seeing the work first, because scope varies significantly and we would rather give you an accurate number than a guess.",
+      "Yes — significantly. Old-growth Douglas fir, which built most of St. Louis's pre-1960 homes, grew for 200 to 400 years before harvest. The result is grain that runs 8 to 16 rings per inch, compared to 2 to 4 rings per inch in plantation pine grown for 30 years and cut. Tighter grain means greater density, higher hardness, more dimensional stability, and better resistance to moisture movement. Plantation lumber is not a substitute. It is a different material.",
   },
   {
-    question: "Is there a deposit required?",
+    question:
+      "What happens to the original wood if I replace instead of refinish?",
     answer:
-      "Yes. A deposit is required to schedule the project and reserve the time on the calendar. The deposit amount and payment schedule are outlined in the written estimate before any work begins. There are no surprises on the invoice — the final price matches the estimate unless the scope changes during the project, in which case we discuss it with you before proceeding.",
+      "It goes to a landfill. There is no salvage market for old interior woodwork at scale. The door, the staircase tread, the cabinet face frame — it gets torn out and discarded. And what replaces it is almost always inferior: MDF carcasses with veneer faces, particleboard shelving, plantation pine dressed up with a factory finish. The replacement looks newer. It is not better.",
   },
   {
-    question: "Does lead paint make the project more expensive?",
+    question: "Can refinished wood last as long as new wood?",
     answer:
-      "Yes, modestly. EPA RRP Rule compliance — containment setup, HEPA vacuuming, compliant waste disposal, and written documentation — adds time and material cost to the project. For most single-room or single-door projects, this addition is not dramatic. For larger projects with extensive surface area and multiple rooms, containment setup is a more significant line item. We itemize this in every estimate for a pre-1978 home so you can see exactly what you are paying for.",
+      "Yes — and the framing of that question actually gets it backwards. The wood in your home has already lasted 80 to 120 years. It has proven itself. A refinished piece with properly applied finish coats will continue to last for decades. The question is not whether old wood can last — it is whether new wood will.",
   },
   {
-    question: "How long after the estimate until the project starts?",
+    question: "What if my woodwork is damaged — can it still be refinished?",
     answer:
-      "That depends on scheduling. We typically have a backlog of several weeks, which reflects the volume of ongoing work rather than a delay. Once an estimate is accepted and a deposit is received, the project is scheduled. We give you a start date and a realistic completion timeline at that point. We do not start projects without a clear schedule commitment on both sides.",
+      "Minor damage — scratches, dents, areas of worn finish, surface checking — is exactly what refinishing is for. That is the normal scope of a refinishing project. Structural damage such as rot through the core or severe warping from water intrusion is a different conversation. Even then, the decision deserves honest evaluation before automatic replacement. In 36 years, I have seen far more wood declared unsalvageable that was not than wood that was genuinely beyond saving.",
   },
 ];
 
-export default function CostGuidePage() {
+export default function WhyRefinishingBeatReplacementPage() {
   return (
     <>
       <BreadcrumbSchema
@@ -76,7 +77,7 @@ export default function CostGuidePage() {
           { name: "Home", url: "https://suewheelerstl.com" },
           { name: "Blog", url: "https://suewheelerstl.com/blog" },
           {
-            name: "How Much Does Wood Refinishing Cost in St. Louis?",
+            name: "Why Refinishing Beats Replacement",
             url: "https://suewheelerstl.com/blog/wood-refinishing-cost-st-louis",
           },
         ]}
@@ -91,7 +92,7 @@ export default function CostGuidePage() {
       <section className="py-20 px-6 bg-[#EBE6DE]">
         <div className="max-w-3xl mx-auto">
           <p className="text-xs font-sans font-semibold uppercase tracking-widest text-[#11B2E8] mb-4">
-            2025 Price Guide
+            Why Original Wood Wins
           </p>
           <h1
             style={{
@@ -100,10 +101,10 @@ export default function CostGuidePage() {
             }}
             className="text-4xl md:text-5xl text-[#2A2421] mb-6 leading-tight"
           >
-            How Much Does Wood Refinishing Cost in St. Louis?
+            New wood is not better wood.
           </h1>
           <p className="text-sm font-sans text-[#6B5E55]">
-            By Sue Wheeler · April 2025 · 6 min read
+            By Sue Wheeler · April 2026 · 7 min read
           </p>
         </div>
       </section>
@@ -114,83 +115,20 @@ export default function CostGuidePage() {
           {/* Lead paragraph */}
           <div className="border-l-4 border-[#11B2E8] pl-6">
             <p className="text-[#2A2421] font-sans leading-relaxed text-base">
-              Wood refinishing costs vary significantly by service type, scope,
-              and condition of the existing finish. The only reliable way to get
-              an accurate number for your specific project is a free in-person
-              estimate — and that is exactly what we provide. But if you want
-              realistic ballpark ranges before you make that call, this guide
-              covers what different projects actually cost in St. Louis in 2025,
-              and what drives the price in each category.
+              The most common mistake I see homeowners make — and the one that
+              costs them the most — is replacing original woodwork because they
+              assume new must mean better. It does not. The doors, staircases,
+              and cabinets in a pre-1960 St. Louis home are made from old-growth
+              timber that cannot be sourced today at any price. Refinishing
+              preserves it. Replacement destroys it and substitutes something
+              inferior.
             </p>
           </div>
 
-          {/* Quick reference box */}
-          <div className="border border-[rgba(42,36,33,0.15)] bg-white rounded-sm overflow-hidden">
-            <div className="px-6 py-4 bg-[#2A2421]">
-              <p
-                style={{
-                  fontFamily: '"Playfair Display", Georgia, serif',
-                  fontWeight: 400,
-                }}
-                className="text-xl text-white"
-              >
-                At a glance: typical cost ranges
-              </p>
-            </div>
-            <div className="divide-y divide-[rgba(42,36,33,0.1)]">
-              <div className="px-6 py-4 flex justify-between items-center">
-                <span className="font-sans text-[#2A2421] font-medium">
-                  Front door (exterior)
-                </span>
-                <span className="font-sans text-[#11B2E8] font-semibold">
-                  Varies by condition &amp; scope
-                </span>
-              </div>
-              <div className="px-6 py-4 flex justify-between items-center">
-                <span className="font-sans text-[#2A2421] font-medium">
-                  Interior doors (per door)
-                </span>
-                <span className="font-sans text-[#11B2E8] font-semibold">
-                  Per-unit pricing
-                </span>
-              </div>
-              <div className="px-6 py-4 flex justify-between items-center">
-                <span className="font-sans text-[#2A2421] font-medium">
-                  Staircase refinishing
-                </span>
-                <span className="font-sans text-[#11B2E8] font-semibold">
-                  $300–$1,500+
-                </span>
-              </div>
-              <div className="px-6 py-4 flex justify-between items-center">
-                <span className="font-sans text-[#2A2421] font-medium">
-                  Kitchen cabinet refinishing
-                </span>
-                <span className="font-sans text-[#11B2E8] font-semibold">
-                  Fraction of replacement cost
-                </span>
-              </div>
-              <div className="px-6 py-4 flex justify-between items-center">
-                <span className="font-sans text-[#2A2421] font-medium">
-                  Architectural woodwork
-                </span>
-                <span className="font-sans text-[#11B2E8] font-semibold">
-                  Project-dependent
-                </span>
-              </div>
-            </div>
-            <div className="px-6 py-4 bg-[#F8F6F1]">
-              <p className="font-sans text-sm text-[#6B5E55]">
-                All pricing requires in-person estimate. Lead paint compliance,
-                condition, and stain matching affect final cost.
-              </p>
-            </div>
-          </div>
-
-          {/* Section 1: Doors */}
+          {/* Section 1: The wood itself */}
           <div>
             <p className="text-xs font-sans font-semibold uppercase tracking-widest text-[#11B2E8] mb-3">
-              Door Refinishing
+              The Material
             </p>
             <h2
               style={{
@@ -199,585 +137,23 @@ export default function CostGuidePage() {
               }}
               className="text-3xl text-[#2A2421] mb-6"
             >
-              Door refinishing cost
+              What old-growth wood actually is
             </h2>
             <p className="text-[#2A2421] font-sans leading-relaxed text-base mb-6">
-              Doors are the most common single-piece refinishing project we take
-              on — and also the one with the widest cost range, because no two
-              doors arrive in the same condition or require the same scope of
-              work.
-            </p>
-
-            <div className="space-y-5 mb-6">
-              <div className="border border-[rgba(42,36,33,0.15)] bg-white rounded-sm p-6">
-                <h3
-                  style={{
-                    fontFamily: '"Playfair Display", Georgia, serif',
-                    fontWeight: 400,
-                  }}
-                  className="text-xl text-[#2A2421] mb-3"
-                >
-                  Front door (exterior)
-                </h3>
-                <p className="text-[#6B5E55] font-sans leading-relaxed text-base mb-3">
-                  Exterior doors take more abuse than any other piece of
-                  woodwork in the home — UV exposure, moisture cycling, and
-                  temperature extremes degrade finish faster than interior
-                  conditions. A front door refinish includes stripping the old
-                  finish, sanding to a clean substrate, any necessary wood
-                  repair, staining (or clear finish), and application of an
-                  exterior-grade topcoat designed to move with the wood.
-                </p>
-                <p className="text-[#6B5E55] font-sans leading-relaxed text-base mb-3">
-                  Cost drivers for exterior doors: the number of layers of old
-                  paint or varnish, whether the door includes glass panels with
-                  detailed surrounding molding, whether the frame and casing are
-                  included, and whether lead paint containment and disposal are
-                  required.
-                </p>
-                <p className="text-[#2A2421] font-sans font-medium text-base">
-                  A single front door, door only (not frame), in average
-                  condition: several hundred dollars. With frame, sidelights,
-                  and multiple paint layers including lead, the price increases
-                  accordingly. Free estimate is the right first step.
-                </p>
-              </div>
-
-              <div className="border border-[rgba(42,36,33,0.15)] bg-white rounded-sm p-6">
-                <h3
-                  style={{
-                    fontFamily: '"Playfair Display", Georgia, serif',
-                    fontWeight: 400,
-                  }}
-                  className="text-xl text-[#2A2421] mb-3"
-                >
-                  Interior doors
-                </h3>
-                <p className="text-[#6B5E55] font-sans leading-relaxed text-base mb-3">
-                  Interior doors — particularly original five-panel or six-panel
-                  fir doors common in pre-1920 St. Louis homes — are priced per
-                  unit. The condition of the existing finish matters a great
-                  deal: a door with two layers of old varnish is a different job
-                  than one with six layers of paint accumulated over 80 years.
-                </p>
-                <p className="text-[#6B5E55] font-sans leading-relaxed text-base mb-3">
-                  Multiple-door projects benefit from consolidated scheduling —
-                  stripping and finishing a set of eight doors in one visit is
-                  more efficient than individual trips. We discuss project scope
-                  and scheduling options during the estimate.
-                </p>
-                <p className="text-[#2A2421] font-sans font-medium text-base">
-                  Per-door pricing varies by door type, condition, and finish
-                  selected. Projects involving stain matching to adjacent
-                  woodwork carry a premium for the color work required to
-                  achieve a seamless match.
-                </p>
-              </div>
-            </div>
-
-            <div className="bg-[#EBE6DE] border-l-4 border-[#11B2E8] p-5 rounded-sm">
-              <p className="font-sans text-[#2A2421] leading-relaxed text-sm">
-                <strong>On stain matching:</strong> Matching a new door finish
-                to existing woodwork — adjacent trim, a staircase, a built-in —
-                takes more time and material than a standard single color. We do
-                this routinely in St. Louis historic homes and it is well worth
-                doing correctly. A door that is visibly off in tone reads wrong
-                to everyone who walks through the entry.
-              </p>
-            </div>
-          </div>
-
-          {/* Section 2: Staircases */}
-          <div>
-            <p className="text-xs font-sans font-semibold uppercase tracking-widest text-[#11B2E8] mb-3">
-              Staircase Refinishing
-            </p>
-            <h2
-              style={{
-                fontFamily: '"Playfair Display", Georgia, serif',
-                fontWeight: 400,
-              }}
-              className="text-3xl text-[#2A2421] mb-6"
-            >
-              Staircase refinishing cost
-            </h2>
-            <p className="text-[#2A2421] font-sans leading-relaxed text-base mb-6">
-              Staircases are among the most labor-intensive refinishing projects
-              — and among the most transformative. In a historic St. Louis home,
-              a properly refinished staircase is often the architectural
-              centerpiece. The range is wide because the scope variables are
-              significant.
-            </p>
-
-            <div className="border border-[rgba(42,36,33,0.15)] bg-white rounded-sm p-6 mb-6">
-              <h3
-                style={{
-                  fontFamily: '"Playfair Display", Georgia, serif',
-                  fontWeight: 400,
-                }}
-                className="text-xl text-[#2A2421] mb-4"
-              >
-                Cost range: $300 to $1,500 and up
-              </h3>
-              <p className="text-[#6B5E55] font-sans leading-relaxed text-base mb-4">
-                This range reflects the significant variation in staircase
-                scope. A short run of eight treads with a simple railing and
-                plain square balusters is a different job than a 16-tread main
-                stair with turned balusters, carved newel post, and shaped
-                handrail in need of complete stripping.
-              </p>
-              <div className="space-y-3">
-                <p className="font-sans font-semibold text-[#2A2421] text-base mb-2">
-                  What drives staircase cost:
-                </p>
-                <ul className="space-y-3 font-sans text-[#6B5E55] leading-relaxed text-base">
-                  <li className="flex gap-3">
-                    <span className="text-[#11B2E8] font-bold shrink-0">—</span>
-                    <span>
-                      <strong className="text-[#2A2421]">Tread count.</strong>{" "}
-                      More treads equal more square footage of stripping and
-                      finishing. Simple math, but it adds up.
-                    </span>
-                  </li>
-                  <li className="flex gap-3">
-                    <span className="text-[#11B2E8] font-bold shrink-0">—</span>
-                    <span>
-                      <strong className="text-[#2A2421]">
-                        Spindle / baluster count and profile.
-                      </strong>{" "}
-                      Plain square balusters are fast. Turned spindles with
-                      details require careful hand work on each one to strip
-                      without blurring the profile. A 16-tread stair with three
-                      balusters per tread is 48 individual spindles, each
-                      needing individual attention.
-                    </span>
-                  </li>
-                  <li className="flex gap-3">
-                    <span className="text-[#11B2E8] font-bold shrink-0">—</span>
-                    <span>
-                      <strong className="text-[#2A2421]">Newel post.</strong>{" "}
-                      Carved or turned newel posts are the most labor-intensive
-                      single component of any staircase — lots of profile
-                      detail, deep recesses that require careful hand work, and
-                      significant visual impact if not done right.
-                    </span>
-                  </li>
-                  <li className="flex gap-3">
-                    <span className="text-[#11B2E8] font-bold shrink-0">—</span>
-                    <span>
-                      <strong className="text-[#2A2421]">
-                        Railing profile.
-                      </strong>{" "}
-                      A simple round handrail is faster than a shaped bullnose
-                      rail with cove profiles. The finish needs to get into
-                      every surface.
-                    </span>
-                  </li>
-                  <li className="flex gap-3">
-                    <span className="text-[#11B2E8] font-bold shrink-0">—</span>
-                    <span>
-                      <strong className="text-[#2A2421]">
-                        Current finish condition.
-                      </strong>{" "}
-                      A staircase with one worn coat of varnish takes less work
-                      than one painted over multiple times. In pre-1978 homes,
-                      multiple paint layers almost certainly include lead paint,
-                      which adds containment and disposal requirements.
-                    </span>
-                  </li>
-                  <li className="flex gap-3">
-                    <span className="text-[#11B2E8] font-bold shrink-0">—</span>
-                    <span>
-                      <strong className="text-[#2A2421]">
-                        Finish type selected.
-                      </strong>{" "}
-                      Oil-based varnish, water-based polyurethane, and
-                      penetrating oil finishes each have different material
-                      costs and application requirements. We discuss options and
-                      their trade-offs during the estimate.
-                    </span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            <p className="text-[#2A2421] font-sans leading-relaxed text-base">
-              Staircases in continuous use cannot simply be taken out of service
-              for a week. We schedule staircase work in phases — completing one
-              half at a time and alternating treads if needed — so the stair
-              remains usable throughout the project. This adds to the project
-              duration but is standard practice for occupied homes.
-            </p>
-          </div>
-
-          {/* Section 3: Cabinets */}
-          <div>
-            <p className="text-xs font-sans font-semibold uppercase tracking-widest text-[#11B2E8] mb-3">
-              Kitchen Cabinet Refinishing
-            </p>
-            <h2
-              style={{
-                fontFamily: '"Playfair Display", Georgia, serif',
-                fontWeight: 400,
-              }}
-              className="text-3xl text-[#2A2421] mb-6"
-            >
-              Kitchen cabinet refinishing cost
-            </h2>
-            <p className="text-[#2A2421] font-sans leading-relaxed text-base mb-6">
-              Kitchen cabinet refinishing is the project where the comparison to
-              replacement is most stark — and most in favor of refinishing.
-            </p>
-
-            <div className="bg-[#2A2421] text-white rounded-sm p-8 mb-6">
-              <h3
-                style={{
-                  fontFamily: '"Playfair Display", Georgia, serif',
-                  fontWeight: 400,
-                }}
-                className="text-2xl mb-4"
-              >
-                The replacement math
-              </h3>
-              <p className="font-sans text-[#EBE6DE] leading-relaxed text-base mb-4">
-                New kitchen cabinets — stock cabinets installed — typically run
-                $15,000 to $30,000 for a full kitchen. Semi-custom runs $20,000
-                to $50,000. Custom cabinetry can exceed $100,000.
-              </p>
-              <p className="font-sans text-[#EBE6DE] leading-relaxed text-base mb-4">
-                Refinishing the original solid-wood cabinets in a historic St.
-                Louis home costs a fraction of that — typically in the range of
-                a few thousand dollars for a full kitchen, depending on door
-                count, condition, and finish type selected.
-              </p>
-              <p className="font-sans text-[#9e9087] leading-relaxed text-sm">
-                And the original cabinets — if they are solid old-growth wood —
-                are better than most of what you would replace them with.
-                Today's production cabinets are primarily MDF or plywood
-                carcasses with veneer or thermofoil faces. Original solid wood
-                cabinets from a 1920s kitchen are a different category of
-                material.
-              </p>
-            </div>
-
-            <div className="space-y-5 mb-6">
-              <div className="border border-[rgba(42,36,33,0.15)] bg-white rounded-sm p-6">
-                <h3
-                  style={{
-                    fontFamily: '"Playfair Display", Georgia, serif',
-                    fontWeight: 400,
-                  }}
-                  className="text-xl text-[#2A2421] mb-3"
-                >
-                  Painted vs. stained finish
-                </h3>
-                <p className="text-[#6B5E55] font-sans leading-relaxed text-base">
-                  Cabinet refinishing can go two directions: a painted finish or
-                  a stained-and-clear-coated finish that shows the wood grain.
-                  Painted finishes require meticulous surface prep and primer
-                  work to achieve a factory-smooth result; the wood grain
-                  beneath must be sealed fully. Stained finishes require
-                  stripping back to bare wood, color work, and clear topcoat.
-                  Both are valid choices — the decision comes down to the
-                  kitchen's style and what the homeowner wants. We discuss both
-                  options at the estimate.
-                </p>
-              </div>
-
-              <div className="border border-[rgba(42,36,33,0.15)] bg-white rounded-sm p-6">
-                <h3
-                  style={{
-                    fontFamily: '"Playfair Display", Georgia, serif',
-                    fontWeight: 400,
-                  }}
-                  className="text-xl text-[#2A2421] mb-3"
-                >
-                  What affects cabinet project cost
-                </h3>
-                <ul className="space-y-3 font-sans text-[#6B5E55] leading-relaxed text-base">
-                  <li className="flex gap-3">
-                    <span className="text-[#11B2E8] font-bold shrink-0">—</span>
-                    <span>
-                      <strong className="text-[#2A2421]">Door count.</strong>{" "}
-                      Per-door pricing is the base unit. A kitchen with 24 doors
-                      is a larger project than one with 12.
-                    </span>
-                  </li>
-                  <li className="flex gap-3">
-                    <span className="text-[#11B2E8] font-bold shrink-0">—</span>
-                    <span>
-                      <strong className="text-[#2A2421]">
-                        Door profile complexity.
-                      </strong>{" "}
-                      A flat-panel Shaker door is faster to strip and finish
-                      than a raised-panel door with detailed molding around the
-                      perimeter. Profile work takes time when done correctly.
-                    </span>
-                  </li>
-                  <li className="flex gap-3">
-                    <span className="text-[#11B2E8] font-bold shrink-0">—</span>
-                    <span>
-                      <strong className="text-[#2A2421]">
-                        Whether cabinet boxes are included.
-                      </strong>{" "}
-                      Door refinishing alone is one scope; including face
-                      frames, drawer fronts, and exposed box sides is a larger
-                      scope.
-                    </span>
-                  </li>
-                  <li className="flex gap-3">
-                    <span className="text-[#11B2E8] font-bold shrink-0">—</span>
-                    <span>
-                      <strong className="text-[#2A2421]">
-                        Existing finish condition.
-                      </strong>{" "}
-                      Kitchens accumulate grease, moisture damage, and multiple
-                      layers of old finish. Heavy buildup takes more stripping
-                      time.
-                    </span>
-                  </li>
-                  <li className="flex gap-3">
-                    <span className="text-[#11B2E8] font-bold shrink-0">—</span>
-                    <span>
-                      <strong className="text-[#2A2421]">Lead paint.</strong>{" "}
-                      Pre-1978 kitchen cabinets almost certainly have lead
-                      paint. RRP compliance adds to the cost but is legally
-                      required and genuinely necessary in a food-preparation
-                      environment.
-                    </span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          {/* Section 4: Architectural woodwork */}
-          <div>
-            <p className="text-xs font-sans font-semibold uppercase tracking-widest text-[#11B2E8] mb-3">
-              Architectural Woodwork
-            </p>
-            <h2
-              style={{
-                fontFamily: '"Playfair Display", Georgia, serif',
-                fontWeight: 400,
-              }}
-              className="text-3xl text-[#2A2421] mb-6"
-            >
-              Built-ins, wainscoting, millwork, and mantels
-            </h2>
-            <p className="text-[#2A2421] font-sans leading-relaxed text-base mb-6">
-              Architectural woodwork — built-in bookcases, wainscoting panels,
-              fireplace mantels, window and door millwork, and ornamental trim —
-              is scope-dependent and assessed project by project. These are the
-              pieces that define a historic home's character more than anything
-              else, and they are also among the most sensitive to poor
-              refinishing technique.
+              Old-growth timber is wood from trees that grew slowly, over
+              centuries, before being harvested. The Douglas fir that frames St.
+              Louis's historic homes — the fir in your doors, your window
+              surrounds, your stair treads — grew for 200 to 400 years before it
+              was cut. Quarter-sawn white oak, American chestnut, and long-leaf
+              yellow pine from that same era share the same characteristic:
+              extraordinarily tight grain.
             </p>
             <p className="text-[#2A2421] font-sans leading-relaxed text-base mb-6">
-              Pricing depends on linear footage of molding, square footage of
-              paneled surface, number of distinct profiles, existing finish
-              condition, and whether the work is done on-site or requires
-              removal. Most built-ins and wainscoting are finished in place —
-              they cannot be removed without damaging the surrounding structure.
-            </p>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
-              <div className="border border-[rgba(42,36,33,0.15)] bg-white rounded-sm p-5">
-                <p className="font-sans font-semibold text-[#2A2421] mb-2">
-                  Built-in bookcases and cabinetry
-                </p>
-                <p className="font-sans text-[#6B5E55] text-sm leading-relaxed">
-                  Assessed by size and detail. A simple painted built-in with
-                  flat-panel doors is different from a floor-to-ceiling oak
-                  bookcase with carved pilasters and glazed upper cabinets.
-                </p>
-              </div>
-              <div className="border border-[rgba(42,36,33,0.15)] bg-white rounded-sm p-5">
-                <p className="font-sans font-semibold text-[#2A2421] mb-2">
-                  Wainscoting and paneling
-                </p>
-                <p className="font-sans text-[#6B5E55] text-sm leading-relaxed">
-                  Priced by square footage and profile complexity. Beadboard is
-                  simpler; raised-panel wainscoting with cap rail and base
-                  requires more individual detail work.
-                </p>
-              </div>
-              <div className="border border-[rgba(42,36,33,0.15)] bg-white rounded-sm p-5">
-                <p className="font-sans font-semibold text-[#2A2421] mb-2">
-                  Fireplace mantels
-                </p>
-                <p className="font-sans text-[#6B5E55] text-sm leading-relaxed">
-                  High-impact, high-detail work. Original mantels in historic
-                  St. Louis homes often have carved ornament and pilaster
-                  details that require individual attention at every profile.
-                </p>
-              </div>
-              <div className="border border-[rgba(42,36,33,0.15)] bg-white rounded-sm p-5">
-                <p className="font-sans font-semibold text-[#2A2421] mb-2">
-                  Window and door millwork
-                </p>
-                <p className="font-sans text-[#6B5E55] text-sm leading-relaxed">
-                  Casing, aprons, stools, and surrounds — typically priced per
-                  opening or by linear foot depending on complexity and
-                  condition.
-                </p>
-              </div>
-            </div>
-
-            <p className="text-[#2A2421] font-sans leading-relaxed text-base">
-              All architectural woodwork projects are estimated in person. There
-              is no reliable way to price this category without seeing it —
-              photographs help, but the condition of the existing finish, the
-              number of profile transitions, and the site access situation all
-              affect the estimate in ways that cannot be assessed remotely.
-            </p>
-          </div>
-
-          {/* Section 5: What affects cost */}
-          <div>
-            <p className="text-xs font-sans font-semibold uppercase tracking-widest text-[#11B2E8] mb-3">
-              Cost Factors
-            </p>
-            <h2
-              style={{
-                fontFamily: '"Playfair Display", Georgia, serif',
-                fontWeight: 400,
-              }}
-              className="text-3xl text-[#2A2421] mb-6"
-            >
-              What affects the cost of any refinishing project
-            </h2>
-            <p className="text-[#2A2421] font-sans leading-relaxed text-base mb-6">
-              Across all project types, these are the variables that move the
-              price up or down most significantly:
-            </p>
-
-            <div className="space-y-3 mb-6">
-              <div className="border border-[rgba(42,36,33,0.15)] bg-white rounded-sm p-5 flex gap-4">
-                <span className="text-[#A65D37] font-sans font-bold text-lg mt-0.5 shrink-0">
-                  01
-                </span>
-                <div>
-                  <p className="font-sans font-semibold text-[#2A2421] mb-1">
-                    Condition of the existing finish
-                  </p>
-                  <p className="font-sans text-[#6B5E55] text-sm leading-relaxed">
-                    Stripping one coat of worn varnish is a different job than
-                    removing six layers of oil paint, latex, and shellac
-                    accumulated over 100 years. The condition of the current
-                    finish is the single biggest variable in labor cost.
-                  </p>
-                </div>
-              </div>
-
-              <div className="border border-[rgba(42,36,33,0.15)] bg-white rounded-sm p-5 flex gap-4">
-                <span className="text-[#A65D37] font-sans font-bold text-lg mt-0.5 shrink-0">
-                  02
-                </span>
-                <div>
-                  <p className="font-sans font-semibold text-[#2A2421] mb-1">
-                    Lead paint presence
-                  </p>
-                  <p className="font-sans text-[#6B5E55] text-sm leading-relaxed">
-                    EPA RRP Rule compliance adds containment setup, HEPA
-                    cleaning, and documented disposal to every pre-1978 project.
-                    This is a real cost — but it is also a legal requirement and
-                    a genuine health necessity. Projects with lead paint will
-                    cost more than comparable projects without it.
-                  </p>
-                </div>
-              </div>
-
-              <div className="border border-[rgba(42,36,33,0.15)] bg-white rounded-sm p-5 flex gap-4">
-                <span className="text-[#A65D37] font-sans font-bold text-lg mt-0.5 shrink-0">
-                  03
-                </span>
-                <div>
-                  <p className="font-sans font-semibold text-[#2A2421] mb-1">
-                    On-site vs. off-site work
-                  </p>
-                  <p className="font-sans text-[#6B5E55] text-sm leading-relaxed">
-                    Some pieces can be removed and worked in a controlled
-                    off-site setting; others must be finished in place. On-site
-                    work in an occupied home involves setup, containment, and
-                    cleanup that off-site work does not. Doors are typically the
-                    one piece that can often be worked off-site.
-                  </p>
-                </div>
-              </div>
-
-              <div className="border border-[rgba(42,36,33,0.15)] bg-white rounded-sm p-5 flex gap-4">
-                <span className="text-[#A65D37] font-sans font-bold text-lg mt-0.5 shrink-0">
-                  04
-                </span>
-                <div>
-                  <p className="font-sans font-semibold text-[#2A2421] mb-1">
-                    Number of pieces and project scope
-                  </p>
-                  <p className="font-sans text-[#6B5E55] text-sm leading-relaxed">
-                    A single door and a set of eight doors involve the same
-                    setup per visit but very different total labor. Larger
-                    projects have more predictable per-unit costs because setup
-                    is amortized across more pieces.
-                  </p>
-                </div>
-              </div>
-
-              <div className="border border-[rgba(42,36,33,0.15)] bg-white rounded-sm p-5 flex gap-4">
-                <span className="text-[#A65D37] font-sans font-bold text-lg mt-0.5 shrink-0">
-                  05
-                </span>
-                <div>
-                  <p className="font-sans font-semibold text-[#2A2421] mb-1">
-                    Stain matching required
-                  </p>
-                  <p className="font-sans text-[#6B5E55] text-sm leading-relaxed">
-                    Matching a new door or set of cabinets to existing woodwork
-                    requires color work — mixing, testing, adjusting — that adds
-                    time. When matching is done well, it is invisible. When it
-                    is not done, it is always visible.
-                  </p>
-                </div>
-              </div>
-
-              <div className="border border-[rgba(42,36,33,0.15)] bg-white rounded-sm p-5 flex gap-4">
-                <span className="text-[#A65D37] font-sans font-bold text-lg mt-0.5 shrink-0">
-                  06
-                </span>
-                <div>
-                  <p className="font-sans font-semibold text-[#2A2421] mb-1">
-                    Finish type selected
-                  </p>
-                  <p className="font-sans text-[#6B5E55] text-sm leading-relaxed">
-                    Oil-based finishes typically require longer dry times
-                    between coats, adding to project duration. Water-based
-                    finishes dry faster. Penetrating oils and wax finishes have
-                    different material costs. We discuss the trade-offs for each
-                    application during the estimate.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Section 6: Refinishing vs replacement */}
-          <div>
-            <p className="text-xs font-sans font-semibold uppercase tracking-widest text-[#11B2E8] mb-3">
-              The Better Investment
-            </p>
-            <h2
-              style={{
-                fontFamily: '"Playfair Display", Georgia, serif',
-                fontWeight: 400,
-              }}
-              className="text-3xl text-[#2A2421] mb-6"
-            >
-              Refinishing vs. replacement: the honest comparison
-            </h2>
-            <p className="text-[#2A2421] font-sans leading-relaxed text-base mb-6">
-              Refinishing original solid wood is almost always the better
-              economic choice. It is also, for original old-growth wood, the
-              better choice on every other measure.
+              Grain density is measured in rings per inch. Old-growth Douglas
+              fir runs 8 to 16 rings per inch. Plantation pine — what goes into
+              today's production millwork and furniture-grade lumber — runs 2 to
+              4 rings per inch. That is four times the wood, per inch of
+              cross-section, in the original material.
             </p>
 
             <div className="bg-[#EBE6DE] rounded-sm p-7 mb-6">
@@ -788,55 +164,339 @@ export default function CostGuidePage() {
                 }}
                 className="text-xl text-[#2A2421] mb-4"
               >
-                The wood in a St. Louis historic home cannot be replaced with
-                equivalent wood
+                What tighter grain means in practice
               </p>
-              <p className="text-[#2A2421] font-sans leading-relaxed text-base mb-4">
-                Old-growth Douglas fir, quarter-sawn white oak, American
-                chestnut — the timber that built St. Louis's historic homes in
-                the 1880s through 1920s — grew for 200 to 300 years before it
-                was cut. The grain is four to five times tighter than new-growth
-                lumber. It is harder, more stable, and more beautiful. It is not
-                available today at any price from a standard lumber supplier.
+              <ul className="space-y-3 font-sans text-[#2A2421] leading-relaxed text-base">
+                <li className="flex gap-3">
+                  <span className="text-[#A65D37] font-bold shrink-0">—</span>
+                  <span>
+                    <strong>Greater hardness.</strong> Tighter grain means more
+                    wood fiber per unit area. The surface is harder, more
+                    resistant to denting and scratching, and holds finish better
+                    over decades.
+                  </span>
+                </li>
+                <li className="flex gap-3">
+                  <span className="text-[#A65D37] font-bold shrink-0">—</span>
+                  <span>
+                    <strong>Dimensional stability.</strong> Slow-grown wood
+                    moves less with changes in humidity than fast-grown wood.
+                    Exterior doors and stair treads in 100-year-old homes still
+                    fit their openings. Fast-grown lumber warps, cups, and
+                    twists at a rate old-growth does not.
+                  </span>
+                </li>
+                <li className="flex gap-3">
+                  <span className="text-[#A65D37] font-bold shrink-0">—</span>
+                  <span>
+                    <strong>Natural figure and character.</strong> Tight grain
+                    produces the figure — the wave and shimmer — visible in
+                    quarter-sawn oak, the fine lines in fir, the depth in old
+                    chestnut. Plantation lumber is relatively featureless.
+                  </span>
+                </li>
+                <li className="flex gap-3">
+                  <span className="text-[#A65D37] font-bold shrink-0">—</span>
+                  <span>
+                    <strong>120 years of patina.</strong> The wood has
+                    stabilized. It has completed its initial movement. It has
+                    developed a surface depth that new lumber, no matter how
+                    well finished, cannot replicate for years.
+                  </span>
+                </li>
+              </ul>
+            </div>
+
+            <p className="text-[#2A2421] font-sans leading-relaxed text-base">
+              This timber is not available from standard lumber suppliers. The
+              old-growth forests that produced it were harvested over a century
+              ago. What you have in your home — if it was built before 1960 and
+              the original woodwork is intact — is irreplaceable in any
+              practical sense. You cannot go buy more of it.
+            </p>
+          </div>
+
+          {/* Section 2: What replacement actually means */}
+          <div>
+            <p className="text-xs font-sans font-semibold uppercase tracking-widest text-[#11B2E8] mb-3">
+              The Replacement Reality
+            </p>
+            <h2
+              style={{
+                fontFamily: '"Playfair Display", Georgia, serif',
+                fontWeight: 400,
+              }}
+              className="text-3xl text-[#2A2421] mb-6"
+            >
+              What replacement actually gets you
+            </h2>
+            <p className="text-[#2A2421] font-sans leading-relaxed text-base mb-6">
+              When a homeowner replaces original woodwork, the new material is
+              almost always one of the following:
+            </p>
+
+            <div className="space-y-4 mb-6">
+              <div className="border border-[rgba(42,36,33,0.15)] bg-white rounded-sm p-6">
+                <h3
+                  style={{
+                    fontFamily: '"Playfair Display", Georgia, serif',
+                    fontWeight: 400,
+                  }}
+                  className="text-xl text-[#2A2421] mb-3"
+                >
+                  MDF and particleboard
+                </h3>
+                <p className="text-[#6B5E55] font-sans leading-relaxed text-base">
+                  Most kitchen cabinets sold today — including high-end
+                  production lines — use MDF (medium-density fiberboard) or
+                  particleboard for the carcass and shelving. These are
+                  compressed wood fiber products. They have no grain. They
+                  cannot be refinished when the surface is damaged. They expand
+                  and swell when exposed to moisture. They hold screws poorly
+                  compared to solid wood. They are cheaper to manufacture. They
+                  are not better materials.
+                </p>
+              </div>
+
+              <div className="border border-[rgba(42,36,33,0.15)] bg-white rounded-sm p-6">
+                <h3
+                  style={{
+                    fontFamily: '"Playfair Display", Georgia, serif',
+                    fontWeight: 400,
+                  }}
+                  className="text-xl text-[#2A2421] mb-3"
+                >
+                  Plantation pine and fast-grown softwoods
+                </h3>
+                <p className="text-[#6B5E55] font-sans leading-relaxed text-base">
+                  Production millwork — door frames, base molding, window
+                  casing, interior doors — is typically plantation pine grown
+                  for 20 to 30 years. The grain is wide, the wood is soft, and
+                  it dents easily. A new solid-wood door from a big-box supplier
+                  is softer than the original fir door it replaces. It will look
+                  worn faster.
+                </p>
+              </div>
+
+              <div className="border border-[rgba(42,36,33,0.15)] bg-white rounded-sm p-6">
+                <h3
+                  style={{
+                    fontFamily: '"Playfair Display", Georgia, serif',
+                    fontWeight: 400,
+                  }}
+                  className="text-xl text-[#2A2421] mb-3"
+                >
+                  Veneer over engineered substrate
+                </h3>
+                <p className="text-[#6B5E55] font-sans leading-relaxed text-base">
+                  Higher-end production cabinets often have solid-wood face
+                  frames and door fronts over MDF or plywood carcasses. This is
+                  marketed as quality. The visible surfaces may be solid wood —
+                  but the construction is hybrid, and the substrate determines
+                  long-term durability. The original 1920s kitchen cabinet with
+                  a solid wood carcass, solid wood shelves, and solid wood doors
+                  is a different object entirely.
+                </p>
+              </div>
+            </div>
+
+            <p className="text-[#2A2421] font-sans leading-relaxed text-base">
+              None of these are upgrades. Newer does not mean better when the
+              original material was superior to begin with.
+            </p>
+          </div>
+
+          {/* Section 3: Structural superiority */}
+          <div>
+            <p className="text-xs font-sans font-semibold uppercase tracking-widest text-[#11B2E8] mb-3">
+              The Structural Case
+            </p>
+            <h2
+              style={{
+                fontFamily: '"Playfair Display", Georgia, serif',
+                fontWeight: 400,
+              }}
+              className="text-3xl text-[#2A2421] mb-6"
+            >
+              A refinished original is structurally superior to a replacement
+            </h2>
+            <p className="text-[#2A2421] font-sans leading-relaxed text-base mb-6">
+              A front door that has been on a historic St. Louis home for 100
+              years has already proven something: it works. It fits the opening.
+              It has weathered decades of temperature and humidity cycling. The
+              wood has reached equilibrium with its environment.
+            </p>
+            <p className="text-[#2A2421] font-sans leading-relaxed text-base mb-6">
+              A new door of plantation pine has not been tested. It will move
+              and settle as it adjusts. The grain is wide enough that moisture
+              cycling will cause more visible seasonal expansion. It will look
+              less good in 15 years than the original door looked when it was
+              refinished.
+            </p>
+
+            <div className="bg-[#2A2421] text-white rounded-sm p-8 mb-6">
+              <h3
+                style={{
+                  fontFamily: '"Playfair Display", Georgia, serif',
+                  fontWeight: 400,
+                }}
+                className="text-2xl mb-4"
+              >
+                The refinished staircase
+              </h3>
+              <p className="font-sans text-[#EBE6DE] leading-relaxed text-base mb-4">
+                A Victorian staircase in a Kirkwood or Webster Groves home — the
+                kind with a carved newel post, turned spindles, and a continuous
+                curved railing — was built by craftsmen working in old-growth
+                white oak or fir. The joinery is mortise and tenon. The wood is
+                dense enough that it has absorbed 100 years of traffic and still
+                isn&rsquo;t soft.
               </p>
-              <p className="text-[#2A2421] font-sans leading-relaxed text-base">
-                Replacing an original door with a new solid-wood door gets you a
-                door made of 30-year-growth lumber — softer, looser grain, less
-                dimensionally stable, and without the 120 years of patina that
-                gives original wood its depth. Replacing it with a fiberglass or
-                steel door means no wood at all. Neither is an upgrade.
+              <p className="font-sans text-[#EBE6DE] leading-relaxed text-base mb-4">
+                A new staircase of comparable design and workmanship — if you
+                could find one — would cost more than refinishing the original
+                by a significant margin. And it would be made from contemporary
+                lumber that will not match the original in density, stability,
+                or figure.
+              </p>
+              <p className="font-sans text-[#9e9087] leading-relaxed text-sm">
+                Refinishing the original is not a compromise. It is the correct
+                decision on every dimension except the one where the new thing
+                is newer.
+              </p>
+            </div>
+          </div>
+
+          {/* Section 4: Environmental case */}
+          <div>
+            <p className="text-xs font-sans font-semibold uppercase tracking-widest text-[#11B2E8] mb-3">
+              The Environmental Case
+            </p>
+            <h2
+              style={{
+                fontFamily: '"Playfair Display", Georgia, serif',
+                fontWeight: 400,
+              }}
+              className="text-3xl text-[#2A2421] mb-6"
+            >
+              No manufacturing. No landfill. No shipping.
+            </h2>
+            <p className="text-[#2A2421] font-sans leading-relaxed text-base mb-6">
+              Refinishing is the most environmentally efficient option available
+              for existing woodwork. The wood is already there. No trees are
+              cut. No manufacturing energy is consumed. No freight is moved.
+            </p>
+
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
+              <div className="border border-[rgba(42,36,33,0.15)] bg-white rounded-sm p-5">
+                <p className="font-sans font-semibold text-[#2A2421] mb-2">
+                  No new manufacturing
+                </p>
+                <p className="font-sans text-[#6B5E55] text-sm leading-relaxed">
+                  Cabinet manufacturing, millwork production, and door
+                  fabrication are energy-intensive processes. Refinishing
+                  requires finish products and labor — that is all.
+                </p>
+              </div>
+              <div className="border border-[rgba(42,36,33,0.15)] bg-white rounded-sm p-5">
+                <p className="font-sans font-semibold text-[#2A2421] mb-2">
+                  No landfill
+                </p>
+                <p className="font-sans text-[#6B5E55] text-sm leading-relaxed">
+                  Replaced woodwork goes to the landfill. Old-growth timber that
+                  survived 100 years disposed of in a dumpster is the worst
+                  possible use of an irreplaceable material.
+                </p>
+              </div>
+              <div className="border border-[rgba(42,36,33,0.15)] bg-white rounded-sm p-5">
+                <p className="font-sans font-semibold text-[#2A2421] mb-2">
+                  No shipping
+                </p>
+                <p className="font-sans text-[#6B5E55] text-sm leading-relaxed">
+                  Production cabinets and millwork are manufactured regionally
+                  or imported. The carbon footprint of freight does not apply to
+                  woodwork that is already installed in your home.
+                </p>
+              </div>
+            </div>
+
+            <p className="text-[#2A2421] font-sans leading-relaxed text-base">
+              Historic preservation is inherently sustainable. The greenest
+              building material is the one that is already there.
+            </p>
+          </div>
+
+          {/* Section 5: Reversibility */}
+          <div>
+            <p className="text-xs font-sans font-semibold uppercase tracking-widest text-[#11B2E8] mb-3">
+              The Practical Case
+            </p>
+            <h2
+              style={{
+                fontFamily: '"Playfair Display", Georgia, serif',
+                fontWeight: 400,
+              }}
+              className="text-3xl text-[#2A2421] mb-6"
+            >
+              Refinishing is reversible. Replacement is permanent.
+            </h2>
+            <p className="text-[#2A2421] font-sans leading-relaxed text-base mb-6">
+              This is the practical argument that is hardest to argue against.
+              When you refinish, you keep your options open. The wood is still
+              there. In 10 or 15 years, when the finish has aged again, you can
+              refinish again. The wood survives each cycle — that is what wood
+              is for.
+            </p>
+            <p className="text-[#2A2421] font-sans leading-relaxed text-base mb-6">
+              When you replace, the decision is permanent. The original is gone.
+              You cannot un-replace a door. You cannot retrieve a staircase from
+              the landfill. The new owner of your home in 20 years will not have
+              the option you had today — and they will know the difference if
+              they know historic homes.
+            </p>
+
+            <div className="bg-[#EBE6DE] border-l-4 border-[#A65D37] p-5 rounded-sm mb-6">
+              <p className="font-sans text-[#2A2421] leading-relaxed text-base">
+                <strong>On resale value:</strong> In historic neighborhoods —
+                Kirkwood, Webster Groves, Soulard, Tower Grove, the Central West
+                End — buyers who want historic homes want original woodwork. A
+                home that has been carefully maintained, with original doors and
+                staircases in good condition, commands a different buyer and a
+                different price than the same house with production
+                replacements. Original woodwork is a feature. Replacement reads
+                as a loss.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
               <div className="border border-[rgba(42,36,33,0.15)] bg-white rounded-sm p-6">
                 <p className="font-sans font-semibold text-[#11B2E8] mb-3 text-sm uppercase tracking-wider">
                   Refinishing
                 </p>
                 <ul className="space-y-2 font-sans text-[#6B5E55] text-sm leading-relaxed">
                   <li className="flex gap-2">
-                    <span className="text-green-600 shrink-0">✓</span> Preserves
-                    original old-growth material
+                    <span className="text-green-600 shrink-0">✓</span>{" "}
+                    Old-growth material preserved
                   </li>
                   <li className="flex gap-2">
-                    <span className="text-green-600 shrink-0">✓</span> Fraction
-                    of replacement cost
+                    <span className="text-green-600 shrink-0">✓</span>{" "}
+                    Reversible — can refinish again
                   </li>
                   <li className="flex gap-2">
-                    <span className="text-green-600 shrink-0">✓</span> Maintains
-                    architectural character
-                  </li>
-                  <li className="flex gap-2">
-                    <span className="text-green-600 shrink-0">✓</span> Adds
-                    value for historic home buyers
-                  </li>
-                  <li className="flex gap-2">
-                    <span className="text-green-600 shrink-0">✓</span> Lasts
-                    decades when done correctly
+                    <span className="text-green-600 shrink-0">✓</span>{" "}
+                    Architectural character maintained
                   </li>
                   <li className="flex gap-2">
                     <span className="text-green-600 shrink-0">✓</span> No
-                    construction disruption
+                    manufacturing or landfill waste
+                  </li>
+                  <li className="flex gap-2">
+                    <span className="text-green-600 shrink-0">✓</span> Value add
+                    for historic home buyers
+                  </li>
+                  <li className="flex gap-2">
+                    <span className="text-green-600 shrink-0">✓</span> Proven
+                    material — it already lasted 100 years
                   </li>
                 </ul>
               </div>
@@ -851,40 +511,92 @@ export default function CostGuidePage() {
                   </li>
                   <li className="flex gap-2">
                     <span className="text-red-500 shrink-0">✗</span>{" "}
-                    Significantly higher cost
+                    Irreversible decision
                   </li>
                   <li className="flex gap-2">
-                    <span className="text-red-500 shrink-0">✗</span> Inferior
-                    wood or composite materials
+                    <span className="text-red-500 shrink-0">✗</span> MDF,
+                    particleboard, plantation pine
                   </li>
                   <li className="flex gap-2">
-                    <span className="text-red-500 shrink-0">✗</span> May require
-                    structural modification
+                    <span className="text-red-500 shrink-0">✗</span> Old-growth
+                    timber to landfill
                   </li>
                   <li className="flex gap-2">
-                    <span className="text-red-500 shrink-0">✗</span> Lead paint
-                    disposal still required
+                    <span className="text-red-500 shrink-0">✗</span> Loss of
+                    historic character and value
                   </li>
                   <li className="flex gap-2">
-                    <span className="text-red-500 shrink-0">✗</span> Demolition
-                    and installation disruption
+                    <span className="text-red-500 shrink-0">✗</span> Unproven
+                    material — starts aging immediately
                   </li>
                 </ul>
               </div>
             </div>
-
-            <p className="text-[#2A2421] font-sans leading-relaxed text-base">
-              The one exception: if the wood is genuinely beyond saving —
-              structural damage, rot through the core, repeated dip-stripping
-              that has compromised the substrate — replacement may be the only
-              option. In 36 years, I have seen this occasionally. I have seen
-              people told their wood was unsalvageable when it was not, far more
-              often. If you are not sure, get an honest assessment before
-              deciding.
-            </p>
           </div>
 
-          {/* Get a quote CTA */}
+          {/* Section 6: When replacement is actually right */}
+          <div>
+            <p className="text-xs font-sans font-semibold uppercase tracking-widest text-[#11B2E8] mb-3">
+              The Honest Caveat
+            </p>
+            <h2
+              style={{
+                fontFamily: '"Playfair Display", Georgia, serif',
+                fontWeight: 400,
+              }}
+              className="text-3xl text-[#2A2421] mb-6"
+            >
+              When replacement is actually the right call
+            </h2>
+            <p className="text-[#2A2421] font-sans leading-relaxed text-base mb-6">
+              The case for refinishing is strong — but it is not unconditional.
+              There are situations where replacement is genuinely necessary:
+            </p>
+            <ul className="space-y-4 mb-6 font-sans text-[#2A2421] leading-relaxed text-base">
+              <li className="flex gap-3">
+                <span className="text-[#A65D37] font-bold shrink-0">—</span>
+                <span>
+                  <strong>Rot through the core.</strong> Wood that has been wet
+                  for years and has lost structural integrity is not a
+                  refinishing candidate. It needs replacement.
+                </span>
+              </li>
+              <li className="flex gap-3">
+                <span className="text-[#A65D37] font-bold shrink-0">—</span>
+                <span>
+                  <strong>Severe structural warping.</strong> A door that has
+                  warped beyond the range of adjustment, or a stair tread that
+                  has split structurally, may need replacement rather than
+                  repair.
+                </span>
+              </li>
+              <li className="flex gap-3">
+                <span className="text-[#A65D37] font-bold shrink-0">—</span>
+                <span>
+                  <strong>Prior damage from aggressive stripping.</strong> Wood
+                  that has been dip-stripped multiple times may have compromised
+                  fibers — though this is less common than it is claimed.
+                </span>
+              </li>
+            </ul>
+            <p className="text-[#2A2421] font-sans leading-relaxed text-base mb-6">
+              In 36 years of work in St. Louis historic homes, I have
+              encountered each of these situations — but far less often than
+              homeowners are told. The more common scenario is wood that has
+              been described as unsalvageable by someone who lacked either the
+              skill or the interest to save it.
+            </p>
+            <div className="bg-[#EBE6DE] border-l-4 border-[#11B2E8] p-5 rounded-sm">
+              <p className="font-sans text-[#2A2421] leading-relaxed text-sm">
+                <strong>Get a second opinion before replacing.</strong> If
+                someone has told you that your woodwork is beyond refinishing,
+                it is worth having that assessment verified. The estimate is
+                free. The decision to replace is permanent.
+              </p>
+            </div>
+          </div>
+
+          {/* CTA */}
           <div className="bg-[#2A2421] text-white rounded-sm p-8 text-center">
             <p
               style={{
@@ -893,12 +605,11 @@ export default function CostGuidePage() {
               }}
               className="text-2xl mb-3"
             >
-              The only number that matters is your specific project.
+              Before you replace, get an honest assessment.
             </p>
             <p className="font-sans text-[#9e9087] leading-relaxed text-base mb-6">
-              Free in-person estimates. No obligation. Sue comes to you, looks
-              at the work, and gives you a written price. No phone estimates, no
-              guessing — just an accurate number you can make a decision from.
+              Free in-person estimates. Sue looks at the wood, tells you what it
+              needs, and gives you a straight answer. No obligation.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link
@@ -932,7 +643,7 @@ export default function CostGuidePage() {
             }}
             className="text-3xl text-[#2A2421] mb-10"
           >
-            Pricing and estimates: FAQ
+            Refinishing vs. replacement: FAQ
           </h2>
           <div className="space-y-6">
             {faqItems.map((item, i) => (
@@ -959,7 +670,7 @@ export default function CostGuidePage() {
       </section>
 
       <CTABlock
-        heading="Ready to get a real number for your project?"
+        heading="Ready to talk about your woodwork?"
         subtext="Free in-person estimates. No obligation. 36 years in St. Louis historic homes."
       />
     </>

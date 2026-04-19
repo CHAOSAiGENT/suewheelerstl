@@ -5,9 +5,8 @@ import { CTABlock } from "@/components/CTABlock";
 export const metadata: Metadata = {
   title: "Wood Refinishing — Clayton MO | Sue Wheeler",
   description:
-    "Wood refinishing in Clayton — upscale residential, high-end kitchen cabinet refinishing, mixed era housing. Some NR contributing structures. Sue Wheeler.",
+    "Wood refinishing in Clayton — kitchen cabinets, doors, and staircases in Clayton's pre-war Colonials, Tudors, and mid-century homes. Sue Wheeler, 36 years, EPA Certified. Free estimate: (314) 367-6054.",
 };
-
 
 const neighborhoodSchema = {
   "@context": "https://schema.org",
@@ -236,8 +235,8 @@ export default function ClaytonPage() {
             Request a Free Estimate →
           </Link>
           <p className="text-[#6B5E55] font-sans text-sm mt-6">
-            EPA Certified Lead Removal. Est. 1989. St. Louis Magazine —
-            "Perfect Finish."
+            EPA Certified Lead Removal. Est. 1989. St. Louis Magazine — "Perfect
+            Finish."
           </p>
         </div>
       </section>

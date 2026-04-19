@@ -105,6 +105,10 @@ export default function PerkUpAndProtectBlogPage() {
             Perk Up &amp; Protect: When Your Wood Doesn&rsquo;t Need Stripping
             &mdash; It Needs a Second Life
           </h1>
+          <p className="text-base text-[#6B5E55] font-sans leading-relaxed mb-2">
+            That&rsquo;s our term for a maintenance coat &mdash; a way to revive
+            a sound finish without stripping it back to bare wood.
+          </p>
           <p className="text-sm font-sans text-[#6B5E55]">
             By Sue Wheeler · April 2026 · 8 min read
           </p>

@@ -142,11 +142,11 @@ export default function WoodDamageGuidePage() {
             >
               Perk Up &amp; Protect
             </Link>{" "}
-            — a maintenance coat applied over a sound existing finish with no
-            stripping required. Others need a full strip and refinish. A few
-            fall outside what wood refinishing can address at all. Knowing which
-            category you are in before calling a contractor saves time and helps
-            you ask the right questions.
+            — a maintenance coat that revives a sound finish without stripping —
+            others need a full strip and refinish. A few fall outside what wood
+            refinishing can address at all. Knowing which category you are in
+            before calling a contractor saves time and helps you ask the right
+            questions.
           </p>
 
           {/* Section 1 — Key distinction */}
@@ -166,12 +166,13 @@ export default function WoodDamageGuidePage() {
             <p className="text-[#2A2421] font-sans leading-relaxed text-base mb-6">
               When you look at a piece of woodwork, you are looking at two
               distinct layers. The wood itself — fir, oak, walnut, pine — is the
-              substrate. On top of that sits the finish: stain, varnish,
-              polyurethane, lacquer, shellac, or paint, applied in layers over
-              decades. In many St. Louis historic homes, the original woodwork
-              has been refinished multiple times since the house was built in
-              the 1890s or 1920s. The finish is what has accumulated; the wood
-              beneath it has often changed very little.
+              substrate (the wood surface beneath the finish). On top of that
+              sits the finish: stain, varnish, polyurethane, lacquer, shellac,
+              or paint, applied in layers over decades. In many St. Louis
+              historic homes, the original woodwork has been refinished multiple
+              times since the house was built in the 1890s or 1920s. The finish
+              is what has accumulated; the wood beneath it has often changed
+              very little.
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
@@ -1046,7 +1047,7 @@ export default function WoodDamageGuidePage() {
               },
               {
                 label: "Structural wood repair",
-                body: "Refinishing restores finishes — it does not repair structural damage. Splits, breaks, or sections requiring wood filler, dutchmen repairs, or reconstruction need a carpenter first. Once the structural repair is complete, the piece can be refinished.",
+                body: "Refinishing restores finishes — it does not repair structural damage. Splits, breaks, or sections requiring wood filler, dutchmen repairs (small patches of replacement wood inlaid to fill gouges or missing sections), or reconstruction need a carpenter first. Once the structural repair is complete, the piece can be refinished.",
               },
               {
                 label: "Floors and decks",
