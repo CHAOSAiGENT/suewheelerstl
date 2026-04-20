@@ -69,14 +69,14 @@ export default function KirkwoodCabinetRefinishingPage() {
     <>
       <BreadcrumbSchema
         items={[
-          { name: "Home", href: "/" },
+          { name: "Home", url: "https://suewheelerstl.com" },
           {
             name: "Kitchen Cabinet Refinishing",
-            href: "/kitchen-cabinet-refinishing",
+            url: "https://suewheelerstl.com/kitchen-cabinet-refinishing",
           },
           {
             name: "Kirkwood",
-            href: "/kitchen-cabinet-refinishing/kirkwood",
+            url: "https://suewheelerstl.com/kitchen-cabinet-refinishing/kirkwood",
           },
         ]}
       />

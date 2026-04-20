@@ -69,9 +69,9 @@ export default function KirkwoodStaircaseRefinishingPage() {
     <>
       <BreadcrumbSchema
         items={[
-          { name: "Home", href: "/" },
-          { name: "Staircase Refinishing", href: "/staircase-refinishing" },
-          { name: "Kirkwood", href: "/staircase-refinishing/kirkwood" },
+          { name: "Home", url: "https://suewheelerstl.com" },
+          { name: "Staircase Refinishing", url: "https://suewheelerstl.com/staircase-refinishing" },
+          { name: "Kirkwood", url: "https://suewheelerstl.com/staircase-refinishing/kirkwood" },
         ]}
       />
       <script

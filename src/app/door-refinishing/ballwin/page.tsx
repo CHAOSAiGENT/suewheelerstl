@@ -69,9 +69,9 @@ export default function BallwinDoorRefinishingPage() {
     <>
       <BreadcrumbSchema
         items={[
-          { name: "Home", href: "/" },
-          { name: "Door Refinishing", href: "/door-refinishing" },
-          { name: "Ballwin", href: "/door-refinishing/ballwin" },
+          { name: "Home", url: "https://suewheelerstl.com" },
+          { name: "Door Refinishing", url: "https://suewheelerstl.com/door-refinishing" },
+          { name: "Ballwin", url: "https://suewheelerstl.com/door-refinishing/ballwin" },
         ]}
       />
       <script

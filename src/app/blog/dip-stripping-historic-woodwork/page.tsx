@@ -27,8 +27,8 @@ const articleSchema = {
   description:
     "Dip-stripping uses caustic tanks that raise grain, dissolve hide glue joinery, and permanently damage irreplaceable old-growth wood. Learn why hand-stripping is the only safe method for St. Louis historic homes.",
   url: "https://suewheelerstl.com/blog/dip-stripping-historic-woodwork",
-  datePublished: "2025-04-17",
-  dateModified: "2025-04-17",
+  datePublished: "2026-04-19",
+  dateModified: "2026-04-19",
   author: {
     "@type": "Person",
     name: "Sue Wheeler",

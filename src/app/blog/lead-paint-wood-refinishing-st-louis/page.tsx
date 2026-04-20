@@ -27,8 +27,8 @@ const articleSchema = {
   description:
     "If your St. Louis home was built before 1978, lead paint is almost certainly present on your woodwork. Here is what EPA certification means, what the RRP Rule requires, and how to verify your contractor's compliance.",
   url: "https://suewheelerstl.com/blog/lead-paint-wood-refinishing-st-louis",
-  datePublished: "2025-04-17",
-  dateModified: "2025-04-17",
+  datePublished: "2026-04-19",
+  dateModified: "2026-04-19",
   author: {
     "@type": "Person",
     name: "Sue Wheeler",

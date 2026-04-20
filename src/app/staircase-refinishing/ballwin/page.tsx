@@ -69,9 +69,9 @@ export default function BallwinStaircaseRefinishingPage() {
     <>
       <BreadcrumbSchema
         items={[
-          { name: "Home", href: "/" },
-          { name: "Staircase Refinishing", href: "/staircase-refinishing" },
-          { name: "Ballwin", href: "/staircase-refinishing/ballwin" },
+          { name: "Home", url: "https://suewheelerstl.com" },
+          { name: "Staircase Refinishing", url: "https://suewheelerstl.com/staircase-refinishing" },
+          { name: "Ballwin", url: "https://suewheelerstl.com/staircase-refinishing/ballwin" },
         ]}
       />
       <script

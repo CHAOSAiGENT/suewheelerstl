@@ -69,11 +69,11 @@ export default function WebsterGrovesDoorRefinishingPage() {
     <>
       <BreadcrumbSchema
         items={[
-          { name: "Home", href: "/" },
-          { name: "Door Refinishing", href: "/door-refinishing" },
+          { name: "Home", url: "https://suewheelerstl.com" },
+          { name: "Door Refinishing", url: "https://suewheelerstl.com/door-refinishing" },
           {
             name: "Webster Groves",
-            href: "/door-refinishing/webster-groves",
+            url: "https://suewheelerstl.com/door-refinishing/webster-groves",
           },
         ]}
       />

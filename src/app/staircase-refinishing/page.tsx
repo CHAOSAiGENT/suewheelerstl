@@ -36,7 +36,8 @@ const faqItems = [
       "No. Dipping dissolves the glue at the base of turned spindles, loosens them from the tread and rail, and destroys the original profile. There is no shortcut for spindle stripping. We do it by hand.",
   },
   {
-    question: "My staircase has ornate carved newel posts. Can you preserve the detail?",
+    question:
+      "My staircase has ornate carved newel posts. Can you preserve the detail?",
     answer:
       "Yes — that's exactly the kind of work hand-stripping is designed for. We don't use methods that soften or blur carved profiles. Every detail in the original wood stays sharp.",
   },
@@ -45,7 +46,15 @@ const faqItems = [
 export default function StaircaseRefinishingPage() {
   return (
     <>
-      <BreadcrumbSchema items={[{ name: "Home", url: "https://suewheelerstl.com" }, { name: "Staircase Refinishing", url: "https://suewheelerstl.com/staircase-refinishing" }]} />
+      <BreadcrumbSchema
+        items={[
+          { name: "Home", url: "https://suewheelerstl.com" },
+          {
+            name: "Staircase Refinishing",
+            url: "https://suewheelerstl.com/staircase-refinishing",
+          },
+        ]}
+      />
       <FAQSchema items={faqItems} />
       <TrustBar />
 
@@ -54,13 +63,16 @@ export default function StaircaseRefinishingPage() {
         <div className="max-w-4xl mx-auto">
           <h1
             className="text-4xl md:text-5xl text-[#2A2421] mb-5"
-            style={{ fontFamily: '"Playfair Display", Georgia, serif', fontWeight: 400 }}
+            style={{
+              fontFamily: '"Playfair Display", Georgia, serif',
+              fontWeight: 400,
+            }}
           >
             Staircase refinishing in <em>St. Louis.</em>
           </h1>
           <p className="text-lg text-[#6B5E55] font-sans leading-relaxed max-w-2xl mb-8">
-            The staircase is the most visible architectural element in any home. When it looks
-            right, the whole house does.
+            The staircase is the most visible architectural element in any home.
+            When it looks right, the whole house does.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <Link
@@ -86,14 +98,18 @@ export default function StaircaseRefinishingPage() {
         <div className="max-w-4xl mx-auto">
           <h2
             className="text-3xl text-[#2A2421] mb-4"
-            style={{ fontFamily: '"Playfair Display", Georgia, serif', fontWeight: 400 }}
+            style={{
+              fontFamily: '"Playfair Display", Georgia, serif',
+              fontWeight: 400,
+            }}
           >
             Treads. Risers. Spindles. Newel posts. <em>Railings.</em>
           </h2>
           <p className="text-[#6B5E55] font-sans text-base leading-relaxed mb-8 max-w-2xl">
-            A staircase isn't one thing — it's five or six. Most contractors treat it as one. We
-            don't. Each component has different wear patterns, different finish requirements, and
-            different refinishing challenges.
+            A staircase isn't one thing — it's five or six. Most contractors
+            treat it as one. We don't. Each component has different wear
+            patterns, different finish requirements, and different refinishing
+            challenges.
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <ServiceCard
@@ -118,8 +134,9 @@ export default function StaircaseRefinishingPage() {
             />
           </div>
           <p className="mt-6 text-sm font-sans text-[#6B5E55]">
-            We do the full staircase or specific components — whatever the project requires. We'll
-            tell you what's worth doing and what can wait.
+            We do the full staircase or specific components — whatever the
+            project requires. We'll tell you what's worth doing and what can
+            wait.
           </p>
         </div>
       </section>
@@ -129,7 +146,10 @@ export default function StaircaseRefinishingPage() {
         <div className="max-w-3xl mx-auto">
           <h2
             className="text-3xl text-[#2A2421] mb-8"
-            style={{ fontFamily: '"Playfair Display", Georgia, serif', fontWeight: 400 }}
+            style={{
+              fontFamily: '"Playfair Display", Georgia, serif',
+              fontWeight: 400,
+            }}
           >
             The most <em>labor-intensive</em> refinishing work we do.
           </h2>
@@ -156,7 +176,9 @@ export default function StaircaseRefinishingPage() {
                 <span className="text-[#A65D37] font-sans font-semibold text-sm mt-0.5 shrink-0">
                   {label}
                 </span>
-                <p className="text-[#6B5E55] font-sans text-base leading-relaxed">{body}</p>
+                <p className="text-[#6B5E55] font-sans text-base leading-relaxed">
+                  {body}
+                </p>
               </div>
             ))}
           </div>
@@ -168,23 +190,28 @@ export default function StaircaseRefinishingPage() {
         <div className="max-w-3xl mx-auto">
           <h2
             className="text-3xl text-[#2A2421] mb-6"
-            style={{ fontFamily: '"Playfair Display", Georgia, serif', fontWeight: 400 }}
+            style={{
+              fontFamily: '"Playfair Display", Georgia, serif',
+              fontWeight: 400,
+            }}
           >
             No single project <em>transforms</em> a home more.
           </h2>
           <div className="space-y-4 text-[#6B5E55] font-sans text-base leading-relaxed">
             <p>
-              A refinished staircase changes how a home feels to walk into. Buyers notice it first.
-              Guests comment on it. Owners who've lived with a worn, dull staircase for years are
-              consistently stunned at what the same wood looks like after it's properly refinished.
+              A refinished staircase changes how a home feels to walk into.
+              Buyers notice it first. Guests comment on it. Owners who've lived
+              with a worn, dull staircase for years are consistently stunned at
+              what the same wood looks like after it's properly refinished.
             </p>
             <p>
-              Before-and-after photos don't fully capture it. The texture changes. The depth comes
-              back. The color is right in a way it hasn't been in decades.
+              Before-and-after photos don't fully capture it. The texture
+              changes. The depth comes back. The color is right in a way it
+              hasn't been in decades.
             </p>
             <p>
-              This is why staircase refinishing is often the first thing we recommend when a
-              homeowner is trying to decide what to prioritize.
+              This is why staircase refinishing is often the first thing we
+              recommend when a homeowner is trying to decide what to prioritize.
             </p>
           </div>
         </div>
@@ -195,13 +222,17 @@ export default function StaircaseRefinishingPage() {
         <div className="max-w-3xl mx-auto">
           <h2
             className="text-3xl text-[#2A2421] mb-6"
-            style={{ fontFamily: '"Playfair Display", Georgia, serif', fontWeight: 400 }}
+            style={{
+              fontFamily: '"Playfair Display", Georgia, serif',
+              fontWeight: 400,
+            }}
           >
             What does staircase refinishing <em>cost</em> in St. Louis?
           </h2>
           <p className="text-[#6B5E55] font-sans text-base leading-relaxed mb-6">
-            Staircase refinishing isn't a flat-rate service — what you pay depends on what's
-            actually in scope. A few things we look at before quoting:
+            Staircase refinishing isn't a flat-rate service — what you pay
+            depends on what's actually in scope. A few things we look at before
+            quoting:
           </p>
           <ul className="space-y-3 mb-6">
             {[
@@ -211,7 +242,7 @@ export default function StaircaseRefinishingPage() {
               },
               {
                 label: "What components are in scope",
-                body: "treads only, or treads plus risers, stringers, railings, spindles, and newel post",
+                body: "treads only, or treads plus risers, stringers (the angled boards along each side of the staircase that support the treads), railings, spindles, and newel post",
               },
               {
                 label: "Condition of the existing finish",
@@ -230,20 +261,23 @@ export default function StaircaseRefinishingPage() {
                 <span className="text-[#A65D37] font-sans font-semibold text-sm shrink-0 mt-0.5">
                   {label} —
                 </span>
-                <span className="text-[#6B5E55] font-sans text-sm leading-relaxed">{body}</span>
+                <span className="text-[#6B5E55] font-sans text-sm leading-relaxed">
+                  {body}
+                </span>
               </li>
             ))}
           </ul>
           <p className="text-[#6B5E55] font-sans text-base leading-relaxed mb-4">
-            There's no number we can give you before seeing the staircase. But a free estimate
-            takes about 15 minutes and there's no commitment.
+            There's no number we can give you before seeing the staircase. But a
+            free estimate takes about 15 minutes and there's no commitment.
           </p>
           <a
             href="tel:3143676054"
             className="inline-flex items-center gap-2 text-base font-sans font-medium text-[#2A2421] hover:text-[#11B2E8] transition-colors"
           >
             <Phone size={16} />
-            Call (314) 367-6054 — describe what you have, and Sue will tell you what's realistic.
+            Call (314) 367-6054 — describe what you have, and Sue will tell you
+            what's realistic.
           </a>
         </div>
       </section>
@@ -256,18 +290,23 @@ export default function StaircaseRefinishingPage() {
         <div className="max-w-3xl mx-auto">
           <h2
             className="text-2xl text-[#2A2421] mb-4"
-            style={{ fontFamily: '"Playfair Display", Georgia, serif', fontWeight: 400 }}
+            style={{
+              fontFamily: '"Playfair Display", Georgia, serif',
+              fontWeight: 400,
+            }}
           >
             Pre-1978 staircase? <em>EPA certification matters.</em>
           </h2>
           <p className="text-[#6B5E55] font-sans text-base leading-relaxed mb-4">
-            Stair railings, spindles, and newel posts in homes built before 1978 typically have
-            lead paint in the existing finish layers. Stripping these surfaces without
-            EPA-certified lead-safe protocols generates lead dust.
+            Stair railings, spindles, and newel posts in homes built before 1978
+            typically have lead paint in the existing finish layers. Stripping
+            these surfaces without EPA-certified lead-safe protocols generates
+            lead dust.
           </p>
           <p className="text-[#6B5E55] font-sans text-base leading-relaxed mb-4">
-            Sue Wheeler is an EPA Certified Lead Removal. Lead-safe work on pre-1978 staircases
-            is standard for us — documented, contained, and correctly disposed of.
+            Sue Wheeler is an EPA Certified Lead Removal. Lead-safe work on
+            pre-1978 staircases is standard for us — documented, contained, and
+            correctly disposed of.
           </p>
           <Link
             href="/faq#lead-paint"
@@ -283,13 +322,19 @@ export default function StaircaseRefinishingPage() {
         <div className="max-w-2xl mx-auto text-center">
           <blockquote
             className="text-xl text-[#2A2421] leading-relaxed mb-4"
-            style={{ fontFamily: '"Playfair Display", Georgia, serif', fontStyle: "italic" }}
+            style={{
+              fontFamily: '"Playfair Display", Georgia, serif',
+              fontStyle: "italic",
+            }}
           >
-            "The staircase in our 1905 CWE home hadn't been properly refinished in decades. Every
-            contractor told us the spindles were 'too far gone.' Sue refinished every single one.
-            The newel post looks like it was turned yesterday."
+            "The staircase in our 1905 CWE home hadn't been properly refinished
+            in decades. Every contractor told us the spindles were 'too far
+            gone.' Sue refinished every single one. The newel post looks like it
+            was turned yesterday."
           </blockquote>
-          <p className="text-sm font-sans text-[#6B5E55]">— Homeowner, Central West End</p>
+          <p className="text-sm font-sans text-[#6B5E55]">
+            — Homeowner, Central West End
+          </p>
         </div>
       </section>
 
@@ -298,7 +343,10 @@ export default function StaircaseRefinishingPage() {
         <div className="max-w-3xl mx-auto">
           <h2
             className="text-3xl text-[#2A2421] mb-8"
-            style={{ fontFamily: '"Playfair Display", Georgia, serif', fontWeight: 400 }}
+            style={{
+              fontFamily: '"Playfair Display", Georgia, serif',
+              fontWeight: 400,
+            }}
           >
             Common questions
           </h2>

@@ -22,6 +22,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/blog/wood-refinishing-cost-st-louis",
     "/blog/refinish-or-replace-woodwork",
     "/blog/wood-damage-guide-st-louis",
+    "/blog/can-my-antique-be-refinished",
+    "/blog/does-my-woodwork-need-a-full-refinish",
+    "/blog/how-long-does-staircase-refinishing-take",
+    "/blog/refinish-kitchen-cabinets-or-replace",
+    "/blog/what-to-expect-wood-refinishing-project",
   ];
 
   const servicePages = [
@@ -45,12 +50,33 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/perk-up-and-protect",
     "/historic-preservation",
     "/furniture-refinishing",
-    "/door-refinishing/central-west-end",
-    "/door-refinishing/benton-park",
-    "/door-refinishing/compton-heights",
-    "/door-refinishing/shaw",
-    "/door-refinishing/lafayette-square",
   ];
+
+  // All neighborhoods with door × staircase × cabinet pages
+  const geoNeighborhoods = [
+    "central-west-end",
+    "benton-park",
+    "compton-heights",
+    "shaw",
+    "lafayette-square",
+    "kirkwood",
+    "webster-groves",
+    "maplewood",
+    "clayton",
+    "university-city",
+    "tower-grove",
+    "ladue",
+    "chesterfield",
+    "ballwin",
+    "frontenac",
+    "town-and-country",
+  ];
+
+  const geoServicePages = geoNeighborhoods.flatMap((n) => [
+    `/door-refinishing/${n}`,
+    `/staircase-refinishing/${n}`,
+    `/kitchen-cabinet-refinishing/${n}`,
+  ]);
 
   const neighborhoodPages = [
     "/neighborhoods/central-west-end",
@@ -61,14 +87,34 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/neighborhoods/clayton",
     "/neighborhoods/university-city",
     "/neighborhoods/maplewood",
+    "/neighborhoods/kirkwood",
+    "/neighborhoods/tower-grove",
+    "/neighborhoods/webster-groves",
+    "/neighborhoods/ladue",
+    "/neighborhoods/chesterfield",
+    "/neighborhoods/ballwin",
+    "/neighborhoods/frontenac",
+    "/neighborhoods/town-and-country",
   ];
 
-  const allPages = [...corePages, ...servicePages, ...neighborhoodPages];
+  const allPages = [
+    ...corePages,
+    ...servicePages,
+    ...geoServicePages,
+    ...neighborhoodPages,
+  ];
 
   return allPages.map((path) => ({
     url: `${BASE_URL}${path}`,
     lastModified: now,
     changeFrequency: path === "" ? "weekly" : "monthly",
-    priority: path === "" ? 1.0 : path.includes("/neighborhoods/") ? 0.6 : 0.8,
+    priority:
+      path === ""
+        ? 1.0
+        : path.includes("/neighborhoods/")
+          ? 0.6
+          : path.match(/\/(door|staircase|kitchen-cabinet)-refinishing\/[a-z]/)
+            ? 0.8
+            : 0.8,
   }));
 }
