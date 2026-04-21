@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import BreadcrumbSchema from "@/components/BreadcrumbSchema";
-import CTABlock from "@/components/CTABlock";
+import { BreadcrumbSchema } from "@/components/BreadcrumbSchema";
+import { CTABlock } from "@/components/CTABlock";
 import { Phone } from "lucide-react";
 
 export const metadata: Metadata = {

@@ -23,7 +23,10 @@ export function CTABlock({
       <div className="max-w-2xl mx-auto">
         <h2
           className="text-3xl md:text-4xl mb-4"
-          style={{ fontFamily: '"Playfair Display", Georgia, serif', fontWeight: 400 }}
+          style={{
+            fontFamily: '"Playfair Display", Georgia, serif',
+            fontWeight: 400,
+          }}
         >
           {heading}
         </h2>
