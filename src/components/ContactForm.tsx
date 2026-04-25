@@ -1,7 +1,12 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { Send, Paperclip, X } from "lucide-react";
+
+// Sue's shop: 900 S Boyle Ave, St. Louis, MO 63110
+const SHOP_LAT = 38.6307;
+const SHOP_LNG = -90.2154;
+const BIAS_RADIUS = 32187; // 20 miles in meters
 
 const SERVICE_TYPES = [
   "Kitchen Cabinets",
@@ -36,6 +41,13 @@ const TIMELINE_OPTIONS = [
   "Just exploring",
 ];
 
+function formatPhone(value: string): string {
+  const digits = value.replace(/\D/g, "").slice(0, 10);
+  if (digits.length <= 3) return digits;
+  if (digits.length <= 6) return `(${digits.slice(0, 3)}) ${digits.slice(3)}`;
+  return `(${digits.slice(0, 3)}) ${digits.slice(3, 6)}-${digits.slice(6)}`;
+}
+
 type PhotoEntry = {
   file: File;
   path: string | null; // null = still uploading or failed
@@ -51,6 +63,74 @@ export function ContactForm() {
   const [serviceError, setServiceError] = useState(false);
   const [photos, setPhotos] = useState<PhotoEntry[]>([]);
   const [photoError, setPhotoError] = useState(false);
+  const [phone, setPhone] = useState("");
+  const [address, setAddress] = useState("");
+  const [zip, setZip] = useState("");
+  const addressRef = useRef<HTMLInputElement>(null);
+  const autocompleteRef = useRef<google.maps.places.Autocomplete | null>(null);
+
+  // Google Places Autocomplete
+  const initAutocomplete = useCallback(() => {
+    if (!addressRef.current || autocompleteRef.current) return;
+    if (!window.google?.maps?.places) return;
+
+    const ac = new google.maps.places.Autocomplete(addressRef.current, {
+      types: ["address"],
+      componentRestrictions: { country: "us" },
+      fields: ["formatted_address", "address_components"],
+    });
+
+    ac.setBounds(
+      new google.maps.Circle({
+        center: { lat: SHOP_LAT, lng: SHOP_LNG },
+        radius: BIAS_RADIUS,
+      }).getBounds()!,
+    );
+
+    ac.addListener("place_changed", () => {
+      const place = ac.getPlace();
+      if (place.formatted_address) {
+        setAddress(place.formatted_address);
+      }
+      const zipComponent = place.address_components?.find((c) =>
+        c.types.includes("postal_code"),
+      );
+      if (zipComponent) {
+        setZip(zipComponent.short_name);
+      }
+    });
+
+    autocompleteRef.current = ac;
+  }, []);
+
+  useEffect(() => {
+    // If Google Maps script is already loaded
+    if (window.google?.maps?.places) {
+      initAutocomplete();
+      return;
+    }
+
+    const apiKey = process.env.NEXT_PUBLIC_GOOGLE_PLACES_API_KEY;
+    if (!apiKey) return;
+
+    // Check if script tag already exists
+    if (document.querySelector('script[src*="maps.googleapis.com"]')) {
+      // Script exists but hasn't loaded yet — wait for it
+      const interval = setInterval(() => {
+        if (window.google?.maps?.places) {
+          initAutocomplete();
+          clearInterval(interval);
+        }
+      }, 200);
+      return () => clearInterval(interval);
+    }
+
+    const script = document.createElement("script");
+    script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&libraries=places`;
+    script.async = true;
+    script.onload = () => initAutocomplete();
+    document.head.appendChild(script);
+  }, [initAutocomplete]);
 
   async function uploadPhoto(file: File): Promise<string | null> {
     try {
@@ -238,6 +318,8 @@ export function ContactForm() {
             name="phone"
             type="tel"
             required
+            value={phone}
+            onChange={(e) => setPhone(formatPhone(e.target.value))}
             placeholder="(314) 000-0000"
             className={inputClass}
             style={{ borderRadius: "2px" }}
@@ -259,19 +341,43 @@ export function ContactForm() {
         </div>
       </div>
 
-      {/* Address */}
-      <div>
-        <label htmlFor="address" className={labelClass}>
-          Address / Neighborhood
-        </label>
-        <input
-          id="address"
-          name="address"
-          type="text"
-          placeholder="e.g. Central West End, 63108"
-          className={inputClass}
-          style={{ borderRadius: "2px" }}
-        />
+      {/* Address + Zip */}
+      <div className="grid grid-cols-[1fr_120px] gap-4">
+        <div>
+          <label htmlFor="address" className={labelClass}>
+            Address
+          </label>
+          <input
+            ref={addressRef}
+            id="address"
+            name="address"
+            type="text"
+            value={address}
+            onChange={(e) => setAddress(e.target.value)}
+            placeholder="Start typing your address…"
+            className={inputClass}
+            style={{ borderRadius: "2px" }}
+            autoComplete="off"
+          />
+        </div>
+        <div>
+          <label htmlFor="zip" className={labelClass}>
+            Zip Code
+          </label>
+          <input
+            id="zip"
+            name="zip"
+            type="text"
+            value={zip}
+            onChange={(e) =>
+              setZip(e.target.value.replace(/\D/g, "").slice(0, 5))
+            }
+            placeholder="63110"
+            maxLength={5}
+            className={inputClass}
+            style={{ borderRadius: "2px" }}
+          />
+        </div>
       </div>
 
       {/* Service types */}

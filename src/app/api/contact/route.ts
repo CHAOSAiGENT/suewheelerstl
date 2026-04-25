@@ -23,14 +23,22 @@ export async function POST(req: Request) {
   }
 
   const name = formData.get("name") as string;
-  const phone = formData.get("phone") as string;
+  const rawPhone = formData.get("phone") as string;
   const email = formData.get("email") as string;
   const address = formData.get("address") as string | null;
+  const zip = formData.get("zip") as string | null;
   const project_description = formData.get("project") as string;
   const referral = formData.get("referral") as string | null;
   const best_time = formData.get("best_time") as string | null;
   const timeline = formData.get("timeline") as string | null;
   const service_types = formData.getAll("service_types") as string[];
+
+  // Normalize phone to (###) ###-#### format
+  const digits = rawPhone.replace(/\D/g, "").slice(0, 10);
+  const phone =
+    digits.length === 10
+      ? `(${digits.slice(0, 3)}) ${digits.slice(3, 6)}-${digits.slice(6)}`
+      : rawPhone;
 
   if (!name || !phone || !email || !project_description) {
     return NextResponse.json(
@@ -55,6 +63,7 @@ export async function POST(req: Request) {
       phone,
       email,
       address: address || null,
+      zip: zip || null,
       service_types,
       best_time: best_time || null,
       timeline: timeline || null,
