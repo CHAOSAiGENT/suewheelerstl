@@ -44,6 +44,7 @@ export interface Submission {
   after_photos_uploaded: boolean;
   final_payment_confirmed: boolean;
   archived_at: string | null;
+  reply_token: string;
 }
 
 export interface Message {
