@@ -109,7 +109,18 @@ export async function POST(req: Request) {
     const clientTpl = clientConfirmationEmail(submission, portalUrl);
 
     const replyTo = threadReplyTo(submission.reply_token);
-    await Promise.allSettled([
+    console.log(
+      "[contact] sending emails, replyTo:",
+      replyTo,
+      "from:",
+      FROM_EMAIL,
+      "to:",
+      TO_EMAIL,
+      "client:",
+      email,
+    );
+
+    const results = await Promise.allSettled([
       resend.emails.send({
         from: FROM_EMAIL,
         to: [TO_EMAIL],
@@ -126,6 +137,14 @@ export async function POST(req: Request) {
         html: clientTpl.html,
       }),
     ]);
+
+    results.forEach((r, i) => {
+      if (r.status === "rejected") {
+        console.error(`[contact] email ${i} failed:`, r.reason);
+      } else {
+        console.log(`[contact] email ${i} sent:`, r.value);
+      }
+    });
   }
 
   return NextResponse.json({ ok: true, token: submission.client_token });
