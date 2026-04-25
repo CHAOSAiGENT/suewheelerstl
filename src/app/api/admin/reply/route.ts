@@ -3,13 +3,17 @@ import { createServerSupabaseClient } from "@/lib/supabase/server";
 import { createServiceSupabaseClient } from "@/lib/supabase/service";
 import { resend } from "@/lib/email/resend";
 import { adminReplyEmail } from "@/lib/email/templates";
+import { threadReplyTo } from "@/lib/email/reply-address";
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://suewheelerstl.com";
+const SITE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://suewheelerstl.com";
 const FROM_EMAIL = process.env.FROM_EMAIL ?? "no-reply@suewheelerstl.com";
 
 export async function POST(req: Request) {
   const supabaseAuth = await createServerSupabaseClient();
-  const { data: { user } } = await supabaseAuth.auth.getUser();
+  const {
+    data: { user },
+  } = await supabaseAuth.auth.getUser();
   if (!user) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
@@ -29,7 +33,10 @@ export async function POST(req: Request) {
     .single();
 
   if (fetchError || !submission) {
-    return NextResponse.json({ error: "Submission not found" }, { status: 404 });
+    return NextResponse.json(
+      { error: "Submission not found" },
+      { status: 404 },
+    );
   }
 
   // Insert message
@@ -45,20 +52,25 @@ export async function POST(req: Request) {
     .single();
 
   if (msgError || !message) {
-    return NextResponse.json({ error: "Failed to save message" }, { status: 500 });
+    return NextResponse.json(
+      { error: "Failed to save message" },
+      { status: 500 },
+    );
   }
 
   // Email the client
   if (process.env.RESEND_API_KEY) {
     const portalUrl = `${SITE_URL}/my-request/${submission.client_token}`;
     const tpl = adminReplyEmail(message, submission, portalUrl);
-    await resend.emails.send({
-      from: FROM_EMAIL,
-      to: [submission.email],
-      replyTo: process.env.CONTACT_EMAIL ?? "sue@suewheelerstl.com",
-      subject: tpl.subject,
-      html: tpl.html,
-    }).catch((e) => console.error("[admin/reply] email error", e));
+    await resend.emails
+      .send({
+        from: FROM_EMAIL,
+        to: [submission.email],
+        replyTo: threadReplyTo(submission.reply_token),
+        subject: tpl.subject,
+        html: tpl.html,
+      })
+      .catch((e) => console.error("[admin/reply] email error", e));
   }
 
   return NextResponse.json({ ok: true, message });

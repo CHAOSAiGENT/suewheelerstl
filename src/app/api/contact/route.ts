@@ -6,6 +6,7 @@ import {
   clientConfirmationEmail,
 } from "@/lib/email/templates";
 import { generateAdminMagicLink } from "@/lib/supabase/admin-link";
+import { threadReplyTo } from "@/lib/email/reply-address";
 
 const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL ?? "https://suewheelerstl.com";
@@ -107,19 +108,20 @@ export async function POST(req: Request) {
     const adminTpl = adminNotificationEmail(submission, adminUrl);
     const clientTpl = clientConfirmationEmail(submission, portalUrl);
 
+    const replyTo = threadReplyTo(submission.reply_token);
     await Promise.allSettled([
       resend.emails.send({
         from: FROM_EMAIL,
         to: [TO_EMAIL],
         cc: ADMIN_CC,
-        replyTo: email,
+        replyTo,
         subject: adminTpl.subject,
         html: adminTpl.html,
       }),
       resend.emails.send({
         from: FROM_EMAIL,
         to: [email],
-        replyTo: TO_EMAIL,
+        replyTo,
         subject: clientTpl.subject,
         html: clientTpl.html,
       }),

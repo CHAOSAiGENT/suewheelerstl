@@ -3,6 +3,7 @@ import { createServiceSupabaseClient } from "@/lib/supabase/service";
 import { resend } from "@/lib/email/resend";
 import { clientReplyEmail } from "@/lib/email/templates";
 import { generateAdminMagicLink } from "@/lib/supabase/admin-link";
+import { threadReplyTo } from "@/lib/email/reply-address";
 
 const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL ?? "https://suewheelerstl.com";
@@ -66,7 +67,7 @@ export async function POST(req: Request) {
       .send({
         from: FROM_EMAIL,
         to: [ADMIN_EMAIL],
-        replyTo: submission.email,
+        replyTo: threadReplyTo(submission.reply_token),
         subject: tpl.subject,
         html: tpl.html,
       })

@@ -3,6 +3,7 @@ import { createServiceSupabaseClient } from "@/lib/supabase/service";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 import { resend } from "@/lib/email/resend";
 import { bidSentEmail } from "@/lib/email/templates";
+import { threadReplyTo } from "@/lib/email/reply-address";
 
 const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL ?? "https://suewheelerstl.com";
@@ -89,7 +90,7 @@ export async function POST(req: Request) {
     await resend.emails.send({
       from: FROM_EMAIL,
       to: [submission.email],
-      replyTo: FROM_EMAIL,
+      replyTo: threadReplyTo(submission.reply_token),
       subject: tpl.subject,
       html: tpl.html,
     });

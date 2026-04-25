@@ -3,6 +3,7 @@ import { createServiceSupabaseClient } from "@/lib/supabase/service";
 import { resend } from "@/lib/email/resend";
 import { bidAcceptedEmail } from "@/lib/email/templates";
 import { generateAdminMagicLink } from "@/lib/supabase/admin-link";
+import { threadReplyTo } from "@/lib/email/reply-address";
 
 const FROM_EMAIL = process.env.FROM_EMAIL ?? "sue@suewheelerstl.com";
 const CONTACT_EMAIL = process.env.CONTACT_EMAIL ?? "sue@suewheelerstl.com";
@@ -49,6 +50,7 @@ export async function POST(req: Request) {
       from: FROM_EMAIL,
       to: [CONTACT_EMAIL],
       cc: ADMIN_CC,
+      replyTo: threadReplyTo(submission.reply_token),
       subject: tpl.subject,
       html: tpl.html,
     });
