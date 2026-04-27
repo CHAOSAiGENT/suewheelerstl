@@ -5,39 +5,25 @@ import { createBrowserSupabaseClient } from "@/lib/supabase/client";
 
 const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL ?? "https://suewheelerstl.com";
-const ALLOWED_EMAILS = (
-  process.env.NEXT_PUBLIC_ADMIN_EMAILS ?? "sue@suewheelerstl.com"
-)
-  .split(",")
-  .map((e) => e.trim().toLowerCase())
-  .filter(Boolean);
 
 export default function AdminLoginPage() {
-  const [email, setEmail] = useState("");
-  const [status, setStatus] = useState<
-    "idle" | "sending" | "sent" | "error" | "unauthorized"
-  >("idle");
+  const [status, setStatus] = useState<"idle" | "loading" | "error">("idle");
+  const [errorMsg, setErrorMsg] = useState("");
 
-  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    const normalized = email.trim().toLowerCase();
-    if (!ALLOWED_EMAILS.includes(normalized)) {
-      setStatus("unauthorized");
-      return;
-    }
-    setStatus("sending");
+  async function handleGoogleLogin() {
+    setStatus("loading");
     const supabase = createBrowserSupabaseClient();
-    const { error } = await supabase.auth.signInWithOtp({
-      email: normalized,
+    const { error } = await supabase.auth.signInWithOAuth({
+      provider: "google",
       options: {
-        emailRedirectTo: `${SITE_URL}/admin/auth/callback`,
+        redirectTo: `${SITE_URL}/admin/auth/callback`,
       },
     });
-    setStatus(error ? "error" : "sent");
+    if (error) {
+      setErrorMsg(error.message);
+      setStatus("error");
+    }
   }
-
-  const inputClass =
-    "w-full px-4 py-3 bg-[#F8F6F1] border border-[rgba(42,36,33,0.15)] text-[#2A2421] text-sm font-sans focus:outline-none focus:border-[#11B2E8] transition-colors";
 
   return (
     <div className="min-h-screen bg-[#EBE6DE] flex items-center justify-center px-6">
@@ -57,68 +43,48 @@ export default function AdminLoginPage() {
           </p>
         </div>
 
-        {status === "sent" ? (
-          <div
-            className="bg-white border p-8 text-center"
-            style={{ borderRadius: "2px", borderColor: "rgba(42,36,33,0.1)" }}
+        <div
+          className="bg-white border p-8 space-y-5"
+          style={{ borderRadius: "2px", borderColor: "rgba(42,36,33,0.1)" }}
+        >
+          <button
+            type="button"
+            onClick={handleGoogleLogin}
+            disabled={status === "loading"}
+            className="w-full flex items-center justify-center gap-3 px-6 py-3 bg-white border border-[rgba(42,36,33,0.2)] text-[#2A2421] text-sm font-sans font-medium hover:bg-[#F8F6F1] disabled:opacity-60 transition-colors"
+            style={{ borderRadius: "2px" }}
           >
-            <p
-              className="font-serif italic text-xl text-[#2A2421] mb-2"
-              style={{ fontFamily: '"Playfair Display", Georgia, serif' }}
-            >
-              Check your email.
-            </p>
-            <p className="text-sm font-sans text-[#6B5E55]">
-              A sign-in link has been sent to {email.trim().toLowerCase()}.
-            </p>
-          </div>
-        ) : (
-          <form
-            onSubmit={handleSubmit}
-            className="bg-white border p-8 space-y-5"
-            style={{ borderRadius: "2px", borderColor: "rgba(42,36,33,0.1)" }}
-          >
-            <div>
-              <label
-                htmlFor="email"
-                className="block text-xs font-sans font-semibold uppercase tracking-widest text-[#6B5E55] mb-1.5"
-              >
-                Email
-              </label>
-              <input
-                id="email"
-                type="email"
-                value={email}
-                onChange={(e) => {
-                  setEmail(e.target.value);
-                  setStatus("idle");
-                }}
-                placeholder="your@email.com"
-                required
-                className={inputClass}
-                style={{ borderRadius: "2px" }}
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+              <path
+                d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844a4.14 4.14 0 01-1.796 2.716v2.259h2.908c1.702-1.567 2.684-3.875 2.684-6.615z"
+                fill="#4285F4"
               />
-            </div>
-            {status === "unauthorized" && (
-              <p className="text-xs font-sans text-[#A65D37]">
-                That email is not authorized to access this portal.
-              </p>
-            )}
-            {status === "error" && (
-              <p className="text-xs font-sans text-[#A65D37]">
-                Something went wrong. Please try again.
-              </p>
-            )}
-            <button
-              type="submit"
-              disabled={status === "sending"}
-              className="w-full px-6 py-3 bg-[#11B2E8] text-white text-sm font-sans font-medium uppercase tracking-widest hover:bg-[#0e96c4] disabled:opacity-60 transition-colors"
-              style={{ borderRadius: "2px" }}
-            >
-              {status === "sending" ? "Sending…" : "Send Magic Link"}
-            </button>
-          </form>
-        )}
+              <path
+                d="M9 18c2.43 0 4.467-.806 5.956-2.18l-2.908-2.259c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332A8.997 8.997 0 009 18z"
+                fill="#34A853"
+              />
+              <path
+                d="M3.964 10.71A5.41 5.41 0 013.682 9c0-.593.102-1.17.282-1.71V4.958H.957A8.997 8.997 0 000 9c0 1.452.348 2.827.957 4.042l3.007-2.332z"
+                fill="#FBBC05"
+              />
+              <path
+                d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0A8.997 8.997 0 00.957 4.958L3.964 7.29C4.672 5.163 6.656 3.58 9 3.58z"
+                fill="#EA4335"
+              />
+            </svg>
+            {status === "loading" ? "Signing in…" : "Sign in with Google"}
+          </button>
+
+          {status === "error" && (
+            <p className="text-xs font-sans text-[#A65D37] text-center">
+              {errorMsg || "Sign-in failed. Please try again."}
+            </p>
+          )}
+
+          <p className="text-xs font-sans text-[#9e9087] text-center">
+            Authorized accounts only.
+          </p>
+        </div>
       </div>
     </div>
   );
