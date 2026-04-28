@@ -280,20 +280,24 @@ function ArchiveDropZone() {
   return (
     <div
       ref={setNodeRef}
-      className="fixed bottom-0 left-0 right-0 flex items-center justify-center gap-3 transition-all z-50"
+      className="fixed top-0 right-0 bottom-0 flex flex-col items-center justify-center gap-3 transition-all z-50"
       style={{
-        height: isOver ? 100 : 72,
-        borderTop: `2px dashed ${isOver ? "#A65D37" : "rgba(42,36,33,0.25)"}`,
+        width: isOver ? 100 : 72,
+        borderLeft: `2px dashed ${isOver ? "#A65D37" : "rgba(42,36,33,0.25)"}`,
         background: isOver ? "rgba(166,93,55,0.1)" : "rgba(235,230,222,0.97)",
         backdropFilter: "blur(8px)",
       }}
     >
       <Archive size={22} style={{ color: isOver ? "#A65D37" : "#6B5E55" }} />
       <span
-        className="text-sm font-sans font-semibold uppercase tracking-widest"
-        style={{ color: isOver ? "#A65D37" : "#6B5E55" }}
+        className="text-xs font-sans font-semibold uppercase tracking-widest text-center"
+        style={{
+          color: isOver ? "#A65D37" : "#6B5E55",
+          writingMode: "vertical-lr",
+          letterSpacing: "0.15em",
+        }}
       >
-        {isOver ? "Drop to archive" : "Archive Record"}
+        {isOver ? "Drop to archive" : "Archive"}
       </span>
     </div>
   );
