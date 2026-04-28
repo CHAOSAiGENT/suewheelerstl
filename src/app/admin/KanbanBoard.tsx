@@ -87,6 +87,25 @@ export function KanbanBoard({ initialSubmissions, crew }: Props) {
     [],
   );
 
+  const archiveSubmission = useCallback(async (submissionId: string) => {
+    let preArchiveSubs: Submission[] = [];
+    setSubmissions((prev) => {
+      preArchiveSubs = prev;
+      return prev.filter((s) => s.id !== submissionId);
+    });
+
+    try {
+      const res = await fetch(`/api/admin/submissions/${submissionId}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ archived_at: new Date().toISOString() }),
+      });
+      if (!res.ok) throw new Error("Archive failed");
+    } catch {
+      setSubmissions(preArchiveSubs);
+    }
+  }, []);
+
   const handleDragStart = ({ active }: DragStartEvent) => {
     setDraggingId(active.id as string);
   };
@@ -96,6 +115,13 @@ export function KanbanBoard({ initialSubmissions, crew }: Props) {
     if (!over) return;
 
     const submissionId = active.id as string;
+
+    // Archive drop target
+    if (over.id === "archive") {
+      archiveSubmission(submissionId);
+      return;
+    }
+
     const newStatus = over.id as SubmissionStatus;
     const submission = getById(submissionId);
     if (!submission || submission.status === newStatus) return;
@@ -172,6 +198,9 @@ export function KanbanBoard({ initialSubmissions, crew }: Props) {
             />
           ))}
         </div>
+        {/* Archive drop zone — only visible while dragging */}
+        {draggingId && <ArchiveDropZone />}
+
         <DragOverlay>
           {draggingSubmission && (
             <KanbanCard
@@ -217,5 +246,32 @@ export function KanbanBoard({ initialSubmissions, crew }: Props) {
         />
       )}
     </>
+  );
+}
+
+function ArchiveDropZone() {
+  const { setNodeRef, isOver } = useDroppable({ id: "archive" });
+
+  return (
+    <div
+      ref={setNodeRef}
+      className="fixed bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-3 px-8 py-4 border-2 border-dashed transition-all z-50"
+      style={{
+        borderRadius: "4px",
+        borderColor: isOver ? "#A65D37" : "rgba(42,36,33,0.25)",
+        background: isOver ? "rgba(166,93,55,0.08)" : "rgba(235,230,222,0.95)",
+        backdropFilter: "blur(8px)",
+        boxShadow: "0 4px 24px rgba(0,0,0,0.12)",
+        transform: `translateX(-50%) scale(${isOver ? 1.05 : 1})`,
+      }}
+    >
+      <Archive size={20} style={{ color: isOver ? "#A65D37" : "#6B5E55" }} />
+      <span
+        className="text-xs font-sans font-semibold uppercase tracking-widest"
+        style={{ color: isOver ? "#A65D37" : "#6B5E55" }}
+      >
+        {isOver ? "Drop to archive" : "Archive Record"}
+      </span>
+    </div>
   );
 }
