@@ -12,6 +12,7 @@ import {
   useDroppable,
   type DragStartEvent,
   type DragEndEvent,
+  type CollisionDetection,
 } from "@dnd-kit/core";
 import { Archive } from "lucide-react";
 import type {
@@ -26,6 +27,30 @@ import { KanbanCard } from "./KanbanCard";
 import { LostReasonModal } from "./LostReasonModal";
 import { FinishingGateModal } from "./FinishingGateModal";
 import { NewLeadModal } from "./NewLeadModal";
+
+// Prioritize archive zone when cursor is over it, otherwise fall back to closestCenter
+const archiveFirstCollision: CollisionDetection = (args) => {
+  const { droppableContainers, pointerCoordinates } = args;
+  if (!pointerCoordinates) return closestCenter(args);
+
+  const archiveContainer = droppableContainers.find((c) => c.id === "archive");
+  if (archiveContainer?.rect.current) {
+    const rect = archiveContainer.rect.current;
+    const { x, y } = pointerCoordinates;
+    if (
+      x >= rect.left &&
+      x <= rect.right &&
+      y >= rect.top &&
+      y <= rect.bottom
+    ) {
+      return [
+        { id: "archive", data: { droppableContainer: archiveContainer } },
+      ];
+    }
+  }
+
+  return closestCenter(args);
+};
 
 interface Props {
   initialSubmissions: Submission[];
@@ -184,7 +209,7 @@ export function KanbanBoard({ initialSubmissions, crew }: Props) {
 
       <DndContext
         sensors={sensors}
-        collisionDetection={closestCenter}
+        collisionDetection={archiveFirstCollision}
         onDragStart={handleDragStart}
         onDragEnd={handleDragEnd}
       >
@@ -255,19 +280,17 @@ function ArchiveDropZone() {
   return (
     <div
       ref={setNodeRef}
-      className="fixed bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-3 px-8 py-4 border-2 border-dashed transition-all z-50"
+      className="fixed bottom-0 left-0 right-0 flex items-center justify-center gap-3 transition-all z-50"
       style={{
-        borderRadius: "4px",
-        borderColor: isOver ? "#A65D37" : "rgba(42,36,33,0.25)",
-        background: isOver ? "rgba(166,93,55,0.08)" : "rgba(235,230,222,0.95)",
+        height: isOver ? 100 : 72,
+        borderTop: `2px dashed ${isOver ? "#A65D37" : "rgba(42,36,33,0.25)"}`,
+        background: isOver ? "rgba(166,93,55,0.1)" : "rgba(235,230,222,0.97)",
         backdropFilter: "blur(8px)",
-        boxShadow: "0 4px 24px rgba(0,0,0,0.12)",
-        transform: `translateX(-50%) scale(${isOver ? 1.05 : 1})`,
       }}
     >
-      <Archive size={20} style={{ color: isOver ? "#A65D37" : "#6B5E55" }} />
+      <Archive size={22} style={{ color: isOver ? "#A65D37" : "#6B5E55" }} />
       <span
-        className="text-xs font-sans font-semibold uppercase tracking-widest"
+        className="text-sm font-sans font-semibold uppercase tracking-widest"
         style={{ color: isOver ? "#A65D37" : "#6B5E55" }}
       >
         {isOver ? "Drop to archive" : "Archive Record"}
