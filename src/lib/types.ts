@@ -1,5 +1,6 @@
 export type SubmissionStatus =
   | "to_bid"
+  | "contacted"
   | "bid_sent"
   | "on_deck"
   | "active"
@@ -77,6 +78,7 @@ export interface BidBlock {
 
 export const STATUS_LABELS: Record<SubmissionStatus, string> = {
   to_bid: "To Bid",
+  contacted: "Contacted",
   bid_sent: "Bid Sent",
   on_deck: "On Deck",
   active: "Active",
@@ -87,6 +89,7 @@ export const STATUS_LABELS: Record<SubmissionStatus, string> = {
 
 export const STATUS_COLORS: Record<SubmissionStatus, string> = {
   to_bid: "#11B2E8",
+  contacted: "#3B82B0",
   bid_sent: "#A65D37",
   on_deck: "#7B5EA7",
   active: "#C5880A",
@@ -104,6 +107,7 @@ export interface SubmissionNote {
 
 export const KANBAN_COLUMNS: SubmissionStatus[] = [
   "to_bid",
+  "contacted",
   "bid_sent",
   "on_deck",
   "active",
