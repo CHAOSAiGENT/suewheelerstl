@@ -9,12 +9,9 @@ import {
   useSensor,
   useSensors,
   closestCenter,
-  useDroppable,
   type DragStartEvent,
   type DragEndEvent,
-  type CollisionDetection,
 } from "@dnd-kit/core";
-import { Archive } from "lucide-react";
 import type {
   Submission,
   CrewMember,
@@ -27,30 +24,6 @@ import { KanbanCard } from "./KanbanCard";
 import { LostReasonModal } from "./LostReasonModal";
 import { FinishingGateModal } from "./FinishingGateModal";
 import { NewLeadModal } from "./NewLeadModal";
-
-// Prioritize archive zone when cursor is over it, otherwise fall back to closestCenter
-const archiveFirstCollision: CollisionDetection = (args) => {
-  const { droppableContainers, pointerCoordinates } = args;
-  if (!pointerCoordinates) return closestCenter(args);
-
-  const archiveContainer = droppableContainers.find((c) => c.id === "archive");
-  if (archiveContainer?.rect.current) {
-    const rect = archiveContainer.rect.current;
-    const { x, y } = pointerCoordinates;
-    if (
-      x >= rect.left &&
-      x <= rect.right &&
-      y >= rect.top &&
-      y <= rect.bottom
-    ) {
-      return [
-        { id: "archive", data: { droppableContainer: archiveContainer } },
-      ];
-    }
-  }
-
-  return closestCenter(args);
-};
 
 interface Props {
   initialSubmissions: Submission[];
@@ -112,23 +85,8 @@ export function KanbanBoard({ initialSubmissions, crew }: Props) {
     [],
   );
 
-  const archiveSubmission = useCallback(async (submissionId: string) => {
-    let preArchiveSubs: Submission[] = [];
-    setSubmissions((prev) => {
-      preArchiveSubs = prev;
-      return prev.filter((s) => s.id !== submissionId);
-    });
-
-    try {
-      const res = await fetch(`/api/admin/submissions/${submissionId}`, {
-        method: "PATCH",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ archived_at: new Date().toISOString() }),
-      });
-      if (!res.ok) throw new Error("Archive failed");
-    } catch {
-      setSubmissions(preArchiveSubs);
-    }
+  const removeSubmission = useCallback((submissionId: string) => {
+    setSubmissions((prev) => prev.filter((s) => s.id !== submissionId));
   }, []);
 
   const handleDragStart = ({ active }: DragStartEvent) => {
@@ -140,13 +98,6 @@ export function KanbanBoard({ initialSubmissions, crew }: Props) {
     if (!over) return;
 
     const submissionId = active.id as string;
-
-    // Archive drop target
-    if (over.id === "archive") {
-      archiveSubmission(submissionId);
-      return;
-    }
-
     const newStatus = over.id as SubmissionStatus;
     const submission = getById(submissionId);
     if (!submission || submission.status === newStatus) return;
@@ -209,7 +160,7 @@ export function KanbanBoard({ initialSubmissions, crew }: Props) {
 
       <DndContext
         sensors={sensors}
-        collisionDetection={archiveFirstCollision}
+        collisionDetection={closestCenter}
         onDragStart={handleDragStart}
         onDragEnd={handleDragEnd}
       >
@@ -220,12 +171,10 @@ export function KanbanBoard({ initialSubmissions, crew }: Props) {
               column={col}
               submissions={byColumn(col)}
               crew={crew}
+              onRemove={removeSubmission}
             />
           ))}
         </div>
-        {/* Archive drop zone — only visible while dragging */}
-        {draggingId && <ArchiveDropZone />}
-
         <DragOverlay>
           {draggingSubmission && (
             <KanbanCard
@@ -271,34 +220,5 @@ export function KanbanBoard({ initialSubmissions, crew }: Props) {
         />
       )}
     </>
-  );
-}
-
-function ArchiveDropZone() {
-  const { setNodeRef, isOver } = useDroppable({ id: "archive" });
-
-  return (
-    <div
-      ref={setNodeRef}
-      className="fixed top-0 right-0 bottom-0 flex flex-col items-center justify-center gap-3 transition-all z-50"
-      style={{
-        width: isOver ? 100 : 72,
-        borderLeft: `2px dashed ${isOver ? "#A65D37" : "rgba(42,36,33,0.25)"}`,
-        background: isOver ? "rgba(166,93,55,0.1)" : "rgba(235,230,222,0.97)",
-        backdropFilter: "blur(8px)",
-      }}
-    >
-      <Archive size={22} style={{ color: isOver ? "#A65D37" : "#6B5E55" }} />
-      <span
-        className="text-xs font-sans font-semibold uppercase tracking-widest text-center"
-        style={{
-          color: isOver ? "#A65D37" : "#6B5E55",
-          writingMode: "vertical-lr",
-          letterSpacing: "0.15em",
-        }}
-      >
-        {isOver ? "Drop to archive" : "Archive"}
-      </span>
-    </div>
   );
 }

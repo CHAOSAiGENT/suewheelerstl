@@ -5,6 +5,7 @@ import type { SubmissionStatus } from "@/lib/types";
 
 const VALID_STATUSES: SubmissionStatus[] = [
   "to_bid",
+  "contacted",
   "bid_sent",
   "on_deck",
   "active",
@@ -48,6 +49,7 @@ export async function PATCH(
   if (body.bid_start_date !== undefined)
     update.bid_start_date = body.bid_start_date;
   if (body.bid_amount !== undefined) update.bid_amount = body.bid_amount;
+  if (body.archived_at !== undefined) update.archived_at = body.archived_at;
 
   if (Object.keys(update).length === 0) {
     return NextResponse.json({ error: "Nothing to update" }, { status: 400 });

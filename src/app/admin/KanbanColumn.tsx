@@ -9,9 +9,10 @@ interface Props {
   column: SubmissionStatus;
   submissions: Submission[];
   crew: CrewMember[];
+  onRemove: (id: string) => void;
 }
 
-export function KanbanColumn({ column, submissions, crew }: Props) {
+export function KanbanColumn({ column, submissions, crew, onRemove }: Props) {
   const { setNodeRef, isOver } = useDroppable({ id: column });
 
   const isLost = column === "lost";
@@ -51,7 +52,12 @@ export function KanbanColumn({ column, submissions, crew }: Props) {
         }}
       >
         {submissions.map((s) => (
-          <KanbanCard key={s.id} submission={s} crew={crew} />
+          <KanbanCard
+            key={s.id}
+            submission={s}
+            crew={crew}
+            onRemove={onRemove}
+          />
         ))}
       </div>
     </div>
