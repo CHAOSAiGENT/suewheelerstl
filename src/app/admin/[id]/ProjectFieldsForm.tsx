@@ -15,7 +15,12 @@ export function ProjectFieldsForm({
   initialAfterPhotos,
   initialFinalPayment,
 }: Props) {
-  const [startDate, setStartDate] = useState(initialStartDate || "");
+  // If the stored date has a bogus year (e.g. 0002), discard it
+  const cleanDate =
+    initialStartDate && /^[12]\d{3}/.test(initialStartDate)
+      ? initialStartDate
+      : "";
+  const [startDate, setStartDate] = useState(cleanDate);
   const [afterPhotos, setAfterPhotos] = useState(initialAfterPhotos);
   const [finalPayment, setFinalPayment] = useState(initialFinalPayment);
   const [saving, setSaving] = useState(false);
@@ -60,6 +65,7 @@ export function ProjectFieldsForm({
         <input
           type="date"
           value={startDate}
+          min="2020-01-01"
           onChange={handleStartDateChange}
           disabled={saving}
           className="px-3 py-2 text-sm font-sans text-[#2A2421] bg-white border w-full"

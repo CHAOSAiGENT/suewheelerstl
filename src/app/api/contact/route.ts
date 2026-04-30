@@ -92,7 +92,8 @@ export async function POST(req: Request) {
         // Only accept paths that look like our own storage paths (uploads/<uuid>.<ext>)
         photo_urls = parsed.filter(
           (p): p is string =>
-            typeof p === "string" && /^uploads\/[a-f0-9-]+\.[a-z]+$/.test(p),
+            typeof p === "string" &&
+            /^(uploads|contact-uploads)\/[a-f0-9-]+\.[a-z]+$/.test(p),
         );
       }
     } catch {
