@@ -81,25 +81,29 @@ Trigger: contact form 500 (missing `zip` column + `status='to_bid'` not in CHECK
 Safety rule while user away: never break the working Vercel deploy — DB-dependent
 checks self-skip when `SUPABASE_DB_URL` is absent.
 
-- [ ] 1. `src/lib/db-contract.ts` — single source of truth (value arrays + REQUIRED_COLUMNS)
-- [ ] 2. `src/lib/types.ts` — derive SubmissionStatus/BidStatus/LostReason from contract
-- [ ] 3. Verify `tsc --noEmit` clean after derive
-- [ ] 4. devDeps: vitest, pg, @types/pg
-- [ ] 5. `vitest.config.ts`
-- [ ] 6. `src/lib/__tests__/schema-drift.test.ts` (introspect live DB; self-skip w/o secret)
-- [ ] 7. package.json scripts (typecheck, test, test:schema, prebuild, db:types, setup:hooks)
-- [ ] 8. `.github/workflows/schema-drift.yml`
-- [ ] 9. Pre-push hook `scripts/hooks/pre-push` + setup:hooks + activate locally
-- [ ] 10. `supabase/config.toml`
-- [ ] 11. `docs/MIGRATIONS.md` (discipline + ACTIVATION checklist)
-- [ ] 12. Fix `supabase-migration` skill to write the local migration file
-- [ ] 13. Verify (tsc, test:schema skips, prebuild exits 0)
-- [ ] 14. Commit + push (incl. pending .chaosaigent steering files)
-- [ ] 15. lessons.md + .remember handoff
+- [x] 1. `src/lib/db-contract.ts` — single source of truth (value arrays + REQUIRED_COLUMNS)
+- [x] 2. `src/lib/types.ts` — derive SubmissionStatus/BidStatus/LostReason from contract
+- [x] 3. Verify `tsc --noEmit` clean after derive (exit 0)
+- [x] 4. devDeps: vitest, pg, @types/pg
+- [x] 5. `vitest.config.ts`
+- [x] 6. `src/lib/__tests__/schema-drift.test.ts` (introspect live DB; self-skip w/o secret)
+- [x] 7. package.json scripts (typecheck, test, test:schema, prebuild, db:types, setup:hooks)
+- [x] 8. `.github/workflows/schema-drift.yml` — verified green run (guard, 37s)
+- [x] 9. Pre-push hook `scripts/hooks/pre-push` + setup:hooks + activated (fired green on push)
+- [x] 10. `supabase/config.toml`
+- [x] 11. `docs/MIGRATIONS.md` (discipline + ACTIVATION checklist)
+- [x] 12. Fix `supabase-migration` skill to write the local migration file
+- [x] 13. Verify (tsc 0, test:schema 2 skipped/exit 0, prebuild exit 0)
+- [x] 14. Commit + push — 2f99534 (steering), 9616bbc (drift gate); pushed to main
+- [x] 15. lessons.md + .remember handoff
 
-Requires user (no secrets/login available to me):
-- Add `SUPABASE_DB_URL` → Vercel env + GitHub secret (flips gate to enforcing)
-- Phase 2: `supabase login && supabase link` → `npm run db:types`
+DONE 2026-06-01 — gate shipped in safe skip-mode, all layers verified.
+
+⚠️ Requires user (no secrets/login available to me) — gate stays in SKIP MODE until:
+- Add `SUPABASE_DB_URL` → Vercel env + GitHub Actions secret (flips gate to enforcing)
+- Run `npm run setup:hooks` on any other machine that should get the pre-push hook
+- Phase 2 (optional): `supabase login && supabase link` → `npm run db:types`
+See `docs/MIGRATIONS.md` → Activation checklist.
 
 ---
 
