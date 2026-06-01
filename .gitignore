@@ -22,6 +22,9 @@ npm-debug.log*
 # Vercel
 .vercel
 
+# Supabase CLI scratch (project ref / temp state — not source of truth)
+supabase/.temp/
+
 # TypeScript
 *.tsbuildinfo
 next-env.d.ts

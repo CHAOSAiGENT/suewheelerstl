@@ -1,0 +1,5 @@
+# Supabase CLI config. The CLI is the source of truth for schema going forward.
+# One-time setup:  supabase login  &&  supabase link --project-ref khioedholasaxemmtooz
+# New migration:   supabase migration new <name>  →  edit SQL  →  supabase db push
+# See docs/MIGRATIONS.md. For a full local-dev config, run `supabase init`.
+project_id = "khioedholasaxemmtooz"

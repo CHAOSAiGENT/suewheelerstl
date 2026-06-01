@@ -1,16 +1,17 @@
-export type SubmissionStatus =
-  | "to_bid"
-  | "contacted"
-  | "bid_sent"
-  | "on_deck"
-  | "active"
-  | "finishing"
-  | "fully_complete"
-  | "lost";
+// These unions are derived from the single source of truth in db-contract.ts,
+// which the schema-drift test checks against the live database CHECK constraints.
+// To change the vocabulary, edit db-contract.ts (and migrate the DB in the same commit).
+import {
+  STATUS_VALUES,
+  BID_STATUS_VALUES,
+  LOST_REASON_VALUES,
+} from "./db-contract";
 
-export type BidStatus = "none" | "sent" | "accepted" | "declined";
+export type SubmissionStatus = (typeof STATUS_VALUES)[number];
 
-export type LostReason = "price" | "timing" | "competitor" | "unknown";
+export type BidStatus = (typeof BID_STATUS_VALUES)[number];
+
+export type LostReason = (typeof LOST_REASON_VALUES)[number];
 
 export interface Submission {
   id: string;

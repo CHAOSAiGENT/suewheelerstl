@@ -5,8 +5,14 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "prebuild": "npm run test:schema",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:schema": "vitest run src/lib/__tests__/schema-drift.test.ts",
+    "db:types": "supabase gen types typescript --project-id khioedholasaxemmtooz > src/lib/database.types.ts",
+    "setup:hooks": "git config core.hooksPath scripts/hooks"
   },
   "dependencies": {
     "@dnd-kit/core": "^6.3.1",
@@ -38,10 +44,13 @@
     "@tailwindcss/postcss": "^4.0.6",
     "@types/google.maps": "^3.64.0",
     "@types/node": "^20",
+    "@types/pg": "^8.20.0",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "@types/uuid": "^10.0.0",
+    "pg": "^8.21.0",
     "tailwindcss": "^4.0.6",
-    "typescript": "^5"
+    "typescript": "^5",
+    "vitest": "^4.1.8"
   }
 }

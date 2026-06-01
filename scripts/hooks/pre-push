@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+# Pre-push drift gate. Activate once with: npm run setup:hooks
+# Typecheck always runs; the schema check self-skips without SUPABASE_DB_URL.
+# Bypass in an emergency with: git push --no-verify
+set -euo pipefail
+
+echo "[pre-push] typecheck…"
+npm run typecheck
+
+echo "[pre-push] schema drift…"
+npm run test:schema
+
+echo "[pre-push] ok"

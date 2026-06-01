@@ -74,6 +74,33 @@ _Last updated: 2026-03-17_
 
 ---
 
+## 2026-06-01 — Schema/Code Drift Prevention (autonomous)
+
+Spec: `docs/superpowers/specs/2026-06-01-schema-drift-prevention-design.md`
+Trigger: contact form 500 (missing `zip` column + `status='to_bid'` not in CHECK).
+Safety rule while user away: never break the working Vercel deploy — DB-dependent
+checks self-skip when `SUPABASE_DB_URL` is absent.
+
+- [ ] 1. `src/lib/db-contract.ts` — single source of truth (value arrays + REQUIRED_COLUMNS)
+- [ ] 2. `src/lib/types.ts` — derive SubmissionStatus/BidStatus/LostReason from contract
+- [ ] 3. Verify `tsc --noEmit` clean after derive
+- [ ] 4. devDeps: vitest, pg, @types/pg
+- [ ] 5. `vitest.config.ts`
+- [ ] 6. `src/lib/__tests__/schema-drift.test.ts` (introspect live DB; self-skip w/o secret)
+- [ ] 7. package.json scripts (typecheck, test, test:schema, prebuild, db:types, setup:hooks)
+- [ ] 8. `.github/workflows/schema-drift.yml`
+- [ ] 9. Pre-push hook `scripts/hooks/pre-push` + setup:hooks + activate locally
+- [ ] 10. `supabase/config.toml`
+- [ ] 11. `docs/MIGRATIONS.md` (discipline + ACTIVATION checklist)
+- [ ] 12. Fix `supabase-migration` skill to write the local migration file
+- [ ] 13. Verify (tsc, test:schema skips, prebuild exits 0)
+- [ ] 14. Commit + push (incl. pending .chaosaigent steering files)
+- [ ] 15. lessons.md + .remember handoff
+
+Requires user (no secrets/login available to me):
+- Add `SUPABASE_DB_URL` → Vercel env + GitHub secret (flips gate to enforcing)
+- Phase 2: `supabase login && supabase link` → `npm run db:types`
+
 ---
 
 ## Lessons → tasks/lessons.md

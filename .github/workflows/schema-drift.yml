@@ -1,0 +1,28 @@
+name: schema-drift
+
+# Belt to the Vercel build's suspenders: typechecks every push and runs the
+# schema-drift gate against the live DB. The schema check self-skips until the
+# SUPABASE_DB_URL repository secret is added, so this stays green until then —
+# add the secret to make it enforcing. See docs/MIGRATIONS.md.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  guard:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+      - run: npm ci
+      - name: Typecheck
+        run: npm run typecheck
+      - name: Schema drift check
+        env:
+          SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
+        run: npm run test:schema
