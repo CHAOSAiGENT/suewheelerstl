@@ -1,4 +1,6 @@
 import { describe, it, expect, beforeAll, afterAll } from "vitest";
+import { readFileSync } from "node:fs";
+import { fileURLToPath } from "node:url";
 import { Client } from "pg";
 import { CHECK_CONSTRAINTS, REQUIRED_COLUMNS } from "../db-contract";
 
@@ -36,15 +38,21 @@ suite("schema drift — live database matches db-contract.ts", () => {
 
   beforeAll(async () => {
     // The connection carries the DB password, so TLS ALWAYS verifies the server
-    // — we never disable verification. Use the Supabase Transaction pooler
-    // (aws-0-*.pooler.supabase.com), whose cert is publicly trusted, so Node's
-    // system CAs verify it with no extra config. Only if you must use the DIRECT
-    // endpoint (db.<ref>.supabase.co, self-signed root) set SUPABASE_DB_CA to
-    // Supabase's CA cert and it is pinned. Either path verifies the server.
-    const ca = process.env.SUPABASE_DB_CA;
+    // — we never disable verification. Supabase's pooler presents a chain rooted
+    // in the self-signed "Supabase Root 2021 CA", which isn't in Node's default
+    // trust store, so we pin it from the committed public cert. SUPABASE_DB_CA
+    // overrides the pinned file if a project ever rotates its root.
+    const ca =
+      process.env.SUPABASE_DB_CA ||
+      readFileSync(
+        fileURLToPath(
+          new URL("../../../certs/supabase-prod-ca-2021.crt", import.meta.url),
+        ),
+        "utf8",
+      );
     client = new Client({
       connectionString: DB_URL,
-      ssl: ca ? { ca, rejectUnauthorized: true } : { rejectUnauthorized: true },
+      ssl: { ca, rejectUnauthorized: true },
     });
     await client.connect();
   });

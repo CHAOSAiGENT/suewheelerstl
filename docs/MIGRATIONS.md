@@ -69,11 +69,12 @@ The gate ships in safe **skip mode**. To make it enforcing:
    - **GitHub:** Repo → Settings → Secrets and variables → Actions.
      This makes the Action enforcing.
    - The connection is always TLS-verified; we never disable verification.
-3. **(Only if you must use the DIRECT endpoint)** download Supabase's CA cert
-   (Dashboard → Settings → Database → **SSL configuration**) and add its PEM as
-   the `SUPABASE_DB_CA` secret in both places. Not needed for the pooler.
-4. **Activate the local pre-push hook:** `npm run setup:hooks`
-5. **(Optional, phase 2) Generated types:** after `supabase login && supabase link`,
+   - **TLS:** the pooler presents a chain rooted in the self-signed *Supabase
+     Root 2021 CA*, which is committed at `certs/supabase-prod-ca-2021.crt` and
+     pinned by the test (verified strictly). **No CA secret is needed.** Only if
+     Supabase ever rotates the root, set `SUPABASE_DB_CA` to override the file.
+3. **Activate the local pre-push hook:** `npm run setup:hooks`
+4. **(Optional, phase 2) Generated types:** after `supabase login && supabase link`,
    run `npm run db:types` to commit `src/lib/database.types.ts` for comprehensive
    compile-time column checking. Not required — the schema test already covers the
    missing-column and constraint-value classes.
@@ -85,4 +86,4 @@ Credentials, for reference:
 | `SUPABASE_ACCESS_TOKEN` | `sbp_…` | CLI / `db:types` (Management API) | No (PAT) |
 | service-role / anon keys | `eyJ…` | app runtime (already in Vercel) | Yes |
 | `SUPABASE_DB_URL` | `postgresql://…` | the schema-drift test (carries DB password) | No (conn string) |
-| `SUPABASE_DB_CA` | `-----BEGIN CERTIFICATE-----…` | *optional* — only for the direct endpoint; pins Supabase's CA. Pooler needs no CA. | No (CA cert) |
+| `SUPABASE_DB_CA` | `-----BEGIN CERTIFICATE-----…` | *optional override* — CA is committed at `certs/supabase-prod-ca-2021.crt`; only set this if Supabase rotates the root | No (CA cert) |
