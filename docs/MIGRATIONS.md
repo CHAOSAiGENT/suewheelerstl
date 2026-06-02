@@ -57,20 +57,21 @@ required column drifts from `db-contract.ts`. **It self-skips when
 The gate ships in safe **skip mode**. To make it enforcing:
 
 1. **Get the DB connection string** — Supabase Dashboard → Project Settings →
-   Database → Connection string → **Pooler** (Transaction mode), `sslmode=require`.
+   Database → Connection string → **Transaction pooler**
+   (`postgres.<ref>@aws-0-<region>.pooler.supabase.com:6543`). The pooler's cert
+   is publicly trusted, so TLS verifies against system CAs with no CA secret.
    This is `postgresql://…`, contains the DB password, and is *not* a JWT.
-2. **Download Supabase's CA cert** — Dashboard → Project Settings → Database →
-   **SSL configuration** → download the certificate (PEM). Required: the
-   connection carries the DB password, so the test verifies the server cert
-   against this CA and **fails loudly if it is missing** (never connects
-   unverified).
-3. **Add BOTH secrets** to Vercel and GitHub:
-   - `SUPABASE_DB_URL` — the connection string from step 1.
-   - `SUPABASE_DB_CA` — the full PEM contents from step 2.
+   Avoid the **direct** endpoint (`db.<ref>.supabase.co`) — its self-signed root
+   isn't in the default trust store (see step 2 if you must use it).
+2. **Add `SUPABASE_DB_URL`** to Vercel and GitHub:
    - **Vercel:** Project → Settings → Environment Variables (Production + Preview).
      This makes the Vercel `prebuild` enforcing.
    - **GitHub:** Repo → Settings → Secrets and variables → Actions.
      This makes the Action enforcing.
+   - The connection is always TLS-verified; we never disable verification.
+3. **(Only if you must use the DIRECT endpoint)** download Supabase's CA cert
+   (Dashboard → Settings → Database → **SSL configuration**) and add its PEM as
+   the `SUPABASE_DB_CA` secret in both places. Not needed for the pooler.
 4. **Activate the local pre-push hook:** `npm run setup:hooks`
 5. **(Optional, phase 2) Generated types:** after `supabase login && supabase link`,
    run `npm run db:types` to commit `src/lib/database.types.ts` for comprehensive
@@ -84,4 +85,4 @@ Credentials, for reference:
 | `SUPABASE_ACCESS_TOKEN` | `sbp_…` | CLI / `db:types` (Management API) | No (PAT) |
 | service-role / anon keys | `eyJ…` | app runtime (already in Vercel) | Yes |
 | `SUPABASE_DB_URL` | `postgresql://…` | the schema-drift test (carries DB password) | No (conn string) |
-| `SUPABASE_DB_CA` | `-----BEGIN CERTIFICATE-----…` | pins Supabase's CA so the test verifies the server cert | No (CA cert) |
+| `SUPABASE_DB_CA` | `-----BEGIN CERTIFICATE-----…` | *optional* — only for the direct endpoint; pins Supabase's CA. Pooler needs no CA. | No (CA cert) |
