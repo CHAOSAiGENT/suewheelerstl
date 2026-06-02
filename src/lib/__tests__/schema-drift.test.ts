@@ -35,12 +35,16 @@ suite("schema drift — live database matches db-contract.ts", () => {
   let client: Client;
 
   beforeAll(async () => {
-    // Verify TLS against system CAs. Supabase certs are publicly issued, so this
-    // validates cleanly — use the pooler connection string (sslmode=require) for
-    // SUPABASE_DB_URL. Do NOT set rejectUnauthorized:false (enables MITM).
+    // Supabase Postgres presents a self-signed CA in its certificate chain, so
+    // strict system-CA verification fails out of the box. For FULL verification,
+    // set SUPABASE_DB_CA to Supabase's CA cert (Dashboard → Settings → Database →
+    // SSL configuration → download) and it is pinned below. Without it, the
+    // connection is still TLS-encrypted but the chain is not verified — an
+    // accepted trade-off for a read-only schema introspection in CI.
+    const ca = process.env.SUPABASE_DB_CA;
     client = new Client({
       connectionString: DB_URL,
-      ssl: { rejectUnauthorized: true },
+      ssl: ca ? { ca, rejectUnauthorized: true } : { rejectUnauthorized: false },
     });
     await client.connect();
   });
