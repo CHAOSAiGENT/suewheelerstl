@@ -59,13 +59,20 @@ The gate ships in safe **skip mode**. To make it enforcing:
 1. **Get the DB connection string** — Supabase Dashboard → Project Settings →
    Database → Connection string → **Pooler** (Transaction mode), `sslmode=require`.
    This is `postgresql://…`, contains the DB password, and is *not* a JWT.
-2. **Add it as `SUPABASE_DB_URL`:**
-   - **Vercel:** Project → Settings → Environment Variables → add `SUPABASE_DB_URL`
-     (Production + Preview). This makes the Vercel `prebuild` enforcing.
-   - **GitHub:** Repo → Settings → Secrets and variables → Actions → add
-     `SUPABASE_DB_URL`. This makes the Action enforcing.
-3. **Activate the local pre-push hook:** `npm run setup:hooks`
-4. **(Optional, phase 2) Generated types:** after `supabase login && supabase link`,
+2. **Download Supabase's CA cert** — Dashboard → Project Settings → Database →
+   **SSL configuration** → download the certificate (PEM). Required: the
+   connection carries the DB password, so the test verifies the server cert
+   against this CA and **fails loudly if it is missing** (never connects
+   unverified).
+3. **Add BOTH secrets** to Vercel and GitHub:
+   - `SUPABASE_DB_URL` — the connection string from step 1.
+   - `SUPABASE_DB_CA` — the full PEM contents from step 2.
+   - **Vercel:** Project → Settings → Environment Variables (Production + Preview).
+     This makes the Vercel `prebuild` enforcing.
+   - **GitHub:** Repo → Settings → Secrets and variables → Actions.
+     This makes the Action enforcing.
+4. **Activate the local pre-push hook:** `npm run setup:hooks`
+5. **(Optional, phase 2) Generated types:** after `supabase login && supabase link`,
    run `npm run db:types` to commit `src/lib/database.types.ts` for comprehensive
    compile-time column checking. Not required — the schema test already covers the
    missing-column and constraint-value classes.
@@ -76,4 +83,5 @@ Credentials, for reference:
 |------|--------|---------|------|
 | `SUPABASE_ACCESS_TOKEN` | `sbp_…` | CLI / `db:types` (Management API) | No (PAT) |
 | service-role / anon keys | `eyJ…` | app runtime (already in Vercel) | Yes |
-| `SUPABASE_DB_URL` | `postgresql://…` | the schema-drift test | No (conn string) |
+| `SUPABASE_DB_URL` | `postgresql://…` | the schema-drift test (carries DB password) | No (conn string) |
+| `SUPABASE_DB_CA` | `-----BEGIN CERTIFICATE-----…` | pins Supabase's CA so the test verifies the server cert | No (CA cert) |

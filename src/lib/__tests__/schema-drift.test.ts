@@ -35,16 +35,23 @@ suite("schema drift — live database matches db-contract.ts", () => {
   let client: Client;
 
   beforeAll(async () => {
-    // Supabase Postgres presents a self-signed CA in its certificate chain, so
-    // strict system-CA verification fails out of the box. For FULL verification,
-    // set SUPABASE_DB_CA to Supabase's CA cert (Dashboard → Settings → Database →
-    // SSL configuration → download) and it is pinned below. Without it, the
-    // connection is still TLS-encrypted but the chain is not verified — an
-    // accepted trade-off for a read-only schema introspection in CI.
+    // The connection string transmits the DB password, so TLS MUST verify the
+    // server — never connect without verification. Supabase Postgres presents a
+    // self-signed CA in its chain, so we pin Supabase's CA cert (Dashboard →
+    // Settings → Database → SSL configuration → download) via SUPABASE_DB_CA.
+    // Required (not optional): fail loudly rather than silently downgrade.
     const ca = process.env.SUPABASE_DB_CA;
+    if (!ca) {
+      throw new Error(
+        "SUPABASE_DB_CA is required when SUPABASE_DB_URL is set. The connection " +
+          "carries the DB password, so the server cert must be verified. Download " +
+          "Supabase's CA cert (Dashboard → Settings → Database → SSL configuration) " +
+          "and set it as the SUPABASE_DB_CA secret in Vercel + GitHub. See docs/MIGRATIONS.md.",
+      );
+    }
     client = new Client({
       connectionString: DB_URL,
-      ssl: ca ? { ca, rejectUnauthorized: true } : { rejectUnauthorized: false },
+      ssl: { ca, rejectUnauthorized: true },
     });
     await client.connect();
   });
