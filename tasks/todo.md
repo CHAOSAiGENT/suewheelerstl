@@ -99,11 +99,12 @@ checks self-skip when `SUPABASE_DB_URL` is absent.
 
 DONE 2026-06-01 — gate shipped in safe skip-mode, all layers verified.
 
-⚠️ Requires user (no secrets/login available to me) — gate stays in SKIP MODE until:
-- Add `SUPABASE_DB_URL` → Vercel env + GitHub Actions secret (flips gate to enforcing)
-- Run `npm run setup:hooks` on any other machine that should get the pre-push hook
-- Phase 2 (optional): `supabase login && supabase link` → `npm run db:types`
-See `docs/MIGRATIONS.md` → Activation checklist.
+✅ ACTIVATED 2026-06-02 — `SUPABASE_DB_URL` set in GitHub + Vercel (Prod+Preview).
+Gate enforcing on all three layers (GitHub Action green, Vercel build `2 passed`,
+pre-push hook). Production deploy 724d709 Ready on www.suewheelerstl.com.
+TLS: pinned `certs/supabase-prod-ca-2021.crt` (pooler self-signed root). See
+tasks/lessons.md (2026-06-02) for the connection gotchas.
+- Optional phase 2 still open: `supabase login && supabase link` → `npm run db:types` for generated types.
 
 ---
 
