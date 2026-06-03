@@ -74,10 +74,23 @@ The gate ships in safe **skip mode**. To make it enforcing:
      pinned by the test (verified strictly). **No CA secret is needed.** Only if
      Supabase ever rotates the root, set `SUPABASE_DB_CA` to override the file.
 3. **Activate the local pre-push hook:** `npm run setup:hooks`
-4. **(Optional, phase 2) Generated types:** after `supabase login && supabase link`,
-   run `npm run db:types` to commit `src/lib/database.types.ts` for comprehensive
-   compile-time column checking. Not required — the schema test already covers the
-   missing-column and constraint-value classes.
+## 🔔 Phase 2 — generated types (TRIGGER: only when a table change is planned)
+
+Not needed for steady state. **Fire this only if/when you're about to make schema
+(table/column) changes** — it upgrades missing-column coverage from the curated
+`REQUIRED_COLUMNS` list to a complete, compiler-enforced schema mirror, so any new
+or renamed column is type-checked across the whole codebase.
+
+When that day comes:
+1. `supabase login` → `supabase link --project-ref khioedholasaxemmtooz`
+2. `npm run db:types` → commit `src/lib/database.types.ts`
+3. Type the supabase clients: `createClient<Database>(...)` so `tsc` enforces it
+4. *(optional)* CI step: regenerate + `git diff --exit-code` to flag stale types
+   (needs `SUPABASE_ACCESS_TOKEN`)
+
+Until then the existing gate (constraint-introspection test + `REQUIRED_COLUMNS`)
+is sufficient. Phase 2 complements it — it never replaces the constraint test,
+since generated types can't see CHECK-constraint values.
 
 Credentials, for reference:
 

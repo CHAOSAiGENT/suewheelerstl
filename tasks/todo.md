@@ -104,7 +104,9 @@ Gate enforcing on all three layers (GitHub Action green, Vercel build `2 passed`
 pre-push hook). Production deploy 724d709 Ready on www.suewheelerstl.com.
 TLS: pinned `certs/supabase-prod-ca-2021.crt` (pooler self-signed root). See
 tasks/lessons.md (2026-06-02) for the connection gotchas.
-- Optional phase 2 still open: `supabase login && supabase link` → `npm run db:types` for generated types.
+- Phase 2 (generated types) — NOT planned. TRIGGER: fire only if/when a table/column
+  change is on the horizon. Steps documented in `docs/MIGRATIONS.md` → "Phase 2".
+  Steady state doesn't need it.
 
 ---
 
