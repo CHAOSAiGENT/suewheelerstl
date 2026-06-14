@@ -20,6 +20,7 @@ export default async function AdminPage() {
       .from("submissions")
       .select("*")
       .is("archived_at", null)
+      .eq("is_test", false)
       .order("created_at", { ascending: false }),
     supabase.from("crew_members").select("*").eq("active", true).order("name"),
   ]);

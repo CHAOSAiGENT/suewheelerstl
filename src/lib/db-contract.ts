@@ -73,6 +73,7 @@ export const REQUIRED_COLUMNS: Record<string, readonly string[]> = {
     "reply_token",
     "bid_status",
     "lost_reason",
+    "is_test",
   ],
 };
 
