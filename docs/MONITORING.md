@@ -8,9 +8,11 @@ the job fails AND fans out Email + SMS + Slack alerts via `scripts/monitor/check
 ## Required configuration
 
 **Vercel env (production)** — needed by the `/api/health` endpoint:
+
 - `MONITOR_SECRET` — shared secret (generate a long random string).
 
 **GitHub repo secrets** — needed by the workflow:
+
 - `MONITOR_SECRET` — same value as the Vercel env var.
 - `RESEND_API_KEY` — reuse the app's Resend key.
 - `ALERT_EMAIL_TO` — recipient for failure emails.
@@ -24,7 +26,9 @@ the rest later.
 
 GitHub → Actions → form-monitor → "Run workflow". A green run = healthy. To verify
 alerts deliver, temporarily set `MONITOR_SECRET` in the GitHub secret to a wrong
-value (forces a 401), run, confirm all four channels fire, then restore it.
+value (forces a 401), run, and confirm all three alert channels (Email, SMS, Slack)
+fire — the job itself also shows red in GitHub Actions as a fourth signal. Restore
+the secret afterward.
 
 ## What it does NOT cover
 
