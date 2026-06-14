@@ -83,7 +83,19 @@ async function sendSlack(message) {
 
 export async function sendAlerts(message) {
   // Each channel independent — one failing never blocks the others.
-  await Promise.allSettled([sendEmail(message), sendSms(message), sendSlack(message)]);
+  const channels = ["email", "sms", "slack"];
+  const results = await Promise.allSettled([
+    sendEmail(message),
+    sendSms(message),
+    sendSlack(message),
+  ]);
+  // Surface which channel failed — a silently-broken alert channel would defeat
+  // the monitor's purpose. (The job still fails regardless, the 4th channel.)
+  results.forEach((r, i) => {
+    if (r.status === "rejected") {
+      console.error(`[monitor] alert channel '${channels[i]}' failed:`, r.reason);
+    }
+  });
 }
 
 // Run as main (not when imported by tests).
