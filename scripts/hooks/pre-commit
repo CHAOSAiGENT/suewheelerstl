@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+# chaos-controller pre-commit — mechanical QA on staged files.
+# Blocks on ERRORS (e.g. secrets); prints WARNINGS but allows the commit.
+# No-op if the chaos-checks engine isn't installed on this machine.
+# Override in an emergency with: git commit --no-verify
+set -uo pipefail
+
+CHECKS="$HOME/.claude/skills/chaos-controller/bin/chaos-checks.sh"
+[ -x "$CHECKS" ] || exit 0   # engine not present — skip silently
+
+set +e
+output="$("$CHECKS" --staged)"
+status=$?
+set -e
+
+if [ -n "$output" ]; then
+  echo "[pre-commit] chaos-checks findings:"
+  echo "$output"
+fi
+
+if [ "${status:-0}" -ge 2 ]; then
+  echo "[pre-commit] errors found (e.g. secrets) — commit blocked. Override: git commit --no-verify"
+  exit 1
+fi
+exit 0
