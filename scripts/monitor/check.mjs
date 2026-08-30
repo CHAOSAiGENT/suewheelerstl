@@ -1,6 +1,6 @@
 // Form health monitor runner. Run by .github/workflows/form-monitor.yml.
-// POSTs /api/health with retries; on failure fans out Email/SMS/Slack alerts
-// and exits non-zero (which also fails the GitHub job — the 4th alert channel).
+// POSTs /api/health with retries; on failure fans out Email/SMS/Slack/ntfy alerts
+// and exits non-zero (which also fails the GitHub job — the final alert channel).
 // Uses only Node 22 built-ins (fetch, Buffer) — no dependencies.
 
 const HEALTH_URL = process.env.MONITOR_URL ?? "https://suewheelerstl.com/api/health";
@@ -81,13 +81,31 @@ async function sendSlack(message) {
   });
 }
 
+async function sendNtfy(message) {
+  const topic = process.env.NTFY_TOPIC;
+  if (!topic) return;
+  const server = (process.env.NTFY_SERVER || "https://ntfy.sh").replace(/\/+$/, "");
+  const token = process.env.NTFY_TOKEN;
+  await fetch(`${server}/${topic}`, {
+    method: "POST",
+    headers: {
+      Title: "Sue Wheeler STL — contact form DOWN",
+      Priority: "urgent",
+      Tags: "rotating_light",
+      ...(token ? { Authorization: `Bearer ${token}` } : {}),
+    },
+    body: message,
+  });
+}
+
 export async function sendAlerts(message) {
   // Each channel independent — one failing never blocks the others.
-  const channels = ["email", "sms", "slack"];
+  const channels = ["email", "sms", "slack", "ntfy"];
   const results = await Promise.allSettled([
     sendEmail(message),
     sendSms(message),
     sendSlack(message),
+    sendNtfy(message),
   ]);
   // Surface which channel failed — a silently-broken alert channel would defeat
   // the monitor's purpose. (The job still fails regardless, the 4th channel.)

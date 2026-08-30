@@ -25,5 +25,8 @@ jobs:
           TWILIO_FROM: ${{ secrets.TWILIO_FROM }}
           ALERT_SMS_TO: ${{ secrets.ALERT_SMS_TO }}
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
+          NTFY_SERVER: ${{ secrets.NTFY_SERVER }}
+          NTFY_TOKEN: ${{ secrets.NTFY_TOKEN }}
           GITHUB_RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
         run: node scripts/monitor/check.mjs
