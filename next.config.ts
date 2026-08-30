@@ -41,31 +41,6 @@ const nextConfig: NextConfig = {
         destination: "/historic-preservation",
         permanent: true,
       },
-      // Out-of-area neighborhoods — not actively targeted
-      { source: "/neighborhoods/ballwin", destination: "/", permanent: true },
-      {
-        source: "/neighborhoods/chesterfield",
-        destination: "/",
-        permanent: true,
-      },
-      { source: "/neighborhoods/frontenac", destination: "/", permanent: true },
-      { source: "/neighborhoods/kirkwood", destination: "/", permanent: true },
-      { source: "/neighborhoods/ladue", destination: "/", permanent: true },
-      {
-        source: "/neighborhoods/tower-grove",
-        destination: "/",
-        permanent: true,
-      },
-      {
-        source: "/neighborhoods/town-and-country",
-        destination: "/",
-        permanent: true,
-      },
-      {
-        source: "/neighborhoods/webster-groves",
-        destination: "/",
-        permanent: true,
-      },
       // Architectural woodwork — canonical URL is /built-ins-and-millwork-refinishing
       {
         source: "/architectural-woodwork-refinishing",
