@@ -25,6 +25,14 @@ export const metadata: Metadata = {
   description:
     "St. Louis's most trusted architectural wood refinisher. Hand-stripped, never dipped. EPA Certified. 36 years. Sue answers every call personally. (314) 367-6054.",
   metadataBase: new URL("https://suewheelerstl.com"),
+  // Relative canonical: Next resolves "./" against metadataBase + the current
+  // route, so every page emits a self-referencing canonical on the non-www
+  // apex host. Do NOT set `alternates` in a page's own metadata unless that
+  // page genuinely needs a different canonical — a page-level `alternates`
+  // replaces this one wholesale.
+  alternates: {
+    canonical: "./",
+  },
   openGraph: {
     type: "website",
     locale: "en_US",
