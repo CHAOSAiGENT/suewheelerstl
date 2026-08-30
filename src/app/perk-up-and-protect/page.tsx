@@ -4,6 +4,7 @@ import { Phone, ArrowRight } from "lucide-react";
 import { CTABlock } from "@/components/CTABlock";
 import { BreadcrumbSchema } from "@/components/BreadcrumbSchema";
 import { FAQSchema } from "@/components/FAQSchema";
+import { BUSINESS_ADDRESS } from "@/lib/business";
 
 export const metadata: Metadata = {
   title: "Perk Up & Protect | Wood Finish Maintenance St. Louis",
@@ -16,6 +17,7 @@ const localBusinessSchema = {
   "@type": "LocalBusiness",
   "@id": "https://suewheelerstl.com/#business",
   name: "Wood Refinishing by Sue Wheeler, LLC",
+  address: BUSINESS_ADDRESS,
   url: "https://suewheelerstl.com/perk-up-and-protect",
   telephone: "+13143676054",
   foundingDate: "1989",

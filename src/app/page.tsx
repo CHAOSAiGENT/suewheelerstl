@@ -5,6 +5,12 @@ import { TrustBar } from "@/components/TrustBar";
 import { ServiceCard } from "@/components/ServiceCard";
 import { TestimonialCard } from "@/components/TestimonialCard";
 import { CTABlock } from "@/components/CTABlock";
+import {
+  BUSINESS_ADDRESS,
+  BUSINESS_AREA_SERVED,
+  BUSINESS_GEO,
+  BUSINESS_SAME_AS,
+} from "@/lib/business";
 
 export const metadata: Metadata = {
   title: "Wood Refinishing St. Louis | Sue Wheeler",
@@ -30,29 +36,9 @@ const homepageSchema = {
       url: "https://suewheelerstl.com",
       telephone: "+13143676054",
       priceRange: "$$",
-      address: {
-        "@type": "PostalAddress",
-        streetAddress: "900 S Boyle Ave",
-        addressLocality: "St. Louis",
-        addressRegion: "MO",
-        postalCode: "63110",
-        addressCountry: "US",
-      },
-      geo: {
-        "@type": "GeoCoordinates",
-        latitude: 38.6138,
-        longitude: -90.2614,
-      },
-      areaServed: [
-        { "@type": "Neighborhood", name: "Central West End" },
-        { "@type": "Neighborhood", name: "Benton Park" },
-        { "@type": "Neighborhood", name: "Compton Heights" },
-        { "@type": "Neighborhood", name: "Shaw" },
-        { "@type": "Neighborhood", name: "Lafayette Square" },
-        { "@type": "City", name: "Clayton" },
-        { "@type": "City", name: "University City" },
-        { "@type": "City", name: "Maplewood" },
-      ],
+      address: BUSINESS_ADDRESS,
+      geo: BUSINESS_GEO,
+      areaServed: BUSINESS_AREA_SERVED,
       foundingDate: "1989",
       hasCredential: "EPA Certified Lead Removal Contractor (RRP Rule)",
       hasOfferCatalog: {
@@ -101,10 +87,7 @@ const homepageSchema = {
           },
         ],
       },
-      sameAs: [
-        "https://www.bbb.org/us/mo/saint-louis/profile/woodworking/wood-refinishing-by-sue-wheeler-0734-110214169",
-        "https://www.facebook.com/p/Wood-Refinishing-by-Sue-Wheeler-100034017228127/",
-      ],
+      sameAs: BUSINESS_SAME_AS,
     },
     {
       "@type": "WebSite",

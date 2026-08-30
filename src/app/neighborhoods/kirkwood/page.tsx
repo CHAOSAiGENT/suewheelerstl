@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { CTABlock } from "@/components/CTABlock";
 import { BreadcrumbSchema } from "@/components/BreadcrumbSchema";
+import { BUSINESS_ADDRESS } from "@/lib/business";
 
 export const metadata: Metadata = {
   title: "Wood Refinishing — Kirkwood MO | Sue Wheeler",
@@ -14,6 +15,7 @@ const localBusinessSchema = {
   "@type": "LocalBusiness",
   "@id": "https://suewheelerstl.com/#business",
   name: "Wood Refinishing by Sue Wheeler, LLC",
+  address: BUSINESS_ADDRESS,
   url: "https://suewheelerstl.com/neighborhoods/kirkwood",
   telephone: "+13143676054",
   foundingDate: "1989",

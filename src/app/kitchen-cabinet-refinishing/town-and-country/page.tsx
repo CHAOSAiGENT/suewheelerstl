@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Phone } from "lucide-react";
 import { BreadcrumbSchema } from "@/components/BreadcrumbSchema";
 import { CTABlock } from "@/components/CTABlock";
+import { BUSINESS_ADDRESS } from "@/lib/business";
 
 export const metadata: Metadata = {
   title: "Town & Country Kitchen Cabinet Refinishing St. Louis",
@@ -15,6 +16,7 @@ export default function TownAndCountryKitchenCabinetRefinishingPage() {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     name: "Wood Refinishing by Sue Wheeler, LLC",
+    address: BUSINESS_ADDRESS,
     url: "https://suewheelerstl.com",
     telephone: "(314) 367-6054",
     areaServed: {

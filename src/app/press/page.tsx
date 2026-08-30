@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { CTABlock } from "@/components/CTABlock";
 import { BreadcrumbSchema } from "@/components/BreadcrumbSchema";
+import { BUSINESS_ADDRESS } from "@/lib/business";
 
 export const metadata: Metadata = {
   title: "Press & Recognition | Wood Refinishing by Sue Wheeler",
@@ -20,6 +21,7 @@ const pressSchema = {
   "@type": "LocalBusiness",
   "@id": "https://suewheelerstl.com/#business",
   name: "Wood Refinishing by Sue Wheeler, LLC",
+  address: BUSINESS_ADDRESS,
   award: [
     "St. Louis Magazine — Perfect Finish",
     "Better Business Bureau A+ Rating",

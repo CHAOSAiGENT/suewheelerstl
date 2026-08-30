@@ -5,6 +5,7 @@ import { CTABlock } from "@/components/CTABlock";
 import { FAQAccordion } from "@/components/FAQAccordion";
 import { FAQSchema } from "@/components/FAQSchema";
 import { BreadcrumbSchema } from "@/components/BreadcrumbSchema";
+import { BUSINESS_ADDRESS } from "@/lib/business";
 
 export const metadata: Metadata = {
   title: "Furniture Refinishing St. Louis | Sue Wheeler",
@@ -46,14 +47,7 @@ const localBusinessSchema = {
   url: "https://suewheelerstl.com",
   telephone: "(314) 367-6054",
   foundingDate: "1989",
-  address: {
-    "@type": "PostalAddress",
-    streetAddress: "900 S Boyle Ave",
-    addressLocality: "St. Louis",
-    addressRegion: "MO",
-    postalCode: "63110",
-    addressCountry: "US",
-  },
+  address: BUSINESS_ADDRESS,
   geo: {
     "@type": "GeoCoordinates",
     latitude: 38.6158,

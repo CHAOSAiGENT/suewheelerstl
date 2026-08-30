@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { BreadcrumbSchema } from "@/components/BreadcrumbSchema";
 import { CTABlock } from "@/components/CTABlock";
 import { Phone } from "lucide-react";
+import { BUSINESS_ADDRESS } from "@/lib/business";
 
 export const metadata: Metadata = {
   title: "Shaw Kitchen Cabinet Refinishing St. Louis | Sue Wheeler",
@@ -25,6 +26,7 @@ const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
   name: "Wood Refinishing by Sue Wheeler, LLC",
+  address: BUSINESS_ADDRESS,
   url: "https://suewheelerstl.com",
   telephone: "(314) 367-6054",
   foundingDate: "1989",

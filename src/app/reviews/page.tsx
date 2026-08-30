@@ -4,6 +4,7 @@ import { ArrowRight } from "lucide-react";
 import { TrustBar } from "@/components/TrustBar";
 import { TestimonialCard } from "@/components/TestimonialCard";
 import { CTABlock } from "@/components/CTABlock";
+import { BUSINESS_ADDRESS } from "@/lib/business";
 
 export const metadata: Metadata = {
   title: "Reviews | Wood Refinishing by Sue Wheeler, St. Louis",
@@ -73,6 +74,7 @@ const reviewSchema = {
   "@type": "LocalBusiness",
   "@id": "https://suewheelerstl.com/#business",
   name: "Wood Refinishing by Sue Wheeler, LLC",
+  address: BUSINESS_ADDRESS,
   review: [
     {
       "@type": "Review",

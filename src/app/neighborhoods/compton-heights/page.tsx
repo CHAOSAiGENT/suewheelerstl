@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { CTABlock } from "@/components/CTABlock";
+import { BUSINESS_ADDRESS } from "@/lib/business";
 
 export const metadata: Metadata = {
   title: "Wood Refinishing — Compton Heights St. Louis | Sue Wheeler",
@@ -14,6 +15,7 @@ const neighborhoodSchema = {
   "@type": "LocalBusiness",
   "@id": "https://suewheelerstl.com/#business",
   name: "Wood Refinishing by Sue Wheeler, LLC",
+  address: BUSINESS_ADDRESS,
   url: "https://suewheelerstl.com/neighborhoods/compton-heights",
   telephone: "+13143676054",
   areaServed: {

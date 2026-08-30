@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Phone } from "lucide-react";
 import { BreadcrumbSchema } from "@/components/BreadcrumbSchema";
 import { CTABlock } from "@/components/CTABlock";
+import { BUSINESS_ADDRESS } from "@/lib/business";
 
 export const metadata: Metadata = {
   title: "Chesterfield Door Refinishing St. Louis | Sue Wheeler",
@@ -15,6 +16,7 @@ const localBusinessSchema = {
   "@type": "LocalBusiness",
   "@id": "https://suewheelerstl.com/#business",
   name: "Wood Refinishing by Sue Wheeler, LLC",
+  address: BUSINESS_ADDRESS,
   url: "https://suewheelerstl.com/door-refinishing/chesterfield",
   telephone: "+13143676054",
   foundingDate: "1989",
