@@ -6,7 +6,7 @@ import { FAQAccordion } from "@/components/FAQAccordion";
 import { FAQSchema } from "@/components/FAQSchema";
 
 export const metadata: Metadata = {
-  title: "Secretary of Interior's Standards & Wood Refinishing St. Louis | Sue Wheeler",
+  title: "Secretary of Interior Standards | Wood Refinishing St. Louis",
   description:
     "What the NPS actually says about stripping historic wood — and why it matters for your tax credit eligibility. Hand-stripping is compliant. Dipping may not be.",
 };

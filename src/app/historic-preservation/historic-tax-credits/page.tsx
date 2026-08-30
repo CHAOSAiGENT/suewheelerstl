@@ -6,7 +6,7 @@ import { FAQAccordion } from "@/components/FAQAccordion";
 import { FAQSchema } from "@/components/FAQSchema";
 
 export const metadata: Metadata = {
-  title: "Historic Tax Credits St. Louis | Wood Refinishing Guide | Sue Wheeler",
+  title: "Historic Tax Credits St. Louis | Wood Refinishing Guide",
   description:
     "Federal 20% + Missouri 25–35% historic tax credits can return up to 45% of qualifying wood refinishing costs. Which STL homes qualify? Sue Wheeler explains.",
 };

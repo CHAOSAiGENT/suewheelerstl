@@ -4,8 +4,7 @@ import { BreadcrumbSchema } from "@/components/BreadcrumbSchema";
 import { CTABlock } from "@/components/CTABlock";
 
 export const metadata: Metadata = {
-  title:
-    "What to Expect During a Wood Refinishing Project | Sue Wheeler Wood Refinishing",
+  title: "What to Expect During a Wood Refinishing Project",
   description:
     "What Sue does on the first visit, how the work is staged, what disruption actually looks like, and what you get at the end. No surprises.",
   openGraph: {

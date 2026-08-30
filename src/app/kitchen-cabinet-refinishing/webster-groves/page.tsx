@@ -5,7 +5,7 @@ import { BreadcrumbSchema } from "@/components/BreadcrumbSchema";
 import { CTABlock } from "@/components/CTABlock";
 
 export const metadata: Metadata = {
-  title: "Webster Groves Kitchen Cabinet Refinishing St. Louis | Sue Wheeler",
+  title: "Webster Groves Kitchen Cabinet Refinishing St. Louis",
   description:
     "Hand-stripped kitchen cabinet refinishing in Webster Groves, MO. Original Craftsman fir and quarter-sawn oak cabinetry restored by Sue Wheeler — EPA Certified.",
 };

@@ -5,7 +5,7 @@ import { TrustBar } from "@/components/TrustBar";
 import { CTABlock } from "@/components/CTABlock";
 
 export const metadata: Metadata = {
-  title: "Project Portfolio | Wood Refinishing by Sue Wheeler, St. Louis",
+  title: "Project Portfolio | Wood Refinishing St. Louis | Sue Wheeler",
   description:
     "Before-and-after wood refinishing photos from St. Louis homes and businesses — kitchens, doors, staircases, built-ins, commercial, and landmark spaces. Sue Wheeler.",
 };

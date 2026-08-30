@@ -5,8 +5,7 @@ import { BreadcrumbSchema } from "@/components/BreadcrumbSchema";
 import { CTABlock } from "@/components/CTABlock";
 
 export const metadata: Metadata = {
-  title:
-    "Lead Paint and Wood Refinishing in St. Louis: What Homeowners Need to Know | Sue Wheeler Wood Refinishing",
+  title: "Lead Paint and Wood Refinishing in St. Louis: What to Know",
   description:
     "If your St. Louis home was built before 1978, lead paint is almost certainly present on your woodwork. Here is what EPA certification means, what the RRP Rule requires, and how to verify your contractor's compliance.",
   openGraph: {

@@ -5,8 +5,7 @@ import { BreadcrumbSchema } from "@/components/BreadcrumbSchema";
 import { CTABlock } from "@/components/CTABlock";
 
 export const metadata: Metadata = {
-  title:
-    "Refinish or Replace? How to Decide for Historic St. Louis Woodwork | Sue Wheeler Wood Refinishing",
+  title: "Refinish or Replace? A Historic St. Louis Woodwork Guide",
   description:
     "For pre-1950s St. Louis homes, the original woodwork is old-growth wood that cannot be replicated. Here's a clear decision framework — plus real cost comparisons — for doors, staircases, and cabinets.",
   openGraph: {

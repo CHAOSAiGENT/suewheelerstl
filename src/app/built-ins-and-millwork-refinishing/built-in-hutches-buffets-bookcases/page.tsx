@@ -6,7 +6,7 @@ import { FAQAccordion } from "@/components/FAQAccordion";
 import { FAQSchema } from "@/components/FAQSchema";
 
 export const metadata: Metadata = {
-  title: "Built-In Hutch & Bookcase Refinishing St. Louis | Sue Wheeler",
+  title: "Built-In Hutch & Bookcase Refinishing St. Louis",
   description:
     "Dining room built-ins, hutches, buffets, and bookcases refinished in St. Louis. Irreplaceable original woodwork restored. EPA Certified. Sue Wheeler. Free estimate.",
 };

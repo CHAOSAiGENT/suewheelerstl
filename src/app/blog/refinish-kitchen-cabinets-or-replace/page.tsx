@@ -4,8 +4,7 @@ import { BreadcrumbSchema } from "@/components/BreadcrumbSchema";
 import { CTABlock } from "@/components/CTABlock";
 
 export const metadata: Metadata = {
-  title:
-    "Refinish Your Kitchen Cabinets or Replace Them? | Sue Wheeler Wood Refinishing",
+  title: "Refinish Your Kitchen Cabinets or Replace Them?",
   description:
     "Most St. Louis kitchens have original cabinets worth keeping. Here is what you give up when you replace — and what refinishing actually delivers.",
   openGraph: {

@@ -4,7 +4,7 @@ import { CTABlock } from "@/components/CTABlock";
 import { Phone } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Benton Park Kitchen Cabinet Refinishing St. Louis | Sue Wheeler",
+  title: "Benton Park Kitchen Cabinet Refinishing St. Louis",
   description:
     "Kitchen cabinet refinishing in Benton Park's 1870s–1900s Victorian cottages. Hand-stripping original painted fir and matching mixed-era cabinet sets. EPA Certified. Free estimate — (314) 367-6054.",
 };

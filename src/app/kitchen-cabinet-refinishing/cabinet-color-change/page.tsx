@@ -6,7 +6,7 @@ import { FAQAccordion } from "@/components/FAQAccordion";
 import { FAQSchema } from "@/components/FAQSchema";
 
 export const metadata: Metadata = {
-  title: "Cabinet Color Change St. Louis | Wood Refinishing by Sue Wheeler",
+  title: "Cabinet Color Change St. Louis | Sue Wheeler",
   description:
     "Update your kitchen cabinet color without replacing the boxes. Expert color-change refinishing in St. Louis. Sue Wheeler, EPA Certified. Free estimate: (314) 367-6054.",
 };

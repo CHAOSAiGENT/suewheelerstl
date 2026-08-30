@@ -6,7 +6,7 @@ import { FAQAccordion } from "@/components/FAQAccordion";
 import { FAQSchema } from "@/components/FAQSchema";
 
 export const metadata: Metadata = {
-  title: "Commercial Wood Maintenance Contracts St. Louis | Sue Wheeler",
+  title: "Commercial Wood Maintenance Contracts St. Louis",
   description:
     "Annual and multi-year wood maintenance contracts for St. Louis restaurants, bars, and hotels. Predictable budgeting, loyalty pricing. Sue Wheeler. Call today.",
 };

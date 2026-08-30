@@ -4,7 +4,7 @@ import { CTABlock } from "@/components/CTABlock";
 import { Phone } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Compton Heights Kitchen Cabinet Refinishing St. Louis | Sue Wheeler",
+  title: "Compton Heights Kitchen Cabinet Refinishing St. Louis",
   description:
     "Restoring Arts & Crafts kitchen cabinets in Compton Heights — quarter-sawn oak, painted-over fir, thick raised-panel doors stripped by hand. EPA Certified. Free estimate — (314) 367-6054.",
 };

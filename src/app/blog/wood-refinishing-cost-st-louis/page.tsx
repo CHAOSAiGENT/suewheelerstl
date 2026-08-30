@@ -5,8 +5,7 @@ import { BreadcrumbSchema } from "@/components/BreadcrumbSchema";
 import { CTABlock } from "@/components/CTABlock";
 
 export const metadata: Metadata = {
-  title:
-    "Why Refinishing Beats Replacement — The Case for Keeping Your Original Woodwork | Sue Wheeler",
+  title: "Why Refinishing Beats Replacement for Original Woodwork",
   description:
     "New woodwork is made from plantation-grown lumber with wide grain and soft wood. The fir and oak in your St. Louis home is old-growth — tighter, denser, and irreplaceable. Here is why that matters.",
   openGraph: {

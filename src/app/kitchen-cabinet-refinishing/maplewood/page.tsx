@@ -5,7 +5,7 @@ import { BreadcrumbSchema } from "@/components/BreadcrumbSchema";
 import { CTABlock } from "@/components/CTABlock";
 
 export const metadata: Metadata = {
-  title: "Maplewood Kitchen Cabinet Refinishing St. Louis | Sue Wheeler",
+  title: "Maplewood Kitchen Cabinet Refinishing St. Louis",
   description:
     "Kitchen cabinet refinishing in Maplewood, St. Louis. Hand-strip restoration for original painted fir cottage cabinetry. EPA Certified. Wood Refinishing by Sue Wheeler. (314) 367-6054.",
 };

@@ -5,8 +5,7 @@ import { BreadcrumbSchema } from "@/components/BreadcrumbSchema";
 import { CTABlock } from "@/components/CTABlock";
 
 export const metadata: Metadata = {
-  title:
-    "Perk Up & Protect: When Your Wood Doesn't Need Stripping — It Needs a Second Life | Sue Wheeler Wood Refinishing",
+  title: "Perk Up & Protect: When Your Wood Doesn't Need Stripping",
   description:
     "Most people think refinishing means a full strip. Sue Wheeler invented a third option — wet sand, color coat, and topcoat for finishes that are sound underneath. Faster, less invasive, and extends finish life 5–10 years.",
   openGraph: {

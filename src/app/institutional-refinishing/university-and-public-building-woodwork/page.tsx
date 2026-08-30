@@ -6,7 +6,7 @@ import { FAQAccordion } from "@/components/FAQAccordion";
 import { FAQSchema } from "@/components/FAQSchema";
 
 export const metadata: Metadata = {
-  title: "University Wood Refinishing St. Louis | WashU, SLU, Public Buildings",
+  title: "University Wood Refinishing St. Louis | WashU & SLU",
   description:
     "Casework, paneling, and library woodwork refinishing for St. Louis universities and public buildings. EPA Certified. NPS Standards. Sue Wheeler. Call today.",
 };

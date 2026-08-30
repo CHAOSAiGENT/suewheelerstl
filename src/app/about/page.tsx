@@ -6,7 +6,7 @@ import { CTABlock } from "@/components/CTABlock";
 import { PillBadge } from "@/components/PillBadge";
 
 export const metadata: Metadata = {
-  title: "About Sue Wheeler | 36 Years of Wood Refinishing in St. Louis",
+  title: "About Sue Wheeler | 36 Years of St. Louis Wood Refinishing",
   description:
     "Meet Sue Wheeler — St. Louis's most experienced architectural wood refinisher since 1989. EPA Certified Lead Removal. St. Louis Magazine. She answers every call personally.",
 };

@@ -4,8 +4,7 @@ import { BreadcrumbSchema } from "@/components/BreadcrumbSchema";
 import { CTABlock } from "@/components/CTABlock";
 
 export const metadata: Metadata = {
-  title:
-    "How Long Does Staircase Refinishing Take? | Sue Wheeler Wood Refinishing",
+  title: "How Long Does Staircase Refinishing Take? | Sue Wheeler",
   description:
     "Timeline depends on scope, component count, and whether lead paint is involved. Here is what drives the schedule and what to expect during the project.",
   openGraph: {

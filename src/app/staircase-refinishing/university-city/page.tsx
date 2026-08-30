@@ -5,7 +5,7 @@ import { BreadcrumbSchema } from "@/components/BreadcrumbSchema";
 import { CTABlock } from "@/components/CTABlock";
 
 export const metadata: Metadata = {
-  title: "University City Staircase Refinishing St. Louis | Sue Wheeler",
+  title: "University City Staircase Refinishing St. Louis",
   description:
     "Staircase refinishing in University City, MO. Hand-strip restoration for Colonial, Tudor, and Prairie staircases in quartersawn oak and old-growth fir. EPA Certified. Wood Refinishing by Sue Wheeler. (314) 367-6054.",
 };

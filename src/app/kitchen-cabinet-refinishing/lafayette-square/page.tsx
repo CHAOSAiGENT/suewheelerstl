@@ -4,7 +4,7 @@ import { CTABlock } from "@/components/CTABlock";
 import { Phone } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Lafayette Square Kitchen Cabinet Refinishing St. Louis | Sue Wheeler",
+  title: "Lafayette Square Kitchen Cabinet Refinishing St. Louis",
   description:
     "Refinishing irreplaceable kitchen cabinetry in Lafayette Square's 1860s–1880s mansions and townhouses. Chestnut, walnut, early fir, and butler's pantry cabinetry. EPA Certified. Free estimate — (314) 367-6054.",
 };

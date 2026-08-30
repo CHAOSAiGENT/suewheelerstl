@@ -5,8 +5,7 @@ import { BreadcrumbSchema } from "@/components/BreadcrumbSchema";
 import { CTABlock } from "@/components/CTABlock";
 
 export const metadata: Metadata = {
-  title:
-    "Why Dip-Stripping Destroys Historic Woodwork (And What to Do Instead) | Sue Wheeler Wood Refinishing",
+  title: "Why Dip-Stripping Destroys Historic Woodwork",
   description:
     "Dip-stripping uses caustic tanks that raise grain, dissolve hide glue joinery, and permanently damage irreplaceable old-growth wood. Learn why hand-stripping is the only safe method for St. Louis historic homes.",
   openGraph: {

@@ -4,8 +4,7 @@ import { BreadcrumbSchema } from "@/components/BreadcrumbSchema";
 import { CTABlock } from "@/components/CTABlock";
 
 export const metadata: Metadata = {
-  title:
-    "Does My Woodwork Need a Full Refinish — or Something Lighter? | Sue Wheeler Wood Refinishing",
+  title: "Does My Woodwork Need a Full Refinish or Something Lighter?",
   description:
     "Not every piece of dull, worn woodwork needs to be stripped back to bare wood. Here is how to tell the difference — and what the lighter option actually involves.",
   openGraph: {

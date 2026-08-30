@@ -4,7 +4,7 @@ import { CTABlock } from "@/components/CTABlock";
 import { Phone } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Lafayette Square Staircase Refinishing St. Louis | Sue Wheeler",
+  title: "Lafayette Square Staircase Refinishing St. Louis",
   description:
     "Hand-stripped staircase refinishing for Lafayette Square Italianate and Second Empire mansions — the oldest intact neighborhood in St. Louis. Chestnut, walnut, and fir specialists. EPA-certified.",
 };

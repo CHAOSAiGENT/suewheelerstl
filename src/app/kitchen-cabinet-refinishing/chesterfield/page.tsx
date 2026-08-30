@@ -5,7 +5,7 @@ import { BreadcrumbSchema } from "@/components/BreadcrumbSchema";
 import { CTABlock } from "@/components/CTABlock";
 
 export const metadata: Metadata = {
-  title: "Chesterfield Kitchen Cabinet Refinishing St. Louis | Sue Wheeler",
+  title: "Chesterfield Kitchen Cabinet Refinishing St. Louis",
   description:
     "Kitchen cabinet refinishing in Chesterfield, MO. 1980s–2000s solid-wood oak and maple cabinet doors. Color changes, stain updates. Honest evaluation of refinish vs. replace. Wood Refinishing by Sue Wheeler. (314) 367-6054.",
 };

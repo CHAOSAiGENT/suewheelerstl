@@ -4,7 +4,7 @@ import { CTABlock } from "@/components/CTABlock";
 import { Phone } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Compton Heights Staircase Refinishing St. Louis | Sue Wheeler",
+  title: "Compton Heights Staircase Refinishing St. Louis",
   description:
     "Hand-stripped staircase refinishing for Compton Heights Arts & Crafts and Colonial Revival homes. Quarter-sawn oak specialists. EPA-certified lead removal. 36 years in south St. Louis.",
 };

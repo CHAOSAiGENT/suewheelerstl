@@ -19,10 +19,9 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: {
-    default: "Wood Refinishing St. Louis | Sue Wheeler — Since 1989",
-    template: "%s | Sue Wheeler Wood Refinishing",
-  },
+  // Plain string = no title template, so each page's own title renders
+  // verbatim. This value is the fallback for any page without its own title.
+  title: "Wood Refinishing St. Louis | Sue Wheeler — Since 1989",
   description:
     "St. Louis's most trusted architectural wood refinisher. Hand-stripped, never dipped. EPA Certified. 36 years. Sue answers every call personally. (314) 367-6054.",
   metadataBase: new URL("https://suewheelerstl.com"),

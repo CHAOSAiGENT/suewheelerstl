@@ -5,7 +5,7 @@ import { BreadcrumbSchema } from "@/components/BreadcrumbSchema";
 import { CTABlock } from "@/components/CTABlock";
 
 export const metadata: Metadata = {
-  title: "University City Kitchen Cabinet Refinishing St. Louis | Sue Wheeler",
+  title: "University City Kitchen Cabinet Refinishing St. Louis",
   description:
     "Kitchen cabinet refinishing in University City, MO. Restore original built-in fir and oak cabinetry in U City's pre-war homes. Hand-strip, no dip tanks. EPA Certified. Wood Refinishing by Sue Wheeler. (314) 367-6054.",
 };

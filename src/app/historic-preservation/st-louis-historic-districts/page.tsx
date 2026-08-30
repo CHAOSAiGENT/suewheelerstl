@@ -6,7 +6,7 @@ import { FAQAccordion } from "@/components/FAQAccordion";
 import { FAQSchema } from "@/components/FAQSchema";
 
 export const metadata: Metadata = {
-  title: "St. Louis Historic Districts | Wood Refinishing & Tax Credit Eligibility | Sue Wheeler",
+  title: "St. Louis Historic Districts | Wood Refinishing Guide",
   description:
     "Which St. Louis neighborhoods qualify for historic preservation tax credits? Full district guide — certified, local, and National Register. Sue Wheeler, 36 years in STL.",
 };

@@ -7,7 +7,7 @@ import { FAQSchema } from "@/components/FAQSchema";
 import { BreadcrumbSchema } from "@/components/BreadcrumbSchema";
 
 export const metadata: Metadata = {
-  title: "Furniture Refinishing St. Louis | Wood Refinishing by Sue Wheeler",
+  title: "Furniture Refinishing St. Louis | Sue Wheeler",
   description:
     "Hand-stripped furniture refinishing in St. Louis. Dining tables, antiques, heirloom pieces, chairs, and dressers. 36 years of experience. EPA Certified. Free estimate.",
   openGraph: {

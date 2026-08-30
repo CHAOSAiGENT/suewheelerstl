@@ -4,8 +4,7 @@ import { BreadcrumbSchema } from "@/components/BreadcrumbSchema";
 import { CTABlock } from "@/components/CTABlock";
 
 export const metadata: Metadata = {
-  title:
-    "Can My Antique Be Refinished? A Practical Guide | Sue Wheeler Wood Refinishing",
+  title: "Can My Antique Be Refinished? A Practical Guide",
   description:
     "Most antique furniture can be refinished — but a few conditions determine whether it's the right call. Here's how to think about it before you call.",
   openGraph: {

@@ -4,7 +4,7 @@ import { CTABlock } from "@/components/CTABlock";
 import { Phone } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Central West End Kitchen Cabinet Refinishing St. Louis | Sue Wheeler",
+  title: "Central West End Kitchen Cabinet Refinishing St. Louis",
   description:
     "Expert kitchen cabinet refinishing in the Central West End. Hand-stripping original Douglas fir and white oak cabinetry in CWE mansions and row houses since 1989. EPA Certified for lead paint. Free estimate — (314) 367-6054.",
 };

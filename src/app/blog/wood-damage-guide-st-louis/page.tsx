@@ -5,8 +5,7 @@ import { BreadcrumbSchema } from "@/components/BreadcrumbSchema";
 import { CTABlock } from "@/components/CTABlock";
 
 export const metadata: Metadata = {
-  title:
-    "What's Wrong With My Wood? A St. Louis Homeowner's Guide to Wood Finish Damage | Sue Wheeler Wood Refinishing",
+  title: "What's Wrong With My Wood? St. Louis Wood Damage Guide",
   description:
     "Peeling finish, water rings, yellowing clear coat, deep scratches — this guide identifies every common wood finish damage type, what caused it, and whether it needs Perk Up & Protect or a full strip and refinish.",
   openGraph: {

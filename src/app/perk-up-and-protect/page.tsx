@@ -6,7 +6,7 @@ import { BreadcrumbSchema } from "@/components/BreadcrumbSchema";
 import { FAQSchema } from "@/components/FAQSchema";
 
 export const metadata: Metadata = {
-  title: "Perk Up & Protect | Wood Finish Maintenance St. Louis | Sue Wheeler",
+  title: "Perk Up & Protect | Wood Finish Maintenance St. Louis",
   description:
     "Wood finish looking dull but not damaged? Perk Up & Protect is a three-step maintenance coat — no full strip required. Sue Wheeler, St. Louis. Free estimate: (314) 367-6054.",
 };

@@ -5,7 +5,7 @@ import { BreadcrumbSchema } from "@/components/BreadcrumbSchema";
 import { CTABlock } from "@/components/CTABlock";
 
 export const metadata: Metadata = {
-  title: "Town & Country Kitchen Cabinet Refinishing St. Louis | Sue Wheeler",
+  title: "Town & Country Kitchen Cabinet Refinishing St. Louis",
   description:
     "Hand-stripped kitchen cabinet refinishing in Town & Country, MO. Custom cherry, walnut, maple, and painted millwork kitchens restored by Sue Wheeler — 36 years experience, EPA Certified Lead Removal.",
 };

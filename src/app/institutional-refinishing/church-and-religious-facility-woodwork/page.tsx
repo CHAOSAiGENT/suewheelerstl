@@ -6,7 +6,7 @@ import { FAQAccordion } from "@/components/FAQAccordion";
 import { FAQSchema } from "@/components/FAQSchema";
 
 export const metadata: Metadata = {
-  title: "Church Wood Refinishing St. Louis | Pews, Chancel Rails, Doors",
+  title: "Church Wood Refinishing St. Louis | Pews & Chancel Rails",
   description:
     "Pew, chancel rail, door, and wainscoting refinishing for St. Louis churches and religious facilities. Grant-eligible. EPA Certified. Sue Wheeler. Call today.",
 };

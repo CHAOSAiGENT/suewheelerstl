@@ -5,7 +5,7 @@ import { BreadcrumbSchema } from "@/components/BreadcrumbSchema";
 import { CTABlock } from "@/components/CTABlock";
 
 export const metadata: Metadata = {
-  title: "Tower Grove Kitchen Cabinet Refinishing St. Louis | Sue Wheeler",
+  title: "Tower Grove Kitchen Cabinet Refinishing St. Louis",
   description:
     "Kitchen cabinet refinishing in Tower Grove, St. Louis. Victorian painted fir cabinets, butler's pantry cabinetry, bungalow built-ins. EPA Certified. Wood Refinishing by Sue Wheeler. (314) 367-6054.",
 };

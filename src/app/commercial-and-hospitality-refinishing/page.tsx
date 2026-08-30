@@ -8,7 +8,7 @@ import { FAQAccordion } from "@/components/FAQAccordion";
 import { FAQSchema } from "@/components/FAQSchema";
 
 export const metadata: Metadata = {
-  title: "Commercial Wood Refinishing St. Louis | Restaurants, Bars, Hotels",
+  title: "Commercial Wood Refinishing St. Louis | Restaurants & Bars",
   description:
     "Wood refinishing for St. Louis restaurants, bars, hotels, and event venues. Off-hours scheduling. Durability finishes. Maintenance contracts. Sue Wheeler, EPA Certified.",
 };

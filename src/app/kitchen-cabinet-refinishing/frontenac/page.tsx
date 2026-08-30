@@ -5,7 +5,7 @@ import { BreadcrumbSchema } from "@/components/BreadcrumbSchema";
 import { CTABlock } from "@/components/CTABlock";
 
 export const metadata: Metadata = {
-  title: "Frontenac Kitchen Cabinet Refinishing St. Louis | Sue Wheeler",
+  title: "Frontenac Kitchen Cabinet Refinishing St. Louis",
   description:
     "Hand-stripped kitchen cabinet refinishing in Frontenac, MO. 1930s–1990s estate and custom solid-wood cabinetry restored by Sue Wheeler — 36 years experience, EPA Certified Lead Removal.",
 };

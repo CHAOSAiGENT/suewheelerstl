@@ -4,7 +4,7 @@ import { CTABlock } from "@/components/CTABlock";
 import { Phone } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Central West End Staircase Refinishing St. Louis | Sue Wheeler",
+  title: "Central West End Staircase Refinishing St. Louis",
   description:
     "Hand-stripped staircase refinishing for Central West End Victorian and Edwardian homes. EPA-certified lead removal. 36 years restoring grand curved staircases in CWE since 1989.",
 };
