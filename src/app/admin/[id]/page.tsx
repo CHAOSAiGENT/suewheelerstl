@@ -1,5 +1,7 @@
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import { createServiceSupabaseClient } from "@/lib/supabase/service";
+import { createServerSupabaseClient } from "@/lib/supabase/server";
+import { isAuthorizedAdmin } from "@/lib/auth/admin-guard";
 import type {
   Message,
   Submission,
@@ -23,6 +25,17 @@ export const dynamic = "force-dynamic";
 
 export default async function AdminSubmissionPage({ params }: Props) {
   const { id } = await params;
+
+  // This page had NO auth check of its own — it relied entirely on middleware,
+  // then read a full customer record (name, address, phone, photos, notes,
+  // message history) with the service-role key, which bypasses RLS. Check here
+  // too, so a middleware matcher change can never silently expose it.
+  const supabaseAuth = await createServerSupabaseClient();
+  const {
+    data: { user },
+  } = await supabaseAuth.auth.getUser();
+  if (!isAuthorizedAdmin(user)) redirect("/admin/login");
+
   const supabase = createServiceSupabaseClient();
 
   const { data: submission } = await supabase

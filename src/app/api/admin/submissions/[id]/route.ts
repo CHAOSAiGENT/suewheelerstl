@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 import { createServiceSupabaseClient } from "@/lib/supabase/service";
 import type { SubmissionStatus } from "@/lib/types";
+import { adminApiGuard } from "@/lib/auth/admin-guard";
 
 const VALID_STATUSES: SubmissionStatus[] = [
   "to_bid",
@@ -22,9 +23,8 @@ export async function PATCH(
   const {
     data: { user },
   } = await supabaseAuth.auth.getUser();
-  if (!user) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-  }
+  const guard = adminApiGuard(user);
+  if (!guard.authorized) return guard.response;
 
   const { id } = await params;
   const body = await req.json();

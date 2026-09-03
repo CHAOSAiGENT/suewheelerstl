@@ -1,15 +1,15 @@
 import { NextResponse } from "next/server";
 import { createServiceSupabaseClient } from "@/lib/supabase/service";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
+import { adminApiGuard } from "@/lib/auth/admin-guard";
 
 export async function POST(req: Request) {
   const supabaseAuth = await createServerSupabaseClient();
   const {
     data: { user },
   } = await supabaseAuth.auth.getUser();
-  if (!user) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-  }
+  const guard = adminApiGuard(user);
+  if (!guard.authorized) return guard.response;
 
   const formData = await req.formData();
   const submissionId = formData.get("submission_id") as string;

@@ -8,6 +8,7 @@ import { createServiceSupabaseClient } from "@/lib/supabase/service";
 import { resend } from "@/lib/email/resend";
 import { bidSentEmail } from "@/lib/email/templates";
 import { BidDocument } from "@/lib/bid/BidDocument";
+import { adminApiGuard } from "@/lib/auth/admin-guard";
 
 const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL ?? "https://suewheelerstl.com";
@@ -26,9 +27,8 @@ export async function POST(req: Request) {
   const {
     data: { user },
   } = await supabaseAuth.auth.getUser();
-  if (!user) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-  }
+  const guard = adminApiGuard(user);
+  if (!guard.authorized) return guard.response;
 
   // Parse request body
   let body: GeneratePdfRequest;

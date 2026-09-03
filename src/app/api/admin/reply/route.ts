@@ -4,6 +4,7 @@ import { createServiceSupabaseClient } from "@/lib/supabase/service";
 import { resend } from "@/lib/email/resend";
 import { adminReplyEmail } from "@/lib/email/templates";
 import { threadReplyTo } from "@/lib/email/reply-address";
+import { adminApiGuard } from "@/lib/auth/admin-guard";
 
 const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL ?? "https://suewheelerstl.com";
@@ -14,9 +15,8 @@ export async function POST(req: Request) {
   const {
     data: { user },
   } = await supabaseAuth.auth.getUser();
-  if (!user) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-  }
+  const guard = adminApiGuard(user);
+  if (!guard.authorized) return guard.response;
 
   const { submissionId, body } = await req.json();
   if (!submissionId || !body?.trim()) {
@@ -46,7 +46,7 @@ export async function POST(req: Request) {
       submission_id: submissionId,
       is_from_admin: true,
       body: body.trim(),
-      sent_by_email: user.email!,
+      sent_by_email: guard.email,
     })
     .select()
     .single();

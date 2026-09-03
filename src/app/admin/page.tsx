@@ -1,5 +1,6 @@
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 import { createServiceSupabaseClient } from "@/lib/supabase/service";
+import { isAuthorizedAdmin } from "@/lib/auth/admin-guard";
 import { redirect } from "next/navigation";
 import type { Submission, CrewMember } from "@/lib/types";
 import { KanbanBoard } from "./KanbanBoard";
@@ -11,7 +12,10 @@ export default async function AdminPage() {
   const {
     data: { user },
   } = await supabaseAuth.auth.getUser();
-  if (!user) redirect("/admin/login");
+  // Authorization, not just authentication — this page reads PII with the
+  // service-role key, which bypasses RLS. Middleware should already have
+  // caught this; the duplicate check is deliberate defense in depth.
+  if (!isAuthorizedAdmin(user)) redirect("/admin/login");
 
   const supabase = createServiceSupabaseClient();
 

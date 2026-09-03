@@ -1,15 +1,15 @@
 import { NextResponse } from "next/server";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 import { createServiceSupabaseClient } from "@/lib/supabase/service";
+import { adminApiGuard } from "@/lib/auth/admin-guard";
 
 export async function GET() {
   const supabaseAuth = await createServerSupabaseClient();
   const {
     data: { user },
   } = await supabaseAuth.auth.getUser();
-  if (!user) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-  }
+  const guard = adminApiGuard(user);
+  if (!guard.authorized) return guard.response;
 
   const supabase = createServiceSupabaseClient();
   const { data, error } = await supabase
@@ -33,9 +33,8 @@ export async function POST(req: Request) {
   const {
     data: { user },
   } = await supabaseAuth.auth.getUser();
-  if (!user) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-  }
+  const guard = adminApiGuard(user);
+  if (!guard.authorized) return guard.response;
 
   const { name } = await req.json();
   if (!name?.trim()) {

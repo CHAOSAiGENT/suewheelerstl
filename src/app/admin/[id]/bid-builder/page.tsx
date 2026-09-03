@@ -1,6 +1,7 @@
 import { notFound, redirect } from "next/navigation";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 import { createServiceSupabaseClient } from "@/lib/supabase/service";
+import { isAuthorizedAdmin } from "@/lib/auth/admin-guard";
 import type { Submission, BidBlock } from "@/lib/types";
 import { BidBuilderClient } from "./BidBuilderClient";
 import copyblockLibrary from "@/lib/bid/copyblock-library.json";
@@ -19,7 +20,10 @@ export default async function BidBuilderPage({
   const {
     data: { user },
   } = await supabaseAuth.auth.getUser();
-  if (!user) redirect("/admin/login");
+  // Authorization, not just authentication — this page reads PII with the
+  // service-role key, which bypasses RLS. Middleware should already have
+  // caught this; the duplicate check is deliberate defense in depth.
+  if (!isAuthorizedAdmin(user)) redirect("/admin/login");
 
   const supabase = createServiceSupabaseClient();
 
