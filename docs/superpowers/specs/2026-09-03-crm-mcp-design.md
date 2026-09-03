@@ -81,22 +81,91 @@ functions as a purpose-built retrieval corpus for exactly this task.
 
 ## Auth
 
-Remote MCP connectors expect an OAuth handshake — this is the single largest piece of
-build work and the main technical risk in the project.
+_Verified against live documentation and live endpoints on 2026-09-03. Earlier drafts
+of this spec listed the protocol details as unverified; they no longer are._
 
-Requirements:
+### Transport
 
-- Authorization reuses `isAuthorizedAdmin()` from `src/lib/auth/admin-guard.ts`.
-  A caller who is authenticated but not on `ADMIN_EMAILS` is rejected.
-- **Fails closed.** An unset or unparseable `ADMIN_EMAILS` denies everyone, matching
-  the web guard's behaviour.
-- No separate credential store, no MCP-specific user list, no bearer token in a config
-  file that outlives its owner.
+**Streamable HTTP**, single POST endpoint. The HTTP+SSE transport is deprecated. The
+current protocol revision (`2026-07-28`) is **sessionless** — no `Mcp-Session-Id`, no
+GET stream, no resumability — while Claude's connector runtime still performs the
+2025-era `initialize` handshake. Building stateless satisfies both.
 
-**Deployment prerequisite:** `ADMIN_EMAILS` must be set in every Vercel environment.
-It is currently set in Production and Development but **not Preview**, which means
-preview deploys reject all admin access. This must be fixed before the MCP ships, or
-it will appear broken on every preview.
+Consequence worth stating: **Redis is not needed.** The 1.x adapter required it for SSE
+resumability; 2.x explicitly does not.
+
+### Packages
+
+`mcp-handler@^2` (v2.1.1) — **note this package was renamed from `@vercel/mcp-adapter`**,
+which is now superseded and merely re-exports. Peer deps: `@modelcontextprotocol/server@^2`,
+`next >=13`, Node 20+.
+
+**Do not lift snippets from Vercel's own MCP docs page** — it still documents the 1.x API
+(`server.tool(...)`, `basePath`, `app/api/[transport]/route.ts`, `redisUrl`, `maxDuration`)
+against a 2.x package. Those options were removed. Follow the `mcp-handler` README.
+
+### Auth type
+
+Claude supports several connector auth types, including `none` (authless) and
+`static_headers` (a fixed bearer token — but **beta, limited to certain organizations**,
+and entered by an org admin; check whether the "Request headers" section appears in the
+Add-custom-connector dialog before relying on it).
+
+**We use OAuth**, because the other options collapse both users into one anonymous
+principal and make `ADMIN_EMAILS` unenforceable per caller.
+
+**Supabase Auth acts as the authorization server** — we implement no `/authorize` or
+`/token`. Anthropic names Supabase Auth as a known third-party IdP, and Claude resolves
+a cross-host authorization server from the `authorization_servers` field without
+special handling.
+
+What we must serve:
+
+- **Protected Resource Metadata (RFC 9728)** at `/.well-known/oauth-protected-resource`
+  **and** at the path-suffixed variant `/.well-known/oauth-protected-resource/api/mcp`,
+  which Claude probes first. `mcp-handler` provides `protectedResourceHandler`.
+- A **`401` with `WWW-Authenticate: Bearer resource_metadata="…"`**. Claude does not
+  honour that header on a `200`, and a `200` with `isError: true` produces no auth
+  prompt at all.
+- **JWT verification** against Supabase's JWKS, then mapping the email claim through
+  `isAuthorizedAdmin()` in `src/lib/auth/admin-guard.ts`. Non-allowlisted callers get
+  no token accepted, so the MCP inherits the same fail-closed policy as the web UI.
+
+**Dynamic Client Registration is not required** — we pre-register one client and paste
+its ID into Claude's "Use your own OAuth client" field, secret blank. Leaving DCR open
+would let any MCP client register against the project. **PKCE S256 is mandatory** and
+is sent by Claude on every authorization request.
+
+### The biggest technical risk: token audience
+
+The MCP spec requires servers to validate that an access token was issued **for them**.
+Claude sends the RFC 8707 `resource` parameter. **Supabase's documentation does not
+mention RFC 8707 anywhere**, and its tokens are standard Supabase JWTs whose `aud` is
+Supabase's own. Either strict audience validation fails, or we relax it and accept any
+token that project issues — a confused-deputy exposure if it ever serves another client.
+
+Mitigation: Supabase's **Custom Access Token Hook** can set the `audience` claim, and we
+additionally pin `client_id` inside token verification. **This must be proven end-to-end
+before the rest of the build**, and it is the item most likely to force a design change.
+
+## Prerequisites
+
+All four are outside the codebase and block the MCP:
+
+1. **The apex→www redirect must be reversed** (`docs/DOMAINS.md`). Verified live:
+   `suewheelerstl.com/api/mcp` returns `307 → www.suewheelerstl.com/api/mcp`. Claude
+   **drops the `Authorization` header across a cross-host redirect**, and the failure
+   presents as "Authorization with the MCP server failed" — a credentials error that
+   is not a credentials problem. This makes the domain consolidation a hard dependency,
+   not merely an SEO improvement.
+2. **Supabase's OAuth 2.1 Server must be enabled.** Verified live: the metadata endpoint
+   returns `404 {"error_code":"feature_disabled","msg":"OAuth server is disabled"}`.
+   It is an opt-in public-beta feature. (OIDC discovery and JWKS already return `200`.)
+3. **`ADMIN_EMAILS` must be set in Vercel Preview.** Present in Production and
+   Development only. The guard fails closed, so preview deploys reject all admin access.
+4. **Vercel Deployment Protection blocks Anthropic** on preview URLs. Test against
+   production or a protection-bypass URL. Anthropic egress is `160.79.104.0/21`;
+   connectors are IPv4-only.
 
 ## Tool surface
 
@@ -224,8 +293,15 @@ tests against `db-contract.ts`.
 
 ## Phasing
 
-1. **Auth + transport.** `/api/mcp` speaking MCP over HTTP, OAuth handshake, guard
-   wired. No tools beyond a health/identity probe. This is the risk; land it first.
+0. **Authless spike.** `/api/mcp` on an unguessable path, `auth: none`, one trivial
+   tool. Validates transport, tool schemas, and — importantly — **whether custom
+   connectors actually work on Claude mobile**, which is implied by shared
+   infrastructure but never stated outright. Half a day, and it de-risks everything
+   after it. The spike is thrown away, not shipped: a secret URL is a bearer
+   credential that lives in logs.
+1. **Auth.** Enable Supabase's OAuth server, prove the **token-audience** question
+   end-to-end, then wrap the spike with `withMcpAuth` and the two PRM routes. This is
+   the real risk; nothing else is worth building until it holds.
 2. **Read tools.** `search_leads`, `get_lead`, `get_pipeline`, `search_copyblocks`,
    with the token-leak test. Sue can use it and build trust before anything writes.
 3. **Create tools.** `create_lead`, `add_note`, `create_bid_blocks`.
@@ -236,9 +312,20 @@ tests against `db-contract.ts`.
 
 ## Open questions
 
-- **OAuth specifics.** The exact handshake Claude's custom connectors expect, and
-  whether an existing adapter (e.g. Vercel's MCP adapter) covers it, needs verifying
-  against current documentation before Phase 1 is planned in detail.
+- **Token audience (the live risk).** Whether Supabase's OAuth server honours the
+  RFC 8707 `resource` parameter, or sets `aud` to the requested resource, is
+  undocumented. Must be proven in Phase 1 before anything is built on it. See Auth.
+- **Protocol version.** No Anthropic page states which MCP protocol revision the
+  connector runtime negotiates. Inferred 2025-era from its `initialize`/`clientInfo`
+  handshake. `mcp-handler` 2.x serves both generations, so this is de-risked rather
+  than resolved.
+- **`static_headers` availability.** Beta, limited to certain organizations, and
+  described as org-admin-entered. Unknown whether a personal Pro/Max account has it.
+  Only matters if we ever retreat from OAuth.
+- **Custom connectors on mobile.** Anthropic documents "Claude Mobile — Remote MCP
+  access" and a shared auth callback across web, Desktop, and mobile, but does not
+  state explicitly that *custom* (as opposed to directory) connectors are included.
+  Phase 0 answers this empirically in ten minutes.
 - **Cowork.** Whether Cowork changes the Project recommendation is unverified. The
   MCP design is unaffected either way — it is the context layer that would change.
 - **Her bid file formats.** Unknown until we see real examples. The import script
