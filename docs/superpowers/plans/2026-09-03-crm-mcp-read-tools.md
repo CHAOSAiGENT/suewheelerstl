@@ -400,8 +400,10 @@ describe("searchLeads", () => {
   it("selects only allowlisted columns, never *", async () => {
     const { client, calls } = mockClient([]);
     await searchLeads({ query: "hartmann" }, client as never);
-    expect(calls.select[0][0]).toBe(SUBMISSION_SELECT);
-    expect(calls.select[0][0]).not.toContain("*");
+    // Cast through unknown[]: `calls` is Record<string, unknown[]>, so
+    // calls.select[0] is `unknown` and indexing it is a TS2571 error.
+    expect((calls.select[0] as unknown[])[0]).toBe(SUBMISSION_SELECT);
+    expect((calls.select[0] as unknown[])[0]).not.toContain("*");
   });
 
   it("excludes health-monitor test rows", async () => {
@@ -483,7 +485,13 @@ export const searchLeadsInput = z.object({
     .optional()
     .describe("Free text matched against customer name, email, and address."),
   status: z
-    .enum(STATUS_VALUES)
+    .enum(STATUS_VALUES, {
+      // Zod 4's default invalid_value message lists the ALLOWED options but
+      // never echoes the RECEIVED one. A model that guesses `quote_sent` needs
+      // to see its own guess reflected back, or it just guesses again.
+      error: (issue) =>
+        `Invalid status ${JSON.stringify(issue.input)} — expected one of ${STATUS_VALUES.join(", ")}`,
+    })
     .optional()
     .describe("Restrict to one pipeline stage."),
   limit: z.number().int().positive().max(50).default(20),
@@ -520,7 +528,11 @@ export async function searchLeads(
   // found" for a database outage, which reads as fact and is not.
   if (error) throw new Error(`search_leads failed: ${error.message}`);
 
-  const leads = data ?? [];
+  // Double cast is required, not stylistic. SUBMISSION_SELECT is a runtime
+  // .join() rather than a string literal, so PostgREST cannot infer a row shape
+  // and types `data` as possibly GenericStringError[]. A single cast is rejected
+  // as insufficiently overlapping (TS2352).
+  const leads = (data ?? []) as unknown as Record<string, unknown>[];
   return { leads, count: leads.length };
 }
 ```
@@ -698,7 +710,10 @@ export async function getLead(
   }
 
   return {
-    lead: leadRes.data as Record<string, unknown>,
+    // Double cast for the same TS2352 reason as search-leads: SUBMISSION_SELECT
+    // is a runtime join, so PostgREST falls back to GenericStringError. The
+    // other three selects are string literals and need no cast.
+    lead: leadRes.data as unknown as Record<string, unknown>,
     notes: (notesRes.data ?? []) as Record<string, unknown>[],
     messages: (messagesRes.data ?? []) as Record<string, unknown>[],
     bidBlocks: (blocksRes.data ?? []) as Record<string, unknown>[],
@@ -1098,10 +1113,14 @@ Expected: all tests pass (baseline before this plan is 32 passed / 2 skipped; th
 - [ ] **Step 2: Assert the PII guarantee across every tool at once**
 
 ```bash
-grep -rn 'select("\*")\|select(`\*`)' src/lib/mcp/ && echo "FAIL: a tool uses select(*)" || echo "clean"
+grep -rn 'select("\*")\|select(`\*`)' src/lib/mcp/tools/ && echo "FAIL: a tool uses select(*)" || echo "clean"
 ```
 
 Expected: `clean`.
+
+Scoped to `tools/` deliberately. Searching all of `src/lib/mcp/` matches `columns.ts`'s own
+docstring, where the string appears in prose explaining the prohibition — the file that
+documents the rule trips the grep that enforces it.
 
 - [ ] **Step 3: Extend the schema-drift gate to cover MCP columns**
 
