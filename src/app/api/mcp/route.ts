@@ -12,6 +12,7 @@
  */
 
 import { createMcpHandler } from "mcp-handler";
+import { NextResponse } from "next/server";
 import { registerCrmTools } from "@/lib/mcp/register";
 
 // Node runtime: mcp-handler@2 requires Node 20+, and the service-role Supabase
@@ -19,8 +20,40 @@ import { registerCrmTools } from "@/lib/mcp/register";
 export const runtime = "nodejs";
 export const maxDuration = 60;
 
-const handler = createMcpHandler(registerCrmTools, {
+const mcpHandler = createMcpHandler(registerCrmTools, {
   serverInfo: { name: "suewheelerstl-crm", version: "0.1.0" },
 });
 
-export { handler as GET, handler as POST };
+/**
+ * KILL SWITCH — fails closed.
+ *
+ * This handler has NO authentication until Task 8 lands. The docstring above
+ * says the spike is "thrown away, not shipped", but a comment does not stop a
+ * deploy: this file is on main, Vercel deploys on push, and the export below
+ * would publish an unauthenticated endpoint that reads the entire CRM —
+ * customer names, home addresses, phone numbers, private notes, and full
+ * message history.
+ *
+ * So the route only responds when MCP_SPIKE_ENABLED is explicitly "true", which
+ * is set locally and nowhere else. Unset, misspelled, or missing in a new
+ * environment all mean disabled, for the same reason `admin-guard.ts` treats an
+ * unset allowlist as "deny everyone": a config value that means "wide open" when
+ * absent will eventually be absent.
+ *
+ * 404 rather than 403 — an endpoint that is not supposed to exist should not
+ * advertise that it does.
+ *
+ * DELETE THIS BLOCK in Task 8, when withMcpAuth provides real authentication.
+ */
+function enabled(): boolean {
+  return process.env.MCP_SPIKE_ENABLED === "true";
+}
+
+async function guarded(request: Request): Promise<Response> {
+  if (!enabled()) {
+    return NextResponse.json({ error: "Not found" }, { status: 404 });
+  }
+  return mcpHandler(request);
+}
+
+export { guarded as GET, guarded as POST };
