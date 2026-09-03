@@ -947,15 +947,37 @@ Expected: matching copyblocks. `search_copyblocks` is the right smoke test becau
 
 - [ ] **Step 5: Confirm no bearer tokens can leak through the wire**
 
+This must be run against **`get_lead` or `search_leads`**, not `get_pipeline`. `get_pipeline`
+selects only `id,name,status,bid_amount`, so it cannot leak a token even if `columns.ts` were
+completely wrong — a "clean" result there proves nothing. The tools that exercise the guarantee
+are the ones using `SUBMISSION_SELECT` against `submissions`, the table that actually holds the
+credentials.
+
+Get a real UUID first, and **confirm the response contains real data before trusting the grep** —
+otherwise a 500 page, a `-32601`, or an empty result set all print "clean" too:
+
 ```bash
+# 1. Get a real lead id, and eyeball that data actually came back.
 curl -sS -X POST http://localhost:3000/api/mcp \
-  -H 'Content-Type: application/json' \
-  -H 'Accept: application/json, text/event-stream' \
+  -H 'Content-Type: application/json' -H 'Accept: application/json, text/event-stream' \
   -d '{"jsonrpc":"2.0","id":3,"method":"tools/call","params":{"name":"get_pipeline","arguments":{}}}' \
-  | grep -E 'client_token|reply_token' && echo "LEAK — STOP" || echo "clean"
+  | sed -n 's/^data: //p' | jq -r '.result.content[0].text' | head -30
+
+# 2. Now the real check, against the table that holds the tokens.
+BODY=$(curl -sS -X POST http://localhost:3000/api/mcp \
+  -H 'Content-Type: application/json' -H 'Accept: application/json, text/event-stream' \
+  -d '{"jsonrpc":"2.0","id":4,"method":"tools/call","params":{"name":"get_lead","arguments":{"id":"<REAL-UUID>"}}}')
+
+echo "$BODY" | grep -q '"name"' || { echo "NO DATA CAME BACK — the grep below would be meaningless"; exit 1; }
+echo "$BODY" | grep -E 'client_token|reply_token' && echo "LEAK — STOP" || echo "clean"
 ```
 
-Expected: `clean`. If this prints `LEAK — STOP`, do not proceed to Task 8 — fix `columns.ts` first.
+Expected: `clean`, after the guard confirms real data was returned. If this prints `LEAK — STOP`,
+do not proceed to Task 8 — fix `columns.ts` first.
+
+Note the wire format is **Server-Sent Events**, not a bare JSON body: responses arrive as
+`event: message\ndata: {…}`. Piping straight to `jq` fails to parse and looks like a broken
+route. Strip the prefix with `sed -n 's/^data: //p'` first.
 
 - [ ] **Step 6: Commit**
 
@@ -1108,7 +1130,12 @@ git commit -m "feat(mcp): OAuth via Supabase AS, reusing the ADMIN_EMAILS allowl
 npx vitest run && npx tsc --noEmit && npx next build
 ```
 
-Expected: all tests pass (baseline before this plan is 32 passed / 2 skipped; this plan adds roughly 31), `tsc` exit 0, build succeeds.
+Expected: **58 passed, 2 skipped**, `tsc` exit 0, build succeeds.
+
+Baseline before this plan was 32 passed / 2 skipped. The tasks add 26 (Task 2: 4, Task 3: 6,
+Task 4: 7, Task 5: 4, Task 6: 5) — Task 7 adds none, being a wiring and curl-verification task.
+32 + 26 = 58. The 2 skipped remain the pre-existing schema-drift tests, which self-skip unless
+`SUPABASE_DB_URL` is set.
 
 - [ ] **Step 2: Assert the PII guarantee across every tool at once**
 
