@@ -74,6 +74,41 @@ export const REQUIRED_COLUMNS: Record<string, readonly string[]> = {
     "bid_status",
     "lost_reason",
     "is_test",
+    // Added 2026-09-03 for the MCP read tools (src/lib/mcp/columns.ts).
+    // Several of these have NO committed DDL — docs/MIGRATIONS.md records 10
+    // remote migrations against 4 committed files — so until now the app read
+    // them purely by convention. Listing them here turns that invisible
+    // assumption into a failing test the day it stops being true.
+    "admin_notes",
+    "bid_amount",
+    "bid_start_date",
+    "crew_member_ids",
+    "lost_note",
+    "after_photos_uploaded",
+    "final_payment_confirmed",
+    "archived_at",
+  ],
+  // The MCP's get_lead reads these three tables alongside `submissions`.
+  // `submission_notes` has no CREATE TABLE anywhere in this repo — only an
+  // ALTER ... ENABLE ROW LEVEL SECURITY — so its shape was entirely unverified
+  // before this entry existed.
+  submission_notes: ["id", "submission_id", "body", "created_at"],
+  messages: [
+    "id",
+    "submission_id",
+    "body",
+    "is_from_admin",
+    "sent_by_email",
+    "created_at",
+  ],
+  bid_blocks: [
+    "id",
+    "submission_id",
+    "source_key",
+    "title",
+    "body",
+    "sort_order",
+    "photo_paths",
   ],
 };
 
