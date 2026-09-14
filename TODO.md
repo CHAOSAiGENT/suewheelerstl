@@ -240,9 +240,36 @@ anything.** This arguably should have come first.
 
 Surfaced during the session audits. None were in scope; all are real.
 
+### 🔴 Highest — sender spoofing on `/api/inbound`
+
+`src/app/api/inbound/route.ts:119-122` decides whether a message is from Sue by
+**string-comparing the `From` header** against `CONTACT_EMAIL` / `FROM_EMAIL`.
+`grep -rniE "spf|dkim|dmarc|authentication-results" src/` returns nothing — there is no
+sender authentication anywhere in this codebase, and a `From` header is forgeable.
+
+Chain: `reply_token` is 48-bit, never expires, and sits in the Reply-To of every email
+about a job → mail that token with `From: sue@suewheelerstl.com` → stored
+`is_from_admin = true` → renders in the customer's portal **attributed to Sue**, and is
+forwarded to their real inbox from the site's own sending domain → that portal shows a
+live Venmo payment prompt. That is a payment-redirect fraud setup, against a business
+that works inside people's homes.
+
+**Mitigating:** `RESEND_WEBHOOK_SECRET` is set in Production, so the Svix signature gate
+holds there — an attacker must get through Resend's inbound processing rather than
+forging the webhook. Whether Resend pre-filters spoofed senders is **not determinable
+from this repo**, and no code assumes it does. In Preview and Development the secret is
+unset and `/api/inbound` fails open as well.
+
+**Fix:** read Resend's SPF/DKIM/DMARC results and refuse `is_from_admin` unless they
+pass. Verify what Resend actually forwards before writing it.
+
 | Defect | Where | Risk |
 |---|---|---|
-| **`/api/inbound` fails open** | `src/app/api/inbound/route.ts:17-21` | If `RESEND_WEBHOOK_SECRET` is unset it logs a warning and returns `true`, accepting unsigned POSTs. It **is** set in Production — but only Production. |
+| **`/api/inbound` fails open** | `src/app/api/inbound/route.ts:17-21` | If `RESEND_WEBHOOK_SECRET` is unset it logs a warning and returns `true`, accepting unsigned POSTs. It **is** set in Production — but only Production. Compounds the spoofing issue above. |
+| **Bid routes report success on a rejected write** | `api/admin/bid/route.ts:73`, `api/client/accept-bid/route.ts:41` | Beyond writing invalid status values, **neither checks the UPDATE result** — so both return `ok:true` and send the customer an email while the database write is rejected with 23514. A silent failure in production. |
+| **No CSP or `X-Frame-Options`** | `next.config.ts` | `Referrer-Policy` was added 2026-09-14; the rest of the header set is still absent. |
+| **`images.remotePatterns` names the wrong Supabase project** | `next.config.ts:58` | Allowlists `zemmpcilhxobljzdhnig.supabase.co`, not this project's `khioedholasaxemmtooz`. Dead today — nothing uses `next/image` — but it bites the moment images land (§5). |
+| **Preview and Development share the production database** | Vercel env | A preview deploy writes to real customer records. |
 | **`reply_token` is 48-bit and never expires** | `20260425_reply_token.sql:3-5` | `encode(gen_random_bytes(6),'hex')` = 12 hex chars, far weaker than the UUID `client_token`. Anyone who guesses one can inject into a customer's email thread. |
 | **`client/bid-file` skips its own expiry check** | `src/app/api/client/bid-file/route.ts` | Mints a signed URL from `client_token` without checking `client_token_expires_at`, which every sibling route does check. |
 | **Two routes write invalid status values** | `api/admin/bid/route.ts:73`, `api/client/accept-bid/route.ts:41` | Write `'quote_sent'` and `'scheduled'`, which the live CHECK constraint rejects. `get_pipeline` now surfaces these as `unknownStatusCount`. |

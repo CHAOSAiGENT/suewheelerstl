@@ -119,16 +119,12 @@ export async function POST(req: Request) {
     const clientTpl = clientConfirmationEmail(submission, portalUrl);
 
     const replyTo = threadReplyTo(submission.reply_token);
-    console.log(
-      "[contact] sending emails, replyTo:",
-      replyTo,
-      "from:",
-      FROM_EMAIL,
-      "to:",
-      TO_EMAIL,
-      "client:",
-      email,
-    );
+    // Log the submission id, never the reply-to address or the customer's
+    // email. The reply-to embeds `reply_token` — a 48-bit bearer credential
+    // that never expires and lets anyone holding it inject a message into this
+    // customer's thread. Writing it to Vercel logs discloses it to everyone
+    // with log access, forever, for no debugging benefit the id doesn't give.
+    console.log("[contact] sending emails for submission:", submission.id);
 
     const results = await Promise.allSettled([
       resend.emails.send({
