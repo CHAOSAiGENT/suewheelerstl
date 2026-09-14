@@ -1,43 +1,64 @@
 ---
 file: suewheelerstl-roadmap.md
 project: suewheelerstl
-updated: 2026-06-14
+updated: 2026-09-14
 ---
 
 # suewheelerstl — Project Roadmap
 
+**Documentation map:** `TODO.md` = what's left (with evidence) · `docs/DECISIONS.md` = why ·
+`docs/ARCHITECTURE.md` = how it works · `docs/SECURITY.md` = what's protected ·
+`docs/MCP.md` = the CRM MCP server · `docs/DOMAINS.md` = the domain/redirect runbook.
+This file is orientation; do not duplicate those here.
+
 ## Done
 
-- **Project #1 — Contact form health monitor (LIVE & verified)**
-  - `is_test` column migration + `db-contract.ts` + schema-drift coverage
-  - Admin board `is_test=false` filter (safety net)
-  - `/api/health` secret-gated endpoint (insert→read→delete real table) + tests
-  - `scripts/monitor/check.mjs` runner: 2 retries + 4-channel alert fan-out + tests
-  - `.github/workflows/form-monitor.yml` cron (every 6h) + `workflow_dispatch`
-  - `docs/MONITORING.md` runbook
-  - Migration applied to live DB; `MONITOR_SECRET` set (Vercel + GitHub); deployed; **manual workflow run green**
-- Next.js security bump 15.5.14 → 15.5.19
-- Safe `npm audit fix` (critical protobufjs RCE + 4 moderates cleared)
-- Pre-push hook wired (`core.hooksPath=scripts/hooks`) + exec bit committed
-- Auto-sync (`chaos-sync` launchd) moved from every-30-min to nightly 2 AM
-- GH Actions bumped to `checkout/setup-node@v6` (Node 20 runtime deprecation)
+- **Project #1 — Contact form health monitor (LIVE & verified)** — `/api/health` +
+  `scripts/monitor/check.mjs` + 6h GitHub Actions cron; runbook `docs/MONITORING.md`.
+  ntfy channel added (`3ca34b8`); Email + GitHub-failure armed, ntfy pending its secret.
+- **Admin CRM authorization** (`07d09dc`, 2026-09-03) — the CRM only checked *that*
+  someone was signed in, never *who*; `ADMIN_EMAILS` was dead config for 142 days.
+  Now enforced at 14 API handlers, middleware, and 4 server components, failing closed.
+- **SEO / identity pass** (2026-08-30) — title-template collision cleared across 116
+  pages (0 titles over 60 chars, from 115); canonicals self-referencing on 118/118;
+  service area reconciled, recovering 8 suburbs and ~6,400 words that prerendered and
+  were then intercepted by a 308; NAP single-sourced across 63 `LocalBusiness` nodes,
+  zero home-address leakage; `docs/DOMAINS.md` written.
+- Next.js 15.5.19 security bump · `npm audit fix` · pre-push hook
+  (`core.hooksPath=scripts/hooks`) · GH Actions `@v6`.
 
 ## In Progress
 
-- Re-auth Supabase MCP to the suewheelerstl org (token currently on wrong account → can't reach `khioedholasaxemmtooz`). After re-auth, run `/chaos-controller steer` to re-verify.
+- **CRM MCP server.** Four read tools (`search_leads`, `get_lead`, `get_pipeline`,
+  `search_copyblocks`), column allowlists, Streamable HTTP route, schema-drift gate
+  extended and verified against the live DB. 58 tests. **Blocker:** no OAuth yet, so the
+  endpoint is disabled everywhere behind the fail-closed `MCP_SPIKE_ENABLED` kill switch.
+  `docs/MCP.md`, `TODO.md` §4.
 
 ## To Do
 
-- Arm remaining alert channels: set up Twilio (SMS) → `TWILIO_ACCOUNT_SID/AUTH_TOKEN/FROM` + `ALERT_SMS_TO`; create Slack incoming webhook → `SLACK_WEBHOOK_URL`. (Currently Email + GitHub-failure only; unset channels skip silently.)
-- **Project #2 — Contact form UX redesign.** Instrument PostHog form-funnel/field-drop-off + add Sentry FIRST, then reduce required fields to name/email/message and rework layout (prominent Send + "these items also help" section) using the data. See `.claude/memory/form-ux-review-with-monitoring.md`.
-- (Optional) Resolve 2 moderate `postcss` audit warnings when Next.js ships an upstream bump.
+Detail, evidence and ordering are in `TODO.md`.
+
+- **Blocked on Peter — dashboard/config, no code** (`TODO.md` §1): reverse the apex→www
+  redirect, 301 the `site.` mirror, enable Supabase's OAuth 2.1 Server, add
+  `ADMIN_EMAILS` to Vercel Preview, delete `NEXT_PUBLIC_ADMIN_EMAILS`, add `NTFY_TOPIC`.
+- **Nothing is measurable** — PostHog is installed and imported by nothing (`TODO.md` §5).
+  This gates Project #2 (form UX redesign, `TODO.md` §7).
+- **Zero images sitewide**, including an empty `/portfolio` (`TODO.md` §5).
+- **Sue's home address is published as the business address** on BBB, Yelp, Yellow Pages
+  and Yahoo Local — needs her logins (`TODO.md` §3). Four facts only she has: §2.
+- Seven known defects, found and deliberately unfixed (`TODO.md` §6).
 
 ## Decisions Made
 
-- Separate `/api/health` endpoint (not a test branch in `/api/contact`) — 2026-06-14, isolates blast radius, prevents real-lead mis-flagging
-- `is_test` admin filter as durable safety net; cleanup-delete is non-fatal — 2026-06-14
-- External GitHub Actions runner over Vercel Cron — 2026-06-14, must detect Vercel/Supabase being down (Vercel Cron can't)
-- Four alert channels fail independently; ship with a subset (Email+GitHub), add SMS/Slack later — 2026-06-14
-- GH Actions pinned to major `@v6` (not SHA) — 2026-06-14, acceptable for non-critical CI
-- Project #2 field cuts deferred until PostHog funnel data exists — do not cut by guess — 2026-06-14
-- PostHog steered to project SueWheeler 446138 (from WrapShot 415679) — 2026-06-14
+Only the ones that change what to do next. Full record: `docs/DECISIONS.md`.
+
+- Supabase MCP is **retired** — use the `supabase` CLI. Do not re-open "re-auth the MCP".
+- ntfy supersedes Twilio/Slack as the channel to arm; both stay unset and skip silently.
+- MCP endpoint stays behind `MCP_SPIKE_ENABLED` until OAuth lands — 2026-09-03.
+- Prove the token's `aud` before writing the verifier; never accept any token the Supabase
+  project issues (confused-deputy hole) — 2026-09-03.
+- `site.suewheelerstl.com` gets a 301, never a deletion (St. Louis Magazine backlink);
+  apex is canonical, `www` → apex at 308, never 307 — 2026-08-30.
+- Project #2 field cuts stay gated on PostHog funnel data — do not cut by guess — 2026-06-14.
+- PostHog project is SueWheeler **446138**, never WrapShot 415679 — 2026-06-14.
