@@ -116,10 +116,3 @@ export const KANBAN_COLUMNS: SubmissionStatus[] = [
   "fully_complete",
   "lost",
 ];
-
-export interface SubmissionNote {
-  id: string;
-  submission_id: string;
-  body: string;
-  created_at: string;
-}

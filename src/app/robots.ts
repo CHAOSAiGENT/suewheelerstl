@@ -3,8 +3,12 @@ import type { MetadataRoute } from "next";
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: [
-      // All standard crawlers — full access
-      { userAgent: "*", allow: "/" },
+      // All standard crawlers — full access to the marketing site, nothing
+      // under /admin. That tree is the CRM and Sue's operating guide; the gate
+      // that actually protects it is `isAuthorizedAdmin`, and this line only
+      // keeps well-behaved crawlers from requesting pages they will be bounced
+      // from anyway.
+      { userAgent: "*", allow: "/", disallow: "/admin/" },
       // OpenAI — ChatGPT search citations
       { userAgent: "GPTBot", allow: "/" },
       { userAgent: "ChatGPT-User", allow: "/" },

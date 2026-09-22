@@ -4,6 +4,22 @@ import { resend } from "@/lib/email/resend";
 import { bidAcceptedEmail } from "@/lib/email/templates";
 import { generateAdminMagicLink } from "@/lib/supabase/admin-link";
 import { threadReplyTo } from "@/lib/email/reply-address";
+import type { SubmissionStatus } from "@/lib/types";
+
+/**
+ * Pipeline status to move a submission into when the customer accepts the bid.
+ *
+ * This was `"scheduled"` until 2026-09-22 — a value that is NOT in
+ * `STATUS_VALUES` (src/lib/db-contract.ts), so the live
+ * `submissions_status_check` CHECK constraint rejected every one of these
+ * UPDATEs with error 23514 and the row never changed. `on_deck` is the correct
+ * vocabulary: bid accepted, work agreed, not yet started.
+ *
+ * The `SubmissionStatus` annotation is the guard against a repeat — that union
+ * is derived from `STATUS_VALUES`, so a value the database would reject now
+ * fails `tsc` instead of failing silently in production.
+ */
+const ACCEPTED_STATUS: SubmissionStatus = "on_deck";
 
 const FROM_EMAIL = process.env.FROM_EMAIL ?? "sue@suewheelerstl.com";
 const CONTACT_EMAIL = process.env.CONTACT_EMAIL ?? "sue@suewheelerstl.com";
@@ -33,14 +49,29 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "Token expired" }, { status: 410 });
   }
 
-  await supabase
+  // The result of this UPDATE is checked, not discarded. Previously it was
+  // ignored, so a rejected write still returned `ok: true` and still sent the
+  // "bid accepted" email — the customer was told about a state change that had
+  // not happened. Nothing downstream of here may run if the write failed.
+  const { error: updateError } = await supabase
     .from("submissions")
     .update({
       bid_status: "accepted",
       bid_accepted_at: new Date().toISOString(),
-      status: "scheduled",
+      status: ACCEPTED_STATUS,
     })
     .eq("id", submission.id);
+
+  if (updateError) {
+    console.error("[client/accept-bid] failed to record acceptance", {
+      submissionId: submission.id,
+      error: updateError,
+    });
+    return NextResponse.json(
+      { error: "Could not record bid acceptance" },
+      { status: 500 },
+    );
+  }
 
   // Notify Sue
   const adminUrl = await generateAdminMagicLink(`/admin/${submission.id}`);

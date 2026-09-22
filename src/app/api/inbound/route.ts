@@ -10,14 +10,38 @@ const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL ?? "https://suewheelerstl.com";
 const FROM_EMAIL = process.env.FROM_EMAIL ?? "no-reply@suewheelerstl.com";
 const CONTACT_EMAIL = process.env.CONTACT_EMAIL ?? "sue@suewheelerstl.com";
-const WEBHOOK_SECRET = process.env.RESEND_WEBHOOK_SECRET ?? "";
 
+/**
+ * Read fresh on each call rather than captured at module load, so a corrected
+ * env var takes effect without a cold start and so tests can stub it.
+ */
+function webhookSecret(): string {
+  return process.env.RESEND_WEBHOOK_SECRET ?? "";
+}
+
+/**
+ * THIS FUNCTION FAILS CLOSED. An unset `RESEND_WEBHOOK_SECRET` rejects the
+ * request — it is never read as "accept anything", which is the same rule
+ * `src/lib/auth/admin-guard.ts` applies to an unset `ADMIN_EMAILS`.
+ *
+ * Until 2026-09-22 a missing secret logged a warning and returned `true`, so
+ * any unauthenticated caller who knew the route could POST a forged
+ * `email.received` payload and write messages into a customer's thread.
+ *
+ * DEPLOYMENT CONSEQUENCE, INTENDED: `RESEND_WEBHOOK_SECRET` is set in Vercel
+ * **Production only**. Inbound email in Preview and Development now gets a 400
+ * "Invalid signature" until the secret is added to those environments. That is
+ * the point — a webhook that only works because verification is switched off is
+ * not working.
+ */
 async function verifyWebhook(req: Request, body: string): Promise<boolean> {
+  const WEBHOOK_SECRET = webhookSecret();
   if (!WEBHOOK_SECRET) {
-    console.warn(
-      "[inbound] RESEND_WEBHOOK_SECRET not set — skipping verification",
+    console.error(
+      "[inbound] RESEND_WEBHOOK_SECRET is unset — rejecting ALL inbound webhooks. " +
+        "Set RESEND_WEBHOOK_SECRET in this environment to accept inbound email.",
     );
-    return true;
+    return false;
   }
 
   const svixId = req.headers.get("svix-id");
