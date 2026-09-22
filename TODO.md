@@ -1,6 +1,6 @@
 # TODO — suewheelerstl
 
-_Last updated 2026-09-03._
+_Last updated 2026-09-22._
 
 Ordered by who has to act, then by leverage. Every claim here was verified against
 the live site, the live database, or the codebase — evidence is cited so nothing
@@ -93,7 +93,7 @@ Each blocks specific work. Cheap to answer, currently stalling real tasks.
 | **Business hours** | `openingHoursSpecification` on all 63 `LocalBusiness` nodes, and GBP completeness. Published nowhere on the site today. Even "by appointment, Mon–Fri" is enough. |
 | **Suite/unit number at 900 S Boyle** | GBP verification. The building is a shared 21,000 sq ft warehouse — *The City Cages* batting cages has its own listing at the same street address, so a designator is needed to avoid a collision. |
 | **Correct geo coordinates for 900 S Boyle** | Two conflicting pins on the *same* `@id`: homepage says `38.6138,-90.2614`, `/furniture-refinishing` says `38.6158,-90.2545`. `BUSINESS_GEO` in `src/lib/business.ts` is exported and ready once the right one is known. A wrong pin is worse than an inconsistent one. |
-| **Public email: `sue@` or `info@`?** | Operational code uses `sue@suewheelerstl.com`; the only published address is `info@` in the privacy policy. Pick one. |
+| ~~Public email~~ | **Resolved 2026-09-22:** `sue@suewheelerstl.com` everywhere. Privacy policy updated, added to `business.ts` and the homepage `LocalBusiness` node. |
 
 ---
 
@@ -147,9 +147,22 @@ service. Driving traffic at review profiles amplifies whatever is already there.
 Spec: `docs/superpowers/specs/2026-09-03-crm-mcp-design.md`
 Plan: `docs/superpowers/plans/2026-09-03-crm-mcp-read-tools.md`
 
-**Done:** four read tools (`search_leads`, `get_lead`, `get_pipeline`,
-`search_copyblocks`), column allowlists, Streamable HTTP route, schema-drift coverage.
-58 tests. Exercised against the live production database with zero bearer-token leakage.
+**Done — all eleven tools, verified over the wire via `tools/list`:**
+
+| | Tools |
+|---|---|
+| Read | `search_leads` · `get_lead` · `get_pipeline` · `search_copyblocks` |
+| Create | `create_lead` · `add_note` · `create_bid_blocks` |
+| Update | `update_lead` · `update_bid_blocks` · `propose_bid_amount` · `set_bid_amount` |
+
+Plus column allowlists, the Streamable HTTP route, and schema-drift coverage. 160 tests.
+Exercised against the live production database with zero bearer-token leakage.
+
+Two safety properties are **structural, not prompted**, and both were mutation-tested —
+six deliberate breakages, every one caught by a failing test: no update writes without
+`confirm: true`, and only `set_bid_amount` can write `bid_amount`, requiring an explicit
+amount *and* confirm. `propose_bid_amount` has no write path at all. Nothing in
+`src/lib/mcp` imports Resend, so no tool can email a customer.
 
 **The endpoint is currently disabled in every environment** by a fail-closed kill
 switch (`MCP_SPIKE_ENABLED`) because it has no auth yet. Do not remove that guard
@@ -176,10 +189,7 @@ allowlist. Delete the kill switch in the same commit.
 
 ### Follow-on work
 
-- **Create + update tools** — `create_lead`, `add_note`, `create_bid_blocks`,
-  `update_lead`, `update_bid_blocks`, and the `propose_bid_amount` / `set_bid_amount`
-  split that makes "Sue sets the price" structural rather than a prompt instruction.
-  Needs its own plan.
+- ~~Create + update tools~~ — **done 2026-09-22** (`4a18033`). See the table above.
 - **One-time import** of her Mac bid files. Dry-run mode writing a report first.
   Format-tolerant — we have not seen real examples yet.
 - **The Claude Project** — copyblock library and bidding methodology as Project
@@ -207,23 +217,38 @@ anything.** This arguably should have come first.
 
 ### Content and technical
 
-- [ ] **`llms.txt` badly under-lists the site** — 6 of 11 blog posts, 6 of 16
-      neighborhood pages, and **0 of 48** geo service pages. AI engines read it as the
-      map of what exists.
-- [ ] **No favicon at all** — no `icon.*`, `apple-icon.*`, or `favicon.ico`. Shows in
-      SERPs and tabs; reads as unfinished.
-- [ ] **`public/sue-admin-guide.html` (1.4 MB) is publicly crawlable** — an internal
-      admin training doc in the web root, unlinked but fetchable and allowed by robots.
+- [x] ~~`llms.txt` under-lists the site~~ — **done 2026-09-22** (`5d4a788`). Now 61
+      URLs: 11 blog posts, 16 neighborhoods, 13 sub-service pages, and the 48 geo pages
+      as a verified-gapless pattern rather than 48 lines.
+- [x] ~~No favicon~~ — **done** (`5d4a788`). `src/app/icon.tsx`, generated via
+      `ImageResponse` like the OG card. Rendered and checked at 8×, not assumed.
+- [x] ~~`sue-admin-guide.html` publicly crawlable~~ — **done** (`ae9ea47`). Moved to
+      `private/` and served by an admin-gated route. Verified four ways including a
+      live `next start` fetch and an unmocked-filesystem test.
+- [x] ~~Phone format split~~ — **done** (`5d4a788`). 26 files normalized; verified by
+      parsing all 222 JSON-LD blocks across 107 prerendered pages, not by grep. One
+      distinct value across 61 occurrences. Display copy and all 416 `tel:` links
+      untouched.
+- [x] ~~11 dead page files~~ — **done** (`5d4a788`). Redirect rules verified intact in
+      the built `routes-manifest.json`.
 - [ ] **`Review` schema is invalid** — 6 nodes with no `reviewRating`, so it earns
       nothing today. Self-hosted reviews are ineligible for review rich results
-      regardless; the durable fix is real GBP reviews.
+      regardless; the durable fix is real GBP reviews. **Decision needed:** remove the
+      invalid markup now, or leave until real reviews exist?
 - [ ] **Generic `LocalBusiness`** — a subtype (`HomeAndConstructionBusiness` /
       `Painter`) categorizes the entity more precisely. Low cost, low certainty.
-- [ ] **Phone format split** — ~30 pages emit `(314) 367-6054`, the rest E.164.
-      `BUSINESS_TELEPHONE` is exported and unused, ready for the sweep.
-- [ ] **11 dead page files still on disk** — the `commercial-*`, `institutional-*`,
-      and three `historic-preservation/*` routes are 301'd but still build and ship.
-      Housekeeping; they will mislead the next person auditing the route tree.
+      **Decision needed:** which subtype.
+- [ ] **`BUSINESS_TELEPHONE` is still unused** — all 61 JSON-LD sites now use the same
+      literal string rather than the exported constant. Single-sourcing them means
+      touching imports in 61 files; correct, but its own task.
+- [ ] **Three neighborhood pages link internally to redirected routes** —
+      `neighborhoods/{kirkwood,webster-groves,tower-grove}` link to
+      `/historic-preservation/historic-tax-credits/` and `/st-louis-historic-districts/`.
+      Nothing is broken (they 308), but internal links should point at live URLs.
+
+> **Correction:** the redirects in `next.config.ts` emit **308**, not 301 —
+> `permanent: true` in Next.js is 308. Both are permanent and pass link equity, so
+> nothing is wrong, but earlier notes in this file and in `docs/DOMAINS.md` say 301.
 
 ### The big one
 
@@ -263,17 +288,20 @@ unset and `/api/inbound` fails open as well.
 **Fix:** read Resend's SPF/DKIM/DMARC results and refuse `is_from_admin` unless they
 pass. Verify what Resend actually forwards before writing it.
 
+**Fixed 2026-09-22** (`ae9ea47`): `/api/inbound` now fails closed · both bid routes
+check the UPDATE result and return 500 before emailing · `client/bid-file` checks
+expiry · `X-Frame-Options: DENY` added · `images.remotePatterns` corrected ·
+duplicate `SubmissionNote` removed.
+
 | Defect | Where | Risk |
 |---|---|---|
-| **`/api/inbound` fails open** | `src/app/api/inbound/route.ts:17-21` | If `RESEND_WEBHOOK_SECRET` is unset it logs a warning and returns `true`, accepting unsigned POSTs. It **is** set in Production — but only Production. Compounds the spoofing issue above. |
-| **Bid routes report success on a rejected write** | `api/admin/bid/route.ts:73`, `api/client/accept-bid/route.ts:41` | Beyond writing invalid status values, **neither checks the UPDATE result** — so both return `ok:true` and send the customer an email while the database write is rejected with 23514. A silent failure in production. |
-| **No CSP or `X-Frame-Options`** | `next.config.ts` | `Referrer-Policy` was added 2026-09-14; the rest of the header set is still absent. |
-| **`images.remotePatterns` names the wrong Supabase project** | `next.config.ts:58` | Allowlists `zemmpcilhxobljzdhnig.supabase.co`, not this project's `khioedholasaxemmtooz`. Dead today — nothing uses `next/image` — but it bites the moment images land (§5). |
+| **`generate-pdf` has the same unchecked-UPDATE bug** | `api/admin/bid/generate-pdf/route.tsx:175-178` | The third instance. Ignores the UPDATE result, then emails the customer the PDF. Its two siblings were fixed in `ae9ea47`; this one was out of scope and remains. |
+| **A hand-retyped copy of `STATUS_VALUES`** | `api/admin/submissions/[id]/route.ts:7-16` | Validates `status` against a duplicated list instead of importing from `db-contract.ts`, so the two can drift silently — the same class of bug as the `quote_sent`/`scheduled` writes just fixed. Also forwards `lost_reason` with **no validation**, so a bad value reaches Postgres as an opaque 500. The MCP's `update_lead` validates both correctly; this route should import from the same source. |
+| **`reply_token` is 48-bit and never expires** | `20260425_reply_token.sql:3-5` | 12 hex chars, far weaker than the UUID `client_token`. Anyone holding or guessing one can inject into a customer's email thread. The input half of the spoofing chain above. |
+| **No CSP** | `next.config.ts` | `Referrer-Policy` and `X-Frame-Options` are in. A CSP needs its own scripting/style inventory and a testing pass — a half-written one either breaks the site or reads as done when it isn't. **Decision needed.** |
+| **`/api/contact` and `/api/upload-url` are fully public** | — | No rate limit, no CAPTCHA, no origin check. Both hold a service-role client. |
+| **`bid/blocks/[id]` has no ownership check** | `api/admin/bid/blocks/[id]/route.ts` | Any allowlisted admin can edit any block by id. Low severity with two admins; recorded for when that changes. |
 | **Preview and Development share the production database** | Vercel env | A preview deploy writes to real customer records. |
-| **`reply_token` is 48-bit and never expires** | `20260425_reply_token.sql:3-5` | `encode(gen_random_bytes(6),'hex')` = 12 hex chars, far weaker than the UUID `client_token`. Anyone who guesses one can inject into a customer's email thread. |
-| **`client/bid-file` skips its own expiry check** | `src/app/api/client/bid-file/route.ts` | Mints a signed URL from `client_token` without checking `client_token_expires_at`, which every sibling route does check. |
-| **Two routes write invalid status values** | `api/admin/bid/route.ts:73`, `api/client/accept-bid/route.ts:41` | Write `'quote_sent'` and `'scheduled'`, which the live CHECK constraint rejects. `get_pipeline` now surfaces these as `unknownStatusCount`. |
-| **`SubmissionNote` declared twice** | `src/lib/types.ts:102` and `:120` | Identical bodies, legal via declaration merging, almost certainly accidental. |
 | **Migrations are ~⅓ incomplete** | `docs/MIGRATIONS.md:5-6` | 10 remote migrations against 4 committed files. `submission_notes` has no `CREATE TABLE` anywhere. Partly mitigated — the drift gate now covers every column the MCP reads, verified against the live DB. |
 | **2 moderate `postcss` audit warnings** | — | Awaiting an upstream Next.js bump. |
 
@@ -291,7 +319,29 @@ Form lives at `src/components/ContactForm.tsx` (5 required fields today) and
 
 ---
 
-## 8. Done — 2026-09-03
+## 8. Done
+
+### 2026-09-22
+
+- **Seven MCP write tools** (`4a18033`) — create and update, with the
+  `propose_bid_amount` / `set_bid_amount` split. Both safety properties
+  mutation-tested: six deliberate breakages, every one caught.
+- **Six defects fixed** (`ae9ea47`) — two routes that returned `ok:true` and emailed
+  the customer while the database write was rejected with 23514; `client/bid-file`'s
+  missing expiry check; `/api/inbound` failing open; `X-Frame-Options`;
+  `images.remotePatterns` naming a different Supabase project.
+- **Admin guide taken off the public web** (`ae9ea47`) — 1.4 MB internal doc moved
+  from `public/` to an admin-gated route, verified four ways including a live fetch.
+- **SEO batch** (`5d4a788`) — `llms.txt` completed (61 URLs), favicon added, 26 files'
+  JSON-LD phone normalized to E.164, 11 dead page files deleted, `sue@` made the
+  single public email.
+- **`Referrer-Policy`** (`95e2e15`) — the portal URL *is* the `client_token`, and the
+  page loads a QR image from a third party, so the credential was leaving in the
+  `Referer` on every render. Also stopped logging `reply_token` on every submission.
+- **Documentation** (`9bdd0f3`, `4c811b3`) — decision log, architecture, security, and
+  MCP references; roadmap reconciled.
+
+### 2026-09-03
 
 For reference, so nothing here gets re-litigated.
 
