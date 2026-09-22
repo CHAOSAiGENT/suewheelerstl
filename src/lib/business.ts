@@ -12,10 +12,10 @@
  * — or an address on some pages and not others — reads as two weak entities
  * instead of one strong one. So: change a fact HERE, never in a page.
  *
+ * `openingHoursSpecification` was absent until 2026-09-22, when the owner
+ * supplied the hours. They are now published from `BUSINESS_HOURS` below.
+ *
  * DELIBERATELY ABSENT (do not "complete" these without verified source data):
- *   - `openingHoursSpecification` — the shop's hours have never been supplied.
- *     Publishing plausible-looking hours would assert a false fact about a real
- *     business to Google and every AI assistant that reads the page.
  *   - `aggregateRating` / `reviewRating` — no verified review corpus exists.
  *     Self-asserted ratings are a Google structured-data violation.
  *
@@ -58,6 +58,28 @@ export const BUSINESS_ADDRESS = {
   addressRegion: "MO",
   postalCode: "63110",
   addressCountry: "US",
+} as const;
+
+/**
+ * Shop hours, supplied by the owner on 2026-09-22: 8:00 AM to 6:00 PM, Monday
+ * through Saturday.
+ *
+ * Times are 24-hour `HH:MM` — schema.org reads `"8:00 AM"` as an invalid value
+ * and drops it silently. Sunday is omitted rather than emitted with equal
+ * `opens` and `closes`; both mean closed, but omission cannot be misread.
+ */
+export const BUSINESS_HOURS = {
+  "@type": "OpeningHoursSpecification",
+  dayOfWeek: [
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ],
+  opens: "08:00",
+  closes: "18:00",
 } as const;
 
 /** Shop coordinates, used by nodes that also emit `geo`. */

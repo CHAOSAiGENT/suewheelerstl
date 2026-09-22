@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { CTABlock } from "@/components/CTABlock";
-import { BUSINESS_ADDRESS } from "@/lib/business";
+import { BUSINESS_ADDRESS, BUSINESS_HOURS } from "@/lib/business";
 
 export const metadata: Metadata = {
   title: "Wood Refinishing — University City MO | Sue Wheeler",
@@ -16,6 +16,7 @@ const neighborhoodSchema = {
   "@id": "https://suewheelerstl.com/#business",
   name: "Wood Refinishing by Sue Wheeler, LLC",
   address: BUSINESS_ADDRESS,
+  openingHoursSpecification: BUSINESS_HOURS,
   url: "https://suewheelerstl.com/neighborhoods/university-city",
   telephone: "+13143676054",
   areaServed: {

@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Phone } from "lucide-react";
 import { BreadcrumbSchema } from "@/components/BreadcrumbSchema";
 import { CTABlock } from "@/components/CTABlock";
-import { BUSINESS_ADDRESS } from "@/lib/business";
+import { BUSINESS_ADDRESS, BUSINESS_HOURS } from "@/lib/business";
 
 export const metadata: Metadata = {
   title: "Maplewood Kitchen Cabinet Refinishing St. Louis",
@@ -17,6 +17,7 @@ const localBusinessSchema = {
   "@id": "https://suewheelerstl.com/#business",
   name: "Wood Refinishing by Sue Wheeler, LLC",
   address: BUSINESS_ADDRESS,
+  openingHoursSpecification: BUSINESS_HOURS,
   url: "https://suewheelerstl.com/kitchen-cabinet-refinishing/maplewood",
   telephone: "+13143676054",
   foundingDate: "1989",

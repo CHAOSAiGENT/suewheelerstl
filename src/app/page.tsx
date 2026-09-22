@@ -10,6 +10,7 @@ import {
   BUSINESS_AREA_SERVED,
   BUSINESS_EMAIL,
   BUSINESS_GEO,
+  BUSINESS_HOURS,
   BUSINESS_SAME_AS,
 } from "@/lib/business";
 
@@ -39,6 +40,7 @@ const homepageSchema = {
       email: BUSINESS_EMAIL,
       priceRange: "$$",
       address: BUSINESS_ADDRESS,
+      openingHoursSpecification: BUSINESS_HOURS,
       geo: BUSINESS_GEO,
       areaServed: BUSINESS_AREA_SERVED,
       foundingDate: "1989",
