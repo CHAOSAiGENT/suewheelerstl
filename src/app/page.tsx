@@ -8,6 +8,7 @@ import { CTABlock } from "@/components/CTABlock";
 import {
   BUSINESS_ADDRESS,
   BUSINESS_AREA_SERVED,
+  BUSINESS_EMAIL,
   BUSINESS_GEO,
   BUSINESS_SAME_AS,
 } from "@/lib/business";
@@ -35,6 +36,7 @@ const homepageSchema = {
         "Architectural wood refinishing for St. Louis's historic homes. Hand-stripped, never dipped. EPA Certified Lead Removal. In business since 1989. Sue answers every call personally.",
       url: "https://suewheelerstl.com",
       telephone: "+13143676054",
+      email: BUSINESS_EMAIL,
       priceRange: "$$",
       address: BUSINESS_ADDRESS,
       geo: BUSINESS_GEO,

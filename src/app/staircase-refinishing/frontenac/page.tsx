@@ -18,7 +18,7 @@ export default function FrontenacStaircaseRefinishingPage() {
     name: "Wood Refinishing by Sue Wheeler, LLC",
     address: BUSINESS_ADDRESS,
     url: "https://suewheelerstl.com",
-    telephone: "(314) 367-6054",
+    telephone: "+13143676054",
     areaServed: {
       "@type": "City",
       name: "Frontenac",

@@ -71,6 +71,38 @@ Estimates are free anywhere in the city or county. If you're not sure whether yo
 - Portfolio: https://suewheelerstl.com/portfolio
 - Contact / free estimate: https://suewheelerstl.com/contact
 - Press & recognition: https://suewheelerstl.com/press
+- About Sue: https://suewheelerstl.com/about
+- Customer reviews: https://suewheelerstl.com/reviews
+- Historic preservation: https://suewheelerstl.com/historic-preservation
+
+## Service Detail Pages
+
+Each service hub has its own pages for the specific pieces that service covers.
+
+**Doors**
+
+- Front doors: https://suewheelerstl.com/door-refinishing/front-door-refinishing
+- Interior doors: https://suewheelerstl.com/door-refinishing/interior-door-refinishing
+- French doors: https://suewheelerstl.com/door-refinishing/french-door-refinishing
+- Pocket doors: https://suewheelerstl.com/door-refinishing/pocket-door-refinishing
+
+**Staircases**
+
+- Treads & risers: https://suewheelerstl.com/staircase-refinishing/stair-treads-and-risers
+- Spindles & balusters: https://suewheelerstl.com/staircase-refinishing/spindles-and-balusters
+- Newel posts: https://suewheelerstl.com/staircase-refinishing/newel-posts
+- Railings: https://suewheelerstl.com/staircase-refinishing/stair-railings
+
+**Kitchen cabinets**
+
+- Painted cabinets: https://suewheelerstl.com/kitchen-cabinet-refinishing/painted-cabinets
+- Stained cabinets: https://suewheelerstl.com/kitchen-cabinet-refinishing/stained-cabinets
+- Color change: https://suewheelerstl.com/kitchen-cabinet-refinishing/cabinet-color-change
+
+**Architectural woodwork**
+
+- Built-in hutches, buffets & bookcases: https://suewheelerstl.com/built-ins-and-millwork-refinishing/built-in-hutches-buffets-bookcases
+- Room millwork: https://suewheelerstl.com/built-ins-and-millwork-refinishing/room-millwork
 
 ## Guides & Articles
 
@@ -81,12 +113,46 @@ Estimates are free anywhere in the city or county. If you're not sure whether yo
 - Wood refinishing cost in St. Louis (2025): https://suewheelerstl.com/blog/wood-refinishing-cost-st-louis
 - Refinish or replace? Decision guide for historic St. Louis woodwork: https://suewheelerstl.com/blog/refinish-or-replace-woodwork
 - What's wrong with my wood? St. Louis homeowner's guide to wood finish damage: https://suewheelerstl.com/blog/wood-damage-guide-st-louis
+- Does my woodwork need a full refinish, or something lighter?: https://suewheelerstl.com/blog/does-my-woodwork-need-a-full-refinish
+- Refinish your kitchen cabinets or replace them?: https://suewheelerstl.com/blog/refinish-kitchen-cabinets-or-replace
+- How long does staircase refinishing take?: https://suewheelerstl.com/blog/how-long-does-staircase-refinishing-take
+- What to expect during a wood refinishing project: https://suewheelerstl.com/blog/what-to-expect-wood-refinishing-project
+- Can my antique be refinished? A practical guide: https://suewheelerstl.com/blog/can-my-antique-be-refinished
 
 ## Neighborhood Pages
+
+City neighborhoods:
 
 - Central West End: https://suewheelerstl.com/neighborhoods/central-west-end
 - Benton Park: https://suewheelerstl.com/neighborhoods/benton-park
 - Compton Heights: https://suewheelerstl.com/neighborhoods/compton-heights
 - Shaw: https://suewheelerstl.com/neighborhoods/shaw
 - Lafayette Square: https://suewheelerstl.com/neighborhoods/lafayette-square
+- Tower Grove: https://suewheelerstl.com/neighborhoods/tower-grove
+
+County municipalities:
+
 - Clayton: https://suewheelerstl.com/neighborhoods/clayton
+- University City: https://suewheelerstl.com/neighborhoods/university-city
+- Maplewood: https://suewheelerstl.com/neighborhoods/maplewood
+- Kirkwood: https://suewheelerstl.com/neighborhoods/kirkwood
+- Webster Groves: https://suewheelerstl.com/neighborhoods/webster-groves
+- Ladue: https://suewheelerstl.com/neighborhoods/ladue
+- Frontenac: https://suewheelerstl.com/neighborhoods/frontenac
+- Town & Country: https://suewheelerstl.com/neighborhoods/town-and-country
+- Chesterfield: https://suewheelerstl.com/neighborhoods/chesterfield
+- Ballwin: https://suewheelerstl.com/neighborhoods/ballwin
+
+Brentwood is served but has no dedicated page.
+
+## Service Pages by Location
+
+Three services carry a page for every one of the 16 neighborhoods listed above — 48 pages, with no gaps in the matrix. Rather than list all 48, here is the pattern:
+
+- https://suewheelerstl.com/door-refinishing/{neighborhood}
+- https://suewheelerstl.com/staircase-refinishing/{neighborhood}
+- https://suewheelerstl.com/kitchen-cabinet-refinishing/{neighborhood}
+
+`{neighborhood}` is one of: `ballwin`, `benton-park`, `central-west-end`, `chesterfield`, `clayton`, `compton-heights`, `frontenac`, `kirkwood`, `ladue`, `lafayette-square`, `maplewood`, `shaw`, `tower-grove`, `town-and-country`, `university-city`, `webster-groves`
+
+Every combination of the three services and the sixteen neighborhoods resolves to a real page — for example https://suewheelerstl.com/kitchen-cabinet-refinishing/webster-groves.

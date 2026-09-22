@@ -148,8 +148,8 @@ export default function PrivacyPolicyPage() {
             <p className="mb-3">
               You may request that we delete any personal information we hold about you
               by contacting us at (314) 367-6054 or{" "}
-              <a href="mailto:info@suewheelerstl.com" className="text-[#11B2E8]">
-                info@suewheelerstl.com
+              <a href="mailto:sue@suewheelerstl.com" className="text-[#11B2E8]">
+                sue@suewheelerstl.com
               </a>
               . We will respond within 30 days.
             </p>
@@ -173,8 +173,8 @@ export default function PrivacyPolicyPage() {
                 (314) 367-6054
               </a>{" "}
               or{" "}
-              <a href="mailto:info@suewheelerstl.com" className="text-[#11B2E8]">
-                info@suewheelerstl.com
+              <a href="mailto:sue@suewheelerstl.com" className="text-[#11B2E8]">
+                sue@suewheelerstl.com
               </a>
               .
             </p>

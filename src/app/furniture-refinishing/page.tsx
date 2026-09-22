@@ -45,7 +45,7 @@ const localBusinessSchema = {
   "@id": "https://suewheelerstl.com/#business",
   name: "Wood Refinishing by Sue Wheeler, LLC",
   url: "https://suewheelerstl.com",
-  telephone: "(314) 367-6054",
+  telephone: "+13143676054",
   foundingDate: "1989",
   address: BUSINESS_ADDRESS,
   geo: {

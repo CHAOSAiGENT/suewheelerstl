@@ -40,6 +40,13 @@ export const BUSINESS_ID = `${BUSINESS_URL}/#business`;
 export const BUSINESS_TELEPHONE = "+13143676054";
 
 /**
+ * The single public email. `sue@` is the only address published anywhere on the
+ * site or in its structured data — the privacy policy previously offered an
+ * `info@` alias that nothing was routing or monitoring.
+ */
+export const BUSINESS_EMAIL = "sue@suewheelerstl.com";
+
+/**
  * The working shop. This is a HYBRID premises: customers may drop off and
  * collect pieces here, and most architectural work happens on-site at the
  * customer's home. It is a published address, not a hidden one.
