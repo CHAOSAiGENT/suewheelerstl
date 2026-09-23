@@ -31,3 +31,6 @@ next-env.d.ts
 .superpowers/
 .worktrees/
 .env*.local
+
+# Playwright MCP page snapshots (tool output, not project files)
+.playwright-mcp/
