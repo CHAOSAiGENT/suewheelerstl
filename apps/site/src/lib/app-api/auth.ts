@@ -22,17 +22,32 @@ export type AppAuthResult =
   | { ok: true; email: string }
   | { ok: false; status: 401 | 403; error: string };
 
+/**
+ * Takes a FACTORY, not a client.
+ *
+ * The short-circuit below is the point of this function, and passing a
+ * constructed client defeats it: the caller would have to build the Supabase
+ * client before calling us, so an unauthenticated probe pays for construction
+ * anyway — and if the environment is misconfigured, the constructor throws and
+ * the request 500s instead of 401ing.
+ *
+ * That is not hypothetical. It was the original signature, the unit tests
+ * mocked the constructor so they could not see it, and a live curl against a
+ * server with no env returned 500 for every unauthenticated request. A factory
+ * makes the short-circuit real rather than nominal.
+ */
 export async function authorizeAppRequest(
   request: Request,
-  supabase: SupabaseClient,
+  getSupabase: () => SupabaseClient | Promise<SupabaseClient>,
 ): Promise<AppAuthResult> {
   const header = request.headers.get("authorization");
   const token = header?.startsWith("Bearer ") ? header.slice(7).trim() : "";
 
-  // Short-circuit before the network call. An unauthenticated probe should not
-  // cost a Supabase round trip.
+  // Short-circuit before the network call AND before constructing the client.
+  // An unauthenticated probe should cost nothing.
   if (!token) return { ok: false, status: 401, error: "Missing bearer token" };
 
+  const supabase = await getSupabase();
   const { data, error } = await supabase.auth.getUser(token);
   if (error || !data?.user?.email) {
     return { ok: false, status: 401, error: "Invalid or expired session" };
