@@ -14,7 +14,8 @@
 import { z } from "zod";
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { STATUS_VALUES } from "@/lib/db-contract";
-import { SUBMISSION_SELECT } from "../columns";
+import { SUBMISSION_COLUMNS, SUBMISSION_SELECT } from "../columns";
+import { projectRecords } from "../projection";
 
 export const searchLeadsInput = z.object({
   query: z
@@ -65,6 +66,12 @@ export async function searchLeads(
   // found" for a database outage, which reads as fact and is not.
   if (error) throw new Error(`search_leads failed: ${error.message}`);
 
-  const leads = (data ?? []) as unknown as Record<string, unknown>[];
+  // The select string above is what we ASKED for; this is what we RETURN. The
+  // guarantee is on the second one — see ../projection.ts.
+  const leads = projectRecords(
+    (data ?? []) as unknown as Record<string, unknown>[],
+    SUBMISSION_COLUMNS,
+    "search_leads: submissions",
+  );
   return { leads, count: leads.length };
 }

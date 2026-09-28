@@ -1,6 +1,7 @@
 import { describe, it, expect, vi } from "vitest";
 import { updateLead } from "../update-lead";
 import { SUBMISSION_SELECT } from "../../columns";
+import { ForbiddenFieldError } from "../../projection";
 
 const ID = "00000000-0000-4000-8000-000000000001";
 
@@ -167,6 +168,8 @@ describe("updateLead", () => {
     ).rejects.toThrow(/write boom/);
   });
 
+  // ── REQUEST SHAPE ─────────────────────────────────────────────────────────
+  // Defence in depth. NOT the PII guarantee — see the response tests below.
   it("selects only allowlisted columns, never *", async () => {
     const { client, calls } = mockClient({ current: ROW, updated: ROW });
     await updateLead({ id: ID, status: "active", confirm: true }, client as never);
@@ -177,5 +180,55 @@ describe("updateLead", () => {
       expect(cols).not.toContain("client_token");
       expect(cols).not.toContain("reply_token");
     }
+  });
+
+  // ── THE PII GUARANTEE ─────────────────────────────────────────────────────
+  // Both the preview's `lead` and every `changes[].from` are read off the
+  // pre-write row, so a credential on it reaches the caller by two routes. The
+  // projection sits at the read, which closes both.
+  const TOKENED = {
+    ...ROW,
+    client_token: "3f1c0e7a-0000-4000-8000-000000000001",
+    reply_token: "a1b2c3d4e5f6",
+  };
+
+  it("throws rather than returning a row that carries a bearer credential", async () => {
+    const { client } = mockClient({ current: TOKENED, updated: TOKENED });
+    await expect(
+      updateLead({ id: ID, status: "active", confirm: true }, client as never),
+    ).rejects.toThrow(ForbiddenFieldError);
+  });
+
+  it("throws in preview too — the preview returns the row as well", async () => {
+    const { client, calls } = mockClient({ current: TOKENED });
+    await expect(updateLead({ id: ID, status: "active" }, client as never)).rejects.toThrow(
+      ForbiddenFieldError,
+    );
+    expect(calls.updates).toHaveLength(0);
+  });
+
+  it("throws on the written row when only the write echo carries a credential", async () => {
+    const { client } = mockClient({ current: ROW, updated: TOKENED });
+    await expect(
+      updateLead({ id: ID, status: "active", confirm: true }, client as never),
+    ).rejects.toThrow(ForbiddenFieldError);
+  });
+
+  it("throws on either credential alone", async () => {
+    for (const token of ["client_token", "reply_token"]) {
+      const { client } = mockClient({ current: { ...ROW, [token]: "leaked" } });
+      await expect(
+        updateLead({ id: ID, status: "active", confirm: true }, client as never),
+      ).rejects.toThrow(ForbiddenFieldError);
+    }
+  });
+
+  it("returns only allowlisted keys, dropping anything else the source sends", async () => {
+    const row = { ...ROW, is_test: false, archived_at: null };
+    const { client } = mockClient({ current: row, updated: row });
+    const r = await updateLead({ id: ID, status: "active", confirm: true }, client as never);
+    expect(Object.keys(r.lead!).sort()).toEqual(
+      ["id", "name", "status", "admin_notes", "bid_amount", "crew_member_ids"].sort(),
+    );
   });
 });

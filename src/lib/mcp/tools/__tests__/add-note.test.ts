@@ -1,5 +1,6 @@
 import { describe, it, expect, vi } from "vitest";
 import { addNote } from "../add-note";
+import { ForbiddenFieldError } from "../../projection";
 
 const ID = "00000000-0000-4000-8000-000000000001";
 
@@ -105,6 +106,8 @@ describe("addNote", () => {
     expect(m.inserts).toHaveLength(0);
   });
 
+  // ── REQUEST SHAPE ─────────────────────────────────────────────────────────
+  // Defence in depth. NOT the PII guarantee — see the response tests below.
   it("never selects bearer tokens from any table", async () => {
     const m = mockClient();
     await addNote({ submission_id: ID, body: "note" }, m.client as never);
@@ -114,6 +117,49 @@ describe("addNote", () => {
       expect(cols).not.toContain("client_token");
       expect(cols).not.toContain("reply_token");
     }
+  });
+
+  // ── THE PII GUARANTEE ─────────────────────────────────────────────────────
+  // submission_notes carries no credential today; the note is projected anyway
+  // so a schema change that puts one there fails loudly instead of leaking.
+  it("throws rather than returning a note that carries a bearer credential", async () => {
+    const m = mockClient({
+      note: {
+        data: {
+          id: "note-1",
+          submission_id: ID,
+          body: "note",
+          client_token: "3f1c0e7a-0000-4000-8000-000000000001",
+          reply_token: "a1b2c3d4e5f6",
+        },
+        error: null,
+      },
+    });
+    await expect(
+      addNote({ submission_id: ID, body: "note" }, m.client as never),
+    ).rejects.toThrow(ForbiddenFieldError);
+  });
+
+  it("throws on either credential alone", async () => {
+    for (const token of ["client_token", "reply_token"]) {
+      const m = mockClient({
+        note: { data: { id: "note-1", body: "note", [token]: "leaked" }, error: null },
+      });
+      await expect(
+        addNote({ submission_id: ID, body: "note" }, m.client as never),
+      ).rejects.toThrow(ForbiddenFieldError);
+    }
+  });
+
+  it("returns only allowlisted keys, dropping anything else the source sends", async () => {
+    const m = mockClient({
+      note: {
+        data: { id: "note-1", submission_id: ID, body: "note", internal_flag: true },
+        error: null,
+      },
+    });
+    const r = await addNote({ submission_id: ID, body: "note" }, m.client as never);
+    expect(Object.keys(r.note).sort()).toEqual(["body", "id", "submission_id"]);
   });
 
   it("surfaces a note insert error as a thrown error", async () => {

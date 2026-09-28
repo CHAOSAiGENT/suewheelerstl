@@ -1,5 +1,6 @@
 import { describe, it, expect, vi } from "vitest";
 import { updateBidBlocks, BID_BLOCK_SELECT } from "../update-bid-blocks";
+import { ForbiddenFieldError } from "../../projection";
 
 const A = "00000000-0000-4000-8000-00000000000a";
 const B = "00000000-0000-4000-8000-00000000000b";
@@ -188,6 +189,8 @@ describe("updateBidBlocks", () => {
     ).rejects.toThrow(/boom/);
   });
 
+  // ── REQUEST SHAPE ─────────────────────────────────────────────────────────
+  // Defence in depth. NOT the PII guarantee — see the response tests below.
   it("selects an explicit column list, never *", async () => {
     const { client, calls } = mockClient();
     await updateBidBlocks({ blocks: [{ id: A, body: "x" }], confirm: true }, client as never);
@@ -196,5 +199,41 @@ describe("updateBidBlocks", () => {
       expect(cols).toBe(BID_BLOCK_SELECT);
       expect(cols).not.toContain("*");
     }
+  });
+
+  // ── THE PII GUARANTEE ─────────────────────────────────────────────────────
+  // The pre-write rows are not returned whole, but their values are: every
+  // `changes[].from` is read off one. bid_blocks carries no credential today;
+  // projecting anyway means a schema change that puts one there fails loudly.
+  it("throws rather than reading from a block that carries a bearer credential", async () => {
+    const { client, calls } = mockClient({
+      rows: [
+        {
+          ...ROWS[0],
+          client_token: "3f1c0e7a-0000-4000-8000-000000000001",
+          reply_token: "a1b2c3d4e5f6",
+        },
+      ],
+    });
+    await expect(
+      updateBidBlocks({ blocks: [{ id: A, body: "x" }], confirm: true }, client as never),
+    ).rejects.toThrow(ForbiddenFieldError);
+    // It throws on the READ, so nothing was written either.
+    expect(calls.updates).toHaveLength(0);
+  });
+
+  it("throws on either credential alone", async () => {
+    for (const token of ["client_token", "reply_token"]) {
+      const { client } = mockClient({ rows: [{ ...ROWS[0], [token]: "leaked" }] });
+      await expect(
+        updateBidBlocks({ blocks: [{ id: A, body: "x" }], confirm: true }, client as never),
+      ).rejects.toThrow(ForbiddenFieldError);
+    }
+  });
+
+  it("reports only allowlisted keys in the preview's before values", async () => {
+    const { client } = mockClient({ rows: [{ ...ROWS[0], internal_flag: true }] });
+    const r = await updateBidBlocks({ blocks: [{ id: A, body: "x" }] }, client as never);
+    expect(r.blocks[0].changes.map((c) => c.field).sort()).toEqual(["body", "title"]);
   });
 });

@@ -28,13 +28,20 @@
 
 import { z } from "zod";
 import type { SupabaseClient } from "@supabase/supabase-js";
+import { columnsOf, projectRecord } from "../projection";
 
 /**
  * bid_blocks holds no credentials, so the allowlist is a local literal —
  * the same one get_lead uses for this table. It is still an explicit list:
  * `select("*")` appears nowhere in an MCP tool.
+ *
+ * Every created row is projected against it before being returned. The table
+ * carrying no credential today is why this costs nothing, not a reason to skip
+ * it: a schema change that puts one here should fail loudly rather than write a
+ * credential into a transcript. See ../projection.ts.
  */
 const BID_BLOCK_SELECT = "id,submission_id,source_key,title,body,sort_order,photo_paths";
+const BID_BLOCK_COLUMNS = columnsOf(BID_BLOCK_SELECT);
 
 export const createBidBlocksInput = z.object({
   submission_id: z
@@ -160,7 +167,13 @@ export async function createBidBlocks(
       stoppedAt = i;
       break;
     }
-    created.push(data as unknown as Record<string, unknown>);
+    created.push(
+      projectRecord(
+        data as unknown as Record<string, unknown>,
+        BID_BLOCK_COLUMNS,
+        "create_bid_blocks: bid_blocks",
+      ),
+    );
   }
 
   // Nothing landed: there is no partial state to report, so this is an outright

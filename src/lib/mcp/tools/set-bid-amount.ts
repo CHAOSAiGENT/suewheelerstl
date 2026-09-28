@@ -17,7 +17,8 @@
 
 import { z } from "zod";
 import type { SupabaseClient } from "@supabase/supabase-js";
-import { SUBMISSION_SELECT } from "../columns";
+import { SUBMISSION_COLUMNS, SUBMISSION_SELECT } from "../columns";
+import { projectNullableRecord, projectRecord } from "../projection";
 
 /**
  * Upper bound on a bid, in dollars.
@@ -89,7 +90,12 @@ export async function setBidAmount(
   if (currentRes.error) throw new Error(`set_bid_amount failed: ${currentRes.error.message}`);
   if (!currentRes.data) throw new Error(`set_bid_amount failed: no submission with id ${id}`);
 
-  const current = currentRes.data as unknown as Record<string, unknown>;
+  // Projected at the read: `current` is returned as the preview's `lead`.
+  const current = projectRecord(
+    currentRes.data as unknown as Record<string, unknown>,
+    SUBMISSION_COLUMNS,
+    "set_bid_amount: submissions",
+  );
   const currentBidAmount = typeof current.bid_amount === "number" ? current.bid_amount : null;
   const changes = [{ field: "bid_amount" as const, from: currentBidAmount, to: amount }];
 
@@ -128,7 +134,11 @@ export async function setBidAmount(
     currentBidAmount,
     proposedBidAmount: amount,
     changes,
-    lead: (data ?? null) as unknown as Record<string, unknown> | null,
+    lead: projectNullableRecord(
+      data as unknown as Record<string, unknown> | null,
+      SUBMISSION_COLUMNS,
+      "set_bid_amount: submissions",
+    ),
     message: `bid_amount set to ${amount} on submission ${id}. The bid has NOT been sent — sending stays in the admin UI.`,
   };
 }

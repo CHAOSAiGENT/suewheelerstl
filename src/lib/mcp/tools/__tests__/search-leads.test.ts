@@ -1,6 +1,7 @@
 import { describe, it, expect, vi } from "vitest";
 import { searchLeads } from "../search-leads";
 import { SUBMISSION_SELECT } from "../../columns";
+import { ForbiddenFieldError } from "../../projection";
 
 function mockClient(rows: unknown[]) {
   const calls: Record<string, unknown[]> = { select: [], eq: [], is: [], or: [], limit: [] };
@@ -24,11 +25,49 @@ function mockClient(rows: unknown[]) {
 }
 
 describe("searchLeads", () => {
+  // ── REQUEST SHAPE ─────────────────────────────────────────────────────────
+  // Defence in depth, and a check that we are not asking for junk. It is NOT
+  // the PII guarantee — see the response test below.
   it("selects only allowlisted columns, never *", async () => {
     const { client, calls } = mockClient([]);
     await searchLeads({ query: "hartmann" }, client as never);
     expect((calls.select[0] as unknown[])[0]).toBe(SUBMISSION_SELECT);
     expect((calls.select[0] as unknown[])[0]).not.toContain("*");
+  });
+
+  // ── THE PII GUARANTEE ─────────────────────────────────────────────────────
+  // The real property: a bearer credential cannot reach the caller EVEN IF the
+  // data source hands one over. The request assertion above cannot see this —
+  // it reads the argument we passed in, not what came back.
+  it("throws rather than returning a row that carries a bearer credential", async () => {
+    const { client } = mockClient([
+      {
+        id: "uuid-1",
+        name: "Hartmann",
+        client_token: "3f1c0e7a-0000-4000-8000-000000000001",
+        reply_token: "a1b2c3d4e5f6",
+      },
+    ]);
+    await expect(searchLeads({ query: "hart" }, client as never)).rejects.toThrow(
+      ForbiddenFieldError,
+    );
+  });
+
+  it("throws on either credential alone", async () => {
+    for (const token of ["client_token", "reply_token"]) {
+      const { client } = mockClient([{ id: "uuid-1", name: "Hartmann", [token]: "leaked" }]);
+      await expect(searchLeads({ query: "hart" }, client as never)).rejects.toThrow(
+        ForbiddenFieldError,
+      );
+    }
+  });
+
+  it("returns only allowlisted keys, dropping anything else the source sends", async () => {
+    const { client } = mockClient([
+      { id: "uuid-1", name: "Hartmann", archived_at: null, is_test: false },
+    ]);
+    const r = await searchLeads({ query: "hart" }, client as never);
+    expect(Object.keys(r.leads[0])).toEqual(["id", "name"]);
   });
 
   it("excludes health-monitor test rows", async () => {

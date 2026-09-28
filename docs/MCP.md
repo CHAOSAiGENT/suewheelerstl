@@ -53,7 +53,8 @@ src/app/api/mcp/route.ts          endpoint + MCP_SPIKE_ENABLED kill switch
    │
    ├─ src/lib/mcp/register.ts     thin adapter: pure tools → MCP server
    │     └─ src/lib/mcp/tools/*.ts    pure async (input, client) => data
-   │           └─ src/lib/mcp/columns.ts   column allowlist
+   │           ├─ src/lib/mcp/columns.ts      request column allowlist
+   │           └─ src/lib/mcp/projection.ts   response projection — the PII guarantee
    │
    └─ src/lib/supabase/service.ts  existing service-role client
    ▼
@@ -66,7 +67,8 @@ Supabase: submissions · submission_notes · messages · bid_blocks
 | `src/lib/mcp/tools/get-lead.ts` | One submission plus its notes, messages, bid blocks |
 | `src/lib/mcp/tools/get-pipeline.ts` | Counts and bid totals grouped by status |
 | `src/lib/mcp/tools/search-copyblocks.ts` | Search the static copyblock library — no database |
-| `src/lib/mcp/columns.ts` | The column allowlist; the one home of the PII guarantee |
+| `src/lib/mcp/columns.ts` | The request column allowlist, and the one home of `FORBIDDEN_COLUMNS` |
+| `src/lib/mcp/projection.ts` | Response projection — where the PII guarantee is enforced (§4) |
 | `src/lib/mcp/register.ts` | Maps the pure tools onto an `McpServer` |
 | `src/app/api/mcp/route.ts` | The endpoint, the runtime config, and the kill switch |
 
@@ -226,9 +228,9 @@ test row, you get that row. It is a direct lookup by a caller who already has th
 
 ## 4. The PII guarantee
 
-**No MCP read may use `select("*")`.**
+**No record an MCP tool returns may carry `client_token` or `reply_token`.**
 
-`submissions.client_token` and `submissions.reply_token` are **bearer credentials**:
+Both are **bearer credentials**:
 
 - `client_token` opens a customer's portal at `/my-request/<token>`
 - `reply_token` is embedded in email headers, so anyone holding it can forge a
@@ -238,45 +240,148 @@ Anything an MCP tool returns lands in a model's context and **persists in
 conversation history**. A leaked token is not a transient exposure; it is written
 into a transcript.
 
+### The guarantee is about the response, not the request
+
+Until 2026-09-28 this section stated the property as *"no MCP read may use
+`select("*")`"*, and every test in the suite asserted it by inspecting the select
+**argument**:
+
+```ts
+expect(cols).not.toContain("client_token");
+```
+
+That is a claim about what we **ask** the database for. The property that matters
+is a claim about what we **hand back**. The two are not the same claim. They
+coincide only because PostgREST honours the field list — the select string
+determines the response, so "we did not ask for it" implies "we did not get it".
+
+**That implication is a property of one data source, not of this codebase.** It
+does not survive a Postgres view or RPC (the field list names output columns the
+function already chose to emit), an `client.rpc(...)` call (no select string
+exists to assert on), a cache or read-replica that stores and replays whole rows,
+or any backend without server-side field projection. On every one of those the
+request-shaped assertion still passes and the guarantee silently becomes a
+**no-op while the whole suite stays green**.
+
+Nothing was leaking when this was found — the transitive argument held for the
+live Supabase database. What was wrong was the **measurement**: the suite was
+asserting a proxy for the property, and 14 assertions across 7 files all bound to
+the same proxy. A test that reads the argument we passed in cannot see what came
+back.
+
 ### The mechanism
 
-Every tool selects an explicit list. The list lives in `src/lib/mcp/columns.ts` and
-nowhere else:
+`src/lib/mcp/projection.ts` is a single non-bypassable projection every returned
+record passes through. It:
 
-- `FORBIDDEN_COLUMNS` — `["client_token", "reply_token"]`
-- `SUBMISSION_COLUMNS` — the 22 columns MCP reads may return
-- `SUBMISSION_SELECT` — `SUBMISSION_COLUMNS.join(",")`, the PostgREST select string
+- imports `FORBIDDEN_COLUMNS` from `columns.ts` — **one definition of the
+  prohibition**, enforced on both the request and the response with no second edit
+- **throws `ForbiddenFieldError` on a forbidden key. It does not strip silently.**
+  A silent strip lets a misconfigured data layer run indefinitely leaking nothing
+  visible and signalling nothing, so the day a new forbidden column arrives
+  upstream it leaks until a human notices a token in a transcript. A throw is
+  loud, immediate, and lands on whoever changed the data layer. An MCP read that
+  cannot be served without a credential attached must not be served.
+- projects onto an allowlist, returning only permitted keys that are present.
+  Keys that are neither permitted nor forbidden are dropped without complaint —
+  an innocuous new column should not break a tool; a credential should.
+- checks for forbidden keys **before** projecting. Reversing that order looks
+  equivalent and is a total no-op: the projection has already dropped the
+  credential, so there is nothing left to find. Mutation-tested, below.
 
-`search_leads` and `get_lead` pass `SUBMISSION_SELECT`. `get_pipeline` passes a
-narrower literal. `get_lead`'s three child tables pass explicit literals.
-`search_copyblocks` touches no database.
+Surface: `projectRecord`, `projectRecords`, `projectNullableRecord`,
+`columnsOf`, `ForbiddenFieldError`, and a re-export of `FORBIDDEN_COLUMNS`.
 
-`columns.ts` is a separate file specifically so the guarantee has one home rather
-than four copies that can drift. **Add a column there, not at a call site.**
+`columnsOf(select)` derives a permitted list from the PostgREST select string a
+table is read with, so the request allowlist and the response allowlist are the
+same list by construction and cannot drift.
+
+**The column allowlist in `columns.ts` is now an optimization and
+defence-in-depth, not the mechanism.** It keeps the wire payload small and stops
+us asking for credentials in the first place, which is worth doing — but it is
+not what makes the guarantee true. Keep it, keep adding columns there rather than
+at a call site, and do not mistake it for the enforcement point.
+
+### Where it is applied
+
+Every tool that returns database records, all ten of them: `search_leads`,
+`get_lead` (the submission **and** all three child collections), `get_pipeline`,
+`create_lead`, `update_lead`, `add_note`, `create_bid_blocks`,
+`update_bid_blocks`, `propose_bid_amount`, `set_bid_amount`.
+
+`search_copyblocks` is **not** projected and needs no projection: it takes no
+Supabase client, reads only `src/lib/bid/copyblock-library.json`, and
+`register.ts` calls it with no client argument.
+
+Three judgement calls worth knowing:
+
+- **Child tables are projected too.** `submission_notes`, `messages` and
+  `bid_blocks` carry no credential today. Passing them through costs one object
+  copy per row and means a schema change that puts a credential on `messages`
+  fails loudly instead of writing it into a transcript. Correctness should not
+  depend on someone remembering to come back and add projection later.
+- **`update_lead`, `set_bid_amount` and `propose_bid_amount` project at the
+  read, not at the return.** In each, the pre-write row feeds more than one
+  returned value — `update_lead`'s preview returns it as `lead` *and* reads every
+  `changes[].from` off it. Projecting once at the read covers all of them;
+  projecting at the return would have to cover each separately and would
+  eventually cover only one.
+- **`get_pipeline` projects rows it then rebuilds field by field.** A credential
+  could not survive that loop anyway — but that is a property of how the loop
+  happens to be written, which nothing else tests and the next edit can remove.
+
+`create_lead` is the sharpest case in the whole surface. Both tokens are
+`DEFAULT`-generated at insert time (`001_contact_portal.sql:23`,
+`20260425_reply_token.sql:2-5`), so the row the database holds while answering
+that call has two live credentials on it.
 
 ### How it is tested
 
-- `src/lib/mcp/__tests__/columns.test.ts` — no `FORBIDDEN_COLUMNS` entry appears in
-  `SUBMISSION_COLUMNS`; `SUBMISSION_SELECT` round-trips to the same array with no
-  whitespace.
-- `src/lib/mcp/tools/__tests__/search-leads.test.ts` — the select argument **is**
-  `SUBMISSION_SELECT` and does not contain `*`.
-- `src/lib/mcp/tools/__tests__/get-lead.test.ts` — records the select string for all
-  four tables and asserts each contains neither token and is not `"*"`.
+Every tool test file now carries **both** shapes, labelled in the file:
+
+- **`── REQUEST SHAPE ──`** — the original assertion that the select argument is
+  the allowlist and is not `*`. Kept: it is still a useful check that we are not
+  asking for junk. Explicitly **not** the PII guarantee.
+- **`── THE PII GUARANTEE ──`** — the mocked client returns a row **containing
+  `client_token` and `reply_token`**, and the tool is asserted to throw
+  `ForbiddenFieldError`. That is the test that matters: it proves a credential
+  cannot reach the caller **even when the data source hands one over**.
+
+Plus `src/lib/mcp/__tests__/projection.test.ts` for the module itself — throws by
+type, throws on a forbidden key whose value is `null` or `""` (presence of the
+KEY is the signal), drops unknown keys, reuses `FORBIDDEN_COLUMNS`, and passes
+`null` through as `null`.
+
+`src/lib/mcp/__tests__/columns.test.ts` is unchanged and still asserts the
+allowlists are disjoint from the prohibition.
 
 ### It was mutation-tested
 
-An assertion that no forbidden column is present passes trivially if the code path
-it guards never runs. Both assertions were checked by breaking the code and
-confirming the tests notice. Re-verified 2026-09-14 against a scratchpad copy of
-the repo, not the working tree:
+Re-verified **2026-09-28** against a scratchpad copy of the repo with
+`node_modules` symlinked, never the working tree; the copy was diffed against the
+working tree afterwards and was identical.
 
 | Mutation | Result |
 |---|---|
-| `.select(SUBMISSION_SELECT)` → `.select("*")` in `search-leads.ts` and `get-lead.ts` | 2 tests fail in 2 files |
-| `"client_token"` added to `SUBMISSION_COLUMNS` | 2 tests fail in 2 files |
+| `projectRecord` removed from `get-lead.ts` — return the raw row | **3 tests fail** in `get-lead.test.ts` |
+| `projectRecord` removed from `create-lead.ts` — return the raw row | **3 tests fail** in `create-lead.test.ts` |
+| `projection.ts` strips silently instead of throwing | **36 tests fail** in 11 files |
+| forbidden check moved **after** the projection (the ordering trap) | **36 tests fail** in 11 files |
 
-The unmutated suite is 26 passing tests, so both failures are real signal.
+The unmutated suite is 208 passing tests (153 of them under `src/lib/mcp/`), so
+every one of those failures is real signal.
+
+**The finding that justifies this whole section:** under the first two mutations,
+with the leak fully intact and the raw row being returned, the old
+request-shaped assertion **still passed**:
+
+```
+✓ getLead > never selects bearer tokens from any table
+× getLead > throws rather than returning a submission that carries a bearer credential
+```
+
+That is the defect, reproduced. The request assertion cannot see a leak in the
+response, and for 25 days it was the only thing standing behind the guarantee.
 
 ### This is a deliberate departure
 
@@ -366,8 +471,12 @@ echo "$BODY" | grep -q '\\"name\\"' || { echo "NO DATA CAME BACK — the grep be
 echo "$BODY" | grep -qE 'client_token|reply_token' && echo "LEAK — STOP" || echo "clean"
 ```
 
-The `grep -q` prints nothing, so no customer data reaches your terminal. If this
-prints `LEAK — STOP`, fix `columns.ts` before doing anything else.
+The `grep -q` prints nothing, so no customer data reaches your terminal.
+
+If this prints `LEAK — STOP`, the projection in `src/lib/mcp/projection.ts` has
+been bypassed at a return site — start there, not at `columns.ts`. A tool that is
+correctly projected cannot print `LEAK`; it errors instead, and the error names
+the read.
 
 ### `GET` returns 405
 
@@ -468,9 +577,15 @@ consumer ever reports missing types.
    untestable without a protocol.
 2. **Parse the input inside the function** (`<name>Input.parse(raw)`), not only at the
    registration boundary. That is what makes the unit test meaningful.
-3. **If it reads customer data, use a column allowlist.** Add to `SUBMISSION_COLUMNS`
+3. **Pass every returned record through `src/lib/mcp/projection.ts`.** This is the
+   PII guarantee and it is not optional — see §4. Use `projectRecord` /
+   `projectRecords` / `projectNullableRecord` with `SUBMISSION_COLUMNS`, or with
+   `columnsOf(<YOUR_SELECT>)` for another table. Project child collections too.
+   If the record feeds more than one returned value, project at the read.
+4. **Also use a column allowlist on the request.** Add to `SUBMISSION_COLUMNS`
    in `src/lib/mcp/columns.ts`, or add a new allowlist there. Never `select("*")`,
-   and never inline a column list at the call site.
+   and never inline a column list at the call site. This is defence-in-depth on
+   top of step 3, not a substitute for it.
 4. **Accept UUIDs, not names,** for anything that targets a specific record.
    `z.string().uuid()`. Name resolution belongs in `search_leads`.
 5. **Validate `status` against `STATUS_VALUES`** from `src/lib/db-contract.ts` —

@@ -21,6 +21,18 @@
 
 import { z } from "zod";
 import type { SupabaseClient } from "@supabase/supabase-js";
+import { columnsOf, projectRecord } from "../projection";
+
+/**
+ * The note row's allowlist, derived from the select string so the two cannot
+ * drift. `submission_notes` carries no credential; the note is projected anyway
+ * for the reason in ../projection.ts.
+ *
+ * The existence check above it (`select("id")`) is NOT projected: its row is
+ * never returned, only tested for presence, so there is nothing for a
+ * projection to protect.
+ */
+const NOTE_SELECT = "id,submission_id,body,created_at";
 
 export const addNoteInput = z.object({
   submission_id: z
@@ -64,7 +76,7 @@ export async function addNote(
   const noteRes = await client
     .from("submission_notes")
     .insert({ submission_id, body })
-    .select("id,submission_id,body,created_at")
+    .select(NOTE_SELECT)
     .single();
   if (noteRes.error) throw new Error(`add_note failed: ${noteRes.error.message}`);
   if (!noteRes.data) throw new Error("add_note failed: insert returned no row");
@@ -75,7 +87,11 @@ export async function addNote(
     .update({ admin_notes: body })
     .eq("id", submission_id);
 
-  const note = noteRes.data as unknown as Record<string, unknown>;
+  const note = projectRecord(
+    noteRes.data as unknown as Record<string, unknown>,
+    columnsOf(NOTE_SELECT),
+    "add_note: submission_notes",
+  );
   if (mirrorRes.error) {
     return {
       note,

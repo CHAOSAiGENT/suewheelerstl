@@ -1,6 +1,7 @@
 import { describe, it, expect, vi } from "vitest";
 import { proposeBidAmount } from "../propose-bid-amount";
 import { SUBMISSION_SELECT } from "../../columns";
+import { ForbiddenFieldError } from "../../projection";
 import { BID_BLOCK_SELECT } from "../update-bid-blocks";
 import library from "@/lib/bid/copyblock-library.json";
 import type { CopyblockLibrary } from "@/lib/bid/types";
@@ -141,6 +142,8 @@ describe("proposeBidAmount", () => {
     await expect(proposeBidAmount({ id: ID }, client as never)).rejects.toThrow(/blocks boom/);
   });
 
+  // ── REQUEST SHAPE ─────────────────────────────────────────────────────────
+  // Defence in depth. NOT the PII guarantee — see the response tests below.
   it("selects explicit column lists, never *", async () => {
     const { client, calls } = mockClient();
     await proposeBidAmount({ id: ID }, client as never);
@@ -150,5 +153,50 @@ describe("proposeBidAmount", () => {
       expect(cols).not.toContain("client_token");
       expect(cols).not.toContain("reply_token");
     }
+  });
+
+  // ── THE PII GUARANTEE ─────────────────────────────────────────────────────
+  // This tool echoes only five fields off the lead, so a credential would not
+  // reach the caller through `submission`. The RECORD is what must be clean,
+  // not the subset the tool happens to read off it today.
+  it("throws rather than reading from a lead that carries a bearer credential", async () => {
+    const { client } = mockClient({
+      lead: {
+        ...LEAD,
+        client_token: "3f1c0e7a-0000-4000-8000-000000000001",
+        reply_token: "a1b2c3d4e5f6",
+      },
+    });
+    await expect(proposeBidAmount({ id: ID }, client as never)).rejects.toThrow(
+      ForbiddenFieldError,
+    );
+  });
+
+  it("throws on either credential alone", async () => {
+    for (const token of ["client_token", "reply_token"]) {
+      const { client } = mockClient({ lead: { ...LEAD, [token]: "leaked" } });
+      await expect(proposeBidAmount({ id: ID }, client as never)).rejects.toThrow(
+        ForbiddenFieldError,
+      );
+    }
+  });
+
+  // bid_blocks carries no credential today; it is projected anyway so a schema
+  // change that puts one there fails loudly instead of leaking.
+  it("throws rather than returning a bid block that carries a bearer credential", async () => {
+    const { client } = mockClient({
+      blocks: [{ id: "b1", title: "FRONT DOOR", client_token: "leaked" }],
+    });
+    await expect(proposeBidAmount({ id: ID }, client as never)).rejects.toThrow(
+      ForbiddenFieldError,
+    );
+  });
+
+  it("returns bid blocks with only allowlisted keys", async () => {
+    const { client } = mockClient({
+      blocks: [{ id: "b1", title: "FRONT DOOR", submission_id: ID, secret_internal: "x" }],
+    });
+    const r = await proposeBidAmount({ id: ID }, client as never);
+    expect(Object.keys(r.bidBlocks[0]).sort()).toEqual(["id", "submission_id", "title"]);
   });
 });

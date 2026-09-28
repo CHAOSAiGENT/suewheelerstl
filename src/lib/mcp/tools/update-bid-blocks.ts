@@ -19,12 +19,16 @@
 
 import { z } from "zod";
 import type { SupabaseClient } from "@supabase/supabase-js";
+import { columnsOf, projectRecords } from "../projection";
 
 /**
  * Explicit column list, matching get-lead.ts's bid_blocks read. Never select("*")
- * from an MCP tool — see ../columns.ts for why.
+ * from an MCP tool — see ../columns.ts for why. The rows read back through it are
+ * projected against it before any of their values are returned — see
+ * ../projection.ts for why the guarantee lives on the response, not the request.
  */
 export const BID_BLOCK_SELECT = "id,submission_id,source_key,title,body,sort_order,photo_paths";
+const BID_BLOCK_COLUMNS = columnsOf(BID_BLOCK_SELECT);
 
 /** The only columns this tool may write. */
 export const UPDATE_BID_BLOCK_FIELDS = ["title", "body", "sort_order", "photo_paths"] as const;
@@ -109,8 +113,16 @@ export async function updateBidBlocks(
     throw new Error(`update_bid_blocks failed: ${currentRes.error.message}`);
   }
 
+  // Projected at the read. These rows are not returned whole, but their values
+  // are: every `changes[].from` is read off one of them.
+  const currentRows = projectRecords(
+    (currentRes.data ?? []) as unknown as Record<string, unknown>[],
+    BID_BLOCK_COLUMNS,
+    "update_bid_blocks: bid_blocks",
+  );
+
   const current = new Map<string, Record<string, unknown>>();
-  for (const row of (currentRes.data ?? []) as unknown as Record<string, unknown>[]) {
+  for (const row of currentRows) {
     current.set(String(row.id), row);
   }
 

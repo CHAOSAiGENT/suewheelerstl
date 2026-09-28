@@ -1,6 +1,7 @@
 import { describe, it, expect, vi } from "vitest";
 import { createLead } from "../create-lead";
 import { SUBMISSION_SELECT } from "../../columns";
+import { ForbiddenFieldError } from "../../projection";
 
 function mockClient(result: { data: unknown; error: unknown }) {
   const calls: { insert: unknown[][]; select: unknown[][] } = { insert: [], select: [] };
@@ -40,6 +41,8 @@ describe("createLead", () => {
     expect(row.service_types).toEqual(["Front door"]);
   });
 
+  // ── REQUEST SHAPE ─────────────────────────────────────────────────────────
+  // Defence in depth. NOT the PII guarantee — see the response tests below.
   it("returns the created row through the allowlist, never *", async () => {
     const { client, calls } = mockClient({ data: inserted, error: null });
     await createLead(valid, client as never);
@@ -47,6 +50,43 @@ describe("createLead", () => {
     expect(calls.select[0][0]).not.toContain("*");
     expect(calls.select[0][0]).not.toContain("client_token");
     expect(calls.select[0][0]).not.toContain("reply_token");
+  });
+
+  // ── THE PII GUARANTEE ─────────────────────────────────────────────────────
+  // The sharpest case in the MCP surface: both tokens are DEFAULT-generated at
+  // insert time (001_contact_portal.sql:23, 20260425_reply_token.sql:2-5), so
+  // the row the database holds while answering this call has two live
+  // credentials on it. If the insert's RETURNING ever stops honouring the field
+  // list, this is where they arrive.
+  it("throws rather than returning a created row that carries a bearer credential", async () => {
+    const { client } = mockClient({
+      data: {
+        ...inserted,
+        client_token: "3f1c0e7a-0000-4000-8000-000000000001",
+        reply_token: "a1b2c3d4e5f6",
+      },
+      error: null,
+    });
+    await expect(createLead(valid, client as never)).rejects.toThrow(ForbiddenFieldError);
+  });
+
+  it("throws on either credential alone", async () => {
+    for (const token of ["client_token", "reply_token"]) {
+      const { client } = mockClient({
+        data: { ...inserted, [token]: "leaked" },
+        error: null,
+      });
+      await expect(createLead(valid, client as never)).rejects.toThrow(ForbiddenFieldError);
+    }
+  });
+
+  it("returns only allowlisted keys, dropping anything else the source sends", async () => {
+    const { client } = mockClient({
+      data: { ...inserted, is_test: false, archived_at: null },
+      error: null,
+    });
+    const r = await createLead(valid, client as never);
+    expect(Object.keys(r.lead)).toEqual(["id", "name"]);
   });
 
   it("forces status to_bid and bid_status none, ignoring anything the caller sends", async () => {

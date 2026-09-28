@@ -8,9 +8,13 @@
  * route, both recorded in docs/MCP.md §8:
  *
  *   1. The row comes back through SUBMISSION_SELECT, never `select()` /
- *      `select("*")`. The route returns the whole row including `client_token`
- *      and `reply_token`; those are bearer credentials, and a row returned here
- *      lands in a model's transcript permanently.
+ *      `select("*")`, and then through ../projection.ts before it is returned.
+ *      The route returns the whole row including `client_token` and
+ *      `reply_token`; those are bearer credentials, and a row returned here
+ *      lands in a model's transcript permanently. This is the sharpest case in
+ *      the whole MCP surface: both tokens are DEFAULT-generated at insert time,
+ *      so the row the database has in hand as it answers this call is a row
+ *      with two live credentials on it.
  *   2. `service_types` must hold at least one entry. The route's check is
  *      `!body[field]`, and `[]` is truthy in JavaScript, so it accepts a lead
  *      with no services on it.
@@ -22,7 +26,8 @@
 
 import { z } from "zod";
 import type { SupabaseClient } from "@supabase/supabase-js";
-import { SUBMISSION_SELECT } from "../columns";
+import { SUBMISSION_COLUMNS, SUBMISSION_SELECT } from "../columns";
+import { projectRecord } from "../projection";
 
 /** Trimmed, and required to survive the trim. */
 const required = (label: string) =>
@@ -100,5 +105,11 @@ export async function createLead(
   if (error) throw new Error(`create_lead failed: ${error.message}`);
   if (!data) throw new Error("create_lead failed: insert returned no row");
 
-  return { lead: data as unknown as Record<string, unknown> };
+  return {
+    lead: projectRecord(
+      data as unknown as Record<string, unknown>,
+      SUBMISSION_COLUMNS,
+      "create_lead: submissions",
+    ),
+  };
 }

@@ -22,7 +22,8 @@ import { z } from "zod";
 import type { SupabaseClient } from "@supabase/supabase-js";
 import library from "@/lib/bid/copyblock-library.json";
 import type { CopyblockLibrary } from "@/lib/bid/types";
-import { SUBMISSION_SELECT } from "../columns";
+import { SUBMISSION_COLUMNS, SUBMISSION_SELECT } from "../columns";
+import { columnsOf, projectRecord, projectRecords } from "../projection";
 import { BID_BLOCK_SELECT } from "./update-bid-blocks";
 
 const LIBRARY = library as CopyblockLibrary;
@@ -122,7 +123,14 @@ export async function proposeBidAmount(
     .maybeSingle();
   if (leadRes.error) throw new Error(`propose_bid_amount failed: ${leadRes.error.message}`);
   if (!leadRes.data) throw new Error(`propose_bid_amount failed: no submission with id ${id}`);
-  const lead = leadRes.data as unknown as Record<string, unknown>;
+  // Projected at the read. Only five of these fields are echoed back, but the
+  // record is the thing that must be clean, not the subset this tool happens to
+  // read off it today — see ../projection.ts.
+  const lead = projectRecord(
+    leadRes.data as unknown as Record<string, unknown>,
+    SUBMISSION_COLUMNS,
+    "propose_bid_amount: submissions",
+  );
 
   const blocksRes = await client
     .from("bid_blocks")
@@ -177,7 +185,11 @@ export async function proposeBidAmount(
       project_description: lead.project_description ?? null,
     },
     currentBidAmount: typeof bidAmount === "number" ? bidAmount : null,
-    bidBlocks: (blocksRes.data ?? []) as unknown as Record<string, unknown>[],
+    bidBlocks: projectRecords(
+      (blocksRes.data ?? []) as unknown as Record<string, unknown>[],
+      columnsOf(BID_BLOCK_SELECT),
+      "propose_bid_amount: bid_blocks",
+    ),
     copyblocks: hits.slice(0, copyblockLimit),
     totalMatched: hits.length,
     searchTerms,

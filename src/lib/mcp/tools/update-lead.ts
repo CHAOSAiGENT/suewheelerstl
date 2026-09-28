@@ -25,7 +25,8 @@
 import { z } from "zod";
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { STATUS_VALUES, LOST_REASON_VALUES } from "@/lib/db-contract";
-import { SUBMISSION_SELECT } from "../columns";
+import { SUBMISSION_COLUMNS, SUBMISSION_SELECT } from "../columns";
+import { projectNullableRecord, projectRecord } from "../projection";
 
 /** The only columns this tool may write. Mirrors the admin route, minus bid_amount and archived_at. */
 export const UPDATE_LEAD_FIELDS = [
@@ -139,7 +140,15 @@ export async function updateLead(
   if (currentRes.error) throw new Error(`update_lead failed: ${currentRes.error.message}`);
   if (!currentRes.data) throw new Error(`update_lead failed: no submission with id ${id}`);
 
-  const current = currentRes.data as unknown as Record<string, unknown>;
+  // Projected at the read, not at the return, because `current` feeds TWO
+  // returned values: the preview's `lead` and every `changes[].from`. Projecting
+  // once here covers both; projecting at the return would have to cover both
+  // separately and would eventually cover only one.
+  const current = projectRecord(
+    currentRes.data as unknown as Record<string, unknown>,
+    SUBMISSION_COLUMNS,
+    "update_lead: submissions",
+  );
   const changes: FieldChange[] = Object.entries(updates).map(([field, to]) => ({
     field,
     from: current[field] ?? null,
@@ -174,7 +183,11 @@ export async function updateLead(
     written: true,
     id,
     changes,
-    lead: (data ?? null) as unknown as Record<string, unknown> | null,
+    lead: projectNullableRecord(
+      data as unknown as Record<string, unknown> | null,
+      SUBMISSION_COLUMNS,
+      "update_lead: submissions",
+    ),
     message: `Wrote ${changes.length} field(s) to submission ${id}.`,
   };
 }

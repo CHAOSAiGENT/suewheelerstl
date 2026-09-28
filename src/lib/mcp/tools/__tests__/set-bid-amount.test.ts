@@ -1,6 +1,7 @@
 import { describe, it, expect, vi } from "vitest";
 import { setBidAmount, BID_AMOUNT_CEILING } from "../set-bid-amount";
 import { SUBMISSION_SELECT } from "../../columns";
+import { ForbiddenFieldError } from "../../projection";
 
 const ID = "00000000-0000-4000-8000-000000000001";
 
@@ -160,6 +161,8 @@ describe("setBidAmount", () => {
     ).rejects.toThrow(/write boom/);
   });
 
+  // ── REQUEST SHAPE ─────────────────────────────────────────────────────────
+  // Defence in depth. NOT the PII guarantee — see the response tests below.
   it("selects only allowlisted columns, never *", async () => {
     const { client, calls } = mockClient({ updated: ROW });
     await setBidAmount({ id: ID, amount: 3900, confirm: true }, client as never);
@@ -170,5 +173,50 @@ describe("setBidAmount", () => {
       expect(cols).not.toContain("client_token");
       expect(cols).not.toContain("reply_token");
     }
+  });
+
+  // ── THE PII GUARANTEE ─────────────────────────────────────────────────────
+  const TOKENED = {
+    ...ROW,
+    client_token: "3f1c0e7a-0000-4000-8000-000000000001",
+    reply_token: "a1b2c3d4e5f6",
+  };
+
+  it("throws rather than returning a row that carries a bearer credential", async () => {
+    const { client } = mockClient({ current: TOKENED, updated: TOKENED });
+    await expect(
+      setBidAmount({ id: ID, amount: 3900, confirm: true }, client as never),
+    ).rejects.toThrow(ForbiddenFieldError);
+  });
+
+  it("throws in preview too — the preview returns the row as well", async () => {
+    const { client, calls } = mockClient({ current: TOKENED });
+    await expect(setBidAmount({ id: ID, amount: 3900 }, client as never)).rejects.toThrow(
+      ForbiddenFieldError,
+    );
+    expect(calls.updates).toHaveLength(0);
+  });
+
+  it("throws on the written row when only the write echo carries a credential", async () => {
+    const { client } = mockClient({ current: ROW, updated: TOKENED });
+    await expect(
+      setBidAmount({ id: ID, amount: 3900, confirm: true }, client as never),
+    ).rejects.toThrow(ForbiddenFieldError);
+  });
+
+  it("throws on either credential alone", async () => {
+    for (const token of ["client_token", "reply_token"]) {
+      const { client } = mockClient({ current: { ...ROW, [token]: "leaked" } });
+      await expect(
+        setBidAmount({ id: ID, amount: 3900, confirm: true }, client as never),
+      ).rejects.toThrow(ForbiddenFieldError);
+    }
+  });
+
+  it("returns only allowlisted keys, dropping anything else the source sends", async () => {
+    const row = { ...ROW, is_test: false, archived_at: null };
+    const { client } = mockClient({ current: row, updated: row });
+    const r = await setBidAmount({ id: ID, amount: 3900, confirm: true }, client as never);
+    expect(Object.keys(r.lead!).sort()).toEqual(["bid_amount", "id", "name", "status"]);
   });
 });

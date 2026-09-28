@@ -1,5 +1,6 @@
 import { describe, it, expect, vi } from "vitest";
 import { createBidBlocks } from "../create-bid-blocks";
+import { ForbiddenFieldError } from "../../projection";
 
 const ID = "00000000-0000-4000-8000-000000000001";
 
@@ -138,6 +139,8 @@ describe("createBidBlocks", () => {
     ).rejects.toThrow(/boom/);
   });
 
+  // ── REQUEST SHAPE ─────────────────────────────────────────────────────────
+  // Defence in depth. NOT the PII guarantee — see the response tests below.
   it("never selects * from any table", async () => {
     const m = mockClient();
     await createBidBlocks({ submission_id: ID, blocks: two }, m.client as never);
@@ -148,6 +151,49 @@ describe("createBidBlocks", () => {
       expect(cols).not.toContain("client_token");
       expect(cols).not.toContain("reply_token");
     }
+  });
+
+  // ── THE PII GUARANTEE ─────────────────────────────────────────────────────
+  // bid_blocks carries no credential today; created rows are projected anyway
+  // so a schema change that puts one there fails loudly instead of leaking.
+  it("throws rather than returning a created block that carries a bearer credential", async () => {
+    const m = mockClient({
+      inserts: [
+        {
+          data: {
+            id: "block-0",
+            client_token: "3f1c0e7a-0000-4000-8000-000000000001",
+            reply_token: "a1b2c3d4e5f6",
+          },
+          error: null,
+        },
+      ],
+    });
+    await expect(
+      createBidBlocks({ submission_id: ID, blocks: two }, m.client as never),
+    ).rejects.toThrow(ForbiddenFieldError);
+  });
+
+  it("throws on either credential alone", async () => {
+    for (const token of ["client_token", "reply_token"]) {
+      const m = mockClient({
+        inserts: [{ data: { id: "block-0", [token]: "leaked" }, error: null }],
+      });
+      await expect(
+        createBidBlocks({ submission_id: ID, blocks: two }, m.client as never),
+      ).rejects.toThrow(ForbiddenFieldError);
+    }
+  });
+
+  it("returns created blocks with only allowlisted keys", async () => {
+    const m = mockClient({
+      inserts: [
+        { data: { id: "block-0", title: "Front door", internal_flag: true }, error: null },
+        { data: { id: "block-1", title: "Newel post" }, error: null },
+      ],
+    });
+    const r = await createBidBlocks({ submission_id: ID, blocks: two }, m.client as never);
+    expect(Object.keys(r.created[0]).sort()).toEqual(["id", "title"]);
   });
 
   it("rejects a non-UUID submission_id before touching the database", async () => {
