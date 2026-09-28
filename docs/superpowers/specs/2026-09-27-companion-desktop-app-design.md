@@ -85,28 +85,56 @@ The Rust side of the Tauri app stays small on purpose: a window, a keychain entr
 HTTP client, and the updater. Anything larger is a signal that logic has leaked out of the
 server.
 
-### The generalized tool contract
+### The generalized tool contract — **deferred, deliberately**
 
-The eleven existing tools are already `(input, client)` — the data client is **injected,
-not imported**. That is the seam the "Add To" tier needs, and it exists by accident rather
-than design. The only change required is that the parameter is typed `SupabaseClient`
-rather than an interface.
+An earlier draft of this spec said the tools were one retype away from portable: *"the
+only change required is that the parameter is typed `DataAdapter` rather than
+`SupabaseClient`."* **That was wrong, and researching it against real second targets is
+what proved it.** The claim is preserved here rather than deleted, because the reasoning
+against it is the useful part.
 
-Define a `DataAdapter` interface covering what the tools actually use, and have the
-Supabase adapter implement it. Sue's build binds the Supabase adapter; an "Add To"
-customer binds one for Toast, Square, or a WordPress REST endpoint. **The safety
-properties travel; only the adapter changes.**
+**There is no valid second target to design against:**
 
-Do this now, while there is exactly one implementation to change.
+| Target | Why it fails |
+|---|---|
+| **Toast** | No customer entity at all, no `PATCH` verb, no field selection. Disqualified outright. |
+| **Square** | `CustomerFilter` has neither a name nor an address field — it **cannot serve `search_leads`**, the primary read. |
+| **WordPress** | `search` cannot see post meta, and hosting our records needs a plugin installed on the customer's site. |
+| **Jobber / Housecall Pro** | Same vertical, and they fail in *opposite* places — HCP has the best search primitive and the worst write surface; Jobber the best field selection and nowhere private to store anything. |
 
-What travels as the reusable module is not the tools — it is the **tool contract**:
+An interface spanning those is a lowest-common-denominator on reads and a lie on writes.
+
+Two of the six "safety properties that travel" are PostgREST idioms and cannot travel in
+that form:
+
+- **The column allowlist.** Server-side field projection exists on 2 of 5 candidates,
+  is absent on 2, and is caller-supplied-on-a-default-open API on 1. → **Fixed**: the
+  guarantee now lives on the response (`src/lib/mcp/projection.ts`), where it holds
+  regardless of what the source honours.
+- **UUID-only targeting.** `z.string().uuid()` rejects every id on all four non-Supabase
+  targets — but relaxing it to `z.string()` **accepts a customer name**, silently deleting
+  the property it exists to enforce. An adapter needs an id validator strict enough that
+  *"the Hartmann job"* fails it, not merely an id type.
+
+And one operation does not port at all: **`create_bid_blocks` on Housecall Pro would
+destroy prior rows** — `order_index` is read-only and bulk update is replace-by-default.
+That is data loss, not degradation, so it must be *declared unsupported*, never emulated.
+
+**Decision: do not build the interface until a named second customer on a named platform
+has signed, then write it against that platform only.** A wrong abstraction with 10 tools
+and 200 tests on top of it is expensive to unwind; a late one costs a single mechanical
+refactor at a moment when we know what we are abstracting toward.
+
+What travels as the reusable module is the **tool contract**, which is a set of properties
+rather than an interface:
 
 - a Zod input schema per tool
-- an injected data adapter
-- explicit column allowlists, never `select("*")`
+- an injected data client (the seam already exists — the client is a parameter)
+- the PII guarantee enforced on **returned records**, throwing rather than stripping
 - confirm-before-write on every update
-- UUID-only targeting, never name matching
+- id validation strict enough to reject a name
 - errors thrown, never swallowed into an empty result
+- partial writes reported, never claimed as success
 
 ## The API contract
 
@@ -267,12 +295,25 @@ implementation plan should phase it so subsystem one ships before subsystem thre
 
 - **Where the repo lives** and what it is called. The app is a new codebase; this spec
   lives in Sue's repo because that is where the contract and the tool layer are.
-- **Photos library access on macOS under Tauri v2** — which plugin, and whether a file
-  picker is the pragmatic fallback. Verify before planning subsystem two.
-- **Transcription provider.** Server-side, so it is swappable, but the first choice and
-  its cost per minute feed directly into the metering model.
+- ~~Photos library access on macOS under Tauri v2.~~ **Resolved 2026-09-28 by spike.**
+  The stock `NSOpenPanel` via `tauri-plugin-dialog` reaches Photos under a *Media* sidebar
+  heading — no plugin, no Info.plist key, no entitlement, no TCC prompt, because Photos
+  vends a copy via `NSItemProvider` and our process never touches `.photoslibrary`.
+  Three consequences for the plan: the picker **always transcodes to JPEG and ignores the
+  extension filter** (so sniff bytes, never trust the filter, and HEIC decode is needed
+  only on the loose-file path); the returned path is a **purge-eligible temp export
+  containing `&` and `=`** (copy on receipt, never shell-interpolate); and the panel is a
+  sheet with its own remembered frame that **can open with the sidebar cut off**, hiding
+  the Photos entry entirely from a first-run user.
+- ~~Transcription provider.~~ **Resolved 2026-09-28: Deepgram Nova-3, $0.0043/min**
+  ($0.0056 with keyterm prompting). True per-second billing, no rounding. Chosen over a
+  cheaper option because it returns **per-word confidence** — Whisper's failure mode on
+  noisy audio is fluent hallucination, not garbled text, so without a confidence signal a
+  plausible invented sentence writes silently into the CRM. **`mip_opt_out=true` is
+  mandatory and goes in the request builder on the first commit**: Deepgram trains on
+  submitted audio by default, and this is client data.
 - **Offline read cache** — whether the pipeline view caches at all in v1, or whether the
   app simply requires connectivity and says so clearly.
-- **The `DataAdapter` interface surface.** Defining it against exactly one implementation
-  risks encoding Supabase's shape into what is supposed to be neutral. Worth reviewing
-  against a second real target — a restaurant POS API — before treating it as stable.
+- ~~The `DataAdapter` interface surface.~~ **Resolved 2026-09-28: do not build it.** The
+  review against Square, Toast, Jobber, Housecall Pro and WordPress found no valid second
+  target. See "The generalized tool contract" above.
