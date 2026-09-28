@@ -131,6 +131,9 @@ const nextConfig: NextConfig = {
       },
     ];
   },
+  // @suewheelerstl/contract ships raw TypeScript so a Tauri or React Native
+  // client can import the same source. Next has to transpile it.
+  transpilePackages: ["@suewheelerstl/contract"],
   compress: true,
   images: {
     formats: ["image/avif", "image/webp"],

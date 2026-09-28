@@ -47,6 +47,9 @@ importers:
       '@react-pdf/renderer':
         specifier: ^4.4.1
         version: 4.4.1(react@19.2.4)
+      '@suewheelerstl/contract':
+        specifier: workspace:*
+        version: link:../../packages/contract
       '@supabase/ssr':
         specifier: ^0.9.0
         version: 0.9.0(@supabase/supabase-js@2.99.3)
@@ -132,6 +135,8 @@ importers:
       vitest:
         specifier: ^4.1.8
         version: 4.1.8(@opentelemetry/api@1.9.0)(@types/node@20.19.37)(vite@8.0.16(@types/node@20.19.37)(jiti@2.6.1))
+
+  packages/contract: {}
 
 packages:
 

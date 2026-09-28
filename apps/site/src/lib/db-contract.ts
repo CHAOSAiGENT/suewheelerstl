@@ -101,6 +101,22 @@ export const REQUIRED_COLUMNS: Record<string, readonly string[]> = {
     "sent_by_email",
     "created_at",
   ],
+  // The app API's usage ledger. Listed here so the drift gate fails if the table
+  // is ever dropped or renamed out from under the meter — a silently missing
+  // usage table means silently missing revenue.
+  usage_events: [
+    "id",
+    "occurred_at",
+    "user_email",
+    "client_id",
+    "tool_name",
+    "outcome",
+    "duration_ms",
+    "model",
+    "input_tokens",
+    "output_tokens",
+    "provider_cost_usd",
+  ],
   bid_blocks: [
     "id",
     "submission_id",

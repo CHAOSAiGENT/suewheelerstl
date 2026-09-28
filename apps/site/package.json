@@ -41,7 +41,8 @@
     "svix": "^1.92.2",
     "tailwind-merge": "^2.6.0",
     "uuid": "^13.0.0",
-    "zod": "^4.5.4"
+    "zod": "^4.5.4",
+    "@suewheelerstl/contract": "workspace:*"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.0.6",
