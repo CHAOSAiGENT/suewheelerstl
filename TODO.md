@@ -231,10 +231,10 @@ anything.** This arguably should have come first.
       untouched.
 - [x] ~~11 dead page files~~ — **done** (`5d4a788`). Redirect rules verified intact in
       the built `routes-manifest.json`.
-- [ ] **`Review` schema is invalid** — 6 nodes with no `reviewRating`, so it earns
-      nothing today. Self-hosted reviews are ineligible for review rich results
-      regardless; the durable fix is real GBP reviews. **Decision needed:** remove the
-      invalid markup now, or leave until real reviews exist?
+- [ ] **`Review` schema is invalid** — 6 nodes with no `reviewRating`. **Decided
+      2026-09-28: leave it, wait for real GBP reviews.** Self-hosted reviews are
+      ineligible for rich results regardless, so removing the markup gains nothing and
+      the durable fix is review volume on the Google profile (currently zero).
 - [ ] **Generic `LocalBusiness`** — a subtype (`HomeAndConstructionBusiness` /
       `Painter`) categorizes the entity more precisely. Low cost, low certainty.
       **Decision needed:** which subtype.
