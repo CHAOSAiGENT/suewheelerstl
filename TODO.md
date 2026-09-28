@@ -235,9 +235,17 @@ anything.** This arguably should have come first.
       2026-09-28: leave it, wait for real GBP reviews.** Self-hosted reviews are
       ineligible for rich results regardless, so removing the markup gains nothing and
       the durable fix is review volume on the Google profile (currently zero).
-- [ ] **Generic `LocalBusiness`** — a subtype (`HomeAndConstructionBusiness` /
-      `Painter`) categorizes the entity more precisely. Low cost, low certainty.
-      **Decision needed:** which subtype.
+- [x] ~~Generic `LocalBusiness` subtype~~ — **Decided 2026-09-28: keep it generic.**
+      schema.org types and Google Business Profile categories are unrelated systems; the
+      GBP category (`Carpenter`) is what drives local-pack placement, and the schema
+      `@type` does not. No schema.org subtype describes architectural wood refinishing —
+      the nearest candidates under `HomeAndConstructionBusiness` all name *adjacent*
+      trades. A subtype is a factual claim about the entity, so an approximately-right
+      one is worse than none: `HousePainter` on 63 pages tells every answer engine
+      something false about a real business. Generic `LocalBusiness` is accurate, and the
+      `Service` nodes, description and `llms.txt` already carry the specificity truthfully.
+      Higher-leverage alternative: GBP supports **secondary categories**, which are free
+      and do affect which searches she surfaces for.
 - [ ] **`BUSINESS_TELEPHONE` is still unused** — all 61 JSON-LD sites now use the same
       literal string rather than the exported constant. Single-sourcing them means
       touching imports in 61 files; correct, but its own task.
@@ -298,7 +306,7 @@ duplicate `SubmissionNote` removed.
 | **`generate-pdf` has the same unchecked-UPDATE bug** | `api/admin/bid/generate-pdf/route.tsx:175-178` | The third instance. Ignores the UPDATE result, then emails the customer the PDF. Its two siblings were fixed in `ae9ea47`; this one was out of scope and remains. |
 | **A hand-retyped copy of `STATUS_VALUES`** | `api/admin/submissions/[id]/route.ts:7-16` | Validates `status` against a duplicated list instead of importing from `db-contract.ts`, so the two can drift silently — the same class of bug as the `quote_sent`/`scheduled` writes just fixed. Also forwards `lost_reason` with **no validation**, so a bad value reaches Postgres as an opaque 500. The MCP's `update_lead` validates both correctly; this route should import from the same source. |
 | **`reply_token` is 48-bit and never expires** | `20260425_reply_token.sql:3-5` | 12 hex chars, far weaker than the UUID `client_token`. Anyone holding or guessing one can inject into a customer's email thread. The input half of the spoofing chain above. |
-| **No CSP** | `next.config.ts` | `Referrer-Policy` and `X-Frame-Options` are in. A CSP needs its own scripting/style inventory and a testing pass — a half-written one either breaks the site or reads as done when it isn't. **Decision needed.** |
+| **CSP is report-only, not enforcing** | `next.config.ts` | **Shipped report-only 2026-09-28.** Origins inventoried from source and build output. It blocks nothing; it collects violations. **To enforce:** browse the public site AND the admin CRM with the console open, add any origin that reports, rename the header key. Do it *after* the monorepo move so a CSP failure and a Root Directory failure cannot be confused. Note `script-src` carries `'unsafe-inline'` for Next hydration, so it does **not** yet stop an injected inline script — real XSS protection needs nonces via middleware, and this report is the input to that. |
 | **`/api/contact` and `/api/upload-url` are fully public** | — | No rate limit, no CAPTCHA, no origin check. Both hold a service-role client. |
 | **`bid/blocks/[id]` has no ownership check** | `api/admin/bid/blocks/[id]/route.ts` | Any allowlisted admin can edit any block by id. Low severity with two admins; recorded for when that changes. |
 | **Preview and Development share the production database** | Vercel env | A preview deploy writes to real customer records. |
