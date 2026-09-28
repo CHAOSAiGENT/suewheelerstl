@@ -4,6 +4,11 @@ name: schema-drift
 # schema-drift gate against the live DB. The schema check self-skips until the
 # SUPABASE_DB_URL repository secret is added, so this stays green until then —
 # add the secret to make it enforcing. See docs/MIGRATIONS.md.
+#
+# Runs from the repo root. The root package.json delegates both scripts into
+# apps/site via `pnpm --filter`, which also sets the working directory — load-
+# bearing, because the site suite includes a test that reads a real file
+# relative to process.cwd().
 
 on:
   push:
@@ -15,14 +20,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
+      # Must precede setup-node: `cache: pnpm` needs the pnpm binary present to
+      # resolve the store path.
+      - uses: pnpm/action-setup@v4
       - uses: actions/setup-node@v6
         with:
-          node-version: "20"
-          cache: npm
-      - run: npm ci
+          # 22, matching form-monitor.yml. Vercel builds on 24.x; pinning 20 here
+          # meant CI was green on a runtime production never uses.
+          node-version: "22"
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
       - name: Typecheck
-        run: npm run typecheck
+        run: pnpm run typecheck
       - name: Schema drift check
         env:
           SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
-        run: npm run test:schema
+        run: pnpm run test:schema
