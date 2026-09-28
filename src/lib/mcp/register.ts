@@ -141,7 +141,9 @@ export function registerCrmTools(server: McpServer): void {
         "this for \"what's on my plate\", \"what needs bidding\", or any question about the " +
         "business as a whole rather than one customer. Empty stages are included with a count " +
         "of 0, so an absent stage means the stage does not exist, not that it is empty. Takes " +
-        "no arguments.",
+        "no arguments. IF `truncated` IS TRUE the board holds more leads than were returned, " +
+        "and every count and total is a FLOOR rather than a total — say so plainly instead of " +
+        "reporting the numbers as complete.",
       inputSchema: getPipelineInput,
     },
     async (args) => asToolResult(await getPipeline(args, createServiceSupabaseClient())),

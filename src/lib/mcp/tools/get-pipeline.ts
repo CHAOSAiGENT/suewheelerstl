@@ -36,7 +36,29 @@ export interface GetPipelineResult {
   stages: Record<string, PipelineStage>;
   totalLeads: number;
   unknownStatusCount: number;
+  /**
+   * True when the board holds more leads than this call returned. The counts
+   * above are then a floor, not a total, and must be reported as such.
+   */
+  truncated: boolean;
+  /** The cap that was applied. Present whether or not it was reached. */
+  limit: number;
 }
+
+/**
+ * Maximum leads read in one pipeline snapshot.
+ *
+ * The board held 24 rows when this was written, so this is ~20x headroom and
+ * Sue will not reach it. It exists because an unbounded read is a defect that
+ * only shows up once it is expensive: at a few thousand rows this call would
+ * quietly become the slowest thing in the app and put the whole table into a
+ * model's context.
+ *
+ * The number matters less than the reporting. A truncated pipeline that does
+ * not SAY it is truncated is worse than an error — the model reports confident
+ * totals that are wrong, and nothing in the response reveals it.
+ */
+export const PIPELINE_LIMIT = 500;
 
 export async function getPipeline(
   raw: GetPipelineInput,
@@ -44,11 +66,16 @@ export async function getPipeline(
 ): Promise<GetPipelineResult> {
   getPipelineInput.parse(raw);
 
+  // Fetch one more than the cap. If it comes back, there is definitely at least
+  // one more lead than we are reporting — which a plain `.limit(PIPELINE_LIMIT)`
+  // cannot distinguish from a board that holds exactly PIPELINE_LIMIT leads.
   const { data, error } = await client
     .from("submissions")
     .select(PIPELINE_SELECT)
     .eq("is_test", false)
-    .is("archived_at", null);
+    .is("archived_at", null)
+    .order("created_at", { ascending: false })
+    .limit(PIPELINE_LIMIT + 1);
 
   if (error) throw new Error(`get_pipeline failed: ${error.message}`);
 
@@ -57,8 +84,13 @@ export async function getPipeline(
   // "safe because of how the loop happens to be written" is a property nobody
   // is testing and the next edit can remove. Projecting the source rows makes a
   // credential arriving here a thrown error instead of an invisible near-miss.
+  const fetched = (data ?? []) as unknown as Record<string, unknown>[];
+  const truncated = fetched.length > PIPELINE_LIMIT;
+
   const rows = projectRecords(
-    (data ?? []) as unknown as Record<string, unknown>[],
+    // Drop the probe row so it is never counted or summed. Reporting a total
+    // that silently included one extra lead would be worse than truncating.
+    truncated ? fetched.slice(0, PIPELINE_LIMIT) : fetched,
     columnsOf(PIPELINE_SELECT),
     "get_pipeline: submissions",
   ) as unknown as {
@@ -88,5 +120,5 @@ export async function getPipeline(
     totalLeads += 1;
   }
 
-  return { stages, totalLeads, unknownStatusCount };
+  return { stages, totalLeads, unknownStatusCount, truncated, limit: PIPELINE_LIMIT };
 }
