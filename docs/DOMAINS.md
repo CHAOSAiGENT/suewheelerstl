@@ -81,9 +81,11 @@ HTTP 200 — a duplicate-content mirror competing with the canonical host.
 > and throw away its ranking value permanently; a 301/308 forwards that value to
 > the canonical host instead.
 
-The mirror is also serving a badly stale build (its `age` response header has been
-observed above 76 days), so it is showing visitors outdated content on top of the
-SEO problem. The redirect fixes both.
+> **Correction, 2026-10-10.** This section previously said the mirror was serving a
+> build ~76 days stale (`age: 6618510`). That is no longer true — it now reports
+> `age: 0` because the deploys of 2026-09-28 and 2026-10-10 rebuilt it. The stale-
+> content argument for urgency is gone; the duplicate-content and split-authority
+> argument stands unchanged, and so does the backlink reason not to delete it.
 
 ## Verifying
 
