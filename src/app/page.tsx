@@ -12,6 +12,7 @@ import {
   BUSINESS_GEO,
   BUSINESS_HOURS,
   BUSINESS_SAME_AS,
+  BUSINESS_TELEPHONE,
 } from "@/lib/business";
 
 export const metadata: Metadata = {
@@ -36,7 +37,7 @@ const homepageSchema = {
       description:
         "Architectural wood refinishing for St. Louis's historic homes. Hand-stripped, never dipped. EPA Certified Lead Removal. In business since 1989. Sue answers every call personally.",
       url: "https://suewheelerstl.com",
-      telephone: "+13143676054",
+      telephone: BUSINESS_TELEPHONE,
       email: BUSINESS_EMAIL,
       priceRange: "$$",
       address: BUSINESS_ADDRESS,

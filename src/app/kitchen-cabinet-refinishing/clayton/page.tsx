@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Phone } from "lucide-react";
 import { BreadcrumbSchema } from "@/components/BreadcrumbSchema";
 import { CTABlock } from "@/components/CTABlock";
-import { BUSINESS_ADDRESS, BUSINESS_HOURS } from "@/lib/business";
+import { BUSINESS_ADDRESS, BUSINESS_HOURS, BUSINESS_TELEPHONE } from "@/lib/business";
 
 export const metadata: Metadata = {
   title: "Clayton Kitchen Cabinet Refinishing St. Louis | Sue Wheeler",
@@ -19,7 +19,7 @@ const localBusinessSchema = {
   address: BUSINESS_ADDRESS,
   openingHoursSpecification: BUSINESS_HOURS,
   url: "https://suewheelerstl.com/kitchen-cabinet-refinishing/clayton",
-  telephone: "+13143676054",
+  telephone: BUSINESS_TELEPHONE,
   foundingDate: "1989",
   areaServed: {
     "@type": "City",

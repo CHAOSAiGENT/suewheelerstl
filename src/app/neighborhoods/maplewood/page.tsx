@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { CTABlock } from "@/components/CTABlock";
-import { BUSINESS_ADDRESS, BUSINESS_HOURS } from "@/lib/business";
+import { BUSINESS_ADDRESS, BUSINESS_HOURS, BUSINESS_TELEPHONE } from "@/lib/business";
 
 export const metadata: Metadata = {
   title: "Wood Refinishing — Maplewood MO | Sue Wheeler",
@@ -18,7 +18,7 @@ const neighborhoodSchema = {
   address: BUSINESS_ADDRESS,
   openingHoursSpecification: BUSINESS_HOURS,
   url: "https://suewheelerstl.com/neighborhoods/maplewood",
-  telephone: "+13143676054",
+  telephone: BUSINESS_TELEPHONE,
   areaServed: {
     "@type": "Neighborhood",
     name: "Maplewood",

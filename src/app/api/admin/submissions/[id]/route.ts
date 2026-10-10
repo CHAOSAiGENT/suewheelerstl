@@ -1,19 +1,14 @@
 import { NextResponse } from "next/server";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 import { createServiceSupabaseClient } from "@/lib/supabase/service";
-import type { SubmissionStatus } from "@/lib/types";
+import { STATUS_VALUES, LOST_REASON_VALUES } from "@/lib/db-contract";
 import { adminApiGuard } from "@/lib/auth/admin-guard";
 
-const VALID_STATUSES: SubmissionStatus[] = [
-  "to_bid",
-  "contacted",
-  "bid_sent",
-  "on_deck",
-  "active",
-  "finishing",
-  "fully_complete",
-  "lost",
-];
+// STATUS_VALUES and LOST_REASON_VALUES are imported, never retyped. Until now
+// this file held a hand-copied duplicate of STATUS_VALUES, free to drift from
+// the contract that src/lib/__tests__/schema-drift.test.ts asserts against the
+// live database — the same class of app↔database drift that took the contact
+// form down on 2026-06-01 (see the header of src/lib/db-contract.ts).
 
 export async function PATCH(
   req: Request,
@@ -31,14 +26,39 @@ export async function PATCH(
   const update: Record<string, unknown> = {};
 
   if (body.status !== undefined) {
-    if (!VALID_STATUSES.includes(body.status)) {
-      return NextResponse.json({ error: "Invalid status" }, { status: 400 });
+    if (!(STATUS_VALUES as readonly unknown[]).includes(body.status)) {
+      return NextResponse.json(
+        {
+          error: `Invalid status ${JSON.stringify(body.status)} — expected one of ${STATUS_VALUES.join(", ")}`,
+        },
+        { status: 400 },
+      );
     }
     update.status = body.status;
   }
 
   if (body.admin_notes !== undefined) update.admin_notes = body.admin_notes;
-  if (body.lost_reason !== undefined) update.lost_reason = body.lost_reason;
+
+  // `lost_reason` was forwarded unvalidated, so an unknown value reached the
+  // `submissions_lost_reason_check` CHECK constraint and came back as an opaque
+  // 500. Validated here the same way `status` is, with the rejected value echoed
+  // back — matching src/lib/mcp/tools/update-lead.ts. `null` stays legal: that
+  // is how the admin UI clears the field.
+  if (body.lost_reason !== undefined) {
+    if (
+      body.lost_reason !== null &&
+      !(LOST_REASON_VALUES as readonly unknown[]).includes(body.lost_reason)
+    ) {
+      return NextResponse.json(
+        {
+          error: `Invalid lost_reason ${JSON.stringify(body.lost_reason)} — expected one of ${LOST_REASON_VALUES.join(", ")}`,
+        },
+        { status: 400 },
+      );
+    }
+    update.lost_reason = body.lost_reason;
+  }
+
   if (body.lost_note !== undefined) update.lost_note = body.lost_note;
   if (body.crew_member_ids !== undefined)
     update.crew_member_ids = body.crew_member_ids;

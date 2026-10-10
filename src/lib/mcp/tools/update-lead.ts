@@ -8,9 +8,12 @@
  *      propose_bid_amount (reads, never writes) and set_bid_amount (the only
  *      writer). Splitting them is what makes "Sue sets the price" structural.
  *      `archived_at` is likewise absent: the MCP does not archive.
- *   2. `lost_reason` is validated against LOST_REASON_VALUES. The admin route
- *      does not validate it — it forwards whatever the browser sent and lets the
- *      CHECK constraint reject it as an opaque 500.
+ *   2. `lost_reason` is validated against LOST_REASON_VALUES. This used to be a
+ *      divergence from the admin route, which forwarded whatever the browser
+ *      sent and let the CHECK constraint reject it as an opaque 500. That route
+ *      was fixed on 2026-10-10 and now validates it the same way — the two
+ *      agree, and both import the vocabulary from db-contract.ts rather than
+ *      keeping a copy.
  *
  * CONFIRM-BEFORE-WRITE. `confirm` defaults to false, and the `.update()` call is
  * placed AFTER the unconditional preview return. A call without `confirm: true`

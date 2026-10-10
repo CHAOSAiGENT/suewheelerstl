@@ -5,7 +5,7 @@ import { CTABlock } from "@/components/CTABlock";
 import { FAQAccordion } from "@/components/FAQAccordion";
 import { FAQSchema } from "@/components/FAQSchema";
 import { BreadcrumbSchema } from "@/components/BreadcrumbSchema";
-import { BUSINESS_ADDRESS, BUSINESS_HOURS } from "@/lib/business";
+import { BUSINESS_ADDRESS, BUSINESS_HOURS, BUSINESS_TELEPHONE } from "@/lib/business";
 
 export const metadata: Metadata = {
   title: "Furniture Refinishing St. Louis | Sue Wheeler",
@@ -45,7 +45,7 @@ const localBusinessSchema = {
   "@id": "https://suewheelerstl.com/#business",
   name: "Wood Refinishing by Sue Wheeler, LLC",
   url: "https://suewheelerstl.com",
-  telephone: "+13143676054",
+  telephone: BUSINESS_TELEPHONE,
   foundingDate: "1989",
   address: BUSINESS_ADDRESS,
   openingHoursSpecification: BUSINESS_HOURS,

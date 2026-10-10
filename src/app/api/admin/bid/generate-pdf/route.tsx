@@ -103,10 +103,7 @@ export async function POST(req: Request) {
     );
   } catch (err) {
     console.error("PDF render error:", err);
-    return NextResponse.json(
-      { error: "Failed to render PDF" },
-      { status: 500 },
-    );
+    return NextResponse.json({ error: "Failed to render PDF" }, { status: 500 });
   }
 
   // Upload to Supabase Storage
@@ -172,10 +169,28 @@ export async function POST(req: Request) {
     updatePayload.status = "bid_sent";
   }
 
-  await supabase
+  // The result of this UPDATE is checked, not discarded — the same defect fixed
+  // on 2026-09-22 in /api/admin/bid and /api/client/accept-bid. Previously a
+  // rejected write still returned a signed URL and still emailed the client an
+  // estimate the CRM had no record of sending. Checked on EVERY path, not just
+  // the send path: `bid_file_url` is written even when `send` is false, so a
+  // silent failure there orphans the uploaded PDF.
+  const { error: updateError } = await supabase
     .from("submissions")
     .update(updatePayload)
     .eq("id", submission_id);
+
+  if (updateError) {
+    console.error("[admin/bid/generate-pdf] failed to record bid PDF", {
+      submissionId: submission_id,
+      send,
+      error: updateError,
+    });
+    return NextResponse.json(
+      { error: "Could not save bid PDF" },
+      { status: 500 },
+    );
+  }
 
   // If send=true, email the client with the PDF attached
   if (send && process.env.RESEND_API_KEY) {

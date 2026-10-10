@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { CTABlock } from "@/components/CTABlock";
 import { BreadcrumbSchema } from "@/components/BreadcrumbSchema";
-import { BUSINESS_ADDRESS, BUSINESS_HOURS } from "@/lib/business";
+import { BUSINESS_ADDRESS, BUSINESS_HOURS, BUSINESS_TELEPHONE } from "@/lib/business";
 
 export const metadata: Metadata = {
   title: "Wood Refinishing — Kirkwood MO | Sue Wheeler",
@@ -18,7 +18,7 @@ const localBusinessSchema = {
   address: BUSINESS_ADDRESS,
   openingHoursSpecification: BUSINESS_HOURS,
   url: "https://suewheelerstl.com/neighborhoods/kirkwood",
-  telephone: "+13143676054",
+  telephone: BUSINESS_TELEPHONE,
   foundingDate: "1989",
   areaServed: {
     "@type": "City",
@@ -209,12 +209,6 @@ export default function KirkwoodPage() {
               className="text-[#A65D37] font-sans font-medium hover:underline"
             >
               Historic Preservation &amp; Wood Refinishing →
-            </Link>
-            <Link
-              href="/historic-preservation/historic-tax-credits/"
-              className="text-[#A65D37] font-sans font-medium hover:underline"
-            >
-              Historic Tax Credits Guide →
             </Link>
           </div>
           <div className="bg-[#EBE6DE] border-l-4 border-[#11B2E8] p-4 rounded">

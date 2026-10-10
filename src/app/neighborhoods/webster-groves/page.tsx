@@ -136,9 +136,6 @@ export default function WebsterGrovesPage() {
             <Link href="/historic-preservation/" className="text-[#A65D37] font-sans font-medium hover:underline">
               Historic Preservation &amp; Wood Refinishing →
             </Link>
-            <Link href="/historic-preservation/historic-tax-credits/" className="text-[#A65D37] font-sans font-medium hover:underline">
-              Historic Tax Credits Guide →
-            </Link>
           </div>
           <div className="bg-[#EBE6DE] border-l-4 border-[#11B2E8] p-4 rounded">
             <p className="text-[#2A2421] font-sans text-sm leading-relaxed">

@@ -4,7 +4,7 @@ import { Phone, ArrowRight } from "lucide-react";
 import { CTABlock } from "@/components/CTABlock";
 import { BreadcrumbSchema } from "@/components/BreadcrumbSchema";
 import { FAQSchema } from "@/components/FAQSchema";
-import { BUSINESS_ADDRESS, BUSINESS_HOURS } from "@/lib/business";
+import { BUSINESS_ADDRESS, BUSINESS_HOURS, BUSINESS_TELEPHONE } from "@/lib/business";
 
 export const metadata: Metadata = {
   title: "Perk Up & Protect | Wood Finish Maintenance St. Louis",
@@ -20,7 +20,7 @@ const localBusinessSchema = {
   address: BUSINESS_ADDRESS,
   openingHoursSpecification: BUSINESS_HOURS,
   url: "https://suewheelerstl.com/perk-up-and-protect",
-  telephone: "+13143676054",
+  telephone: BUSINESS_TELEPHONE,
   foundingDate: "1989",
 };
 
