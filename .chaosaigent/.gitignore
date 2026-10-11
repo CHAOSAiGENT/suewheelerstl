@@ -3,3 +3,4 @@
 .last-checkpoint
 .context-lock.md
 backups/
+chaos-controller.summary.json

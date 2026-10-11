@@ -6,11 +6,11 @@
         "hooks": [
           {
             "type": "command",
-            "command": "F=$(echo \"$CLAUDE_TOOL_INPUT\" | python3 -c \"import sys,json; d=json.load(sys.stdin); print(d.get('file_path',''))\" 2>/dev/null); if [[ \"$F\" =~ \\.(tsx?|ts)$ ]]; then cd /Users/peterledgrowth/CHAOS/CLIENT_SITES/suewheelerstl && npx tsc --noEmit 2>&1 | head -20; fi; exit 0"
+            "command": "F=$(echo \"$CLAUDE_TOOL_INPUT\" | python3 -c \"import sys,json; d=json.load(sys.stdin); print(d.get('file_path',''))\" 2>/dev/null); if [[ \"$F\" =~ \\.(tsx?|ts)$ ]]; then D=\"${CLAUDE_PROJECT_DIR:-}\"; if [ -z \"$D\" ] || [ ! -d \"$D\" ]; then echo \"[hook] CLAUDE_PROJECT_DIR unusable ('$D') - typecheck/lint NOT run\" >&2; exit 0; fi; cd \"$D\" && npx tsc --noEmit 2>&1 | head -20; fi; exit 0"
           },
           {
             "type": "command",
-            "command": "F=$(echo \"$CLAUDE_TOOL_INPUT\" | python3 -c \"import sys,json; d=json.load(sys.stdin); print(d.get('file_path',''))\" 2>/dev/null); if [[ \"$F\" =~ \\.(tsx?|ts)$ ]]; then cd /Users/peterledgrowth/CHAOS/CLIENT_SITES/suewheelerstl && npx next lint --file \"$F\" 2>&1 | head -20; fi; exit 0"
+            "command": "F=$(echo \"$CLAUDE_TOOL_INPUT\" | python3 -c \"import sys,json; d=json.load(sys.stdin); print(d.get('file_path',''))\" 2>/dev/null); if [[ \"$F\" =~ \\.(tsx?|ts)$ ]]; then D=\"${CLAUDE_PROJECT_DIR:-}\"; if [ -z \"$D\" ] || [ ! -d \"$D\" ]; then echo \"[hook] CLAUDE_PROJECT_DIR unusable ('$D') - typecheck/lint NOT run\" >&2; exit 0; fi; cd \"$D\" && npx next lint --file \"$F\" 2>&1 | head -20; fi; exit 0"
           }
         ]
       }
@@ -21,10 +21,120 @@
         "hooks": [
           {
             "type": "command",
-            "command": "F=$(echo \"$CLAUDE_TOOL_INPUT\" | python3 -c \"import sys,json; d=json.load(sys.stdin); print(d.get('file_path',''))\" 2>/dev/null); if [[ \"$F\" =~ \\.env ]] || [[ \"$F\" =~ supabase/migrations/ ]]; then echo \"BLOCKED: .env and supabase/migrations require manual review — do not edit via Claude\" >&2; exit 2; fi; exit 0"
+            "command": "F=$(echo \"$CLAUDE_TOOL_INPUT\" | python3 -c \"import sys,json; d=json.load(sys.stdin); print(d.get('file_path',''))\" 2>/dev/null); if [[ \"$F\" =~ \\.env ]] || [[ \"$F\" =~ supabase/migrations/ ]]; then echo \"BLOCKED: .env and supabase/migrations require manual review \u2014 do not edit via Claude\" >&2; exit 2; fi; exit 0"
           }
         ]
       }
     ]
+  },
+  "deniedMcpServers": [
+    {
+      "serverName": "claude.ai Canva",
+      "serverUrl": "https://mcp.canva.com/mcp"
+    },
+    {
+      "serverName": "claude.ai Excalidraw",
+      "serverUrl": "https://mcp.excalidraw.com/mcp"
+    },
+    {
+      "serverName": "claude.ai Figma",
+      "serverUrl": "https://mcp.figma.com/mcp"
+    },
+    {
+      "serverName": "claude.ai Gmail",
+      "serverUrl": "https://gmailmcp.googleapis.com/mcp/v1"
+    },
+    {
+      "serverName": "claude.ai Google Calendar",
+      "serverUrl": "https://calendarmcp.googleapis.com/mcp/v1"
+    },
+    {
+      "serverName": "claude.ai Google Drive",
+      "serverUrl": "https://drivemcp.googleapis.com/mcp/v1"
+    },
+    {
+      "serverName": "claude.ai Hugging Face",
+      "serverUrl": "https://huggingface.co/mcp"
+    },
+    {
+      "serverName": "agentation",
+      "serverCommand": "npx -y agentation-mcp server"
+    },
+    {
+      "serverName": "Notion"
+    },
+    {
+      "serverName": "stitch"
+    },
+    {
+      "serverName": "cloudflare-api"
+    },
+    {
+      "serverName": "cloudflare-bindings"
+    },
+    {
+      "serverName": "cloudflare-builds"
+    },
+    {
+      "serverName": "cloudflare-docs"
+    },
+    {
+      "serverName": "cloudflare-observability"
+    }
+  ],
+  "skillOverrides": {
+    "cloudflare:agents-sdk": "off",
+    "cloudflare:build-agent": "off",
+    "cloudflare:build-mcp": "off",
+    "cloudflare:cloudflare": "off",
+    "cloudflare:cloudflare-email-service": "off",
+    "cloudflare:durable-objects": "off",
+    "cloudflare:sandbox-sdk": "off",
+    "cloudflare:web-perf": "off",
+    "cloudflare:workers-best-practices": "off",
+    "cloudflare:wrangler": "off",
+    "posthog:analyzing-experiment-session-replays": "off",
+    "posthog:auditing-experiments-flags": "off",
+    "posthog:auditing-warehouse-data-health": "off",
+    "posthog:authoring-log-alerts": "off",
+    "posthog:cleaning-up-stale-feature-flags": "off",
+    "posthog:configuring-experiment-analytics": "off",
+    "posthog:configuring-experiment-rollout": "off",
+    "posthog:copying-flags-across-projects": "off",
+    "posthog:creating-experiments": "off",
+    "posthog:debugging-local-replay": "off",
+    "posthog:diagnosing-experiment-results": "off",
+    "posthog:diagnosing-failed-warehouse-syncs": "off",
+    "posthog:diagnosing-missing-recordings": "off",
+    "posthog:diagnosing-sdk-health": "off",
+    "posthog:diagnosing-stacktrace-symbolication": "off",
+    "posthog:exploring-apm-traces": "off",
+    "posthog:exploring-llm-clusters": "off",
+    "posthog:exploring-llm-costs": "off",
+    "posthog:exploring-llm-evaluations": "off",
+    "posthog:exploring-llm-traces": "off",
+    "posthog:finding-deleted-feature-flags": "off",
+    "posthog:finding-experiments": "off",
+    "posthog:finding-replay-for-issue": "off",
+    "posthog:inbox-exploration": "off",
+    "posthog:instrument-error-tracking": "off",
+    "posthog:instrument-feature-flags": "off",
+    "posthog:instrument-integration": "off",
+    "posthog:instrument-llm-analytics": "off",
+    "posthog:instrument-logs": "off",
+    "posthog:investigating-replay": "off",
+    "posthog:llma-cc-ingest": "off",
+    "posthog:llma-cc-setup": "off",
+    "posthog:llma-cc-status": "off",
+    "posthog:managing-experiment-lifecycle": "off",
+    "posthog:managing-subscriptions": "off",
+    "posthog:planning-user-interviews": "off",
+    "posthog:setting-up-a-data-warehouse-source": "off",
+    "posthog:signals": "off",
+    "posthog:skills-store": "off",
+    "posthog:suggesting-data-imports": "off",
+    "posthog:triaging-visual-review-runs": "off",
+    "posthog:tuning-incremental-sync-config": "off",
+    "posthog:working-with-skills": "off"
   }
 }
